@@ -953,22 +953,21 @@ document.getElementById('contactForm').addEventListener('submit',async e=>{
  const requiredNumbers={
  land:['currentValue','priorValue','area','shareNumerator','shareDenominator','deductibleCosts','priorLandTaxCredit'],house:['sale'],old:['sale','cost','fee','otherPropertyIncome','priorLoss','baseIncome'],vat:['sales'],deed:['base'],stamp:['base','copies'],houseTax:['base','shareNum','shareDen','units'],landTax:['base'],rent:['sales','rentalMonths','baseIncome'],estate:['base','gift2Years','spouse','children','childYears','parents','disabled','siblings','funeral','other','credit'],gift:['base','deduct','credit'],corp:['base']
  };
- // 只檢查一般情境必填選單；特殊條件欄位由下方各稅目條件判斷，避免要求使用者填寫不適用項目。
- const requiredSelects={
-  land:['landType','selfUseApproved'],
-  house:['assetType','mode','costBasisVerified','feeMode','saleVerified','landGainVerified','resident','special','self','repurchase'],
-  old:['regimeVerified','costVerified','year'],
-  vat:['dataVerified','vatType'],
-  deed:['baseVerified','hasPriorDeedCredit','kind','exemption'],
-  stamp:['kind','documentVerified','exemption'],
-  houseTax:['taxYear','city','ownerType','baseVerified','kind'],
-  landTax:['city','baseVerified','kind'],
-  rent:['rentalType','dataVerified','baseIncomeVerified','year'],
-  estate:['decedentResident','serviceDeath','estateInfoVerified','deductionsVerified'],
-  gift:['donorResident','annualGiftVerified','deductionsVerified'],
-  corp:['taxableIncomeVerified']
- };
  document.getElementById('tax-calc').addEventListener('click',()=>{let v=values();let missing=[];
+ const requiredSelects={
+ land:['landType','selfUseApproved'],
+ house:['assetType','mode','costBasisVerified','feeMode','saleVerified','landGainVerified','resident','special','self','repurchase'],
+ old:['regimeVerified','costVerified','year'],
+ vat:['dataVerified','vatType'],
+ deed:['baseVerified','hasPriorDeedCredit','kind','exemption'],
+ stamp:['kind','documentVerified','exemption'],
+ houseTax:['taxYear','city','ownerType','baseVerified','kind'],
+ landTax:['city','baseVerified','kind'],
+ rent:['rentalType','dataVerified','baseIncomeVerified','year'],
+ estate:['decedentResident','serviceDeath','estateInfoVerified','deductionsVerified'],
+ gift:['donorResident','annualGiftVerified','deductionsVerified'],
+ corp:['taxableIncomeVerified']
+ };
  (requiredSelects[active]||[]).forEach(id=>{let el=document.getElementById('tax-'+id);if(el&&!el.value)missing.push(el.previousElementSibling?.textContent||id)});
  (requiredNumbers[active]||[]).forEach(id=>{let el=document.getElementById('tax-'+id);if(el&&!el.value.trim())missing.push(el.previousElementSibling?.textContent||id)});
  const needDate=id=>{let el=document.getElementById('tax-'+id);if(el&&!el.value)missing.push(el.previousElementSibling?.textContent||id)};
