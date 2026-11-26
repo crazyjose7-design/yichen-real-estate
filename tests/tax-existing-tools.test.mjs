@@ -86,7 +86,7 @@ test('TAX-VAT-EDGE-001 rejects unverified input instead of guessing', () => {
 test('TAX-HOUSETAX-EDGE-001 rejects unverified municipal rate for non-owner-occupied category', () => {
   const [actual, explanation] = defs.houseTax.calc({ ...base.houseTax, kind:'其他非自住住家', rate:3.6, rateVerified:'否' });
   assert.equal(actual, null);
-  assert.match(explanation, /官方徵收率/);
+  assert.match(explanation, /尚未確認|官方資料/);
 });
 test('TAX-LANDTAX-EDGE-001 refuses unverified progressive starting point', () => {
   const [actual, explanation] = defs.landTax.calc({ ...base.landTax, startVerified:'否' });
