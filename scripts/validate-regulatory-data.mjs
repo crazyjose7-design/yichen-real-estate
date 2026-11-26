@@ -12,7 +12,7 @@ for(const [code,name,slug] of cities){
  if(d.status!=='verified'&&d.application_policy?.auto_apply!==false)errors.push('unverified city auto-applies '+f);
  for(const p of d.official_parameters??[])if(p.status!=='verified'||!p.source?.url||!p.effective_from||!p.verified_by)errors.push('unverified/incomplete official parameter '+f);
 }
-for(const dir of ['national','rewards']){
+for(const dir of ['national','rewards','taxes']){
  for(const f of fs.readdirSync(path.join(root,dir)).filter(x=>x.endsWith('.json'))){
   const p=path.join(root,dir,f),d=JSON.parse(fs.readFileSync(p,'utf8'));
   if(d.status!=='verified'&&d.application_policy?.auto_apply!==false)errors.push('unverified '+p+' auto-applies');
@@ -22,5 +22,5 @@ assert.equal(cities.length,22);
 if(errors.length){console.error(errors.join('\n'));process.exit(1);}
 const manifestPath=path.join(root,'manifest.json');
 if(!fs.existsSync(manifestPath))errors.push('missing regulations/manifest.json');
-else { const m=JSON.parse(fs.readFileSync(manifestPath,'utf8')); if((m.county_city_files??[]).length!==22)errors.push('manifest must list 22 city files'); for(const item of m.county_city_files??[])if(!fs.existsSync(path.join(root,item.path)))errors.push('manifest city path missing: '+item.path); for(const p of [...(m.central_law_files??[]),...(m.incentive_files??[])])if(!fs.existsSync(path.join(root,p)))errors.push('manifest path missing: '+p); }
+else { const m=JSON.parse(fs.readFileSync(manifestPath,'utf8')); if((m.county_city_files??[]).length!==22)errors.push('manifest must list 22 city files'); for(const item of m.county_city_files??[])if(!fs.existsSync(path.join(root,item.path)))errors.push('manifest city path missing: '+item.path); for(const p of [...(m.central_law_files??[]),...(m.incentive_files??[]),...(m.tax_parameter_files??[])])if(!fs.existsSync(path.join(root,p)))errors.push('manifest path missing: '+p); }
 console.log('PASS: 22 city files; central laws and incentives; manifest paths exist; unverified data cannot auto-apply.');
