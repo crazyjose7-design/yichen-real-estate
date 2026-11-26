@@ -1,26 +1,61 @@
 {
   "schema_version": "1.0.0",
   "id": "hazardous-old-building-reconstruction",
-  "title": "hazardous-old-building-reconstruction",
-  "status": "unverified",
+  "title": "危老重建容積獎勵",
+  "status": "in_review",
   "jurisdiction_layers": [
     "national",
     "county_city",
     "project_specific"
   ],
-  "legal_basis": [],
-  "eligibility": [],
-  "calculation_basis": null,
+  "legal_basis": [
+    {
+      "title": "都市危險及老舊建築物加速重建條例",
+      "provision": "第3、5、6條",
+      "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0070249",
+      "agency": "內政部",
+      "amended_at": "2023-12-06"
+    }
+  ],
+  "statutory_rules": [
+    {
+      "rule": "獎勵後建築容積不得超過基準容積1.3倍或原建築容積1.15倍",
+      "source_article": "第6條第1項",
+      "status": "in_review"
+    },
+    {
+      "rule": "特定期間申請者另有分年獎勵規定",
+      "source_article": "第6條第2項",
+      "status": "in_review"
+    },
+    {
+      "rule": "重建計畫申請期限依現行第5條所載至民國116年5月31日",
+      "source_article": "第5條",
+      "status": "in_review"
+    }
+  ],
+  "eligibility": [
+    "須符合第3條合法建築物及適用資格",
+    "須依第5條取得範圍內全體土地及合法建築物所有權人同意並取得主管機關核准",
+    "須檢核申請日期及法律有效版本"
+  ],
+  "calculation_basis": "須進一步核對危老重建容積獎勵辦法、施行細則及個案核准重建計畫。",
   "maximum_value": null,
-  "combination_rules": null,
-  "application_procedure": [],
+  "combination_rules": "不得將危老與其他法令獎勵逕行累加；須依法定排除、擇優及個案審查規則確認。",
   "effective_from": null,
   "effective_to": null,
-  "official_sources": [],
+  "official_sources": [
+    {
+      "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0070249",
+      "title": "都市危險及老舊建築物加速重建條例",
+      "agency": "內政部",
+      "retrieved_at": "2026-11-27"
+    }
+  ],
   "case_approval_records": [],
   "verified_by": null,
   "application_policy": {
     "auto_apply": false,
-    "rule": "須逐案確認法源、適用資格、計算基礎、上限、互斥/併計及有效日期；未核驗不得計入坪效。"
+    "rule": "條文已定位但尚未完成子法、施行日期、延長命令及個案核准的全套驗證；上述內容僅供查核索引，禁止自動納入坪效試算。"
   }
 }

@@ -1,26 +1,52 @@
 {
   "schema_version": "1.0.0",
   "id": "urban-renewal",
-  "title": "urban-renewal",
-  "status": "unverified",
+  "title": "都市更新容積獎勵",
+  "status": "in_review",
   "jurisdiction_layers": [
     "national",
     "county_city",
     "project_specific"
   ],
-  "legal_basis": [],
-  "eligibility": [],
+  "legal_basis": [
+    {
+      "title": "都市更新條例",
+      "provision": "第44條",
+      "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0070008",
+      "agency": "內政部",
+      "amended_at": "2024-11-13"
+    }
+  ],
+  "reward_categories": [
+    "原建築容積高於法定容積",
+    "更新後提供社區使用之公益設施",
+    "優先/迅行劃定更新地區之時程獎勵",
+    "地方主管機關報中央核准之其他獎勵",
+    "其他法定情形"
+  ],
   "calculation_basis": null,
   "maximum_value": null,
-  "combination_rules": null,
-  "application_procedure": [],
+  "combination_rules": "須依都市更新建築容積獎勵辦法及地方自治規定逐項核對；不可直接將各項獎勵相加。",
   "effective_from": null,
   "effective_to": null,
-  "official_sources": [],
+  "official_sources": [
+    {
+      "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0070008",
+      "title": "都市更新條例",
+      "agency": "內政部",
+      "retrieved_at": "2026-11-27"
+    },
+    {
+      "url": "https://uract.nlma.gov.tw/rule/detail/9",
+      "title": "都市更新條例第44條－內政部國土管理署都市更新法規資訊",
+      "agency": "內政部國土管理署",
+      "retrieved_at": "2026-11-27"
+    }
+  ],
   "case_approval_records": [],
   "verified_by": null,
   "application_policy": {
     "auto_apply": false,
-    "rule": "須逐案確認法源、適用資格、計算基礎、上限、互斥/併計及有效日期；未核驗不得計入坪效。"
+    "rule": "現階段只完成中央法源定位；尚未核對全部授權子法、最新獎勵項目/上限、地方規定及個案核定，禁止自動計算。"
   }
 }

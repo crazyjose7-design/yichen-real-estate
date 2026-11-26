@@ -1,24 +1,30 @@
 {
   "schema_version": "1.0.0",
-  "record_type": "central_law_index",
+  "record_type": "central_law",
+  "id": "building-act",
   "title": "建築法",
-  "official_portal": "https://law.moj.gov.tw/",
-  "status": "unverified",
+  "status": "in_review",
   "jurisdiction": "national",
-  "published_at": null,
-  "amended_at": null,
+  "amended_at": "2022-05-11",
   "effective_from": null,
   "effective_to": null,
-  "provisions": [],
-  "scope_note": "中央法律；建築管理及建築許可制度。",
+  "important_provisions": [
+    {
+      "article": "第2條",
+      "topic": "中央及地方主管建築機關"
+    }
+  ],
   "source": {
-    "url": "https://law.moj.gov.tw/",
-    "title": "官方法規入口；尚未完成個別法規頁面與條文核驗",
-    "agency": "待核對",
+    "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0070109",
+    "title": "建築法－全國法規資料庫",
+    "agency": "內政部",
+    "provision": "第2條及相關建築管理規定",
+    "amended_at": "2022-05-11",
     "retrieved_at": "2026-11-27"
   },
   "verified_by": null,
   "application_policy": {
-    "auto_apply": false
+    "auto_apply": false,
+    "rule": "需連同建築技術規則、地方自治規定及個案建照核准條件查核。"
   }
 }

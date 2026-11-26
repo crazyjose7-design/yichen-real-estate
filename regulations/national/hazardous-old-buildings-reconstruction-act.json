@@ -1,24 +1,42 @@
 {
   "schema_version": "1.0.0",
-  "record_type": "central_law_index",
+  "record_type": "central_law",
+  "id": "hazardous-old-buildings-reconstruction-act",
   "title": "都市危險及老舊建築物加速重建條例",
-  "official_portal": "https://law.moj.gov.tw/",
-  "status": "unverified",
+  "status": "in_review",
   "jurisdiction": "national",
-  "published_at": null,
-  "amended_at": null,
+  "amended_at": "2023-12-06",
   "effective_from": null,
   "effective_to": null,
-  "provisions": [],
-  "scope_note": "中央法律；危老重建適用條件及容積獎勵。不得預填獎勵比例。",
+  "important_provisions": [
+    {
+      "article": "第3條",
+      "topic": "危老適用建築物資格"
+    },
+    {
+      "article": "第5條",
+      "topic": "重建計畫申請核准；現行條文載明申請期限至民國116年5月31日"
+    },
+    {
+      "article": "第6條",
+      "topic": "容積獎勵及上限；須檢核申請時點與法定條件"
+    },
+    {
+      "article": "第10條",
+      "topic": "補助及融資信用保證"
+    }
+  ],
   "source": {
-    "url": "https://law.moj.gov.tw/",
-    "title": "官方法規入口；尚未完成個別法規頁面與條文核驗",
-    "agency": "待核對",
+    "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0070249",
+    "title": "都市危險及老舊建築物加速重建條例－全國法規資料庫",
+    "agency": "內政部",
+    "provision": "第3、5、6、10條",
+    "amended_at": "2023-12-06",
     "retrieved_at": "2026-11-27"
   },
   "verified_by": null,
   "application_policy": {
-    "auto_apply": false
+    "auto_apply": false,
+    "rule": "危老獎勵不可只套固定比例；須核對合法建物資格、結構評估、同意比例、申請日、核准重建計畫及相關子法。"
   }
 }

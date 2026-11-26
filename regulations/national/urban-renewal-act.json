@@ -1,24 +1,34 @@
 {
   "schema_version": "1.0.0",
-  "record_type": "central_law_index",
+  "record_type": "central_law",
+  "id": "urban-renewal-act",
   "title": "都市更新條例",
-  "official_portal": "https://law.moj.gov.tw/",
-  "status": "unverified",
+  "status": "in_review",
   "jurisdiction": "national",
-  "published_at": null,
-  "amended_at": null,
+  "amended_at": "2024-11-13",
   "effective_from": null,
   "effective_to": null,
-  "provisions": [],
-  "scope_note": "中央法律；都市更新程序及獎勵制度。獎勵額度須依現行條文及子法、個案條件核對。",
+  "important_provisions": [
+    {
+      "article": "第2條",
+      "topic": "中央及地方主管機關"
+    },
+    {
+      "article": "第44條",
+      "topic": "都市更新容積獎勵原則及授權中央訂定獎勵辦法"
+    }
+  ],
   "source": {
-    "url": "https://law.moj.gov.tw/",
-    "title": "官方法規入口；尚未完成個別法規頁面與條文核驗",
-    "agency": "待核對",
+    "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0070008",
+    "title": "都市更新條例－全國法規資料庫",
+    "agency": "內政部",
+    "provision": "第2條、第44條",
+    "amended_at": "2024-11-13",
     "retrieved_at": "2026-11-27"
   },
   "verified_by": null,
   "application_policy": {
-    "auto_apply": false
+    "auto_apply": false,
+    "rule": "獎勵項目與計算方式須同步核對授權辦法、現行施行規則、地方自治規定及個案核定內容。"
   }
 }
