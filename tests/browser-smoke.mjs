@@ -30,6 +30,7 @@ if(!land||land==='—')throw new Error('Land efficiency result missing');
 
 await page.locator('#tax-menu button[data-key="corp"]').click();
 await page.locator('#tax-base').fill('500000');
+await page.locator('#tax-fields details.tax-advanced').evaluate(el=>el.open=true);
 await page.locator('#tax-taxableIncomeVerified').selectOption('是');
 await page.locator('#tax-data-verified').check();
 await page.locator('#tax-calc').click();
