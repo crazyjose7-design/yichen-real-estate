@@ -8,6 +8,7 @@
  const field=(id,label,type='number',value='')=>'<div class="tax-field"><label for="tax-extra-'+id+'">'+label+'</label><input id="tax-extra-'+id+'" type="'+type+'" min="0" step="1" value="'+value+'" placeholder="請輸入"></div>';
  const select=(id,label,opts)=>'<div class="tax-field"><label for="tax-extra-'+id+'">'+label+'</label><select id="tax-extra-'+id+'">'+opts.map(x=>'<option value="'+x[0]+'">'+x[1]+'</option>').join('')+'</select></div>';
  const radio=(name,label,opts)=>'<div class="tax-field"><span class="tax-extra-label">'+label+'</span><div class="tax-extra-options">'+opts.map((x,i)=>'<label><input type="radio" name="tax-extra-'+name+'" value="'+x[0]+'" '+(i===0?'checked':'')+'> '+x[1]+'</label>').join('')+'</div></div>';
+ const check=(id,label)=>'<div class="tax-field"><label><input id="tax-extra-'+id+'" type="checkbox"> '+label+'</label></div>';
  const details=(s,h)=>'<details class="tax-advanced"><summary>'+s+'</summary><div class="tax-advanced-fields">'+h+'</div></details>';
  const read=id=>document.getElementById('tax-extra-'+id);
  const value=id=>read(id)?.value??'';
