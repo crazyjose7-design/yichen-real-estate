@@ -19,6 +19,7 @@ for(const dir of ['national','rewards','taxes']){
  }
 }
 assert.equal(cities.length,22);
+for(const schema of ['schemas/city-parameters.schema.json','schemas/parameter-record.schema.json'])if(!fs.existsSync(path.join(root,schema)))errors.push('missing schema '+schema);
 const manifestPath=path.join(root,'manifest.json');
 if(!fs.existsSync(manifestPath))errors.push('missing regulations/manifest.json');
 else { const m=JSON.parse(fs.readFileSync(manifestPath,'utf8')); if((m.county_city_files??[]).length!==22)errors.push('manifest must list 22 city files'); for(const item of m.county_city_files??[])if(!fs.existsSync(path.join(root,item.path)))errors.push('manifest city path missing: '+item.path); for(const p of [...(m.central_law_files??[]),...(m.incentive_files??[]),...(m.tax_parameter_files??[])])if(!fs.existsSync(path.join(root,p)))errors.push('manifest path missing: '+p); }
