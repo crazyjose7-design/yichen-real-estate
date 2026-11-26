@@ -89,3 +89,42 @@ test('professional income: net-receipt mode grosses up to the requested take-hom
   await page.locator('#tax-calc').click();
   await expect(page.locator('#tax-detail')).toContainText('實際支付金額：NT$ 30,000');
 });
+
+test('land efficiency print: three pages when optional official verification is blank', async ({ page }) => {
+  await page.addInitScript(() => { window.print = () => { document.body.dataset.printInvoked = '1'; }; });
+  await page.goto('/index.html');
+  await page.locator('#le-print').click();
+  await expect(page.locator('body')).toHaveAttribute('data-print-invoked', '1');
+  await expect(page.locator('#yichen-print-root .print-page')).toHaveCount(3);
+  await expect(page.locator('#yichen-print-root')).toContainText('一、基地與法規條件');
+  await expect(page.locator('#yichen-print-root')).toContainText('二、土地成本與市場銷售條件');
+  await expect(page.locator('#yichen-print-root')).toContainText('三、試算結果');
+});
+
+test('land efficiency print: optional official verification becomes its own fourth page', async ({ page }) => {
+  await page.addInitScript(() => { window.print = () => { document.body.dataset.printInvoked = '1'; }; });
+  await page.goto('/index.html');
+  await page.locator('#le-plan-name').fill('測試都市計畫');
+  await page.locator('#le-print').click();
+  await expect(page.locator('body')).toHaveAttribute('data-print-invoked', '1');
+  await expect(page.locator('#yichen-print-root .print-page')).toHaveCount(4);
+  await expect(page.locator('#yichen-print-root')).toContainText('二、官方查核');
+  await expect(page.locator('#yichen-print-root')).toContainText('四、試算結果');
+});
+
+test('full-site print: requested main sections have separate pages and culture is expanded', async ({ page }) => {
+  await page.addInitScript(() => { window.print = () => { document.body.dataset.printInvoked = '1'; }; });
+  await page.goto('/index.html');
+  await page.locator('#site-print').click();
+  await expect(page.locator('body')).toHaveAttribute('data-print-invoked', '1');
+  const pages = page.locator('#yichen-print-root .print-page');
+  await expect(pages).toHaveCount(6);
+  await expect(pages.nth(0)).toContainText('人物首頁');
+  await expect(pages.nth(1)).toContainText('關於億辰');
+  await expect(pages.nth(2)).toContainText('企業徽章與文化');
+  await expect(pages.nth(3)).toContainText('專業服務');
+  await expect(pages.nth(4)).toContainText('服務流程');
+  await expect(pages.nth(5)).toContainText('市場觀點與 OUR BELIEF');
+  await expect(pages.nth(2)).toContainText('中央橫樑');
+  await expect(pages.nth(5)).toContainText('OUR BELIEF');
+});
