@@ -1,0 +1,1 @@
+Trigger browser regression with alert-safe diagnostics.
