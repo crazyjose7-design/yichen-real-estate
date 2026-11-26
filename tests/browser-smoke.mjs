@@ -53,7 +53,7 @@ async function verifyPrintPdf(id,expectedPages,outputName=id){
  await page.waitForTimeout(500);
  const titles=await page.locator('#yichen-print-root > .print-page > .print-page-content > h2').allTextContents();
  const domPages=await page.locator('#yichen-print-root > .print-page').count();
- if(domPages!==expectedPages)throw new Error(id+' expected '+expectedPages+' print page(s), DOM built '+domPages+'; titles='+titles.join(' | ')+'; amount='+await page.locator('#tax-amount').innerText()+'; detail='+await page.locator('#tax-detail').innerText()+'; activeExtra='+await page.evaluate(()=>window.__yichenTaxExtraActive));
+ if(domPages!==expectedPages)throw new Error(id+' expected '+expectedPages+' print page(s), DOM built '+domPages+'; titles='+titles.join(' | ')+'; amount='+await page.locator('#tax-amount').innerText()+'; detail='+await page.locator('#tax-detail').innerText()+'; activeButton='+await page.locator('#tax-menu button.active').evaluate(el=>el.outerHTML).catch(()=>'' ));
  const pdf=await page.pdf({format:'A4',printBackground:true,preferCSSPageSize:true});
  const raw=pdf.toString('latin1');
  const pdfPages=(raw.match(new RegExp('/Type\\s*/Page\\b','g'))||[]).length;
