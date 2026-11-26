@@ -15,6 +15,13 @@
       "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0070008",
       "agency": "內政部",
       "amended_at": "2024-11-13"
+    },
+    {
+      "title": "都市更新建築容積獎勵辦法",
+      "provision": "第1至18條",
+      "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0070027",
+      "agency": "內政部",
+      "amended_at": "2025-01-13"
     }
   ],
   "reward_categories": [
@@ -41,6 +48,14 @@
       "title": "都市更新條例第44條－內政部國土管理署都市更新法規資訊",
       "agency": "內政部國土管理署",
       "retrieved_at": "2026-11-27"
+    },
+    {
+      "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0070027",
+      "title": "都市更新建築容積獎勵辦法",
+      "agency": "內政部",
+      "provision": "第1至18條",
+      "amended_at": "2025-01-13",
+      "retrieved_at": "2026-11-27"
     }
   ],
   "case_approval_records": [],
@@ -48,5 +63,17 @@
   "application_policy": {
     "auto_apply": false,
     "rule": "現階段只完成中央法源定位；尚未核對全部授權子法、最新獎勵項目/上限、地方規定及個案核定，禁止自動計算。"
+  },
+  "review_progress": {
+    "central_delegated_rule_record": "regulations/national/urban-renewal-building-volume-reward-regulations.json",
+    "locally_verified_jurisdictions": [
+      "高雄市都市更新自治條例（條文覆核中）"
+    ],
+    "remaining": [
+      "完整逐條覆核",
+      "地方獎勵項目與上限",
+      "獎勵互斥/扣除/累計",
+      "個案核准紀錄"
+    ]
   }
 }
