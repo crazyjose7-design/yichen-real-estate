@@ -13,7 +13,40 @@
   "effective_to": null,
   "retrieved_at": "2026-11-27",
   "official_parameters": [],
-  "local_regulations": [],
+  "local_regulations": [
+    {
+      "id": "yunlin-urban-renewal-volume-reward-rules",
+      "title": "雲林縣都市更新建築容積獎勵辦法",
+      "status": "in_review",
+      "promulgated_at": "2021-10-29",
+      "source": {
+        "url": "https://law.yunlin.gov.tw/LawContent.aspx?id=GL001021",
+        "title": "雲林縣政府主管法規共用系統",
+        "agency": "雲林縣政府",
+        "provision": "全文及附表；依都市更新條例第65條第5項後段訂定"
+      },
+      "review_notes": [
+        "第3條獎勵項目及額度在附表，須逐項解析。",
+        "第4條含公益設施獎勵係數2之地方規定及無償移轉登記條件，須核對現行附件與指定設施清單。",
+        "第5條策略性更新地區且更新單元達1萬平方公尺等條件，附表獎勵額度加倍；第9條獎勵樓地板面積合計超過1,500平方公尺需交通影響評估。",
+        "舊「雲林縣都市更新地區建築容積獎勵核計原則」已於110年11月10日停止適用，不得引用舊公式。"
+      ]
+    },
+    {
+      "id": "yunlin-urban-renewal-local-regulation-index",
+      "title": "雲林縣政府主管法規共用系統－城鄉類",
+      "status": "in_review",
+      "source": {
+        "url": "https://law.yunlin.gov.tw/LawCategoryContentList.aspx?CategoryID=48&media=print",
+        "title": "雲林縣政府主管法規共用系統－城鄉類",
+        "agency": "雲林縣政府",
+        "provision": "含都市更新、容積移轉、都市計畫保護區及農業區土地使用審查等法規索引"
+      },
+      "review_notes": [
+        "官方法規分類索引顯示都市更新、容積移轉、保護區/農業區土地使用等多項規定，須逐份確認有效版本與適用地區。"
+      ]
+    }
+  ],
   "reward_programs": [],
   "user_assumptions": [],
   "application_policy": {
@@ -24,7 +57,10 @@
     "都市計畫及土地使用分區管制",
     "建蔽率、容積率、移轉/獎勵容積及個案限制",
     "地方自治法規、地方獎勵辦法與受理程序",
-    "官方公告、法規版本、生效日期及適用範圍"
+    "官方公告、法規版本、生效日期及適用範圍",
+    "地方容積獎勵附表及公式逐項覆核",
+    "地方都市計畫書圖、土地使用分區及地號套疊",
+    "地方容積獎勵互斥、過渡案件與個案核准條件"
   ],
   "safety_notes": [
     "不得以縣市通用值取代基地地號與個案核定條件。",
