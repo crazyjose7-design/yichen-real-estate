@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "1.0.0",
+  "status": "partial_historical_evidence_only",
+  "source": "prior conversation summaries and GitHub history; no original 130+ case workbook or complete expected-output log found",
+  "historicalClaims": [
+    {
+      "id": "LT-LEGACY-PASS-COUNT",
+      "reportedCount": 126,
+      "status": "reported_passed",
+      "caseRowsRecovered": 0,
+      "warning": "Only the aggregate count is recoverable; do not fabricate LT-001 through LT-126 inputs or expected outputs."
+    },
+    {
+      "id": "LT-127",
+      "status": "unresolved_not_verified",
+      "issue": "Prior-credit field accepted decimal 100.5 and appeared to truncate/use 100; a later patch was committed to functions/_middleware.js but preview verification was not confirmed."
+    }
+  ],
+  "recoveredScenarios": [
+    {
+      "id": "LT-127-A",
+      "description": "Prior approved land-value-increment tax credit must reject decimals",
+      "input": {
+        "priorCredit": "100.5"
+      },
+      "expected": "Reject; do not calculate"
+    },
+    {
+      "id": "LT-127-B",
+      "description": "Integer prior approved credit is accepted",
+      "input": {
+        "priorCredit": "100"
+      },
+      "expected": "Accept"
+    },
+    {
+      "id": "LT-127-C",
+      "description": "Negative prior approved credit is rejected",
+      "input": {
+        "priorCredit": "-1"
+      },
+      "expected": "Reject"
+    },
+    {
+      "id": "LT-BASELINE",
+      "description": "Historical baseline inputs",
+      "input": {
+        "baseDate": "1980-01-01",
+        "currentLandValue": 10000,
+        "previousLandValue": 5000,
+        "area": 100,
+        "landType": "urban",
+        "ownershipShare": "1/1",
+        "fees": 0
+      },
+      "expected": "No reliable expected output recovered"
+    }
+  ],
+  "deploymentEvidence": {
+    "artifact": "yichen-real-estate-current-run10-cloudflare.zip",
+    "sourceCommit": "7e92ae22992b9b2536c0c53605c1a7b9ec96f9da",
+    "contents": "index.html only",
+    "testDatasetIncluded": false
+  },
+  "policy": "Retain evidence, add recovered cases without overwriting, and do not mark land-tax production-ready until all historical cases are recovered or explicitly re-created with independently calculated expected values and rerun."
+}
