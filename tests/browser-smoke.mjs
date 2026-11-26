@@ -98,6 +98,7 @@ await page.locator('#tax-calc').click();
 rentDetail=await page.locator('#tax-detail').innerText();
 if(!rentDetail.includes('二代健保補充保費：NT$ 0'))throw new Error('Company rent must not incur individual supplementary premium: '+rentDetail);
 await verifyPrintPdf('tax-print',1,'tax-rent-withholding');
+if(pdfResults[pdfResults.length-1].titles[0]!=='稅務試算｜租金扣繳計算機')throw new Error('Rent withholding print title incorrect: '+pdfResults[pdfResults.length-1].titles[0]);
 
 await page.locator('#tax-menu button[data-yichen-extra="professionalIncome"]').click();
 if(await page.locator('#tax-title').innerText()!=='執行業務所得計算')throw new Error('Professional income tool did not open');
@@ -118,6 +119,7 @@ await page.locator('#tax-extra-proType').selectOption('9B');
 await page.locator('#tax-calc').click();
 if(!(await page.locator('#tax-detail').innerText()).includes('代扣所得稅：NT$ 0'))throw new Error('Nonresident 9B withholding exemption failed');
 await verifyPrintPdf('tax-print',1,'tax-professional-income');
+if(pdfResults[pdfResults.length-1].titles[0]!=='稅務試算｜執行業務所得計算')throw new Error('Professional income print title incorrect: '+pdfResults[pdfResults.length-1].titles[0]);
 await verifyPrintPdf('site-print',9,'site-with-new-tax-tools');
 const existingTaxTools=[
  ['land','土地增值稅'],['house','房地合一稅｜專業判斷版'],['old','財產交易所得稅（房屋舊制）'],['vat','營業稅'],['deed','契稅'],['stamp','印花稅'],['houseTax','房屋稅'],['landTax','地價稅'],['rent','租賃所得稅'],['estate','遺產稅'],['gift','贈與稅'],['corp','營利事業所得稅']
