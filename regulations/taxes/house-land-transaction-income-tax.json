@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0.0",
+  "id": "house-land-transaction-income-tax",
+  "title": "房地合一所得稅",
+  "status": "unverified",
+  "jurisdiction_layers": [
+    "national",
+    "county_city",
+    "property_specific"
+  ],
+  "governing_law": {
+    "id": "income-tax-act-house-land",
+    "title": "所得稅法",
+    "provision": "第4條之4、第4條之5、第14條之4至第14條之8、第24條之5"
+  },
+  "parameters": [],
+  "effective_from": null,
+  "effective_to": null,
+  "official_sources": [],
+  "formula_reference": null,
+  "test_cases": [],
+  "verified_by": null,
+  "application_policy": {
+    "auto_apply": false,
+    "rule": "參數空白代表尚未查證；不可使用舊程式常數、推測值或其他縣市資料代替。"
+  }
+}

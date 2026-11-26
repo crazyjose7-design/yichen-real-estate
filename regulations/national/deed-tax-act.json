@@ -1,24 +1,29 @@
 {
   "schema_version": "1.0.0",
-  "record_type": "central_law_index",
+  "record_type": "central_law",
+  "id": "deed-tax-act",
   "title": "契稅條例",
-  "official_portal": "https://law.moj.gov.tw/",
-  "status": "unverified",
+  "status": "in_review",
   "jurisdiction": "national",
-  "published_at": null,
-  "amended_at": null,
+  "amended_at": "2010-05-05",
   "effective_from": null,
   "effective_to": null,
-  "provisions": [],
-  "scope_note": "中央法律；契稅課稅範圍及稅率。",
+  "important_provisions": [
+    {
+      "topic": "第2、3條及相關條文；交易類型與課稅基礎需另行建模"
+    }
+  ],
   "source": {
-    "url": "https://law.moj.gov.tw/",
-    "title": "官方法規入口；尚未完成個別法規頁面與條文核驗",
-    "agency": "待核對",
+    "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=G0340105",
+    "title": "契稅條例－全國法規資料庫",
+    "agency": "財政部",
+    "provision": "第2、3條及相關條文；交易類型與課稅基礎需另行建模",
+    "amended_at": "2010-05-05",
     "retrieved_at": "2026-11-27"
   },
   "verified_by": null,
   "application_policy": {
-    "auto_apply": false
+    "auto_apply": false,
+    "rule": "中央法規已定位；稅率、免稅/優惠、適用身分、交易日期與地方自治參數仍須逐項核對，未完成覆核不得自動套用。"
   }
 }

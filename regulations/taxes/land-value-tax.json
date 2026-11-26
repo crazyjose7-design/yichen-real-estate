@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0.0",
+  "id": "land-value-tax",
+  "title": "地價稅",
+  "status": "unverified",
+  "jurisdiction_layers": [
+    "national",
+    "county_city",
+    "property_specific"
+  ],
+  "governing_law": {
+    "id": "land-value-tax-act",
+    "title": "土地稅法",
+    "provision": "第14至17條及相關減免規定"
+  },
+  "parameters": [],
+  "effective_from": null,
+  "effective_to": null,
+  "official_sources": [],
+  "formula_reference": null,
+  "test_cases": [],
+  "verified_by": null,
+  "application_policy": {
+    "auto_apply": false,
+    "rule": "參數空白代表尚未查證；不可使用舊程式常數、推測值或其他縣市資料代替。"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0.0",
+  "id": "house-tax",
+  "title": "房屋稅",
+  "status": "unverified",
+  "jurisdiction_layers": [
+    "national",
+    "county_city",
+    "property_specific"
+  ],
+  "governing_law": {
+    "id": "house-tax-act",
+    "title": "房屋稅條例",
+    "provision": "第3條及地方差別稅率、住家用認定等相關條文"
+  },
+  "parameters": [],
+  "effective_from": null,
+  "effective_to": null,
+  "official_sources": [],
+  "formula_reference": null,
+  "test_cases": [],
+  "verified_by": null,
+  "application_policy": {
+    "auto_apply": false,
+    "rule": "參數空白代表尚未查證；不可使用舊程式常數、推測值或其他縣市資料代替。"
+  }
+}

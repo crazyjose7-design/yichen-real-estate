@@ -1,24 +1,29 @@
 {
   "schema_version": "1.0.0",
-  "record_type": "central_law_index",
-  "title": "所得稅法-房地合一相關規定",
-  "official_portal": "https://law.moj.gov.tw/",
-  "status": "unverified",
+  "record_type": "central_law",
+  "id": "income-tax-act-house-land",
+  "title": "所得稅法－房屋土地交易所得",
+  "status": "in_review",
   "jurisdiction": "national",
-  "published_at": null,
   "amended_at": null,
   "effective_from": null,
   "effective_to": null,
-  "provisions": [],
-  "scope_note": "中央法律；房屋土地交易所得課稅規定及過渡適用。",
+  "important_provisions": [
+    {
+      "topic": "第4條之4、第4條之5、第14條之4至第14條之8及第24條之5；須依交易日及適用版本判斷"
+    }
+  ],
   "source": {
-    "url": "https://law.moj.gov.tw/",
-    "title": "官方法規入口；尚未完成個別法規頁面與條文核驗",
-    "agency": "待核對",
+    "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=G0340003",
+    "title": "所得稅法－房屋土地交易所得－全國法規資料庫",
+    "agency": "財政部",
+    "provision": "第4條之4、第4條之5、第14條之4至第14條之8及第24條之5；須依交易日及適用版本判斷",
+    "amended_at": null,
     "retrieved_at": "2026-11-27"
   },
   "verified_by": null,
   "application_policy": {
-    "auto_apply": false
+    "auto_apply": false,
+    "rule": "中央法規已定位；稅率、免稅/優惠、適用身分、交易日期與地方自治參數仍須逐項核對，未完成覆核不得自動套用。"
   }
 }
