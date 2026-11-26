@@ -197,3 +197,27 @@ test('responsive layout: desktop, tablet, mobile and landscape widths do not ove
       .toBeLessThanOrEqual(dimensions.viewport + 2);
   }
 });
+
+test('contact form: sends all required fields to the configured Apps Script endpoint without false delivery success', async ({ page }) => {
+  let received = null;
+  await page.route('https://script.google.com/macros/s/**/exec', async route => {
+    received = route.request().postDataJSON();
+    await route.fulfill({ status: 204, body: '' });
+  });
+  await page.goto('/index.html');
+  await page.locator('#contactForm [name="name"]').fill('E2E 測試聯絡人');
+  await page.locator('#contactForm [name="phone"]').fill('0900000000');
+  await page.locator('#contactForm [name="email"]').fill('e2e-test@example.invalid');
+  await page.locator('#contactForm [name="lineId"]').fill('E2E-ONLY');
+  await page.locator('#contactForm [name="city"]').selectOption({ label: '高雄市' });
+  await page.locator('#contactForm [name="purpose"]').selectOption({ label: '投資' });
+  await page.locator('#contactForm [name="message"]').fill('AUTOMATED TEST - no real customer data');
+  await page.locator('#contactForm button[type="submit"]').click();
+  await expect.poll(() => received).not.toBeNull();
+  expect(received.name).toBe('E2E 測試聯絡人');
+  expect(received.phone).toBe('0900000000');
+  expect(received.email).toBe('e2e-test@example.invalid');
+  expect(received.message).toContain('LINE ID：E2E-ONLY');
+  await expect(page.locator('#contactStatus')).toContainText('瀏覽器無法讀取接收端的實際處理結果');
+  await expect(page.locator('#contactStatus')).not.toContainText('已成功送達');
+});
