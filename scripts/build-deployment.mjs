@@ -45,7 +45,7 @@ const taxAdditionalTools=await fs.readFile(path.join(root,'workbench','modules',
 const rewardEngineRuntime=await fs.readFile(path.join(root,'workbench','modules','reward-engine-runtime.js'),'utf8');
 const landRewardGate=await fs.readFile(path.join(root,'workbench','modules','land-reward-gate.js'),'utf8');
 const embeddedPayload=JSON.stringify({manifest:regulationManifest,files:regulationFiles}).replace(/</g,'\\u003c');
-const embeddedBlock='<script type="application/json" id="yichen-regulatory-data">'+embeddedPayload+'</script>\n<script id="yichen-regulatory-runtime">'+runtime+'</script>\n<script id="yichen-tax-additional-calculations">'+taxAdditionalCalc+'</script>\n<script id="yichen-tax-additional-tools">'+taxAdditionalTools+'</script>\n';
+const embeddedBlock='<script type="application/json" id="yichen-regulatory-data">'+embeddedPayload+'</script>\n<script id="yichen-regulatory-runtime">'+runtime+'</script>\n<script id="yichen-reward-engine-runtime">'+rewardEngineRuntime+'</script>\n<script id="yichen-land-reward-gate">'+landRewardGate+'</script>\n<script id="yichen-tax-additional-calculations">'+taxAdditionalCalc+'</script>\n<script id="yichen-tax-additional-tools">'+taxAdditionalTools+'</script>\n';
 if(!/<\/body>/i.test(html)) throw new Error('HTML body closing tag not found for regulatory data injection');
 html=html.replace(/<\/body>/i,embeddedBlock+'</body>');
 await fs.writeFile(path.join(out,'index.html'),html);
