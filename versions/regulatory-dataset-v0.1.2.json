@@ -151,7 +151,13 @@
       "delegated_regulations_added": 5,
       "local_sources_are_not_fully_verified": true,
       "all_tax_parameters_in_review": true,
-      "auto_apply_enabled": false
+      "auto_apply_enabled": false,
+      "cities_with_source_records_count": 22,
+      "official_portal_directory_source": {
+        "url": "https://uract.nlma.gov.tw/content/links",
+        "title": "內政部國土管理署都市更新法規網站－22縣市主管法規查詢系統連結",
+        "retrieved_at": "2026-11-27"
+      }
     }
   },
   "coverage": {
@@ -166,6 +172,34 @@
     "tax_parameter_files": 5,
     "incentive_files": 9
   },
+  "print_acceptance": {
+    "ci_run_id": 45880073889,
+    "commit_sha": "93746c2fea3f032c0648ad7b15757e639eed157d",
+    "status": "passed",
+    "pdfs": [
+      {
+        "id": "tax-print",
+        "pages": 1,
+        "size": "A4 portrait"
+      },
+      {
+        "id": "mortgage-print",
+        "pages": 1,
+        "size": "A4 portrait"
+      },
+      {
+        "id": "le-print",
+        "pages": 1,
+        "size": "A4 portrait"
+      },
+      {
+        "id": "site-print",
+        "pages": 7,
+        "size": "A4 portrait"
+      }
+    ],
+    "browser_errors": 0
+  },
   "release_gate": {
     "auto_apply_enabled": false,
     "production_deploy_allowed": false,
@@ -176,6 +210,6 @@
     "南投、宜蘭、臺東尚待定位具體地方更新/容積獎勵規定",
     "稅務參數仍在in_review，未接入正式稅務公式",
     "容積獎勵安全引擎尚未接入正式土地坪效UI",
-    "A4 PDF實際版面驗收尚未完成"
+    "公式完整回歸測試仍未完成"
   ]
 }
