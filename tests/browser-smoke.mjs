@@ -119,6 +119,16 @@ await page.locator('#tax-calc').click();
 if(!(await page.locator('#tax-detail').innerText()).includes('代扣所得稅：NT$ 0'))throw new Error('Nonresident 9B withholding exemption failed');
 await verifyPrintPdf('tax-print',1,'tax-professional-income');
 await verifyPrintPdf('site-print',9,'site-with-new-tax-tools');
+const existingTaxTools=[
+ ['land','土地增值稅'],['house','房地合一稅｜專業判斷版'],['old','財產交易所得稅（房屋舊制）'],['vat','營業稅'],['deed','契稅'],['stamp','印花稅'],['houseTax','房屋稅'],['landTax','地價稅'],['rent','租賃所得稅'],['estate','遺產稅'],['gift','贈與稅'],['corp','營利事業所得稅']
+];
+for(const [key,label] of existingTaxTools){
+ const btn=page.locator('#tax-menu button[data-key="'+key+'"]');
+ if(await btn.count()!==1)throw new Error('Missing existing tax tool '+key);
+ await btn.click();
+ if(await page.locator('#tax-title').innerText()!==label)throw new Error('Tax tool title mismatch for '+key);
+ if(await page.locator('#tax-fields .tax-field').count()===0)throw new Error('Tax tool fields missing for '+key);
+}
 const printCalls=await page.evaluate(()=>window.__printCalls);
 if(printCalls!==7)throw new Error('Expected 7 print entry points including both new tax tools and updated full-document print; counts='+printCounts.join(',')+'; dialogs='+dialogs.join(' | '));
 if(dialogs.length)throw new Error('Unexpected browser dialogs: '+dialogs.join(' | '));
