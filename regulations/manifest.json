@@ -144,14 +144,16 @@
       "05 臺南市",
       "06 高雄市",
       "07 基隆市",
+      "08 新竹市",
       "09 嘉義市",
       "11 苗栗縣",
       "14 雲林縣",
       "18 花蓮縣",
-      "20 澎湖縣"
+      "20 澎湖縣",
+      "21 金門縣"
     ],
-    "cities_with_source_records_count": 12,
-    "remaining_cities_without_source_records": 10,
+    "cities_with_source_records_count": 14,
+    "remaining_cities_without_source_records": 8,
     "local_sources_are_not_fully_verified": true
   }
 }
