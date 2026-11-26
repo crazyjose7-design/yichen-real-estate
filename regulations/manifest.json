@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "dataset_version": "0.1.1",
+  "dataset_version": "0.1.2",
   "generated_at": "2026-11-27",
   "status": "in_progress",
   "county_city_files": [
@@ -105,7 +105,10 @@
     "national/deed-tax-act.json",
     "national/real-estate-securitization-and-related.json",
     "national/urban-renewal-building-volume-reward-regulations.json",
-    "national/hazardous-old-building-volume-reward-regulations.json"
+    "national/hazardous-old-building-volume-reward-regulations.json",
+    "national/urban-renewal-act-enforcement-rules.json",
+    "national/urban-renewal-rights-transformation-implementation-regulations.json",
+    "national/hazardous-old-buildings-act-implementation-rules.json"
   ],
   "incentive_files": [
     "rewards/urban-renewal.json",
@@ -132,42 +135,18 @@
   },
   "last_research_update": "2026-11-27",
   "research_progress": {
-    "kaohsiung_local_sources": 3,
-    "kaohsiung_status": "in_review",
-    "remaining_city_jurisdictions": 21,
-    "delegated_regulations_added": 2,
-    "cities_with_official_local_source_records": [
-      "01 臺北市",
-      "02 新北市",
-      "03 桃園市",
-      "04 臺中市",
-      "05 臺南市",
-      "06 高雄市",
-      "07 基隆市",
-      "08 新竹市",
-      "09 嘉義市",
-      "10 新竹縣",
-      "11 苗栗縣",
-      "12 彰化縣",
-      "13 南投縣",
-      "14 雲林縣",
-      "15 嘉義縣",
-      "16 屏東縣",
-      "17 宜蘭縣",
-      "18 花蓮縣",
-      "19 臺東縣",
-      "20 澎湖縣",
-      "21 金門縣",
-      "22 連江縣"
-    ],
-    "cities_with_source_records_count": 22,
-    "remaining_cities_without_source_records": 0,
-    "local_sources_are_not_fully_verified": true,
-    "specific_local_urban_renewal_or_related_records_count": 19,
+    "cities_with_official_local_source_records_count": 22,
+    "remaining_cities_without_official_portal": 0,
+    "specific_local_rule_records_count": 19,
     "portal_only_cities": [
-      "13 南投縣",
-      "17 宜蘭縣",
-      "19 臺東縣"
-    ]
+      "南投縣",
+      "宜蘭縣",
+      "臺東縣"
+    ],
+    "remaining_cities_requiring_specific_rule_discovery": 3,
+    "delegated_regulations_added": 5,
+    "local_sources_are_not_fully_verified": true,
+    "all_tax_parameters_in_review": true,
+    "auto_apply_enabled": false
   }
 }
