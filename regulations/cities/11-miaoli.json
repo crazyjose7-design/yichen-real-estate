@@ -13,7 +13,40 @@
   "effective_to": null,
   "retrieved_at": "2026-11-27",
   "official_parameters": [],
-  "local_regulations": [],
+  "local_regulations": [
+    {
+      "id": "miaoli-urban-renewal-volume-reward-rules",
+      "title": "苗栗縣都市更新建築容積獎勵辦法",
+      "status": "in_review",
+      "promulgated_at": "2025-03-04",
+      "source": {
+        "url": "https://law.miaoli.gov.tw/glrsnewsout/LawContent.aspx?id=GL000198",
+        "title": "苗栗縣政府主管法規共用系統",
+        "agency": "苗栗縣政府",
+        "provision": "全文第1至7條及附表"
+      },
+      "review_notes": [
+        "第2條所有權人數與面積均超過十分之九同意，獎勵不超過基準容積5%。",
+        "第3條策略性更新地區且更新單元達1萬平方公尺、得核予2倍基準容積之規定，已由內政部115年1月12日函告無效，禁止套用。",
+        "第4、5條地方獎勵及公式仍須確認與中央第65條第5、6項相容，並核對主管機關審議與保證金條件。"
+      ]
+    },
+    {
+      "id": "miaoli-invalid-article-3-mohw-order",
+      "title": "內政部函告苗栗縣都市更新建築容積獎勵辦法第3條無效",
+      "status": "in_review",
+      "source": {
+        "url": "https://gazette.nat.gov.tw/egFront/eguploadpubWrapper?file=%2FEG_FileManager%2Feguploadpub%2Feg032007%2Fch02%2Ftype7%2Fgov10%2Fnum5%2FEg.htm&metaid=162917",
+        "title": "行政院公報－內政部115年1月12日台內國字第1140817216號函",
+        "agency": "內政部",
+        "provision": "苗栗縣辦法第3條；依地方制度法第30條函告無效"
+      },
+      "review_notes": [
+        "不得把苗栗縣辦法第3條2倍基準容積寫入任何可用參數。",
+        "公報函文明示其餘條文已備查，但仍須獨立覆核各條適法性及現行附件。"
+      ]
+    }
+  ],
   "reward_programs": [],
   "user_assumptions": [],
   "application_policy": {
@@ -24,7 +57,11 @@
     "都市計畫及土地使用分區管制",
     "建蔽率、容積率、移轉/獎勵容積及個案限制",
     "地方自治法規、地方獎勵辦法與受理程序",
-    "官方公告、法規版本、生效日期及適用範圍"
+    "官方公告、法規版本、生效日期及適用範圍",
+    "地方容積獎勵完整附表與公式逐項覆核",
+    "地方公告指定設施及個案區位/時效",
+    "地方都市計畫書圖與基地土地使用分區套疊",
+    "中央法規授權及地方自治規則效力審查"
   ],
   "safety_notes": [
     "不得以縣市通用值取代基地地號與個案核定條件。",
