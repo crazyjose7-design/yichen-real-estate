@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "delegated_regulation",
+  "id": "urban-renewal-rights-transformation-implementation-regulations",
+  "title": "都市更新權利變換實施辦法",
+  "status": "in_review",
+  "jurisdiction": "national",
+  "promulgated_at": "2019-06-17",
+  "amended_at": "2019-06-17",
+  "source": {
+    "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0070025",
+    "title": "都市更新權利變換實施辦法－全國法規資料庫",
+    "agency": "內政部",
+    "provision": "第1至42條",
+    "amended_at": "2019-06-17",
+    "retrieved_at": "2026-11-27"
+  },
+  "extracted_rules": [
+    {
+      "id": "ur-rt-plan-content",
+      "article": "第3條",
+      "rule": "權利變換計畫應載明更新範圍、權利人名冊、土地建物及權利金分配清冊、共同負擔費用、專業估價者選任、估價條件及權利價值評定方式。",
+      "status": "in_review"
+    },
+    {
+      "id": "ur-rt-common-burden",
+      "article": "第19條",
+      "rule": "共同負擔項目包含工程費用、權利變換費用、貸款利息、稅捐、管理費用、都市計畫變更負擔費用、容積移轉費用等，須依計畫及核定內容認列。",
+      "status": "in_review"
+    },
+    {
+      "id": "ur-rt-valuation",
+      "article": "第20條及相關條文",
+      "rule": "權利價值與估價應依權利變換計畫、專業估價及相關估價規範辦理；不得用坪效概算替代權利變換核定價值。",
+      "status": "in_review"
+    }
+  ],
+  "caveats": [
+    "需逐條核對第19條共同負擔項目、提列標準、地方審議原則及最新附件。",
+    "權利變換共同負擔不是建築容積獎勵，不可將成本項目誤加為容積。"
+  ],
+  "verified_by": null,
+  "application_policy": {
+    "auto_apply": false,
+    "rule": "僅作權利變換成本/程序法源索引，不得自動套用於容積率或稅額。"
+  }
+}
