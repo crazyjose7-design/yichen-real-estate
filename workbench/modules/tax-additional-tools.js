@@ -10,7 +10,7 @@
  const check=(id,label,checked=false)=>'<label class="tax-extra-check"><input id="tax-extra-'+id+'" type="checkbox" '+(checked?'checked':'')+'> '+label+'</label>';
  const details=(summary,html)=>'<details class="tax-advanced"><summary>'+summary+'</summary><div class="tax-advanced-fields">'+html+'</div></details>';
  function activate(key){
-  activeExtra=key;menu.querySelectorAll('button').forEach(b=>{const on=b.dataset.yichenExtra===key||b.dataset.key===key;b.classList.toggle('active',on);b.setAttribute('aria-pressed',on?'true':'false')});
+  activeExtra=key;window.__yichenTaxExtraActive=key;menu.querySelectorAll('button').forEach(b=>{const on=b.dataset.yichenExtra===key||b.dataset.key===key;b.classList.toggle('active',on);b.setAttribute('aria-pressed',on?'true':'false')});
   result.classList.remove('show');amount.textContent='尚未計算';detail.textContent='';
   if(key==='rentWithholding'){
    title.textContent='租金扣繳計算機';desc.textContent='輸入本次租金給付金額與所得人身分，快速估算應扣繳所得稅、補充保費及出租人實收金額。';
@@ -43,7 +43,7 @@
   content.appendChild(clone);pg.appendChild(content);root.appendChild(pg);document.body.appendChild(root);
   document.body.classList.remove('print-land','print-tax','print-site');document.body.classList.add('yichen-print-active');window.print();
  };
- document.getElementById('tax-print')?.addEventListener('click',e=>{if(!activeExtra)return;e.preventDefault();e.stopImmediatePropagation();try{customPrint()}catch(err){amount.textContent='無法列印';detail.textContent=err.message;result.classList.add('show')}},true);
+ document.getElementById('tax-print')?.addEventListener('click',e=>{const key=menu.querySelector('button[data-yichen-extra].active')?.dataset.yichenExtra;if(!key)return;activeExtra=key;window.__yichenTaxExtraActive=key;e.preventDefault();e.stopImmediatePropagation();try{customPrint()}catch(err){amount.textContent='無法列印';detail.textContent=err.stack||err.message;result.classList.add('show')}},true);
  window.addEventListener('afterprint',()=>{if(activeExtra){document.body.classList.remove('yichen-print-active');const root=document.getElementById('yichen-print-root');if(root)root.innerHTML=''}});
  const calc=document.getElementById('tax-calc');
  calc?.addEventListener('click',e=>{if(!activeExtra)return;e.preventDefault();e.stopImmediatePropagation();try{
