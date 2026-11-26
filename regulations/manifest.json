@@ -186,7 +186,7 @@
     "yilan_current_version_note": "宜蘭縣都市設計審議作業要點已定位縣府公告及官方目錄；115年5月13日修正資訊尚待縣府原始法規全文確認。",
     "nantou_scope_note": "南投縣已定位都市設計審議規範及容積移轉作業要點；附表、現行沿革及基地適用性仍待覆核。",
     "reward_gate_integration": {
-      "status": "implemented_pending_ci",
+      "status": "tested_in_ci",
       "browser_runtime": "workbench/modules/reward-engine-runtime.js",
       "land_ui": "workbench/modules/land-reward-gate.js",
       "calculation_module": "workbench/modules/land-efficiency.js",
@@ -195,7 +195,10 @@
       "ui": "workbench/modules/land-reward-gate.js",
       "calculation": "workbench/modules/land-efficiency.js",
       "test": "tests/reward-engine-runtime.test.mjs",
-      "browser_test": "tests/browser-smoke.mjs"
+      "browser_test": "tests/browser-smoke.mjs",
+      "ci_run_id": 45884457538,
+      "browser_status": "passed",
+      "expected_current_status": "blocked_all_unverified_rewards"
     },
     "city_review_matrix": {
       "path": "regulations/city-review-matrix.json",
