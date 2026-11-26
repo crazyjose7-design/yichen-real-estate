@@ -11,7 +11,7 @@
   const nhiBase=nhiEligible?Math.min(gross,10000000):0;
   const supplementaryPremium=round(nhiBase*0.0211);
   return {grossAmount:round(gross),withholdingRate:rate,rawTax,withholdingTax,supplementaryPremium,nhiBase,netToRecipient:round(gross)-withholdingTax-supplementaryPremium,totalPayerOutflow:round(gross),notes:[
-   nonresident?'非境內居住者租金原則按20%扣繳；不適用境內居住者每次2,000元免扣繳門檻。':'境內居住個人每次應扣繳稅額不超過2,000元者免予扣繳。',
+   nonresident?'非境內居住者租金原則按20%扣繳；不適用境內居住者每次2,000元免扣繳門檻。':'境內居住個人或境內有固定營業場所之營利事業，每次應扣繳稅額不超過2,000元者免予扣繳。',
    nhiEligible?'已按個人租金收入單次達20,000元、費率2.11%、單次計費上限1,000萬元估算補充保費。':includeNhi&&recipientKind==='individual'?'本次租金未達20,000元，未估列租金補充保費。':'未計入租金補充保險費（可於進階選項勾選）。',
    '本計算假設租金給付額為扣繳及補充保費計算基礎；租約約定由承租人負擔稅費、押金設算、代付費用及特殊租賃型態不在此基本版自動加計。'
   ]};
