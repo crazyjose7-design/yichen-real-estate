@@ -11,6 +11,13 @@ page.on('dialog',async d=>{dialogs.push(d.message());await d.accept()});
 await page.addInitScript(()=>{window.__printCalls=0;window.print=()=>{window.__printCalls++}});
 await page.goto(file,{waitUntil:'load'});
 await page.waitForTimeout(800);
+const builtHtml=await fs.readFile('dist/index.html','utf8');
+if(/<script src="workbench\/modules\/tax-simpany-parity-(?:calculations|tools)\.js"><\/script>/.test(builtHtml))throw new Error('Single-file deployment still references non-existent workbench module paths');
+if(!builtHtml.includes('id="yichen-tax-additional-calculations"')||!builtHtml.includes('id="yichen-tax-additional-tools"'))throw new Error('Tax calculator modules were not embedded in the single-file deployment');
+const multiHtml=await fs.readFile('dist/deployment-package/index.multi-file.html','utf8');
+if(!multiHtml.includes('src="modules/tax-simpany-parity-tools.js"'))throw new Error('Multi-file package module path was not rewritten');
+await fs.access('dist/deployment-package/modules/tax-simpany-parity-tools.js');
+
 const regulatory=await page.evaluate(()=>{
  const api=window.YichenRegulatoryData;
  if(!api)return null;
