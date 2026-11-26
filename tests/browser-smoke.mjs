@@ -5,7 +5,9 @@ const file='file://'+path.resolve('dist/index.html');
 const browser=await chromium.launch({headless:true});
 const page=await browser.newPage({viewport:{width:1440,height:1000}});
 const errors=[];
+const dialogs=[];
 page.on('pageerror',e=>errors.push(e.message));
+page.on('dialog',async d=>{dialogs.push(d.message());await d.accept()});
 await page.addInitScript(()=>{window.__printCalls=0;window.print=()=>{window.__printCalls++}});
 await page.goto(file,{waitUntil:'load'});
 await page.waitForTimeout(800);
@@ -33,7 +35,7 @@ await page.locator('#tax-data-verified').check();
 await page.locator('#tax-calc').click();
 await page.waitForTimeout(150);
 const taxAmount=await page.locator('#tax-amount').innerText();
-if(!taxAmount||taxAmount==='NT$ 0')throw new Error('Tax calculator did not produce the expected non-zero sample result');
+if(!taxAmount||taxAmount==='NT$ 0')throw new Error('Tax calculator did not produce the expected non-zero sample result; dialogs='+dialogs.join(' | '));
 
 const printCounts=[];
 for(const id of ['tax-print','mortgage-print','le-print','site-print']){
@@ -42,7 +44,8 @@ for(const id of ['tax-print','mortgage-print','le-print','site-print']){
  printCounts.push(await page.evaluate(()=>window.__printCalls));
 }
 const printCalls=await page.evaluate(()=>window.__printCalls);
-if(printCalls!==4)throw new Error('Expected all 4 print entry points to invoke print; counts='+printCounts.join(','));
+if(printCalls!==4)throw new Error('Expected all 4 print entry points to invoke print; counts='+printCounts.join(',')+'; dialogs='+dialogs.join(' | '));
+if(dialogs.length)throw new Error('Unexpected browser dialogs: '+dialogs.join(' | '));
 if(errors.length)throw new Error('Browser errors: '+errors.join(' | '));
 await fs.writeFile('dist/browser-smoke-results.json',JSON.stringify({passed:true,mortgage,land,taxAmount,embeddedImageCount:imageSources,printCalls,printCounts,errors},null,2));
 await browser.close();
