@@ -48,3 +48,11 @@ test('print: browser can render a non-empty A4 PDF artifact', async ({ page }) =
   expect(pdf.subarray(0, 5).toString()).toBe('%PDF-');
   expect(pdf.length).toBeGreaterThan(5000);
 });
+
+test('tax: all fourteen promised tools are present in the selector', async ({ page }) => {
+  await page.goto('/index.html');
+  const buttons = page.locator('#tax-menu button');
+  await expect(buttons).toHaveCount(14);
+  await expect(buttons.filter({ hasText: '租金扣繳' })).toHaveCount(1);
+  await expect(buttons.filter({ hasText: '執行業務所得' })).toHaveCount(1);
+});
