@@ -57,6 +57,7 @@ jobs:
           node --check workbench/modules/tax-state-and-print.js
           node --check workbench/modules/site-print-engine.js
           node --check workbench/modules/regulation-data-loader.mjs
+          node --check workbench/modules/regulation-data-runtime.js
       - name: Upload deployment package
         uses: actions/upload-artifact@v4
         with:
