@@ -6,7 +6,7 @@ const c={window:{},Math,Number,Object,Error};
 vm.runInNewContext(fs.readFileSync(new URL('../workbench/modules/tax-simpany-parity-calculations.js',import.meta.url),'utf8'),c);
 const {calculateRent}=c.window.YichenSimpanyParityRent;
 const {calculateProfessional}=c.window.YichenSimpanyParityProfessional;
-test('rent basic model: resident individual, tax included',()=>{const r=calculateRent({rentAmount:30000});assert.equal(r.grossRent,30000);assert.equal(r.withholdingTax,3000);assert.equal(r.supplementaryPremium,0)});
+test('rent basic model: resident individual, tax included',()=>{const r=calculateRent({rentAmount:30000});assert.equal(r.grossRent,30000);assert.equal(r.withholdingTax,3000);assert.equal(r.supplementaryPremium,633)});
 test('resident individual rent at withholding amount <= 2,000 exempt',()=>{const r=calculateRent({rentAmount:20000});assert.equal(r.withholdingTax,0)});
 test('domestic company landlord is not withheld',()=>{const r=calculateRent({rentAmount:50000,landlords:[{kind:'company',residency:'resident',share:100}]});assert.equal(r.withholdingTax,0);assert.equal(r.supplementaryPremium,0)});
 test('foreign individual landlord withholding 20%',()=>{const r=calculateRent({rentAmount:30000,landlords:[{kind:'individual',residency:'nonresident',share:100,healthStatus:'not_insured'}]});assert.equal(r.withholdingTax,6000)});
