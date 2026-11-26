@@ -4,7 +4,7 @@
  const clampPct=n=>{const v=Number(n);if(!Number.isFinite(v)||v<0||v>100)throw new Error('房東持分比例須介於0%至100%');return v};
  const calcOne=(rent,person)=>{
   const kind=person.kind||'individual',resident=person.residency!=='nonresident';
-  const rate=kind==='company'&&resident?0:(resident?0.10:0.20);
+  const rate=resident?0.10:0.20;
   const raw=round(rent*rate);
   const tax=rate===0?0:(resident&&rent*rate<=2000?0:raw);
   const nhiEligible=kind==='individual'&&person.healthStatus!=='not_insured'&&person.healthStatus!=='union_exempt'&&person.healthStatus!=='other_exempt'&&rent>=20000;
