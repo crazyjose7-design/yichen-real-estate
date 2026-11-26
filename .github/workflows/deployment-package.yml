@@ -52,7 +52,7 @@ jobs:
       - name: Validate legal, city and incentive data
         run: |
           node tests/regulatory-data.test.mjs
-          node --test tests/regulation-loader.test.mjs tests/reward-engine.test.mjs
+          node --test tests/regulation-loader.test.mjs tests/reward-engine.test.mjs tests/tax-additional-tools.test.mjs tests/reward-engine-runtime.test.mjs
       - name: Browser smoke tests
         run: node tests/browser-smoke.mjs
       - name: Validate package contents
@@ -61,6 +61,7 @@ jobs:
           test -s dist/yichen-real-estate-deployment.zip
           unzip -t dist/yichen-real-estate-deployment.zip
           unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'regulations/cities/22-lienchiang.json'
+          unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'regulations/city-review-matrix.json'
           unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'regulations/national/urban-renewal-act.json'
           unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'regulations/national/urban-renewal-building-volume-reward-regulations.json'
           unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'regulations/national/hazardous-old-building-volume-reward-regulations.json'
