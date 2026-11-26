@@ -7,6 +7,10 @@ on:
       - 'regulations/**'
       - 'scripts/validate-regulatory-data.mjs'
       - 'tests/regulatory-data.test.mjs'
+      - 'tests/reward-engine-runtime.test.mjs'
+      - 'tests/tax-additional-tools.test.mjs'
+      - 'workbench/modules/reward-engine-runtime.js'
+      - 'workbench/modules/land-reward-gate.js'
       - '.github/workflows/regulatory-data-check.yml'
   pull_request:
     paths:
