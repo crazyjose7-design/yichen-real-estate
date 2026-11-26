@@ -12,7 +12,7 @@ class LandEfficiencyOracleTests(unittest.TestCase):
         self.assertEqual(result["base_floor_area"], Decimal("200"))
         self.assertEqual(result["total_floor_area"], Decimal("200"))
         self.assertEqual(result["saleable_area"], Decimal("260"))
-        self.assertEqual(display(result["land_cost_per_saleable_ping_wan")), Decimal("30.77"))
+        self.assertEqual(display(result["land_cost_per_saleable_ping_wan"]), Decimal("30.77"))
         self.assertEqual(result["land_cost_per_site_ping_wan"], Decimal("80"))
         self.assertEqual(result["revenue_wan"], Decimal("15600"))
 
