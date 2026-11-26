@@ -13,7 +13,25 @@
   "effective_to": null,
   "retrieved_at": "2026-11-27",
   "official_parameters": [],
-  "local_regulations": [],
+  "local_regulations": [
+    {
+      "id": "hsinchu-county-urban-renewal-volume-reward-standard",
+      "title": "新竹縣都市更新建築容積獎勵核算基準",
+      "status": "in_review",
+      "promulgated_at": "2013-06-10",
+      "source": {
+        "url": "https://uract.nlma.gov.tw/rule/detail/503",
+        "title": "內政部都市更新法規資訊－新竹縣都市更新建築容積獎勵核算基準",
+        "agency": "新竹縣政府（中央法規資訊系統收錄）",
+        "provision": "全文及附表；另參照新竹縣政府更新單元劃定基準"
+      },
+      "review_notes": [
+        "法規資訊索引列有102年6月發布版本；須取得新竹縣政府現行原文及所有附表，確認是否仍有效。",
+        "附件中曾列多項設計獎勵級距、基金捐贈/公共設施獎勵、時程及規模獎勵，所有數值須重新核對法源、地方上限及現行第65條。",
+        "需與新竹縣都市更新單元劃定基準及個別都市計畫書圖交叉核對。"
+      ]
+    }
+  ],
   "reward_programs": [],
   "user_assumptions": [],
   "application_policy": {
@@ -24,7 +42,11 @@
     "都市計畫及土地使用分區管制",
     "建蔽率、容積率、移轉/獎勵容積及個案限制",
     "地方自治法規、地方獎勵辦法與受理程序",
-    "官方公告、法規版本、生效日期及適用範圍"
+    "官方公告、法規版本、生效日期及適用範圍",
+    "地方容積獎勵辦法現行效力、附表與公式覆核",
+    "地方更新單元劃定基準及都市計畫書圖",
+    "舊條號、舊施行細則與中央現行法規銜接",
+    "個案主管機關核准紀錄"
   ],
   "safety_notes": [
     "不得以縣市通用值取代基地地號與個案核定條件。",
