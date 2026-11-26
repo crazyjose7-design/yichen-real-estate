@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://yichen-real-estate.example/schemas/verification-evidence.schema.json",
+  "title": "Yichen verification evidence",
+  "type": "object",
+  "required": ["id", "layer", "scope", "status", "created_at", "test_cases", "evidence"],
+  "properties": {
+    "id": {"type": "string", "minLength": 1},
+    "layer": {"enum": [1, 2, 3, 4, 5]},
+    "scope": {"type": "string", "minLength": 1},
+    "status": {"enum": ["NOT_STARTED", "IN_PROGRESS", "BLOCKED_SOURCE", "PASS", "FAIL"]},
+    "created_at": {"type": "string", "format": "date-time"},
+    "source": {
+      "type": "object",
+      "properties": {
+        "authority": {"type": "string"},
+        "title": {"type": "string"},
+        "url": {"type": "string", "format": "uri"},
+        "article_or_attachment": {"type": "string"},
+        "version_date": {"type": "string", "format": "date"},
+        "effective_date": {"type": "string", "format": "date"},
+        "jurisdiction": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "test_cases": {
+      "type": "object",
+      "required": ["expected_value_source", "normal", "boundary", "abnormal", "cross_check"],
+      "properties": {
+        "expected_value_source": {"type": "string"},
+        "normal": {"type": "integer", "minimum": 0},
+        "boundary": {"type": "integer", "minimum": 0},
+        "abnormal": {"type": "integer", "minimum": 0},
+        "cross_check": {"type": "integer", "minimum": 0}
+      },
+      "additionalProperties": false
+    },
+    "evidence": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
+    "limitations": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false
+}
