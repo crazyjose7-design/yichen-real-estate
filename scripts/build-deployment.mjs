@@ -47,10 +47,13 @@ const landRewardGate=await fs.readFile(path.join(root,'workbench','modules','lan
 const embeddedPayload=JSON.stringify({manifest:regulationManifest,files:regulationFiles}).replace(/</g,'\\u003c');
 const embeddedBlock='<script type="application/json" id="yichen-regulatory-data">'+embeddedPayload+'</script>\n<script id="yichen-regulatory-runtime">'+runtime+'</script>\n<script id="yichen-reward-engine-runtime">'+rewardEngineRuntime+'</script>\n<script id="yichen-land-reward-gate">'+landRewardGate+'</script>\n<script id="yichen-tax-additional-calculations">'+taxAdditionalCalc+'</script>\n<script id="yichen-tax-additional-tools">'+taxAdditionalTools+'</script>\n';
 if(!/<\/body>/i.test(html)) throw new Error('HTML body closing tag not found for regulatory data injection');
+html=html.replace(/<script src="workbench\/modules\/tax-simpany-parity-calculations\.js"><\/script>\s*/g,'');
+html=html.replace(/<script src="workbench\/modules\/tax-simpany-parity-tools\.js"><\/script>\s*/g,'');
 html=html.replace(/<\/body>/i,embeddedBlock+'</body>');
 await fs.writeFile(path.join(out,'index.html'),html);
 await fs.writeFile(path.join(pkg,'index.html'),html);
-await fs.copyFile(src,path.join(pkg,'index.multi-file.html'));
+const multiFileHtml=(await fs.readFile(src,'utf8')).replaceAll('workbench/modules/','modules/');
+await fs.writeFile(path.join(pkg,'index.multi-file.html'),multiFileHtml);
 await fs.cp(assetDir,path.join(pkg,'assets'),{recursive:true});
 await fs.cp(path.join(root,'workbench','modules'),path.join(pkg,'modules'),{recursive:true});
 await fs.copyFile(path.join(root,'workbench','EXECUTION_RULES.md'),path.join(pkg,'EXECUTION_RULES.md'));
@@ -76,7 +79,7 @@ execFileSync(process.execPath,['--test',path.join(root,'tests','reward-engine-ru
 await fs.writeFile(path.join(pkg,'README.txt'),[
  '億辰不動產網站部署包',
  '主要部署檔：index.html（單檔版，圖片已內嵌）',
- 'index.multi-file.html 與 assets/ 為原始多檔參考版本；正式上傳建議使用 index.html。',
+ 'index.multi-file.html、assets/ 與 modules/ 為多檔參考版本；正式上傳建議使用 index.html。',
  'modules/ 是維護來源模組；租金扣繳、執行業務所得及容積獎勵安全檢核已嵌入單檔HTML，其他既有核心模組仍有部分維持inline。',
  'regulations/ 包含 22 縣市、中央法規、稅目與獎勵資料；單檔 HTML 內嵌同一資料集及安全載入 API，未查證資料不得自動套用。',
  '稅務區新增租金扣繳與執行業務所得計算；公式及法源紀錄請見 regulations/national/、regulations/taxes/ 與 modules/tax-additional-*.js。',
