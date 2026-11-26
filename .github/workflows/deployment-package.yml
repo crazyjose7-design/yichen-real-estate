@@ -11,6 +11,8 @@ on:
       - "workbench/EXECUTION_RULES.md"
       - "scripts/**"
       - "tests/**"
+      - "regulations/**"
+      - "docs/**"
       - ".github/workflows/deployment-package.yml"
   workflow_dispatch:
 
@@ -32,6 +34,8 @@ jobs:
           npx playwright install --with-deps chromium
       - name: Build self-contained HTML and ZIP
         run: node scripts/build-deployment.mjs
+      - name: Validate legal, city and incentive data
+        run: node tests/regulatory-data.test.mjs
       - name: Browser smoke tests
         run: node tests/browser-smoke.mjs
       - name: Validate package contents
@@ -39,6 +43,9 @@ jobs:
           test -s dist/index.html
           test -s dist/yichen-real-estate-deployment.zip
           unzip -t dist/yichen-real-estate-deployment.zip
+          unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'regulations/cities/22-lienchiang.json'
+          unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'regulations/national/urban-renewal-act.json'
+          unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'regulations/rewards/urban-renewal.json'
           node --check workbench/modules/tax-engine.js
           node --check workbench/modules/mortgage-calculator.js
           node --check workbench/modules/land-efficiency.js
