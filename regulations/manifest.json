@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "dataset_version": "0.1.2",
+  "dataset_version": "0.1.3",
   "generated_at": "2026-11-27",
   "status": "in_progress",
   "county_city_files": [
@@ -108,7 +108,9 @@
     "national/hazardous-old-building-volume-reward-regulations.json",
     "national/urban-renewal-act-enforcement-rules.json",
     "national/urban-renewal-rights-transformation-implementation-regulations.json",
-    "national/hazardous-old-buildings-act-implementation-rules.json"
+    "national/hazardous-old-buildings-act-implementation-rules.json",
+    "national/withholding-rate-standards.json",
+    "national/execution-income-audit-regulations.json"
   ],
   "incentive_files": [
     "rewards/urban-renewal.json",
@@ -126,7 +128,9 @@
     "taxes/land-value-increment-tax.json",
     "taxes/house-land-transaction-income-tax.json",
     "taxes/deed-tax.json",
-    "taxes/house-tax.json"
+    "taxes/house-tax.json",
+    "taxes/rent-withholding.json",
+    "taxes/professional-income.json"
   ],
   "policy": {
     "only_verified_auto_apply": true,
@@ -153,6 +157,23 @@
       "url": "https://uract.nlma.gov.tw/content/links",
       "title": "內政部國土管理署都市更新法規網站－22縣市主管法規查詢系統連結",
       "retrieved_at": "2026-11-27"
+    },
+    "additional_tax_tools": {
+      "status": "implemented_pending_ci",
+      "tools": [
+        "rent-withholding",
+        "professional-income"
+      ],
+      "law_sources": [
+        "withholding-rate-standards",
+        "income-tax-act-house-land",
+        "execution-income-audit-regulations"
+      ],
+      "notes": [
+        "租金扣繳：境內居住者10%、非境內居住者20%、境內居住者每次扣繳稅額不超過2,000元免扣繳；租金補充保費2.11%，單次給付達20,000元，以全額計費並以1,000萬元為上限。",
+        "執行業務所得：業務收入減除直接必要費用；可用實際費用總額或明細，費用率僅在使用者自行核對年度與職業別官方標準後手動輸入。",
+        "本兩項計算器尚未計算個人綜合所得稅最終稅額，且未自動套用gross-up、押金設算或個案例外。"
+      ]
     }
   }
 }
