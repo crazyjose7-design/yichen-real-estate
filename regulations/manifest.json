@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "dataset_version": "0.1.0",
+  "dataset_version": "0.1.1",
   "generated_at": "2026-11-27",
   "status": "in_progress",
   "county_city_files": [
@@ -103,7 +103,9 @@
     "national/land-value-tax-act.json",
     "national/income-tax-act-house-land.json",
     "national/deed-tax-act.json",
-    "national/real-estate-securitization-and-related.json"
+    "national/real-estate-securitization-and-related.json",
+    "national/urban-renewal-building-volume-reward-regulations.json",
+    "national/hazardous-old-building-volume-reward-regulations.json"
   ],
   "incentive_files": [
     "rewards/urban-renewal.json",
@@ -127,5 +129,12 @@
     "only_verified_auto_apply": true,
     "unverified_default_behavior": "block",
     "assumptions_are_not_official": true
+  },
+  "last_research_update": "2026-11-27",
+  "research_progress": {
+    "kaohsiung_local_sources": 3,
+    "kaohsiung_status": "in_review",
+    "remaining_city_jurisdictions": 21,
+    "delegated_regulations_added": 2
   }
 }
