@@ -56,3 +56,24 @@ test('tax: all fourteen promised tools are present in the selector', async ({ pa
   await expect(buttons.filter({ hasText: '租金扣繳' })).toHaveCount(1);
   await expect(buttons.filter({ hasText: '執行業務所得' })).toHaveCount(1);
 });
+
+test('rent withholding: calculates withholding and NHI for a resident individual landlord', async ({ page }) => {
+  await page.goto('/index.html');
+  await page.locator('#tax-menu button').filter({ hasText: '租金扣繳' }).click();
+  await page.locator('#wt-rentAmount').fill('30000');
+  await page.locator('#tax-calc').click();
+  await expect(page.locator('#tax-amount')).toHaveText('NT$ 3,633');
+  await expect(page.locator('#tax-detail')).toContainText('3,000 元');
+  await expect(page.locator('#tax-detail')).toContainText('633 元');
+});
+
+test('professional income: calculates resident 9A withholding, NHI and net income', async ({ page }) => {
+  await page.goto('/index.html');
+  await page.locator('#tax-menu button').filter({ hasText: '執行業務所得' }).click();
+  await page.locator('#wt-amount').fill('50000');
+  await page.locator('#tax-calc').click();
+  await expect(page.locator('#tax-amount')).toHaveText('NT$ 6,055');
+  await expect(page.locator('#tax-detail')).toContainText('代扣所得稅：5,000 元');
+  await expect(page.locator('#tax-detail')).toContainText('代扣二代健保：1,055 元');
+  await expect(page.locator('#tax-detail')).toContainText('計入所得淨額：35,000 元');
+});
