@@ -1,0 +1,26 @@
+name: Regulatory data validation
+on:
+  push:
+    branches:
+      - work/city-parameter-files-2026-11-27
+    paths:
+      - 'regulations/**'
+      - 'scripts/validate-regulatory-data.mjs'
+      - 'tests/regulatory-data.test.mjs'
+      - '.github/workflows/regulatory-data-check.yml'
+  pull_request:
+    paths:
+      - 'regulations/**'
+      - 'scripts/validate-regulatory-data.mjs'
+      - 'tests/regulatory-data.test.mjs'
+      - '.github/workflows/regulatory-data-check.yml'
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validate legal, city and incentive data
+        run: node tests/regulatory-data.test.mjs
