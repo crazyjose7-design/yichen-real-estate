@@ -52,7 +52,7 @@ jobs:
       - name: Validate legal, city and incentive data
         run: |
           node tests/regulatory-data.test.mjs
-          node --test tests/regulation-loader.test.mjs tests/reward-engine.test.mjs tests/tax-additional-tools.test.mjs tests/tax-simpany-parity.test.mjs tests/reward-engine-runtime.test.mjs tests/mortgage-calculator.test.mjs
+          node --test tests/regulation-loader.test.mjs tests/reward-engine.test.mjs tests/tax-additional-tools.test.mjs tests/tax-simpany-parity.test.mjs tests/reward-engine-runtime.test.mjs tests/mortgage-calculator.test.mjs tests/tax-existing-tools.test.mjs
       - name: Browser smoke tests
         run: node tests/browser-smoke.mjs
       - name: Validate package contents
