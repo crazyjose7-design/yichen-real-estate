@@ -28,7 +28,7 @@
       },
       "verified_expected_values": 0,
       "source_status": "NOT_YET_REVIEWED",
-      "notes": "既有單一基準案例仍是候選值，尚未完成多案例及法源覆核。"
+      "notes": "計算器已存在；目前既有 tests/tax-existing-tools.test.mjs 的 expected 物件沒有 land 案例，須補獨立基準及完整矩陣。"
     },
     {
       "id": "house",
