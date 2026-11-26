@@ -6,7 +6,7 @@ const browser=await chromium.launch({headless:true});
 const page=await browser.newPage({viewport:{width:1440,height:1000}});
 const errors=[];
 const dialogs=[];
-page.on('pageerror',e=>errors.push(e.message));
+page.on('pageerror',e=>errors.push(e.stack||e.message));
 page.on('dialog',async d=>{dialogs.push(d.message());await d.accept()});
 await page.addInitScript(()=>{window.__printCalls=0;window.print=()=>{window.__printCalls++}});
 await page.goto(file,{waitUntil:'load'});
