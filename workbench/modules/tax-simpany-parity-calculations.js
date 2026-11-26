@@ -6,7 +6,7 @@
   const kind=person.kind||'individual',resident=person.residency!=='nonresident';
   const rate=kind==='company'&&resident?0:(resident?0.10:0.20);
   const raw=round(rent*rate);
-  const tax=rate===0?0:(resident&&raw<=2000?0:raw);
+  const tax=rate===0?0:(resident&&rent*rate<=2000?0:raw);
   const nhiEligible=kind==='individual'&&person.healthStatus!=='not_insured'&&person.healthStatus!=='union_exempt'&&person.healthStatus!=='other_exempt'&&rent>=20000;
   const nhiBase=nhiEligible?Math.min(rent,10000000):0;
   const nhi=round(nhiBase*0.0211);
@@ -41,7 +41,7 @@
   if(!Number.isFinite(gross)||gross<0)throw new Error('金額必須是大於或等於0的有效數字');
   const resident=residency!=='nonresident',type=filingType==='9B'?'9B':'9A';
   const rate=resident?0.10:0.20,raw=round(gross*rate);
-  const withholdingTax=resident?(raw<=2000?0:raw):(type==='9B'&&gross<=5000?0:raw);
+  const withholdingTax=resident?(gross*rate<=2000?0:raw):(type==='9B'&&gross<=5000?0:raw);
   const nhiEligible=healthStatus==='insured'&&gross>=20000;
   const nhiBase=nhiEligible?Math.min(gross,10000000):0;
   const supplementaryPremium=round(nhiBase*0.0211);
