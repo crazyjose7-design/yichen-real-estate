@@ -1,10 +1,37 @@
 {
   "schemaVersion": "1.0.0",
   "id": "tax-item-07",
-  "displayName": null,
-  "status": "pending_tool_mapping_and_official_verification",
-  "version": "0.0.0",
+  "moduleKey": "houseTax",
+  "displayName": "房屋稅",
+  "status": "pending_official_verification",
+  "version": "0.1.0",
+  "codeReference": {
+    "repository": "crazyjose7-design/yichen-real-estate",
+    "branch": "main",
+    "file": "index.html",
+    "inspectionCommit": "7e92ae22992b9b2536c0c53605c1a7b9ec96f9da",
+    "formulaAuditStatus": "not_yet_completed"
+  },
   "parameters": [],
-  "sourceRecords": [],
-  "notes": "待確認實際稅目名稱、欄位及公式，再依當年度官方法源填寫；不得填入推測數字。"
+  "sourceRecords": [
+    {
+      "title": "房屋稅2.0常見問答",
+      "url": "https://www.mof.gov.tw/house/multiplehtml/41e7424fa26e4d41905ed1800fd9fabc",
+      "authority": "official",
+      "checkedAt": "2026-11-27",
+      "status": "source_identified_not_fully_audited"
+    },
+    {
+      "title": "房屋稅條例",
+      "url": "https://law-out.mof.gov.tw/LawContent.aspx?id=FL006141",
+      "authority": "official",
+      "checkedAt": "2026-11-27",
+      "status": "source_identified_not_fully_audited"
+    }
+  ],
+  "riskFlags": [
+    "房屋稅2.0地方差別稅率、全國歸戶及現值門檻依地方自治法規/公告。",
+    "22縣市稅率與單一自住現值門檻尚未逐一查證。"
+  ],
+  "notes": "已依 main/index.html 靜態原始碼確認模組 key 與名稱，並登錄官方來源入口。尚未完成所有參數、年度、適用條件及公式測試查核，不得直接供計算器讀取。"
 }

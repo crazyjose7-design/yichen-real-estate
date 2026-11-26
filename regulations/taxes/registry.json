@@ -1,80 +1,92 @@
 {
   "schemaVersion": "1.0.0",
-  "status": "inventory_only",
+  "status": "module_mapping_complete_official_parameter_audit_pending",
   "requiredToolCount": 12,
   "taxFiles": [
     {
       "id": "tax-item-01",
-      "displayName": null,
+      "moduleKey": "land",
+      "displayName": "土地增值稅",
       "file": "tax-item-01.json",
-      "status": "pending_tool_mapping_and_official_verification"
+      "status": "pending_official_verification"
     },
     {
       "id": "tax-item-02",
-      "displayName": null,
+      "moduleKey": "house",
+      "displayName": "房地合一稅",
       "file": "tax-item-02.json",
-      "status": "pending_tool_mapping_and_official_verification"
+      "status": "pending_official_verification"
     },
     {
       "id": "tax-item-03",
-      "displayName": null,
+      "moduleKey": "old",
+      "displayName": "財產交易所得稅（房屋舊制）",
       "file": "tax-item-03.json",
-      "status": "pending_tool_mapping_and_official_verification"
+      "status": "pending_official_verification"
     },
     {
       "id": "tax-item-04",
-      "displayName": null,
+      "moduleKey": "vat",
+      "displayName": "營業稅",
       "file": "tax-item-04.json",
-      "status": "pending_tool_mapping_and_official_verification"
+      "status": "pending_official_verification"
     },
     {
       "id": "tax-item-05",
-      "displayName": null,
+      "moduleKey": "deed",
+      "displayName": "契稅",
       "file": "tax-item-05.json",
-      "status": "pending_tool_mapping_and_official_verification"
+      "status": "pending_official_verification"
     },
     {
       "id": "tax-item-06",
-      "displayName": null,
+      "moduleKey": "stamp",
+      "displayName": "印花稅",
       "file": "tax-item-06.json",
-      "status": "pending_tool_mapping_and_official_verification"
+      "status": "pending_official_verification"
     },
     {
       "id": "tax-item-07",
-      "displayName": null,
+      "moduleKey": "houseTax",
+      "displayName": "房屋稅",
       "file": "tax-item-07.json",
-      "status": "pending_tool_mapping_and_official_verification"
+      "status": "pending_official_verification"
     },
     {
       "id": "tax-item-08",
-      "displayName": null,
+      "moduleKey": "landTax",
+      "displayName": "地價稅",
       "file": "tax-item-08.json",
-      "status": "pending_tool_mapping_and_official_verification"
+      "status": "pending_official_verification"
     },
     {
       "id": "tax-item-09",
-      "displayName": null,
+      "moduleKey": "rent",
+      "displayName": "租賃所得稅",
       "file": "tax-item-09.json",
-      "status": "pending_tool_mapping_and_official_verification"
+      "status": "pending_official_verification"
     },
     {
       "id": "tax-item-10",
-      "displayName": null,
+      "moduleKey": "estate",
+      "displayName": "遺產稅",
       "file": "tax-item-10.json",
-      "status": "pending_tool_mapping_and_official_verification"
+      "status": "pending_official_verification"
     },
     {
       "id": "tax-item-11",
-      "displayName": null,
+      "moduleKey": "gift",
+      "displayName": "贈與稅",
       "file": "tax-item-11.json",
-      "status": "pending_tool_mapping_and_official_verification"
+      "status": "pending_official_verification"
     },
     {
       "id": "tax-item-12",
-      "displayName": null,
+      "moduleKey": "corp",
+      "displayName": "營利事業所得稅",
       "file": "tax-item-12.json",
-      "status": "pending_tool_mapping_and_official_verification"
+      "status": "pending_official_verification"
     }
   ],
-  "notes": "須先從正式網站程式盤點12個實際稅目名稱與公式，再逐項對應；此清單不代表已辨識或驗證稅目。"
+  "notes": "12個實際名稱及moduleKey已依main/index.html盤點。已登錄官方來源入口；尚未完成逐參數、年度、適用條件與計算驗收。"
 }

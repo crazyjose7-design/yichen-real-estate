@@ -1,10 +1,44 @@
 {
   "schemaVersion": "1.0.0",
   "id": "tax-item-09",
-  "displayName": null,
-  "status": "pending_tool_mapping_and_official_verification",
-  "version": "0.0.0",
+  "moduleKey": "rent",
+  "displayName": "租賃所得稅",
+  "status": "pending_official_verification",
+  "version": "0.1.0",
+  "codeReference": {
+    "repository": "crazyjose7-design/yichen-real-estate",
+    "branch": "main",
+    "file": "index.html",
+    "inspectionCommit": "7e92ae22992b9b2536c0c53605c1a7b9ec96f9da",
+    "formulaAuditStatus": "not_yet_completed"
+  },
   "parameters": [],
-  "sourceRecords": [],
-  "notes": "待確認實際稅目名稱、欄位及公式，再依當年度官方法源填寫；不得填入推測數字。"
+  "sourceRecords": [
+    {
+      "title": "個人出租土地及房屋所得",
+      "url": "https://www.etax.nat.gov.tw/etwmain/tax-info/understanding/tax-q-and-a/national/individual-income-tax/taxation-scope/which-income/B9Z0L2W",
+      "authority": "official",
+      "checkedAt": "2026-11-27",
+      "status": "source_identified_not_fully_audited"
+    },
+    {
+      "title": "住宅法租賃所得優惠",
+      "url": "https://www.etax.nat.gov.tw/etwmain/tax-info/understanding/tax-q-and-a/national/individual-income-tax/taxation-scope/which-income/7b2KzB",
+      "authority": "official",
+      "checkedAt": "2026-11-27",
+      "status": "source_identified_not_fully_audited"
+    },
+    {
+      "title": "租賃住宅市場發展及管理條例租賃所得",
+      "url": "https://www.etax.nat.gov.tw/etwmain/tax-info/understanding/tax-q-and-a/national/individual-income-tax/taxation-scope/which-income/bjlJM08",
+      "authority": "official",
+      "checkedAt": "2026-11-27",
+      "status": "source_identified_not_fully_audited"
+    }
+  ],
+  "riskFlags": [
+    "一般出租、公益出租、社宅及包租代管須分流。",
+    "必要費用率、免稅額、押金設算利率及當地租金標準會變動。"
+  ],
+  "notes": "已依 main/index.html 靜態原始碼確認模組 key 與名稱，並登錄官方來源入口。尚未完成所有參數、年度、適用條件及公式測試查核，不得直接供計算器讀取。"
 }
