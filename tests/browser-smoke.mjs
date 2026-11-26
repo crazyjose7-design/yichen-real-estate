@@ -54,8 +54,8 @@ async function verifyPrintPdf(id,expectedPages){
  if(domPages!==expectedPages)throw new Error(id+' expected '+expectedPages+' print page(s), DOM built '+domPages+'; titles='+titles.join(' | '));
  const pdf=await page.pdf({format:'A4',printBackground:true,preferCSSPageSize:true});
  const raw=pdf.toString('latin1');
- const pdfPages=(raw.match(new RegExp('/Type\\\\s*/Page\\\\b','g'))||[]).length;
- const media=[...raw.matchAll(new RegExp('/MediaBox\\\\s*\\[\\\\s*0\\\\s+0\\\\s+([0-9.]+)\\\\s+([0-9.]+)\\\\s*\\]','g'))].map(m=>[Number(m[1]),Number(m[2])]);
+ const pdfPages=(raw.match(new RegExp('/Type\s*/Page\b','g'))||[]).length;
+ const media=[...raw.matchAll(new RegExp('/MediaBox\s*\[\s*0\s+0\s+([0-9.]+)\s+([0-9.]+)\s*\]','g'))].map(m=>[Number(m[1]),Number(m[2])]);
  if(pdfPages!==expectedPages)throw new Error(id+' PDF page count mismatch: expected '+expectedPages+', got '+pdfPages);
  if(!media.length||media.some(([w,h])=>Math.abs(w-595.28)>2||Math.abs(h-841.89)>2))throw new Error(id+' PDF is not portrait A4: '+JSON.stringify(media));
  await fs.writeFile('dist/print-'+id+'.pdf',pdf);
