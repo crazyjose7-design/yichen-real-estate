@@ -10,3 +10,14 @@ for(const [items,dir,key] of [[cities,cityDir,'jurisdiction'],[taxes,taxDir,'tax
 if(key==='jurisdiction'&&(d.localParameterRequirements??[]).length<5)errors.push('縣市地方參數查核項目不足 '+item.file);if(key==='tax'&&d.id!==item.id)errors.push('稅目ID不符 '+item.file);
 if(key==='tax'){if(!d.displayName||!d.moduleKey)errors.push('稅目尚未完成模組映射 '+item.file);if(moduleKeys.has(d.moduleKey))errors.push('稅務模組key重複 '+d.moduleKey);moduleKeys.add(d.moduleKey);if(!(d.sourceRecords??[]).some(s=>s.authority==='official'&&/^https:\/\//.test(s.url??'')))errors.push('缺少官方來源入口 '+item.file);}for(const v of d.parameters??[])if(v.status==='verified'&&(!v.official_source_url||!v.legal_basis||!v.effective_date||!v.checked_at||!v.checked_by))errors.push('已驗證參數缺法源欄位 '+item.file+'/'+v.id);}
 if(errors.length){console.error('VALIDATION FAILED',...errors);process.exit(1);}console.log('STRUCTURE PASSED: 22 city files, 12 tax slots. Legal correctness is not certified.');
+
+const fixtureDir=path.join(root,'tests/tax/fixtures');
+if(fs.existsSync(fixtureDir)){
+ for(const name of fs.readdirSync(fixtureDir).filter(x=>x.endsWith('.json'))){
+  try{
+   const f=read(path.join(fixtureDir,name));
+   if(!f.id||!f.taxModule||!f.sourceUrl||!f.input||!f.expected)errors.push('稅務參考案例欄位不足 '+name);
+   if(!/^https:\/\//.test(f.sourceUrl??''))errors.push('稅務參考案例缺少官方來源URL '+name);
+  }catch(e){errors.push('稅務參考案例JSON錯誤 '+name+': '+e.message);}
+ }
+}
