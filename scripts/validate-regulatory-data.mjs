@@ -12,6 +12,20 @@ for(const [code,name,slug] of cities){
  if(d.status!=='verified'&&d.application_policy?.auto_apply!==false)errors.push('unverified city auto-applies '+f);
  for(const p of d.official_parameters??[])if(p.status!=='verified'||!p.source?.url||!p.effective_from||!p.verified_by)errors.push('unverified/incomplete official parameter '+f);
 }
+
+// Verify reported local-law source coverage against the actual city records.
+let citySourceCount=0;
+for(const [code,name,slug] of cities){
+ const p=path.join(root,'cities',code+'-'+slug+'.json');
+ if(!fs.existsSync(p))continue;
+ const d=JSON.parse(fs.readFileSync(p,'utf8'));
+ if((d.local_regulations??[]).some(x=>x.source?.url))citySourceCount++;
+ if(d.status==='verified'&&!(d.official_parameters??[]).length)errors.push('city marked verified without official parameters '+p);
+}
+const manifestForCoverage=JSON.parse(fs.readFileSync(path.join(root,'manifest.json'),'utf8'));
+if(manifestForCoverage.research_progress?.cities_with_source_records_count!==citySourceCount)errors.push('manifest local source coverage count does not match city records');
+if(citySourceCount!==7)errors.push('expected seven city source indexes in current research batch; found '+citySourceCount);
+
 for(const dir of ['national','rewards','taxes']){
  for(const f of fs.readdirSync(path.join(root,dir)).filter(x=>x.endsWith('.json'))){
   const p=path.join(root,dir,f),d=JSON.parse(fs.readFileSync(p,'utf8'));
