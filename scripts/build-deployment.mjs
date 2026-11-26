@@ -71,7 +71,7 @@ await fs.writeFile(path.join(pkg,'README.txt'),[
  '億辰不動產網站部署包',
  '主要部署檔：index.html（單檔版，圖片已內嵌）',
  'index.multi-file.html 與 assets/ 為原始多檔參考版本；正式上傳建議使用 index.html。',
- 'modules/ 是拆分後的維護來源模組，尚未替換正式頁面的 inline script。',
+ 'modules/ 是維護來源模組；租金扣繳、執行業務所得及容積獎勵安全檢核已嵌入單檔HTML，其他既有核心模組仍有部分維持inline。',
  'regulations/ 包含 22 縣市、中央法規、稅目與獎勵資料；單檔 HTML 內嵌同一資料集及安全載入 API，未查證資料不得自動套用。',
  '稅務區新增租金扣繳與執行業務所得計算；公式及法源紀錄請見 regulations/national/、regulations/taxes/ 與 modules/tax-additional-*.js。',
  '土地坪效含官方容積獎勵安全檢核；未核實、未取得個案核准或互斥規則不明時，獎勵不得自動加入試算。',
