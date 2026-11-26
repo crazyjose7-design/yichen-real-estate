@@ -132,6 +132,7 @@ for(const [key,label] of existingTaxTools){
  if(await page.locator('#tax-fields .tax-field').count()===0)throw new Error('Tax tool fields missing for '+key);
 }
 await page.locator('#tax-menu button[data-key="land"]').click();
+await page.locator('#tax-fields details.tax-advanced').evaluate(el=>el.open=true);
 await page.locator('#tax-previousDate').fill('2020-01-01');
 await page.locator('#tax-currentValue').fill('30000');
 await page.locator('#tax-priorValue').fill('10000');
