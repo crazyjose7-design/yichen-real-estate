@@ -5,6 +5,10 @@ on:
     branches:
       - "work/**"
     paths:
+  pull_request:
+    branches:
+      - "main"
+    paths:
       - "index.html"
       - "assets/**"
       - "workbench/modules/**"
