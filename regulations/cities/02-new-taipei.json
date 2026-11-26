@@ -13,7 +13,23 @@
   "effective_to": null,
   "retrieved_at": "2026-11-27",
   "official_parameters": [],
-  "local_regulations": [],
+  "local_regulations": [
+    {
+      "id": "new-taipei-urban-renewal-law-index",
+      "title": "新北市都市更新相關法令及法規彙編",
+      "status": "in_review",
+      "source": {
+        "url": "https://www.uro.ntpc.gov.tw/PageService/decree",
+        "title": "新北市政府都市更新處－法令",
+        "agency": "新北市政府都市更新處",
+        "provision": "法令索引；頁面列有115年5月都市更新條例及相關法令彙編"
+      },
+      "review_notes": [
+        "目前定位官方法令索引與115年5月彙編；須取得彙編PDF並逐條拆分新北市自治法規、子法、解釋令及生效日期。",
+        "不得把彙編索引視為已完成地方獎勵參數核實。"
+      ]
+    }
+  ],
   "reward_programs": [],
   "user_assumptions": [],
   "application_policy": {
@@ -24,7 +40,11 @@
     "都市計畫及土地使用分區管制",
     "建蔽率、容積率、移轉/獎勵容積及個案限制",
     "地方自治法規、地方獎勵辦法與受理程序",
-    "官方公告、法規版本、生效日期及適用範圍"
+    "官方公告、法規版本、生效日期及適用範圍",
+    "地方都市更新自治法規逐條及附件覆核",
+    "地方都市計畫施行規定與基地計畫書圖套疊",
+    "地方容積獎勵項目、額度、互斥及併計規則",
+    "個案主管機關核准容積資料"
   ],
   "safety_notes": [
     "不得以縣市通用值取代基地地號與個案核定條件。",
