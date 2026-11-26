@@ -23,12 +23,17 @@ for(const [key,def] of Object.entries(assetDefs)){
  const bytes=Buffer.from(b64,'base64');
  if(!bytes.length) throw new Error('Empty asset '+key);
  const data='data:'+def.type+';base64,'+b64;
- html=html.replaceAll('data-yichen-inline-image="'+key+'"', 'src="'+data+'"');
+ const placeholder='src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-yichen-inline-image="'+key+'" data-yichen-inline-type="'+def.type+'"';
+ if(!html.includes(placeholder)) throw new Error('Inline image placeholder not found or malformed: '+key);
+ html=html.replaceAll(placeholder,'src="'+data+'"');
 }
 const loader=/<script id="yichen-inline-image-loader">[\s\S]*?<\/script>/;
 if(!loader.test(html)) throw new Error('Inline image loader not found');
 html=html.replace(loader,'<!-- Images embedded into this single-file build; no external asset fetch required. -->');
 if(/data-yichen-inline-image=/.test(html)) throw new Error('Unresolved inline image placeholders remain');
+const imageTags=[...html.matchAll(/<img\\b[^>]*>/g)].map(x=>x[0]);
+if(imageTags.some(tag=>(tag.match(/\\bsrc=/g)||[]).length!==1)) throw new Error('An image tag contains duplicate src attributes');
+if(html.includes('data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=')) throw new Error('Transparent placeholder image remains in deployment HTML');
 const regulationRoot=path.join(root,'regulations');
 const regulationManifest=JSON.parse(await fs.readFile(path.join(regulationRoot,'manifest.json'),'utf8'));
 const regulationPaths=[...(regulationManifest.county_city_files||[]).map(x=>x.path),...(regulationManifest.central_law_files||[]),...(regulationManifest.incentive_files||[]),...(regulationManifest.tax_parameter_files||[]),'schemas/city-parameters.schema.json','schemas/parameter-record.schema.json'];
