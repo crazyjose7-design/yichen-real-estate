@@ -68,14 +68,20 @@
   },
   "review_progress": {
     "central_delegated_rule_record": "regulations/national/urban-renewal-building-volume-reward-regulations.json",
-    "locally_verified_jurisdictions": [
-      "高雄市都市更新自治條例（條文覆核中）"
-    ],
     "remaining": [
-      "完整逐條覆核",
-      "地方獎勵項目與上限",
-      "獎勵互斥/扣除/累計",
-      "個案核准紀錄"
+      "各地方辦法附表與附件逐項覆核",
+      "地方獎勵項目、額度、公式、互斥/扣除/累計",
+      "基地土地使用分區及個案核准紀錄",
+      "現行條文版本與過渡案件判斷"
+    ],
+    "jurisdictions_with_local_source_records": [
+      "臺北市",
+      "新北市",
+      "臺中市",
+      "臺南市",
+      "高雄市",
+      "基隆市",
+      "雲林縣"
     ]
   },
   "statutory_framework": [
