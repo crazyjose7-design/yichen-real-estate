@@ -6,7 +6,7 @@
   const nonresident=residency==='nonresident';
   const rate=nonresident?0.20:0.10;
   const rawTax=round(gross*rate);
-  const withholdingTax=(!nonresident&&rawTax<=2000)?0:rawTax;
+  const withholdingTax=(!nonresident&&gross*rate<=2000)?0:rawTax;
   const nhiEligible=includeNhi&&recipientKind==='individual'&&gross>=20000;
   const nhiBase=nhiEligible?Math.min(gross,10000000):0;
   const supplementaryPremium=round(nhiBase*0.0211);
