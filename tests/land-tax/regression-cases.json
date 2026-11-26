@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "1.0.0",
+  "purpose": "New independently calculated regression cases; not claimed to be the missing historical 130+ case set.",
+  "cases": [
+    {
+      "id": "LT-RECON-001",
+      "status": "new_reconstructed_case",
+      "inputs": {
+        "previousDate": "2020-01-01",
+        "cpi": 114.3,
+        "currentValue": 30000,
+        "priorValue": 10000,
+        "area": 100,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 1,
+        "deductibleCosts": 0,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "priorValueAfterCpi": 1143000,
+        "currentValue": 3000000,
+        "landValueIncrement": 1857000,
+        "tax": 442800
+      },
+      "formula": "gain=3,000,000-1,143,000=1,857,000; ratio=1.625; tax=1,857,000*30%-1,143,000*10%=442,800"
+    },
+    {
+      "id": "LT-RECON-002",
+      "status": "new_reconstructed_case",
+      "inputs": {
+        "previousDate": "2020-01-01",
+        "cpi": 114.3,
+        "currentValue": 30000,
+        "priorValue": 10000,
+        "area": 100,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 1,
+        "deductibleCosts": 0,
+        "priorLandTaxCredit": 100
+      },
+      "expected": {
+        "taxBeforeCredit": 442800,
+        "credit": 100,
+        "tax": 442700
+      },
+      "formula": "credit=min(442,800*5%,100)=100; tax=442,800-100=442,700"
+    },
+    {
+      "id": "LT-RECON-003",
+      "status": "new_reconstructed_case",
+      "inputs": {
+        "previousDate": "2020-01-01",
+        "cpi": 114.3,
+        "currentValue": 30000,
+        "priorValue": 10000,
+        "area": 100,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 1,
+        "deductibleCosts": 0,
+        "priorLandTaxCredit": 100.5
+      },
+      "expected": {
+        "validation": "reject decimal priorLandTaxCredit"
+      },
+      "formula": "priorLandTaxCredit must be a non-negative integer number of NT dollars; decimal input must be rejected, not truncated."
+    }
+  ],
+  "note": "These 3 newly created cases do not restore the missing historical LT-001–LT-126 case rows. Historical 126-pass count remains aggregate-only; LT-127 remains unverified in its original environment until this regression runs against the updated deployment build."
+}
