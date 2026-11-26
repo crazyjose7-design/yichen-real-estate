@@ -1,0 +1,15 @@
+name: Regulation Data Validation
+on:
+  push:
+    branches: [main, 'governance/**']
+    paths: ['regulations/**','scripts/validate-regulations.mjs','.github/workflows/regulation-validation.yml']
+  pull_request:
+    paths: ['regulations/**','scripts/validate-regulations.mjs','.github/workflows/regulation-validation.yml']
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: 20}
+      - run: node scripts/validate-regulations.mjs

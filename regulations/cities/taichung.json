@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "1.0.0",
+  "jurisdiction": {
+    "id": "taichung",
+    "name": "臺中市",
+    "type": "直轄市",
+    "country": "TW"
+  },
+  "status": "pending_official_verification",
+  "version": "0.0.0",
+  "checkedAt": null,
+  "checkedBy": null,
+  "parameters": [],
+  "sourceRecords": [],
+  "notes": "空白待查證模板；未取得該縣市現行官方公告及適用條件前，不得填入推測數值或供計算。"
+}

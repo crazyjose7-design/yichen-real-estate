@@ -1,0 +1,80 @@
+{
+  "schemaVersion": "1.0.0",
+  "status": "inventory_only",
+  "requiredToolCount": 12,
+  "taxFiles": [
+    {
+      "id": "tax-item-01",
+      "displayName": null,
+      "file": "tax-item-01.json",
+      "status": "pending_tool_mapping_and_official_verification"
+    },
+    {
+      "id": "tax-item-02",
+      "displayName": null,
+      "file": "tax-item-02.json",
+      "status": "pending_tool_mapping_and_official_verification"
+    },
+    {
+      "id": "tax-item-03",
+      "displayName": null,
+      "file": "tax-item-03.json",
+      "status": "pending_tool_mapping_and_official_verification"
+    },
+    {
+      "id": "tax-item-04",
+      "displayName": null,
+      "file": "tax-item-04.json",
+      "status": "pending_tool_mapping_and_official_verification"
+    },
+    {
+      "id": "tax-item-05",
+      "displayName": null,
+      "file": "tax-item-05.json",
+      "status": "pending_tool_mapping_and_official_verification"
+    },
+    {
+      "id": "tax-item-06",
+      "displayName": null,
+      "file": "tax-item-06.json",
+      "status": "pending_tool_mapping_and_official_verification"
+    },
+    {
+      "id": "tax-item-07",
+      "displayName": null,
+      "file": "tax-item-07.json",
+      "status": "pending_tool_mapping_and_official_verification"
+    },
+    {
+      "id": "tax-item-08",
+      "displayName": null,
+      "file": "tax-item-08.json",
+      "status": "pending_tool_mapping_and_official_verification"
+    },
+    {
+      "id": "tax-item-09",
+      "displayName": null,
+      "file": "tax-item-09.json",
+      "status": "pending_tool_mapping_and_official_verification"
+    },
+    {
+      "id": "tax-item-10",
+      "displayName": null,
+      "file": "tax-item-10.json",
+      "status": "pending_tool_mapping_and_official_verification"
+    },
+    {
+      "id": "tax-item-11",
+      "displayName": null,
+      "file": "tax-item-11.json",
+      "status": "pending_tool_mapping_and_official_verification"
+    },
+    {
+      "id": "tax-item-12",
+      "displayName": null,
+      "file": "tax-item-12.json",
+      "status": "pending_tool_mapping_and_official_verification"
+    }
+  ],
+  "notes": "須先從正式網站程式盤點12個實際稅目名稱與公式，再逐項對應；此清單不代表已辨識或驗證稅目。"
+}

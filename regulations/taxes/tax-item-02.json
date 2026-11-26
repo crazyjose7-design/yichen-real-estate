@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "tax-item-02",
+  "displayName": null,
+  "status": "pending_tool_mapping_and_official_verification",
+  "version": "0.0.0",
+  "parameters": [],
+  "sourceRecords": [],
+  "notes": "待確認實際稅目名稱、欄位及公式，再依當年度官方法源填寫；不得填入推測數字。"
+}

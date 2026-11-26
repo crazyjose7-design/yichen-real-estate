@@ -1,0 +1,161 @@
+{
+  "schemaVersion": "1.0.0",
+  "coverage": "Taiwan 22 jurisdictions",
+  "status": "inventory_only",
+  "cityFiles": [
+    {
+      "id": "taipei",
+      "name": "臺北市",
+      "type": "直轄市",
+      "file": "taipei.json",
+      "status": "pending_official_verification"
+    },
+    {
+      "id": "new-taipei",
+      "name": "新北市",
+      "type": "直轄市",
+      "file": "new-taipei.json",
+      "status": "pending_official_verification"
+    },
+    {
+      "id": "taoyuan",
+      "name": "桃園市",
+      "type": "直轄市",
+      "file": "taoyuan.json",
+      "status": "pending_official_verification"
+    },
+    {
+      "id": "taichung",
+      "name": "臺中市",
+      "type": "直轄市",
+      "file": "taichung.json",
+      "status": "pending_official_verification"
+    },
+    {
+      "id": "tainan",
+      "name": "臺南市",
+      "type": "直轄市",
+      "file": "tainan.json",
+      "status": "pending_official_verification"
+    },
+    {
+      "id": "kaohsiung",
+      "name": "高雄市",
+      "type": "直轄市",
+      "file": "kaohsiung.json",
+      "status": "pending_official_verification"
+    },
+    {
+      "id": "keelung",
+      "name": "基隆市",
+      "type": "市",
+      "file": "keelung.json",
+      "status": "pending_official_verification"
+    },
+    {
+      "id": "hsinchu-city",
+      "name": "新竹市",
+      "type": "市",
+      "file": "hsinchu-city.json",
+      "status": "pending_official_verification"
+    },
+    {
+      "id": "chiayi-city",
+      "name": "嘉義市",
+      "type": "市",
+      "file": "chiayi-city.json",
+      "status": "pending_official_verification"
+    },
+    {
+      "id": "yilan",
+      "name": "宜蘭縣",
+      "type": "縣",
+      "file": "yilan.json",
+      "status": "pending_official_verification"
+    },
+    {
+      "id": "hsinchu-county",
+      "name": "新竹縣",
+      "type": "縣",
+      "file": "hsinchu-county.json",
+      "status": "pending_official_verification"
+    },
+    {
+      "id": "miaoli",
+      "name": "苗栗縣",
+      "type": "縣",
+      "file": "miaoli.json",
+      "status": "pending_official_verification"
+    },
+    {
+      "id": "changhua",
+      "name": "彰化縣",
+      "type": "縣",
+      "file": "changhua.json",
+      "status": "pending_official_verification"
+    },
+    {
+      "id": "nantou",
+      "name": "南投縣",
+      "type": "縣",
+      "file": "nantou.json",
+      "status": "pending_official_verification"
+    },
+    {
+      "id": "yunlin",
+      "name": "雲林縣",
+      "type": "縣",
+      "file": "yunlin.json",
+      "status": "pending_official_verification"
+    },
+    {
+      "id": "chiayi-county",
+      "name": "嘉義縣",
+      "type": "縣",
+      "file": "chiayi-county.json",
+      "status": "pending_official_verification"
+    },
+    {
+      "id": "pingtung",
+      "name": "屏東縣",
+      "type": "縣",
+      "file": "pingtung.json",
+      "status": "pending_official_verification"
+    },
+    {
+      "id": "taitung",
+      "name": "臺東縣",
+      "type": "縣",
+      "file": "taitung.json",
+      "status": "pending_official_verification"
+    },
+    {
+      "id": "hualien",
+      "name": "花蓮縣",
+      "type": "縣",
+      "file": "hualien.json",
+      "status": "pending_official_verification"
+    },
+    {
+      "id": "penghu",
+      "name": "澎湖縣",
+      "type": "縣",
+      "file": "penghu.json",
+      "status": "pending_official_verification"
+    },
+    {
+      "id": "kinmen",
+      "name": "金門縣",
+      "type": "縣",
+      "file": "kinmen.json",
+      "status": "pending_official_verification"
+    },
+    {
+      "id": "lienchiang",
+      "name": "連江縣",
+      "type": "縣",
+      "file": "lienchiang.json",
+      "status": "pending_official_verification"
+    }
+  ]
+}

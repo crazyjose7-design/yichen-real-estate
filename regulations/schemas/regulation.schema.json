@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Regulation parameter",
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "value",
+    "unit",
+    "status",
+    "jurisdiction",
+    "legal_basis",
+    "official_source_url",
+    "effective_date",
+    "checked_at",
+    "version"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "value": {
+      "type": [
+        "number",
+        "string",
+        "boolean",
+        "null"
+      ]
+    },
+    "unit": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "pending_official_verification",
+        "verified",
+        "expired"
+      ]
+    },
+    "jurisdiction": {
+      "type": "string"
+    },
+    "legal_basis": {
+      "type": "string"
+    },
+    "official_source_url": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uri"
+    },
+    "published_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
+    "effective_date": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
+    "checked_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
+    "checked_by": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "version": {
+      "type": "string"
+    }
+  }
+}
