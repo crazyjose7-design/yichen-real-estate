@@ -143,13 +143,9 @@
   "research_progress": {
     "cities_with_official_local_source_records_count": 22,
     "remaining_cities_without_official_portal": 0,
-    "specific_local_rule_records_count": 19,
-    "portal_only_cities": [
-      "南投縣",
-      "宜蘭縣",
-      "臺東縣"
-    ],
-    "remaining_cities_requiring_specific_rule_discovery": 3,
+    "specific_local_rule_records_count": 22,
+    "portal_only_cities": [],
+    "remaining_cities_requiring_specific_rule_discovery": 0,
     "delegated_regulations_added": 5,
     "local_sources_are_not_fully_verified": true,
     "all_tax_parameters_in_review": true,
@@ -178,6 +174,14 @@
         "執行業務所得：業務收入減除直接必要費用；可用實際費用總額或明細，費用率僅在使用者自行核對年度與職業別官方標準後手動輸入。",
         "本兩項計算器尚未計算個人綜合所得稅最終稅額，且未自動套用gross-up、押金設算或個案例外。"
       ]
-    }
+    },
+    "cities_with_specific_rule_sources_pending_review": [
+      "南投縣",
+      "宜蘭縣",
+      "臺東縣"
+    ],
+    "taitung_source_quality_note": "臺東縣都市設計審議原則目前取得縣府函文副本，託載於關山鎮公所網站；尚待縣府原始公告頁及修正沿革確認。",
+    "yilan_current_version_note": "宜蘭縣都市設計審議作業要點已定位縣府公告及官方目錄；115年5月13日修正資訊尚待縣府原始法規全文確認。",
+    "nantou_scope_note": "南投縣已定位都市設計審議規範及容積移轉作業要點；附表、現行沿革及基地適用性仍待覆核。"
   }
 }
