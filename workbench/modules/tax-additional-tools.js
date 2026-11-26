@@ -46,7 +46,7 @@
    }
   }
   result.classList.add('show');result.scrollIntoView({behavior:'smooth',block:'nearest'});saveSnapshot(activeExtra);
- }catch(err){amount.textContent='無法計算';detail.textContent=err.message;result.classList.add('show')}});
- document.getElementById('tax-reset')?.addEventListener('click',e=>{if(!activeExtra)return;e.preventDefault();e.stopImmediatePropagation();activate(activeExtra)});
+ }catch(err){amount.textContent='無法計算';detail.textContent=err.message;result.classList.add('show')}},true);
+ document.getElementById('tax-reset')?.addEventListener('click',e=>{if(!activeExtra)return;e.preventDefault();e.stopImmediatePropagation();activate(activeExtra)},true);
  const style=document.createElement('style');style.textContent='.tax-extra-check{display:block;margin:12px 0;color:#514b40;font-size:13px}.tax-extra-check input{width:auto;min-height:0;margin-right:6px}.tax-field-hint{grid-column:1/-1;color:#716b60;font-size:12px;line-height:1.75;margin:8px 0}.tax-field-label{display:block;font-size:13px;font-weight:700;margin:12px 0 7px;color:#5c5549}';document.head.appendChild(style);
 })();
