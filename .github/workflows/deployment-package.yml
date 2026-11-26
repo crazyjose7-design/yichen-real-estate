@@ -1,0 +1,56 @@
+name: Build and verify deployment package
+
+on:
+  push:
+    branches:
+      - "work/**"
+    paths:
+      - "index.html"
+      - "assets/**"
+      - "workbench/modules/**"
+      - "workbench/EXECUTION_RULES.md"
+      - "scripts/**"
+      - "tests/**"
+      - ".github/workflows/deployment-package.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-test-package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install browser test dependencies
+        run: |
+          npm init -y
+          npm install --no-save playwright
+          npx playwright install --with-deps chromium
+      - name: Build self-contained HTML and ZIP
+        run: node scripts/build-deployment.mjs
+      - name: Browser smoke tests
+        run: node tests/browser-smoke.mjs
+      - name: Validate package contents
+        run: |
+          test -s dist/index.html
+          test -s dist/yichen-real-estate-deployment.zip
+          unzip -t dist/yichen-real-estate-deployment.zip
+          node --check workbench/modules/tax-engine.js
+          node --check workbench/modules/mortgage-calculator.js
+          node --check workbench/modules/land-efficiency.js
+          node --check workbench/modules/tax-state-and-print.js
+          node --check workbench/modules/site-print-engine.js
+      - name: Upload deployment package
+        uses: actions/upload-artifact@v4
+        with:
+          name: yichen-real-estate-deployment-v6.2.21
+          path: |
+            dist/index.html
+            dist/yichen-real-estate-deployment.zip
+            dist/browser-smoke-results.json
+          if-no-files-found: error
+          retention-days: 30
