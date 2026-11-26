@@ -11,7 +11,7 @@
   "legal_basis": [
     {
       "title": "都市更新條例",
-      "provision": "第44條",
+      "provision": "第65條第1至10項",
       "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0070008",
       "agency": "內政部",
       "amended_at": "2024-11-13"
@@ -31,9 +31,9 @@
     "地方主管機關報中央核准之其他獎勵",
     "其他法定情形"
   ],
-  "calculation_basis": null,
-  "maximum_value": null,
-  "combination_rules": "須依都市更新建築容積獎勵辦法及地方自治規定逐項核對；不可直接將各項獎勵相加。",
+  "calculation_basis": "必須先確認都市更新條例第65條適用版本、法定基準容積、原建築容積、中央辦法各獎勵項目、地方自治法規獎勵與互斥規則，再以個案核定內容計算。",
+  "maximum_value": "一般案件原則為基準容積1.5倍；第65條第2項另有特別上限；地方自治法規獎勵原則上另受基準容積0.2倍限制（特定策略性更新案件0.4倍）。不得將上限直接當成每案可取得的獎勵比例。",
+  "combination_rules": "不得將中央辦法獎勵、地方自治法規獎勵、容積移轉及其他法令獎勵直接相加。須先確認第65條特別上限、不得再申請條款、中央子法第4條重複獎勵扣除、地方上限及個案核定順序。",
   "effective_from": null,
   "effective_to": null,
   "official_sources": [
@@ -44,17 +44,19 @@
       "retrieved_at": "2026-11-27"
     },
     {
-      "url": "https://uract.nlma.gov.tw/rule/detail/9",
-      "title": "都市更新條例第44條－內政部國土管理署都市更新法規資訊",
-      "agency": "內政部國土管理署",
-      "retrieved_at": "2026-11-27"
-    },
-    {
       "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0070027",
       "title": "都市更新建築容積獎勵辦法",
       "agency": "內政部",
       "provision": "第1至18條",
       "amended_at": "2025-01-13",
+      "retrieved_at": "2026-11-27"
+    },
+    {
+      "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0070008",
+      "title": "都市更新條例（現行第65條）",
+      "agency": "內政部",
+      "provision": "第65條第1至10項",
+      "amended_at": "2024-11-13",
       "retrieved_at": "2026-11-27"
     }
   ],
@@ -62,7 +64,7 @@
   "verified_by": null,
   "application_policy": {
     "auto_apply": false,
-    "rule": "現階段只完成中央法源定位；尚未核對全部授權子法、最新獎勵項目/上限、地方規定及個案核定，禁止自動計算。"
+    "rule": "已完成現行第65條初步條文定位及上限摘錄；尚未完成中央子法逐條、地方自治規定、過渡條款及個案核定雙人覆核，禁止自動計算。"
   },
   "review_progress": {
     "central_delegated_rule_record": "regulations/national/urban-renewal-building-volume-reward-regulations.json",
@@ -75,5 +77,49 @@
       "獎勵互斥/扣除/累計",
       "個案核准紀錄"
     ]
+  },
+  "statutory_framework": [
+    {
+      "id": "ur-base-cap",
+      "article": "都市更新條例第65條第1項",
+      "rule": "一般案件獎勵後建築容積原則不得超過基準容積1.5倍，且不得超過都市計畫法第85條施行細則規定。",
+      "status": "in_review"
+    },
+    {
+      "id": "ur-special-existing-building",
+      "article": "都市更新條例第65條第2項第1款",
+      "rule": "符合實施容積管制前合法建築物原建築容積高於基準容積者，依法定條件擇優適用「原建築容積加基準容積0.3倍」或「原建築容積1.2倍」上限。",
+      "status": "in_review"
+    },
+    {
+      "id": "ur-special-dangerous-building",
+      "article": "都市更新條例第65條第2項第2款及第3項",
+      "rule": "經地方主管機關認定高氯離子混凝土或耐震能力不足且明顯危害公共安全者，得適用原建築容積1.3倍上限；適用該特別上限後不得再申請第5項獎勵項目。",
+      "status": "in_review"
+    },
+    {
+      "id": "ur-strategic-area",
+      "article": "都市更新條例第65條第2項第3款",
+      "rule": "策略性更新地區且更新單元達1萬平方公尺以上等法定條件，依條文擇優適用基準容積2倍或基準容積加0.5倍原建築容積之上限。",
+      "status": "in_review"
+    },
+    {
+      "id": "ur-local-cap",
+      "article": "都市更新條例第65條第5、6項",
+      "rule": "地方自治法規另訂獎勵原則上不得超過基準容積0.2倍；特定策略性更新地區案件上限為0.4倍。",
+      "status": "in_review"
+    },
+    {
+      "id": "ur-transition",
+      "article": "都市更新條例第65條末項",
+      "rule": "依都市更新事業計畫擬訂報核日期及修法過渡條款決定適用版本。",
+      "status": "in_review"
+    }
+  ],
+  "version_correction": {
+    "previously_referenced_article": "第44條",
+    "current_statutory_article": "第65條",
+    "reason": "現行法規資料庫第65條明定容積獎勵上限與中央/地方授權；先前第44條為錯誤現行條號，已修正。",
+    "status": "in_review"
   }
 }
