@@ -13,7 +13,24 @@
   "effective_to": null,
   "retrieved_at": "2026-11-27",
   "official_parameters": [],
-  "local_regulations": [],
+  "local_regulations": [
+    {
+      "id": "hualien-urban-renewal-volume-reward-rules",
+      "title": "花蓮縣都市更新建築容積獎勵辦法",
+      "status": "in_review",
+      "promulgated_at": "2024-07-11",
+      "source": {
+        "url": "https://ws.hl.gov.tw/Download.ashx?icon=..pdf&n=5bu66KiIMTEzMDEyMTczOUEucGRm&u=LzAwMS9VcGxvYWQvNTExL3JlbGZpbGUvMjE1NDgvMTYyMzQwLzQ3ODA1MDU4LWI1OWMtNGFlOC04NDgyLWJmMzBkZWM5MTBkMi5wZGY%3D",
+        "title": "花蓮縣政府令及辦法附件",
+        "agency": "花蓮縣政府",
+        "provision": "全文第1至6條及附表"
+      },
+      "review_notes": [
+        "第4條對公告指定社會福利/公益設施設獎勵係數：長照/文化健康站2、托幼1.8、其他公告公益設施1.5；須以公告清單及附表、個案核准為準。",
+        "須核對現行公告設施項目、獎勵上限、互斥及申請時間條件。"
+      ]
+    }
+  ],
   "reward_programs": [],
   "user_assumptions": [],
   "application_policy": {
@@ -24,7 +41,11 @@
     "都市計畫及土地使用分區管制",
     "建蔽率、容積率、移轉/獎勵容積及個案限制",
     "地方自治法規、地方獎勵辦法與受理程序",
-    "官方公告、法規版本、生效日期及適用範圍"
+    "官方公告、法規版本、生效日期及適用範圍",
+    "地方容積獎勵完整附表與公式逐項覆核",
+    "地方公告指定設施及個案區位/時效",
+    "地方都市計畫書圖與基地土地使用分區套疊",
+    "中央法規授權及地方自治規則效力審查"
   ],
   "safety_notes": [
     "不得以縣市通用值取代基地地號與個案核定條件。",
