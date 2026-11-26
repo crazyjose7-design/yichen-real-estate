@@ -18,9 +18,9 @@
         "贈與稅",
         "營利事業所得稅"
       ],
-      "status": "131_new_regression_cases_passed_historical_130plus_rows_not_recovered",
+      "status": "131_land_tax_cases_passed_plus_11_existing_tax_baselines_and_3_guardrails_passed_full_tax_matrices_pending",
       "minimumTests": "法定門檻前後、邊界值、零值、空值、負數、小數、極大值、免稅/扣抵、不同身分/期間/持分、獨立手算交叉驗證",
-      "completedEvidence": "Latest CI passed 131 new land-tax browser regression cases (130 numeric cases plus 1 decimal-rejection case), plus 2 targeted prior-credit cases; all 12 existing tools open and render fields. The other 11 tax calculators still do not have full independent expected-output matrices."
+      "completedEvidence": "Latest CI commit 83adb7b passed 90 Node tests and browser smoke. Added tests/tax-existing-tools.test.mjs: 11 independent baseline expected-value cases for the 11 existing tax tools plus VAT, house-tax and land-tax guardrail cases. The 131 land-tax browser cases remain 0 failures. These are initial baselines, not full boundary/identity/annual matrices; historical 130+ source rows remain unrecovered."
     },
     {
       "group": "稅務試算－新增2項",
@@ -43,9 +43,9 @@
         "建築量體與坪效",
         "列印"
       ],
-      "status": "baseline_and_unit_conversion_smoke_passed_full_formula_regression_pending",
+      "status": "6_independent_formula_and_boundary_cases_passed_full_field_and_regulatory_matrix_pending",
       "minimumTests": "各欄位邊界/單位/持分、分區及法規版本、獎勵互斥/併計、官方核准量體、公式獨立手算、空值與異常值、列印A4",
-      "completedEvidence": "Baseline calculation/print and 100 ping versus 330.578512 square-metre conversion smoke; reward safety gate blocks unverified official reward values."
+      "completedEvidence": "Added tests/land-efficiency.test.mjs with 6 independent cases for baseline area/buildable/saleable/cost/revenue, ping-square-metre conversion, scenario reward effect, custom reward required input, negative price rejection and parking revenue. Existing browser smoke and A4 print pass; reward safety gate blocks unverified official reward values. Full field-by-field and zoning/legal reward matrix remains pending."
     },
     {
       "group": "房貸試算",
@@ -59,9 +59,9 @@
         "月付金/總利息/攤還表",
         "列印"
       ],
-      "status": "baseline_and_three_edge_smokes_passed_full_matrix_pending",
+      "status": "9_independent_amortization_cases_passed_full_rate_term_grace_matrix_pending",
       "minimumTests": "0利率、不同利率/年期、寬限期、提前還款(若支援)、本金/利息加總、獨立攤還公式對照、列印A4",
-      "completedEvidence": "Baseline payment/print plus zero-interest annuity, zero-interest principal amortization, and one-year grace-period interest cases."
+      "completedEvidence": "Added tests/mortgage-calculator.test.mjs with 8 independent amortization matrix cases plus invalid rate-change month rejection, covering annuity/principal methods, zero interest, grace period, stepped rate and long term. Browser baseline and A4 print pass. Full combinations and every amortization-row reconciliation remain pending."
     },
     {
       "group": "法規與獎勵資料",
