@@ -64,6 +64,9 @@ await fs.copyFile(path.join(root,'tests','tax-additional-tools.test.mjs'),path.j
 await fs.copyFile(path.join(root,'tests','tax-simpany-parity.test.mjs'),path.join(pkg,'tax-simpany-parity.test.mjs'));
 await fs.copyFile(path.join(root,'tests','reward-engine-runtime.test.mjs'),path.join(pkg,'reward-engine-runtime.test.mjs'));
 await fs.copyFile(path.join(root,'tests','reward-engine.test.mjs'),path.join(pkg,'reward-engine.test.mjs'));
+await fs.mkdir(path.join(pkg,'tests','land-tax'),{recursive:true});
+await fs.copyFile(path.join(root,'tests','land-tax','historical-test-evidence.json'),path.join(pkg,'tests','land-tax','historical-test-evidence.json'));
+await fs.copyFile(path.join(root,'tests','acceptance-matrix.json'),path.join(pkg,'tests','acceptance-matrix.json'));
 execFileSync(process.execPath,[path.join(root,'tests','regulatory-data.test.mjs')],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,['--test',path.join(root,'tests','reward-engine.test.mjs')],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,['--test',path.join(root,'tests','tax-additional-tools.test.mjs')],{cwd:root,stdio:'inherit'});
