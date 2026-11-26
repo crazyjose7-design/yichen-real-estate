@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0.0",
+  "updated_at": "2026-11-27",
+  "status": "IN_PROGRESS",
+  "production_module": "workbench/modules/mortgage-calculator.js",
+  "matrix_dimensions": {
+    "repayment_methods": [
+      "annuity",
+      "principal"
+    ],
+    "annual_rates_percent": [
+      0,
+      1,
+      2,
+      2.5,
+      3,
+      4,
+      6,
+      10
+    ],
+    "loan_years": [
+      20,
+      25,
+      30,
+      35,
+      40
+    ],
+    "grace_years": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "rate_change": [
+      "none",
+      "after_1_year",
+      "middle_term",
+      "last_year"
+    ]
+  },
+  "coverage": "組合需依合理條件過濾（寬限期不得大於年期），產生逐期攤還明細及獨立expected；不能只比較月付金。",
+  "required_checks": [
+    "期數總數正確",
+    "每期本金+利息=每期付款",
+    "期初餘額-本金=期末餘額",
+    "所有本金合計=原始本金",
+    "最後餘額歸零並核對尾期調整",
+    "總付款=總本金+總利息",
+    "寬限期付款及寬限期後期數正確",
+    "利率調整生效期前後正確",
+    "零利率分支",
+    "利率/年限/貸款額/寬限期異常值拒絕",
+    "貸款成數正確",
+    "金額取整及尾差核對"
+  ],
+  "known_test_gap": "既有Node測試只有8個主要情境加1個錯誤案例；參考函式使用JavaScript Number與Math.round，非獨立Decimal oracle。現有Decimal oracle只涵蓋等額本息無寬限期。",
+  "exit_criteria": [
+    "完成有效矩陣組合或有理由的等價分區",
+    "每組有獨立Decimal expected",
+    "逐期明細交叉核對",
+    "所有不變量通過",
+    "瀏覽器顯示與獨立計算一致"
+  ]
+}
