@@ -57,23 +57,35 @@ test('tax: all fourteen promised tools are present in the selector', async ({ pa
   await expect(buttons.filter({ hasText: '執行業務所得' })).toHaveCount(1);
 });
 
-test('rent withholding: calculates withholding and NHI for a resident individual landlord', async ({ page }) => {
+test('rent withholding: Simpany-style fields calculate tax and supplementary premium', async ({ page }) => {
   await page.goto('/index.html');
   await page.locator('#tax-menu button').filter({ hasText: '租金扣繳' }).click();
-  await page.locator('#wt-rentAmount').fill('30000');
+  await page.locator('#tax-extra-rentAmount').fill('30000');
   await page.locator('#tax-calc').click();
   await expect(page.locator('#tax-amount')).toHaveText('NT$ 3,633');
-  await expect(page.locator('#tax-detail')).toContainText('3,000 元');
-  await expect(page.locator('#tax-detail')).toContainText('633 元');
+  await expect(page.locator('#tax-detail')).toContainText('租金扣繳：NT$ 3,000');
+  await expect(page.locator('#tax-detail')).toContainText('二代健保補充保費：NT$ 633');
 });
 
-test('professional income: calculates resident 9A withholding, NHI and net income', async ({ page }) => {
+test('professional income: 9A shows payer deductions and annual net income', async ({ page }) => {
   await page.goto('/index.html');
   await page.locator('#tax-menu button').filter({ hasText: '執行業務所得' }).click();
-  await page.locator('#wt-amount').fill('50000');
+  await page.locator('#tax-extra-proGross').fill('50000');
+  await page.locator('#tax-fields details summary').click();
+  await page.locator('#tax-extra-proAnnual').fill('300000');
+  await page.locator('#tax-extra-proFeeRate').fill('30');
   await page.locator('#tax-calc').click();
   await expect(page.locator('#tax-amount')).toHaveText('NT$ 6,055');
-  await expect(page.locator('#tax-detail')).toContainText('代扣所得稅：5,000 元');
-  await expect(page.locator('#tax-detail')).toContainText('代扣二代健保：1,055 元');
-  await expect(page.locator('#tax-detail')).toContainText('計入所得淨額：35,000 元');
+  await expect(page.locator('#tax-detail')).toContainText('代扣所得稅：NT$ 5,000');
+  await expect(page.locator('#tax-detail')).toContainText('代扣二代健保：NT$ 1,055');
+  await expect(page.locator('#tax-detail')).toContainText('計入所得淨額：NT$ 210,000');
+});
+
+test('professional income: net-receipt mode grosses up to the requested take-home amount', async ({ page }) => {
+  await page.goto('/index.html');
+  await page.locator('#tax-menu button').filter({ hasText: '執行業務所得' }).click();
+  await page.locator('input[name="tax-extra-proAmountMode"][value="net"]').check();
+  await page.locator('#tax-extra-proGross').fill('30000');
+  await page.locator('#tax-calc').click();
+  await expect(page.locator('#tax-detail')).toContainText('實際支付金額：NT$ 30,000');
 });
