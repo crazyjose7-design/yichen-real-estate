@@ -15,6 +15,13 @@
       "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0070249",
       "agency": "內政部",
       "amended_at": "2023-12-06"
+    },
+    {
+      "title": "都市危險及老舊建築物建築容積獎勵辦法",
+      "provision": "第1至13條",
+      "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0070258",
+      "agency": "內政部",
+      "amended_at": "2025-03-04"
     }
   ],
   "statutory_rules": [
@@ -50,6 +57,14 @@
       "title": "都市危險及老舊建築物加速重建條例",
       "agency": "內政部",
       "retrieved_at": "2026-11-27"
+    },
+    {
+      "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0070258",
+      "title": "都市危險及老舊建築物建築容積獎勵辦法",
+      "agency": "內政部",
+      "provision": "第1至13條",
+      "amended_at": "2025-03-04",
+      "retrieved_at": "2026-11-27"
     }
   ],
   "case_approval_records": [],
@@ -57,5 +72,14 @@
   "application_policy": {
     "auto_apply": false,
     "rule": "條文已定位但尚未完成子法、施行日期、延長命令及個案核准的全套驗證；上述內容僅供查核索引，禁止自動納入坪效試算。"
+  },
+  "review_progress": {
+    "central_delegated_rule_record": "regulations/national/hazardous-old-building-volume-reward-regulations.json",
+    "remaining": [
+      "母法與子法逐條交叉核對",
+      "期限與過渡條款",
+      "地方審查作業及個案核准",
+      "總容積上限及各項獎勵順序"
+    ]
   }
 }
