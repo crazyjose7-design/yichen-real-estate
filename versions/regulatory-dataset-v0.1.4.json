@@ -1,7 +1,7 @@
 {
   "dataset_version": "0.1.4",
   "created_at": "2026-11-27",
-  "status": "development_not_approved",
+  "status": "tested_in_ci_development_not_approved",
   "coverage": {
     "city_files": 22,
     "city_source_records": 36,
@@ -20,8 +20,9 @@
     "runtime": "workbench/modules/reward-engine-runtime.js",
     "ui": "workbench/modules/land-reward-gate.js",
     "integrated_into_land_efficiency": true,
-    "status": "implemented_pending_ci",
-    "auto_apply_allowed_only_after_verified_law_effective_date_jurisdiction_case_approval_and_combination_checks": true
+    "status": "tested_in_ci",
+    "auto_apply_allowed_only_after_verified_law_effective_date_jurisdiction_case_approval_and_combination_checks": true,
+    "ci_run_id": 45884457538
   },
   "safety": {
     "auto_apply_enabled": false,
@@ -240,5 +241,50 @@
       }
     },
     "city_review_matrix": "city-review-matrix.json"
+  },
+  "testing": {
+    "build_run_id": 45884457538,
+    "regulatory_run_id": 45884457349,
+    "unit_tests": 40,
+    "unit_test_failures": 0,
+    "browser_errors": 0,
+    "print_calls": 7,
+    "pdf_acceptance": [
+      {
+        "id": "tax",
+        "pages": 1,
+        "a4_portrait": true
+      },
+      {
+        "id": "mortgage",
+        "pages": 1,
+        "a4_portrait": true
+      },
+      {
+        "id": "land_efficiency",
+        "pages": 1,
+        "a4_portrait": true
+      },
+      {
+        "id": "rent_withholding",
+        "pages": 1,
+        "a4_portrait": true
+      },
+      {
+        "id": "professional_income",
+        "pages": 1,
+        "a4_portrait": true
+      },
+      {
+        "id": "full_document_with_new_tax_tools",
+        "pages": 9,
+        "a4_portrait": true
+      }
+    ],
+    "reward_gate": {
+      "unverified_reward_blocked": true,
+      "apply_disabled": true,
+      "official_reward_value": "0"
+    }
   }
 }
