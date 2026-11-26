@@ -74,6 +74,7 @@ test('professional income: 9A shows payer deductions and annual net income', asy
   await page.locator('#tax-fields details summary').click();
   await page.locator('#tax-extra-proAnnual').fill('300000');
   await page.locator('#tax-extra-proFeeRate').fill('30');
+  await page.locator('#tax-extra-proFeeVerified').check();
   await page.locator('#tax-calc').click();
   await expect(page.locator('#tax-amount')).toHaveText('NT$ 6,055');
   await expect(page.locator('#tax-detail')).toContainText('代扣所得稅：NT$ 5,000');
