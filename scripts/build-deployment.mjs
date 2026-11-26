@@ -37,6 +37,7 @@ await fs.cp(path.join(root,'workbench','modules'),path.join(pkg,'modules'),{recu
 await fs.copyFile(path.join(root,'workbench','EXECUTION_RULES.md'),path.join(pkg,'EXECUTION_RULES.md'));
 await fs.cp(path.join(root,'regulations'),path.join(pkg,'regulations'),{recursive:true});
 await fs.cp(path.join(root,'docs'),path.join(pkg,'docs'),{recursive:true});
+await fs.cp(path.join(root,'versions'),path.join(pkg,'versions'),{recursive:true});
 await fs.copyFile(path.join(root,'scripts','validate-regulatory-data.mjs'),path.join(pkg,'validate-regulatory-data.mjs'));
 await fs.copyFile(path.join(root,'tests','regulatory-data.test.mjs'),path.join(pkg,'regulatory-data.test.mjs'));
 await fs.copyFile(path.join(root,'tests','regulation-loader.test.mjs'),path.join(pkg,'regulation-loader.test.mjs'));
@@ -47,7 +48,7 @@ await fs.writeFile(path.join(pkg,'README.txt'),[
  'index.multi-file.html 與 assets/ 為原始多檔參考版本；正式上傳建議使用 index.html。',
  'modules/ 是拆分後的維護來源模組，尚未替換正式頁面的 inline script。',
  'regulations/ 包含 22 縣市、中央法規與獎勵資料；未查證資料不得自動套用。',
- 'docs/ 與驗證器一併封裝，方便後續查核及回復。',
+ 'docs/、versions/ 與驗證器一併封裝，方便後續查核及回復。',
  '本包以 V6.2.20 已驗證基準分支為來源。'
 ].join('\n')+'\n');
 execFileSync('zip',['-qr',path.join(out,'yichen-real-estate-deployment.zip'),'.'],{cwd:pkg});
