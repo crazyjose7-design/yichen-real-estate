@@ -1,0 +1,125 @@
+{
+  "schema_version": "1.0.0",
+  "dataset_version": "0.1.0",
+  "generated_at": "2026-11-27",
+  "status": "in_progress",
+  "county_city_files": [
+    {
+      "code": "01",
+      "path": "cities/01-taipei.json"
+    },
+    {
+      "code": "02",
+      "path": "cities/02-new-taipei.json"
+    },
+    {
+      "code": "03",
+      "path": "cities/03-taoyuan.json"
+    },
+    {
+      "code": "04",
+      "path": "cities/04-taichung.json"
+    },
+    {
+      "code": "05",
+      "path": "cities/05-tainan.json"
+    },
+    {
+      "code": "06",
+      "path": "cities/06-kaohsiung.json"
+    },
+    {
+      "code": "07",
+      "path": "cities/07-keelung.json"
+    },
+    {
+      "code": "08",
+      "path": "cities/08-hsinchu-city.json"
+    },
+    {
+      "code": "09",
+      "path": "cities/09-chiayi-city.json"
+    },
+    {
+      "code": "10",
+      "path": "cities/10-hsinchu-county.json"
+    },
+    {
+      "code": "11",
+      "path": "cities/11-miaoli.json"
+    },
+    {
+      "code": "12",
+      "path": "cities/12-changhua.json"
+    },
+    {
+      "code": "13",
+      "path": "cities/13-nantou.json"
+    },
+    {
+      "code": "14",
+      "path": "cities/14-yunlin.json"
+    },
+    {
+      "code": "15",
+      "path": "cities/15-chiayi-county.json"
+    },
+    {
+      "code": "16",
+      "path": "cities/16-pingtung.json"
+    },
+    {
+      "code": "17",
+      "path": "cities/17-yilan.json"
+    },
+    {
+      "code": "18",
+      "path": "cities/18-hualien.json"
+    },
+    {
+      "code": "19",
+      "path": "cities/19-taitung.json"
+    },
+    {
+      "code": "20",
+      "path": "cities/20-penghu.json"
+    },
+    {
+      "code": "21",
+      "path": "cities/21-kinmen.json"
+    },
+    {
+      "code": "22",
+      "path": "cities/22-lienchiang.json"
+    }
+  ],
+  "central_law_files": [
+    "national/urban-planning-law.json",
+    "national/building-act.json",
+    "national/urban-renewal-act.json",
+    "national/hazardous-old-buildings-reconstruction-act.json",
+    "national/land-act.json",
+    "national/house-tax-act.json",
+    "national/land-value-tax-act.json",
+    "national/income-tax-act-house-land.json",
+    "national/deed-tax-act.json",
+    "national/real-estate-securitization-and-related.json"
+  ],
+  "incentive_files": [
+    "rewards/urban-renewal.json",
+    "rewards/hazardous-old-building-reconstruction.json",
+    "rewards/green-building.json",
+    "rewards/smart-building.json",
+    "rewards/accessibility-universal-design.json",
+    "rewards/seismic-performance.json",
+    "rewards/transit-oriented-development.json",
+    "rewards/public-facility-open-space.json",
+    "rewards/local-planning-incentives.json"
+  ],
+  "tax_parameter_files": [],
+  "policy": {
+    "only_verified_auto_apply": true,
+    "unverified_default_behavior": "block",
+    "assumptions_are_not_official": true
+  }
+}
