@@ -59,3 +59,13 @@
 - 新增 Playwright 閘門要求稅務選單必須出現14項，並確認「租金扣繳」「執行業務所得」兩項；目前程式只建立12個按鈕，該測試預期會揭露缺漏。新 Playwright workflow 尚未取得執行結果。
 - 在隔離的本地 Python 測試環境，實際執行房貸 Decimal oracle 的54組組合與3個測試方法，結果 3/3 通過；土地坪效 Decimal oracle 4個測試方法，結果 4/4 通過。這些是獨立算術核心測試，不代表網站生產JS逐筆通過。
 - 新增 `verification/tax/new-tools-reference-spec.md`，把新增兩項工具標記為 `BLOCKED_SOURCE`，直到動態下拉選項、身分/健保規則、9A/9B年度費用率及公司房東適用條件逐項核實。
+
+## 最新CI狀態（提交 712084d86f8366cb076ec4d0248fb754b86763e0）
+
+- Independent verification layers Run 45903848590：
+  - `independent-oracles`：success，Python Decimal 全部測試通過。
+  - `production-regression`：success，既有 Node 測試通過。
+  - `browser-functional-tests`：檢查時仍在安裝 Chromium，Playwright 實際測試尚未開始/完成。
+- 同一提交的 Build and verify deployment package Run 45903848367：檢查時仍在安裝既有瀏覽器測試依賴，尚未完成。
+- 前一輪 Run 45903789072 的 Python 工作曾因土地坪效測試檔一個括號語法錯誤失敗；已修正，並由 Run 45903848590 的 Python工作重新通過。這項錯誤與修正均保留，不隱匿失敗紀錄。
+- Playwright 稅務完整性測試要求14項，但目前程式選單只有12項；預期會在實際執行時揭露兩項缺漏，尚未修正計算器。
