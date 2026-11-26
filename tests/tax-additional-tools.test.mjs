@@ -25,3 +25,6 @@ test('nonresident special copyright and lecture income up to 5,000 is exempt',()
 test('nonresident special income over 5,000 is withheld at 20%',()=>{const r=calculateProfessionalWithholding({grossAmount:5001,residency:'nonresident',incomeType:'special'});assert.equal(r.withholdingTax,1000)});
 test('professional income supplementary premium threshold and rate',()=>{const r=calculateProfessionalWithholding({grossAmount:20000,includeNhi:true});assert.equal(r.supplementaryPremium,422)});
 test('self-employed professional insured through occupational union is excluded when confirmed',()=>{const r=calculateProfessionalWithholding({grossAmount:50000,includeNhi:true,nhiExempt:true});assert.equal(r.supplementaryPremium,0)});
+
+test('resident company rent uses the same 2,000 withholding exemption threshold',()=>{const r=calculateRentWithholding({grossAmount:20000,residency:'resident',recipientKind:'company'});assert.equal(r.withholdingTax,0)});
+test('rent supplementary premium can be excluded when statutory exemption is confirmed',()=>{const r=calculateRentWithholding({grossAmount:50000,includeNhi:true,nhiExempt:true});assert.equal(r.supplementaryPremium,0)});
