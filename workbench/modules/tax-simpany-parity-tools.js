@@ -13,7 +13,7 @@
  const value=id=>read(id)?.value??'';
  const num=id=>value(id).trim()===''?0:Number(value(id));
  const checked=name=>fields.querySelector('input[name="tax-extra-'+name+'"]:checked')?.value;
- const snapshot=key=>{const p=document.createElement('div');p.className='tax-print-panel';p.innerHTML='<h3>'+title.textContent+'</h3><p>'+desc.textContent+'</p>'+fields.innerHTML+'<div class="tax-result show"><small>試算結果</small><strong>'+amount.textContent+'</strong><p>'+detail.textContent+'</p></div>';const s=window.__yichenTaxState||(window.__yichenTaxState={});s[key]={shown:true,snapshot:p.outerHTML};};
+ const snapshot=key=>{const p=document.createElement('div');p.className='tax-print-panel';p.innerHTML='<h3 id="tax-title">'+title.textContent+'</h3><p>'+desc.textContent+'</p>'+fields.innerHTML+'<div class="tax-result show"><small>試算結果</small><strong>'+amount.textContent+'</strong><p>'+detail.textContent+'</p></div>';const s=window.__yichenTaxState||(window.__yichenTaxState={});s[key]={shown:true,snapshot:p.outerHTML};};
  function activate(key){active=key;menu.querySelectorAll('button').forEach(b=>b.classList.toggle('active',b.dataset.yichenExtra===key||b.dataset.key===key));result.classList.remove('show');amount.textContent='尚未計算';detail.textContent='';
   if(key==='rentWithholding'){
    title.textContent='租金扣繳計算機';desc.textContent='選擇房東類型，輸入每期租金及是否含稅，即可估算租金扣繳與二代健保補充保費。';
