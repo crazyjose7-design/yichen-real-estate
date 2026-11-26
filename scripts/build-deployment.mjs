@@ -40,8 +40,10 @@ const regulationPaths=[...(regulationManifest.county_city_files||[]).map(x=>x.pa
 const regulationFiles={};
 for(const relativePath of regulationPaths) regulationFiles[relativePath]=JSON.parse(await fs.readFile(path.join(regulationRoot,relativePath),'utf8'));
 const runtime=await fs.readFile(path.join(root,'workbench','modules','regulation-data-runtime.js'),'utf8');
+const taxAdditionalCalc=await fs.readFile(path.join(root,'workbench','modules','tax-additional-calculations.js'),'utf8');
+const taxAdditionalTools=await fs.readFile(path.join(root,'workbench','modules','tax-additional-tools.js'),'utf8');
 const embeddedPayload=JSON.stringify({manifest:regulationManifest,files:regulationFiles}).replace(/</g,'\\u003c');
-const embeddedBlock='<script type="application/json" id="yichen-regulatory-data">'+embeddedPayload+'</script>\n<script id="yichen-regulatory-runtime">'+runtime+'</script>\n';
+const embeddedBlock='<script type="application/json" id="yichen-regulatory-data">'+embeddedPayload+'</script>\n<script id="yichen-regulatory-runtime">'+runtime+'</script>\n<script id="yichen-tax-additional-calculations">'+taxAdditionalCalc+'</script>\n<script id="yichen-tax-additional-tools">'+taxAdditionalTools+'</script>\n';
 if(!/<\/body>/i.test(html)) throw new Error('HTML body closing tag not found for regulatory data injection');
 html=html.replace(/<\/body>/i,embeddedBlock+'</body>');
 await fs.writeFile(path.join(out,'index.html'),html);
@@ -56,15 +58,18 @@ await fs.cp(path.join(root,'versions'),path.join(pkg,'versions'),{recursive:true
 await fs.copyFile(path.join(root,'scripts','validate-regulatory-data.mjs'),path.join(pkg,'validate-regulatory-data.mjs'));
 await fs.copyFile(path.join(root,'tests','regulatory-data.test.mjs'),path.join(pkg,'regulatory-data.test.mjs'));
 await fs.copyFile(path.join(root,'tests','regulation-loader.test.mjs'),path.join(pkg,'regulation-loader.test.mjs'));
+await fs.copyFile(path.join(root,'tests','tax-additional-tools.test.mjs'),path.join(pkg,'tax-additional-tools.test.mjs'));
 await fs.copyFile(path.join(root,'tests','reward-engine.test.mjs'),path.join(pkg,'reward-engine.test.mjs'));
 execFileSync(process.execPath,[path.join(root,'tests','regulatory-data.test.mjs')],{cwd:root,stdio:'inherit'});
 execFileSync(process.execPath,['--test',path.join(root,'tests','reward-engine.test.mjs')],{cwd:root,stdio:'inherit'});
+execFileSync(process.execPath,['--test',path.join(root,'tests','tax-additional-tools.test.mjs')],{cwd:root,stdio:'inherit'});
 await fs.writeFile(path.join(pkg,'README.txt'),[
  '億辰不動產網站部署包',
  '主要部署檔：index.html（單檔版，圖片已內嵌）',
  'index.multi-file.html 與 assets/ 為原始多檔參考版本；正式上傳建議使用 index.html。',
  'modules/ 是拆分後的維護來源模組，尚未替換正式頁面的 inline script。',
  'regulations/ 包含 22 縣市、中央法規、稅目與獎勵資料；單檔 HTML 內嵌同一資料集及安全載入 API，未查證資料不得自動套用。',
+ '稅務區新增租金扣繳與執行業務所得計算；公式及法源紀錄請見 regulations/national/、regulations/taxes/ 與 modules/tax-additional-*.js。',
  'docs/、versions/ 與驗證器一併封裝，方便後續查核及回復。',
  '本包以 V6.2.20 已驗證基準分支為來源。'
 ].join('\n')+'\n');
