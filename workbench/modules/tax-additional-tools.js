@@ -29,6 +29,22 @@
   const state=window.__yichenTaxState||(window.__yichenTaxState={});state[key]={shown:true,snapshot:panel.outerHTML};
  }
  menu.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.yichenExtra){e.preventDefault();e.stopImmediatePropagation();activate(b.dataset.yichenExtra)}else{activeExtra=null}},true);
+ const customPrint=()=>{
+  if(!result.classList.contains('show')||['無法計算','尚未計算'].includes(amount.textContent.trim())){alert('請先完成目前工具的試算，再列印或存成PDF。');return}
+  const root=document.getElementById('yichen-print-root')||document.createElement('div');root.id='yichen-print-root';root.innerHTML='';
+  const pg=document.createElement('section');pg.className='print-page tax-print-page';
+  const content=document.createElement('div');content.className='print-page-content';
+  const h=document.createElement('h2');h.textContent='稅務試算｜'+title.textContent;content.appendChild(h);
+  const live=fields.parentElement;const panel=live?.classList.contains('tax-panel')?live:document.getElementById('tax-center')?.querySelector('.tax-panel');
+  const clone=panel?.cloneNode(true);if(!clone)throw new Error('找不到稅務試算列印內容');
+  const src=panel.querySelectorAll('input,select,textarea'),dst=clone.querySelectorAll('input,select,textarea');
+  src.forEach((o,i)=>{const n=dst[i];if(!n)return;if(o.type==='checkbox'||o.type==='radio'){n.checked=o.checked;if(o.checked)n.setAttribute('checked','');else n.removeAttribute('checked')}else if(o.tagName==='SELECT'){[...n.options].forEach((op,j)=>{if(o.options[j]?.selected)op.setAttribute('selected','');else op.removeAttribute('selected')})}else n.setAttribute('value',o.value)});
+  clone.querySelectorAll('details').forEach(d=>d.open=true);clone.querySelector('.tax-actions')?.remove();clone.classList.add('tax-print-panel');
+  content.appendChild(clone);pg.appendChild(content);root.appendChild(pg);document.body.appendChild(root);
+  document.body.classList.remove('print-land','print-tax','print-site');document.body.classList.add('yichen-print-active');window.print();
+ };
+ document.getElementById('tax-print')?.addEventListener('click',e=>{if(!activeExtra)return;e.preventDefault();e.stopImmediatePropagation();try{customPrint()}catch(err){amount.textContent='無法列印';detail.textContent=err.message;result.classList.add('show')}},true);
+ window.addEventListener('afterprint',()=>{if(activeExtra){document.body.classList.remove('yichen-print-active');const root=document.getElementById('yichen-print-root');if(root)root.innerHTML=''}});
  const calc=document.getElementById('tax-calc');
  calc?.addEventListener('click',e=>{if(!activeExtra)return;e.preventDefault();e.stopImmediatePropagation();try{
   if(activeExtra==='rentWithholding'){
