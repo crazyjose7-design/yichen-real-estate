@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "id": "land-value-tax",
   "title": "地價稅",
-  "status": "unverified",
+  "status": "in_review",
   "jurisdiction_layers": [
     "national",
     "county_city",
@@ -13,15 +13,98 @@
     "title": "土地稅法",
     "provision": "第14至17條及相關減免規定"
   },
-  "parameters": [],
+  "parameters": [
+    {
+      "id": "base-rate",
+      "name": "地價稅基本稅率",
+      "value": 10,
+      "unit": "‰",
+      "article": "土地稅法第16條",
+      "status": "in_review",
+      "conditions": "土地歸戶地價總額未超過所在地累進起點地價；地方累進起點仍須依年度公告核對。"
+    },
+    {
+      "id": "progressive-1",
+      "name": "超過累進起點未達5倍部分",
+      "value": 15,
+      "unit": "‰",
+      "article": "土地稅法第16條第1款",
+      "status": "in_review"
+    },
+    {
+      "id": "progressive-2",
+      "name": "超過累進起點5至10倍部分",
+      "value": 25,
+      "unit": "‰",
+      "article": "土地稅法第16條第2款",
+      "status": "in_review"
+    },
+    {
+      "id": "progressive-3",
+      "name": "超過累進起點10至15倍部分",
+      "value": 35,
+      "unit": "‰",
+      "article": "土地稅法第16條第3款",
+      "status": "in_review"
+    },
+    {
+      "id": "progressive-4",
+      "name": "超過累進起點15至20倍部分",
+      "value": 45,
+      "unit": "‰",
+      "article": "土地稅法第16條第4款",
+      "status": "in_review"
+    },
+    {
+      "id": "progressive-5",
+      "name": "超過累進起點20倍以上部分",
+      "value": 55,
+      "unit": "‰",
+      "article": "土地稅法第16條第5款",
+      "status": "in_review"
+    },
+    {
+      "id": "self-use-rate",
+      "name": "自用住宅用地稅率",
+      "value": 2,
+      "unit": "‰",
+      "article": "土地稅法第17條",
+      "status": "in_review",
+      "conditions": "都市土地3公畝、非都市土地7公畝範圍及戶籍、無出租營業等法定條件；須地方稅捐機關核准。"
+    },
+    {
+      "id": "public-reserved-land",
+      "name": "公共設施保留地建築使用稅率",
+      "value": 6,
+      "unit": "‰",
+      "article": "土地稅法第19條",
+      "status": "in_review"
+    }
+  ],
   "effective_from": null,
   "effective_to": null,
-  "official_sources": [],
-  "formula_reference": null,
+  "official_sources": [
+    {
+      "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=G0340096",
+      "title": "土地稅法",
+      "agency": "財政部",
+      "provision": "第14至20條",
+      "amended_at": "2025-01-24",
+      "retrieved_at": "2026-11-27"
+    }
+  ],
+  "formula_reference": "workbench/modules/tax-engine.js#landTax",
   "test_cases": [],
   "verified_by": null,
   "application_policy": {
     "auto_apply": false,
-    "rule": "參數空白代表尚未查證；不可使用舊程式常數、推測值或其他縣市資料代替。"
-  }
+    "rule": "僅完成中央法條初步摘錄；雙人覆核、有效日期、子法、地方公告與公式回歸測試完成前不得自動套用。"
+  },
+  "jurisdiction": "national",
+  "retrieved_at": "2026-11-27",
+  "review_notes": [
+    "已摘錄可由中央法條確認的初步稅率或級距，所有參數仍為 in_review，不得自動套用。",
+    "仍須核對有效日期、子法、地方年度公告、歸戶/門檻、免稅減免、個案核定及現行程式公式是否完全一致。",
+    "參數的法定上限或區間不代表地方實際核定稅率；不得以區間中點代替地方公告。"
+  ]
 }
