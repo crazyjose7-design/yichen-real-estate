@@ -129,6 +129,25 @@ for(const [key,label] of existingTaxTools){
  if(await page.locator('#tax-title').innerText()!==label)throw new Error('Tax tool title mismatch for '+key);
  if(await page.locator('#tax-fields .tax-field').count()===0)throw new Error('Tax tool fields missing for '+key);
 }
+await page.locator('#tax-menu button[data-key="land"]').click();
+await page.locator('#tax-previousDate').fill('2020-01-01');
+await page.locator('#tax-currentValue').fill('30000');
+await page.locator('#tax-priorValue').fill('10000');
+await page.locator('#tax-area').fill('100');
+await page.locator('#tax-shareNumerator').fill('1');
+await page.locator('#tax-shareDenominator').fill('1');
+await page.locator('#tax-deductibleCosts').fill('0');
+await page.locator('#tax-priorLandTaxCredit').fill('0');
+await page.locator('#tax-calc').click();
+let landTaxDetail=await page.locator('#tax-detail').innerText();
+if(await page.locator('#tax-amount').innerText()!=='NT$ 442,800'||!landTaxDetail.includes('114.3%'))throw new Error('Land tax independent regression LT-RECON-001 failed: '+landTaxDetail);
+await page.locator('#tax-priorLandTaxCredit').fill('100.5');
+await page.locator('#tax-calc').click();
+landTaxDetail=await page.locator('#tax-detail').innerText();
+if(await page.locator('#tax-amount').innerText()!=='無法計算'||!landTaxDetail.includes('不可輸入小數'))throw new Error('Land tax decimal prior credit regression LT-RECON-003 failed: '+landTaxDetail);
+await page.locator('#tax-priorLandTaxCredit').fill('100');
+await page.locator('#tax-calc').click();
+if(await page.locator('#tax-amount').innerText()!=='NT$ 442,700')throw new Error('Land tax integer prior credit regression LT-RECON-002 failed: '+await page.locator('#tax-detail').innerText());
 const printCalls=await page.evaluate(()=>window.__printCalls);
 if(printCalls!==7)throw new Error('Expected 7 print entry points including both new tax tools and updated full-document print; counts='+printCounts.join(',')+'; dialogs='+dialogs.join(' | '));
 if(dialogs.length)throw new Error('Unexpected browser dialogs: '+dialogs.join(' | '));
