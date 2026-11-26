@@ -27,6 +27,13 @@
       "authority": "official",
       "checkedAt": "2026-11-27",
       "status": "source_identified_not_fully_audited"
+    },
+    {
+      "title": "契稅條例（財政部主管法規共用系統）",
+      "url": "https://law-out.mof.gov.tw/LawContent.aspx?id=FL006156",
+      "authority": "official",
+      "checkedAt": "2026-11-27",
+      "status": "source_identified_not_fully_audited"
     }
   ],
   "riskFlags": [
