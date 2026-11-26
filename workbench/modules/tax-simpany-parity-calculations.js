@@ -30,7 +30,7 @@
    gross=hi;rows=calcAtGross(gross);
   }else rows=calcAtGross(gross);
   const sum=k=>rows.reduce((s,r)=>s+(Number(r[k])||0),0);
-  return {rentMode,contractRent:round(amount),grossRent:round(gross),withholdingTax:sum('withholdingTax'),supplementaryPremium:sum('supplementaryPremium'),totalDeductions:sum('withholdingTax')+sum('supplementaryPremium'),totalPaidToLandlords:sum('netToLandlord'),landlords:rows.map(r=>({...r,rent:round(r.rent)})),notes:['租金含稅：以約定租金為給付總額；租金未含稅：以房東實拿租金反推應給付總額。','房東公司與個人分開判斷；外國／非居住者依非居住者扣繳規則處理。','補充保費須依實際健保投保身分判斷；本試算僅依所選健保身分估算。','多位房東依持分比例分配，持分總和必須為100%。']};
+  return {rentMode,contractRent:round(amount),grossRent:round(gross),withholdingTax:sum('withholdingTax'),supplementaryPremium:sum('supplementaryPremium'),totalDeductions:sum('withholdingTax')+sum('supplementaryPremium'),totalPaidToLandlords:sum('netToLandlord'),landlords:rows.map(r=>({...r,rent:round(r.rent)})),notes:['租金含稅：以約定租金為給付總額；租金未含稅：以房東實拿租金反推應給付總額。','公司受款仍依固定營業場所判斷扣繳率；境內固定營業場所按10%、境內無固定營業場所按20%。公司不計個人租金補充保費。','補充保費須依實際健保投保身分判斷；本試算僅依所選健保身分估算。','多位房東依持分比例分配，持分總和必須為100%。']};
  }
  window.YichenSimpanyParityRent={calculateRent};
 })();
