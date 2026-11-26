@@ -13,7 +13,26 @@
   "effective_to": null,
   "retrieved_at": "2026-11-27",
   "official_parameters": [],
-  "local_regulations": [],
+  "local_regulations": [
+    {
+      "id": "hsinchu-city-urban-renewal-volume-reward-standard",
+      "title": "新竹市都市更新建築容積獎勵核算標準",
+      "status": "in_review",
+      "promulgated_at": "2012-02-23",
+      "amended_at": "2022-12-20",
+      "source": {
+        "url": "https://uract.nlma.gov.tw/rule/detail/1150",
+        "title": "內政部都市更新法規資訊－新竹市都市更新建築容積獎勵核算標準",
+        "agency": "新竹市政府（中央法規資訊系統收錄）",
+        "provision": "全文第1至12條及附表"
+      },
+      "review_notes": [
+        "最近可見修正日為111年12月20日；須比對新竹市政府現行法規系統原文及完整附表。",
+        "舊版法規資料曾引用都市更新條例第44條，必須以現行第65條及過渡條款重新確認每項計算方式與效力。",
+        "需逐項核對獎勵上限、互斥及其他法令獎勵扣除規則。"
+      ]
+    }
+  ],
   "reward_programs": [],
   "user_assumptions": [],
   "application_policy": {
@@ -24,7 +43,10 @@
     "都市計畫及土地使用分區管制",
     "建蔽率、容積率、移轉/獎勵容積及個案限制",
     "地方自治法規、地方獎勵辦法與受理程序",
-    "官方公告、法規版本、生效日期及適用範圍"
+    "官方公告、法規版本、生效日期及適用範圍",
+    "地方容積獎勵完整附表及現行法源逐條覆核",
+    "都市計畫書圖、土地使用分區及基地個案核准",
+    "地方獎勵公式的估價基準、互斥、上限及管理維護條件"
   ],
   "safety_notes": [
     "不得以縣市通用值取代基地地號與個案核定條件。",
