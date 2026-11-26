@@ -160,6 +160,7 @@ test('tax print: only the currently calculated rent-withholding tool is printed'
   await expect(printed).toHaveCount(1);
   await expect(printed).toContainText('租金扣繳計算機');
   await expect(printed).toContainText('租金扣繳：NT$ 3,000');
+  await expect(printed.locator('#tax-extra-rentAmount')).toHaveAttribute('value', '30000');
   await expect(printed).not.toContainText('房貸試算');
 });
 
