@@ -149,15 +149,25 @@
       "10 新竹縣",
       "11 苗栗縣",
       "12 彰化縣",
+      "13 南投縣",
       "14 雲林縣",
+      "15 嘉義縣",
       "16 屏東縣",
+      "17 宜蘭縣",
       "18 花蓮縣",
+      "19 臺東縣",
       "20 澎湖縣",
       "21 金門縣",
       "22 連江縣"
     ],
-    "cities_with_source_records_count": 18,
-    "remaining_cities_without_source_records": 4,
-    "local_sources_are_not_fully_verified": true
+    "cities_with_source_records_count": 22,
+    "remaining_cities_without_source_records": 0,
+    "local_sources_are_not_fully_verified": true,
+    "specific_local_urban_renewal_or_related_records_count": 19,
+    "portal_only_cities": [
+      "13 南投縣",
+      "17 宜蘭縣",
+      "19 臺東縣"
+    ]
   }
 }
