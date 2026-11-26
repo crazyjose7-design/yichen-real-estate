@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "status": "not_fully_accepted",
+  "status": "partial_acceptance_only",
   "groups": [
     {
       "group": "稅務試算－既有12項",
@@ -18,8 +18,9 @@
         "贈與稅",
         "營利事業所得稅"
       ],
-      "status": "pending_full_formula_regression",
-      "minimumTests": "法定門檻前後、邊界值、零值、空值、負數、小數、極大值、免稅/扣抵、不同身分/期間/持分、獨立手算交叉驗證"
+      "status": "ui_smoke_passed_formula_regression_pending",
+      "minimumTests": "法定門檻前後、邊界值、零值、空值、負數、小數、極大值、免稅/扣抵、不同身分/期間/持分、獨立手算交叉驗證",
+      "completedEvidence": "Browser smoke confirms all 12 tools open and render fields; land value increment tax has 3 new independent numeric/boundary cases; the remaining 11 calculators do not yet have full independent expected-output matrices."
     },
     {
       "group": "稅務試算－新增2項",
@@ -27,8 +28,9 @@
         "租金扣繳",
         "執行業務所得"
       ],
-      "status": "parity_rebuild_in_progress",
-      "minimumTests": "基本欄位/進階欄位、居住者/非居住者、個人/公司、9A/9B、含稅/未含稅、多房東持分、健保身分、法定門檻前後、列印A4、瀏覽器操作"
+      "status": "21_unit_cases_and_browser_smoke_pending_latest_ci",
+      "minimumTests": "基本欄位/進階欄位、居住者/非居住者、個人/公司、9A/9B、含稅/未含稅、多房東持分、健保身分、法定門檻前後、列印A4、瀏覽器操作",
+      "completedEvidence": "Separated Simpany-style forms, 21 dedicated unit test cases, resident/nonresident/company/9A/9B/NHI/threshold/gross-up/multiple-owner cases, plus A4 print smoke."
     },
     {
       "group": "土地坪效",
@@ -41,8 +43,9 @@
         "建築量體與坪效",
         "列印"
       ],
-      "status": "pending_full_formula_and_regulatory_regression",
-      "minimumTests": "各欄位邊界/單位/持分、分區及法規版本、獎勵互斥/併計、官方核准量體、公式獨立手算、空值與異常值、列印A4"
+      "status": "baseline_and_unit_conversion_smoke_only",
+      "minimumTests": "各欄位邊界/單位/持分、分區及法規版本、獎勵互斥/併計、官方核准量體、公式獨立手算、空值與異常值、列印A4",
+      "completedEvidence": "Baseline calculation/print and 100 ping versus 330.578512 square-metre conversion smoke; reward safety gate blocks unverified official reward values."
     },
     {
       "group": "房貸試算",
@@ -56,8 +59,9 @@
         "月付金/總利息/攤還表",
         "列印"
       ],
-      "status": "pending_full_formula_regression",
-      "minimumTests": "0利率、不同利率/年期、寬限期、提前還款(若支援)、本金/利息加總、獨立攤還公式對照、列印A4"
+      "status": "baseline_and_three_edge_smokes",
+      "minimumTests": "0利率、不同利率/年期、寬限期、提前還款(若支援)、本金/利息加總、獨立攤還公式對照、列印A4",
+      "completedEvidence": "Baseline payment/print plus zero-interest annuity, zero-interest principal amortization, and one-year grace-period interest cases."
     },
     {
       "group": "法規與獎勵資料",
@@ -67,7 +71,8 @@
         "五項既有稅務參數",
         "九類容積獎勵"
       ],
-      "status": "pending_official_source_review"
+      "status": "pending_official_source_review",
+      "completedEvidence": "22 city files, 19 central law records, 7 tax parameter files, 9 reward datasets; safeToCalculate remains false and 35 review items remain."
     }
   ],
   "acceptanceRule": "所有測試案例必須有唯一ID、輸入、獨立計算的預期值、實際值、差異、法源/公式依據、測試時間及執行版本；通過數量不等於完整性，未通過或無證據不得宣稱可正式投入使用。"
