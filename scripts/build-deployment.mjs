@@ -51,6 +51,7 @@ await fs.cp(path.join(root,'versions'),path.join(pkg,'versions'),{recursive:true
 await fs.copyFile(path.join(root,'scripts','validate-regulatory-data.mjs'),path.join(pkg,'validate-regulatory-data.mjs'));
 await fs.copyFile(path.join(root,'tests','regulatory-data.test.mjs'),path.join(pkg,'regulatory-data.test.mjs'));
 await fs.copyFile(path.join(root,'tests','regulation-loader.test.mjs'),path.join(pkg,'regulation-loader.test.mjs'));
+await fs.copyFile(path.join(root,'tests','reward-engine.test.mjs'),path.join(pkg,'reward-engine.test.mjs'));
 execFileSync(process.execPath,[path.join(root,'tests','regulatory-data.test.mjs')],{cwd:root,stdio:'inherit'});
 await fs.writeFile(path.join(pkg,'README.txt'),[
  '億辰不動產網站部署包',
