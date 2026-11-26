@@ -1,0 +1,355 @@
+{
+  "dataset_version": "0.1.4",
+  "generated_at": "2026-11-27",
+  "summary": {
+    "city_files": 22,
+    "source_records": 36,
+    "verified_cities": 0,
+    "verified_official_parameters": 0,
+    "auto_apply_enabled": false
+  },
+  "cities": [
+    {
+      "code": "01",
+      "name": "臺北市",
+      "file": "cities/01-taipei.json",
+      "source_records": 3,
+      "verified_official_parameters": 0,
+      "status": "unverified",
+      "remaining": [
+        "確認最新法規版本及修正沿革",
+        "逐條核對地方自治法規、辦法、作業要點及全部附表",
+        "逐一取得都市計畫主要/細部計畫書圖及土地使用分區管制規定",
+        "依基地地址/地號確認都市計畫區、分區、容積率、建蔽率、退縮、高度及其他基地管制",
+        "核對獎勵項目、上限、互斥/併計及個案主管機關核准資料"
+      ]
+    },
+    {
+      "code": "02",
+      "name": "新北市",
+      "file": "cities/02-new-taipei.json",
+      "source_records": 1,
+      "verified_official_parameters": 0,
+      "status": "unverified",
+      "remaining": [
+        "確認最新法規版本及修正沿革",
+        "逐條核對地方自治法規、辦法、作業要點及全部附表",
+        "逐一取得都市計畫主要/細部計畫書圖及土地使用分區管制規定",
+        "依基地地址/地號確認都市計畫區、分區、容積率、建蔽率、退縮、高度及其他基地管制",
+        "核對獎勵項目、上限、互斥/併計及個案主管機關核准資料"
+      ]
+    },
+    {
+      "code": "03",
+      "name": "桃園市",
+      "file": "cities/03-taoyuan.json",
+      "source_records": 1,
+      "verified_official_parameters": 0,
+      "status": "unverified",
+      "remaining": [
+        "確認最新法規版本及修正沿革",
+        "逐條核對地方自治法規、辦法、作業要點及全部附表",
+        "逐一取得都市計畫主要/細部計畫書圖及土地使用分區管制規定",
+        "依基地地址/地號確認都市計畫區、分區、容積率、建蔽率、退縮、高度及其他基地管制",
+        "核對獎勵項目、上限、互斥/併計及個案主管機關核准資料"
+      ]
+    },
+    {
+      "code": "04",
+      "name": "臺中市",
+      "file": "cities/04-taichung.json",
+      "source_records": 1,
+      "verified_official_parameters": 0,
+      "status": "unverified",
+      "remaining": [
+        "確認最新法規版本及修正沿革",
+        "逐條核對地方自治法規、辦法、作業要點及全部附表",
+        "逐一取得都市計畫主要/細部計畫書圖及土地使用分區管制規定",
+        "依基地地址/地號確認都市計畫區、分區、容積率、建蔽率、退縮、高度及其他基地管制",
+        "核對獎勵項目、上限、互斥/併計及個案主管機關核准資料"
+      ]
+    },
+    {
+      "code": "05",
+      "name": "臺南市",
+      "file": "cities/05-tainan.json",
+      "source_records": 2,
+      "verified_official_parameters": 0,
+      "status": "unverified",
+      "remaining": [
+        "確認最新法規版本及修正沿革",
+        "逐條核對地方自治法規、辦法、作業要點及全部附表",
+        "逐一取得都市計畫主要/細部計畫書圖及土地使用分區管制規定",
+        "依基地地址/地號確認都市計畫區、分區、容積率、建蔽率、退縮、高度及其他基地管制",
+        "核對獎勵項目、上限、互斥/併計及個案主管機關核准資料"
+      ]
+    },
+    {
+      "code": "06",
+      "name": "高雄市",
+      "file": "cities/06-kaohsiung.json",
+      "source_records": 3,
+      "verified_official_parameters": 0,
+      "status": "unverified",
+      "remaining": [
+        "確認最新法規版本及修正沿革",
+        "逐條核對地方自治法規、辦法、作業要點及全部附表",
+        "逐一取得都市計畫主要/細部計畫書圖及土地使用分區管制規定",
+        "依基地地址/地號確認都市計畫區、分區、容積率、建蔽率、退縮、高度及其他基地管制",
+        "核對獎勵項目、上限、互斥/併計及個案主管機關核准資料"
+      ]
+    },
+    {
+      "code": "07",
+      "name": "基隆市",
+      "file": "cities/07-keelung.json",
+      "source_records": 2,
+      "verified_official_parameters": 0,
+      "status": "unverified",
+      "remaining": [
+        "確認最新法規版本及修正沿革",
+        "逐條核對地方自治法規、辦法、作業要點及全部附表",
+        "逐一取得都市計畫主要/細部計畫書圖及土地使用分區管制規定",
+        "依基地地址/地號確認都市計畫區、分區、容積率、建蔽率、退縮、高度及其他基地管制",
+        "核對獎勵項目、上限、互斥/併計及個案主管機關核准資料"
+      ]
+    },
+    {
+      "code": "08",
+      "name": "新竹市",
+      "file": "cities/08-hsinchu-city.json",
+      "source_records": 1,
+      "verified_official_parameters": 0,
+      "status": "unverified",
+      "remaining": [
+        "確認最新法規版本及修正沿革",
+        "逐條核對地方自治法規、辦法、作業要點及全部附表",
+        "逐一取得都市計畫主要/細部計畫書圖及土地使用分區管制規定",
+        "依基地地址/地號確認都市計畫區、分區、容積率、建蔽率、退縮、高度及其他基地管制",
+        "核對獎勵項目、上限、互斥/併計及個案主管機關核准資料"
+      ]
+    },
+    {
+      "code": "09",
+      "name": "嘉義市",
+      "file": "cities/09-chiayi-city.json",
+      "source_records": 1,
+      "verified_official_parameters": 0,
+      "status": "unverified",
+      "remaining": [
+        "確認最新法規版本及修正沿革",
+        "逐條核對地方自治法規、辦法、作業要點及全部附表",
+        "逐一取得都市計畫主要/細部計畫書圖及土地使用分區管制規定",
+        "依基地地址/地號確認都市計畫區、分區、容積率、建蔽率、退縮、高度及其他基地管制",
+        "核對獎勵項目、上限、互斥/併計及個案主管機關核准資料"
+      ]
+    },
+    {
+      "code": "10",
+      "name": "新竹縣",
+      "file": "cities/10-hsinchu-county.json",
+      "source_records": 1,
+      "verified_official_parameters": 0,
+      "status": "unverified",
+      "remaining": [
+        "確認最新法規版本及修正沿革",
+        "逐條核對地方自治法規、辦法、作業要點及全部附表",
+        "逐一取得都市計畫主要/細部計畫書圖及土地使用分區管制規定",
+        "依基地地址/地號確認都市計畫區、分區、容積率、建蔽率、退縮、高度及其他基地管制",
+        "核對獎勵項目、上限、互斥/併計及個案主管機關核准資料"
+      ]
+    },
+    {
+      "code": "11",
+      "name": "苗栗縣",
+      "file": "cities/11-miaoli.json",
+      "source_records": 2,
+      "verified_official_parameters": 0,
+      "status": "unverified",
+      "remaining": [
+        "確認最新法規版本及修正沿革",
+        "逐條核對地方自治法規、辦法、作業要點及全部附表",
+        "逐一取得都市計畫主要/細部計畫書圖及土地使用分區管制規定",
+        "依基地地址/地號確認都市計畫區、分區、容積率、建蔽率、退縮、高度及其他基地管制",
+        "核對獎勵項目、上限、互斥/併計及個案主管機關核准資料"
+      ]
+    },
+    {
+      "code": "12",
+      "name": "彰化縣",
+      "file": "cities/12-changhua.json",
+      "source_records": 1,
+      "verified_official_parameters": 0,
+      "status": "unverified",
+      "remaining": [
+        "確認最新法規版本及修正沿革",
+        "逐條核對地方自治法規、辦法、作業要點及全部附表",
+        "逐一取得都市計畫主要/細部計畫書圖及土地使用分區管制規定",
+        "依基地地址/地號確認都市計畫區、分區、容積率、建蔽率、退縮、高度及其他基地管制",
+        "核對獎勵項目、上限、互斥/併計及個案主管機關核准資料"
+      ]
+    },
+    {
+      "code": "13",
+      "name": "南投縣",
+      "file": "cities/13-nantou.json",
+      "source_records": 3,
+      "verified_official_parameters": 0,
+      "status": "unverified",
+      "remaining": [
+        "確認最新法規版本及修正沿革",
+        "逐條核對地方自治法規、辦法、作業要點及全部附表",
+        "逐一取得都市計畫主要/細部計畫書圖及土地使用分區管制規定",
+        "依基地地址/地號確認都市計畫區、分區、容積率、建蔽率、退縮、高度及其他基地管制",
+        "核對獎勵項目、上限、互斥/併計及個案主管機關核准資料"
+      ]
+    },
+    {
+      "code": "14",
+      "name": "雲林縣",
+      "file": "cities/14-yunlin.json",
+      "source_records": 2,
+      "verified_official_parameters": 0,
+      "status": "unverified",
+      "remaining": [
+        "確認最新法規版本及修正沿革",
+        "逐條核對地方自治法規、辦法、作業要點及全部附表",
+        "逐一取得都市計畫主要/細部計畫書圖及土地使用分區管制規定",
+        "依基地地址/地號確認都市計畫區、分區、容積率、建蔽率、退縮、高度及其他基地管制",
+        "核對獎勵項目、上限、互斥/併計及個案主管機關核准資料"
+      ]
+    },
+    {
+      "code": "15",
+      "name": "嘉義縣",
+      "file": "cities/15-chiayi-county.json",
+      "source_records": 1,
+      "verified_official_parameters": 0,
+      "status": "unverified",
+      "remaining": [
+        "確認最新法規版本及修正沿革",
+        "逐條核對地方自治法規、辦法、作業要點及全部附表",
+        "逐一取得都市計畫主要/細部計畫書圖及土地使用分區管制規定",
+        "依基地地址/地號確認都市計畫區、分區、容積率、建蔽率、退縮、高度及其他基地管制",
+        "核對獎勵項目、上限、互斥/併計及個案主管機關核准資料"
+      ]
+    },
+    {
+      "code": "16",
+      "name": "屏東縣",
+      "file": "cities/16-pingtung.json",
+      "source_records": 1,
+      "verified_official_parameters": 0,
+      "status": "unverified",
+      "remaining": [
+        "確認最新法規版本及修正沿革",
+        "逐條核對地方自治法規、辦法、作業要點及全部附表",
+        "逐一取得都市計畫主要/細部計畫書圖及土地使用分區管制規定",
+        "依基地地址/地號確認都市計畫區、分區、容積率、建蔽率、退縮、高度及其他基地管制",
+        "核對獎勵項目、上限、互斥/併計及個案主管機關核准資料"
+      ]
+    },
+    {
+      "code": "17",
+      "name": "宜蘭縣",
+      "file": "cities/17-yilan.json",
+      "source_records": 3,
+      "verified_official_parameters": 0,
+      "status": "unverified",
+      "remaining": [
+        "確認最新法規版本及修正沿革",
+        "逐條核對地方自治法規、辦法、作業要點及全部附表",
+        "逐一取得都市計畫主要/細部計畫書圖及土地使用分區管制規定",
+        "依基地地址/地號確認都市計畫區、分區、容積率、建蔽率、退縮、高度及其他基地管制",
+        "核對獎勵項目、上限、互斥/併計及個案主管機關核准資料"
+      ]
+    },
+    {
+      "code": "18",
+      "name": "花蓮縣",
+      "file": "cities/18-hualien.json",
+      "source_records": 1,
+      "verified_official_parameters": 0,
+      "status": "unverified",
+      "remaining": [
+        "確認最新法規版本及修正沿革",
+        "逐條核對地方自治法規、辦法、作業要點及全部附表",
+        "逐一取得都市計畫主要/細部計畫書圖及土地使用分區管制規定",
+        "依基地地址/地號確認都市計畫區、分區、容積率、建蔽率、退縮、高度及其他基地管制",
+        "核對獎勵項目、上限、互斥/併計及個案主管機關核准資料"
+      ]
+    },
+    {
+      "code": "19",
+      "name": "臺東縣",
+      "file": "cities/19-taitung.json",
+      "source_records": 3,
+      "verified_official_parameters": 0,
+      "status": "unverified",
+      "remaining": [
+        "確認最新法規版本及修正沿革",
+        "逐條核對地方自治法規、辦法、作業要點及全部附表",
+        "逐一取得都市計畫主要/細部計畫書圖及土地使用分區管制規定",
+        "依基地地址/地號確認都市計畫區、分區、容積率、建蔽率、退縮、高度及其他基地管制",
+        "核對獎勵項目、上限、互斥/併計及個案主管機關核准資料"
+      ]
+    },
+    {
+      "code": "20",
+      "name": "澎湖縣",
+      "file": "cities/20-penghu.json",
+      "source_records": 1,
+      "verified_official_parameters": 0,
+      "status": "unverified",
+      "remaining": [
+        "確認最新法規版本及修正沿革",
+        "逐條核對地方自治法規、辦法、作業要點及全部附表",
+        "逐一取得都市計畫主要/細部計畫書圖及土地使用分區管制規定",
+        "依基地地址/地號確認都市計畫區、分區、容積率、建蔽率、退縮、高度及其他基地管制",
+        "核對獎勵項目、上限、互斥/併計及個案主管機關核准資料"
+      ]
+    },
+    {
+      "code": "21",
+      "name": "金門縣",
+      "file": "cities/21-kinmen.json",
+      "source_records": 1,
+      "verified_official_parameters": 0,
+      "status": "unverified",
+      "remaining": [
+        "確認最新法規版本及修正沿革",
+        "逐條核對地方自治法規、辦法、作業要點及全部附表",
+        "逐一取得都市計畫主要/細部計畫書圖及土地使用分區管制規定",
+        "依基地地址/地號確認都市計畫區、分區、容積率、建蔽率、退縮、高度及其他基地管制",
+        "核對獎勵項目、上限、互斥/併計及個案主管機關核准資料"
+      ]
+    },
+    {
+      "code": "22",
+      "name": "連江縣",
+      "file": "cities/22-lienchiang.json",
+      "source_records": 1,
+      "verified_official_parameters": 0,
+      "status": "unverified",
+      "remaining": [
+        "確認最新法規版本及修正沿革",
+        "逐條核對地方自治法規、辦法、作業要點及全部附表",
+        "逐一取得都市計畫主要/細部計畫書圖及土地使用分區管制規定",
+        "依基地地址/地號確認都市計畫區、分區、容積率、建蔽率、退縮、高度及其他基地管制",
+        "核對獎勵項目、上限、互斥/併計及個案主管機關核准資料"
+      ]
+    }
+  ],
+  "special_notes": {
+    "nantou": "已新增都市設計審議原則及容積移轉作業要點來源；附表、修正沿革及基地適用待覆核。",
+    "yilan": "已新增都市設計審議作業要點及縣府都市計畫官方目錄；115年5月修正資訊待縣府原始全文確認。",
+    "taitung": "已取得都市設計審議原則縣府函文副本；縣府原始公告及最新版本待確認。",
+    "miaoli": "已有地方都市更新容積獎勵辦法及內政部第3條無效函紀錄，須逐條確認效力及修法沿革。"
+  },
+  "global_review_rules": [
+    "不得將縣市入口頁視為具體基地適用規定",
+    "不得把都市設計審議程序誤認為容積獎勵額度",
+    "不得把容積移轉、都市更新、危老、TOD等獎勵逕自相加",
+    "沒有官方法源、條文、有效日期、基地轄區及個案核准紀錄時，不得建立可自動套用參數"
+  ]
+}
