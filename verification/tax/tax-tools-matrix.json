@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "updated_at": "2026-11-27",
   "status": "IN_PROGRESS",
-  "source_note": "網站版本說明列14項；workbench/modules/tax-engine.js目前抽出12個defs。租金扣繳及執行業務所得在該模組未找到計算器定義，列為阻擋查核。",
+  "source_note": "網站14項稅務工具現由12項既有tax-engine定義及2項獨立Simpany parity模組組成；兩項新增工具已載入正式頁面並嵌入單檔部署版。新增工具共有21項獨立公式回歸案例（租金9、執行業務所得12）通過；14項完整法源/年度矩陣仍未全數完成。",
   "acceptance": {
     "required_case_classes": [
       "normal",
@@ -198,32 +198,32 @@
     {
       "id": "rentWithholding",
       "name": "租金扣繳",
-      "status": "BLOCKED_SOURCE",
+      "status": "IN_PROGRESS",
       "fixture_file": "fixtures/rentWithholding.json",
       "required_cases": {
-        "normal": 0,
-        "boundary": 0,
-        "abnormal": 0,
-        "cross_check": 0
+        "normal": 4,
+        "boundary": 2,
+        "abnormal": 1,
+        "cross_check": 2
       },
-      "verified_expected_values": 0,
-      "source_status": "NOT_YET_REVIEWED",
-      "notes": "目前抽出的計算引擎未找到此工具定義；先定位或實作計算器，再建立獨立公式。"
+      "verified_expected_values": 9,
+      "source_status": "PARTIALLY_REVIEWED",
+      "notes": "已整合workbench/modules/tax-simpany-parity-calculations.js及tools.js；9項獨立測試通過，涵蓋境內/非居住者、個人/公司、扣繳門檻、二代健保、未稅反推、多房東持分及錯誤持分。尚待完整年度法源/人工案例覆核及PDF逐項驗收。"
     },
     {
       "id": "professionalIncome",
       "name": "執行業務所得",
-      "status": "BLOCKED_SOURCE",
+      "status": "IN_PROGRESS",
       "fixture_file": "fixtures/professionalIncome.json",
       "required_cases": {
-        "normal": 0,
-        "boundary": 0,
-        "abnormal": 0,
-        "cross_check": 0
+        "normal": 1,
+        "boundary": 7,
+        "abnormal": 1,
+        "cross_check": 3
       },
-      "verified_expected_values": 0,
-      "source_status": "NOT_YET_REVIEWED",
-      "notes": "目前抽出的計算引擎未找到此工具定義；先定位或實作計算器，再建立獨立公式。"
+      "verified_expected_values": 12,
+      "source_status": "PARTIALLY_REVIEWED",
+      "notes": "已整合Simpany parity計算器，12項獨立測試通過，涵蓋9A/9B、居住者/非居住者扣繳門檻、二代健保門檻/上限/免扣身分、9B年度18萬元免稅額及9A費用率不猜測。9A費用率需使用者核對當年度/職業別官方標準後勾選；尚待完整年度法源與人工案例覆核。"
     }
   ],
   "overall_exit_criteria": [
