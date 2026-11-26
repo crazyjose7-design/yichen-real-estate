@@ -24,7 +24,7 @@
   }
   fields.querySelectorAll('input,select').forEach(el=>el.addEventListener('input',()=>result.classList.remove('show')));
  }
- menu.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.yichenExtra){e.preventDefault();e.stopImmediatePropagation();activate(b.dataset.yichenExtra)}},true);
+ menu.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.yichenExtra){e.preventDefault();e.stopImmediatePropagation();activate(b.dataset.yichenExtra)}else if(b.dataset.key){active=null}},true);
  fields.addEventListener('click',e=>{if(e.target?.id==='tax-extra-add-landlord'){const root=read('landlords');const container=document.getElementById('tax-extra-landlords');const i=container.querySelectorAll('.tax-landlord-row').length;const row=document.createElement('div');row.className='tax-landlord-row';row.dataset.index=i;row.innerHTML='<h4>房東 '+(i+1)+'</h4><div class="tax-fields">'+select('rentNationality-'+i,'房東國別',[['domestic','本國人'],['foreign','外國人']])+select('rentResidency-'+i,'稅務居住者／固定營業場所身分',[['resident','境內居住者／境內有固定營業場所'],['nonresident','非境內居住者／境內無固定營業場所']])+field('rentShare-'+i,'持分比例（%）','number','0')+select('rentHealth-'+i,'健保身分',[['insured','具健保投保資格'],['union_exempt','職業工會投保免扣（需確認）'],['not_insured','非健保保險對象'],['other_exempt','其他法定免扣情形']])+'</div>';container.appendChild(row)}},true);
  document.getElementById('tax-calc')?.addEventListener('click',e=>{if(!active)return;e.preventDefault();e.stopImmediatePropagation();try{
   if(active==='rentWithholding'){
