@@ -36,6 +36,15 @@ await page.locator('#le-calc').click();
 await page.waitForTimeout(150);
 const land=await page.locator('#le-out-landunit').innerText();
 if(!land||land==='—')throw new Error('Land efficiency result missing');
+await page.locator('#le-reward-legal-gate summary').click();
+await page.locator('#le-reward-jurisdiction').selectOption('06');
+await page.locator('#le-reward-date').fill('2026-11-27');
+await page.locator('#le-reward-options input').first().check();
+await page.locator('#le-reward-check').click();
+const rewardGateText=await page.locator('#le-reward-status').innerText();
+const rewardApplyDisabled=await page.locator('#le-reward-apply').isDisabled();
+const officialRewardValue=await page.locator('#le-official-reward').inputValue();
+if(!rewardGateText.includes('目前阻擋')||!rewardGateText.includes('法規或參數尚未完成覆核')||!rewardApplyDisabled||officialRewardValue!=='0')throw new Error('Unverified reward was not blocked from land-efficiency calculation: '+rewardGateText);
 
 await page.locator('#tax-menu button[data-key="corp"]').click();
 await page.locator('#tax-base').fill('500000');
