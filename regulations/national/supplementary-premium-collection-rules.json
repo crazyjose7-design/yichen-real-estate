@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "central_law",
+  "id": "supplementary-premium-collection-rules",
+  "title": "全民健康保險扣取及繳納補充保險費辦法",
+  "status": "in_review",
+  "jurisdiction": "national",
+  "amended_at": "2024-03-20",
+  "effective_from": null,
+  "effective_to": null,
+  "important_provisions": [
+    {
+      "article": "第3條",
+      "topic": "租金收入係所得稅法第14條第1項第5類租賃收入及租賃所得；執行業務收入係所得稅法第14條第1項第2類業務或演技收入"
+    },
+    {
+      "article": "第4條",
+      "topic": "單次給付金額達20,000元者按補充保險費率計收；單次逾1,000萬元部分免扣；未具投保資格及專門職業技術人員自行執業且以職業工會投保之執行業務收入等法定情形免扣"
+    },
+    {
+      "article": "第5條",
+      "topic": "依法免扣取者須於受領前提出證明文件"
+    }
+  ],
+  "source": {
+    "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=L0060027",
+    "title": "全民健康保險扣取及繳納補充保險費辦法－全國法規資料庫",
+    "agency": "衛生福利部",
+    "provision": "第3至5條",
+    "amended_at": "2024-03-20",
+    "retrieved_at": "2026-11-27"
+  },
+  "verified_by": null,
+  "application_policy": {
+    "auto_apply": false,
+    "rule": "補充保費計算前須確認保險對象身分及法定免扣項目；不得只依金額自動認定應扣。"
+  }
+}
