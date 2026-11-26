@@ -1,0 +1,119 @@
+{
+  "schema_version": "1.0.0",
+  "updated_at": "2026-11-27",
+  "status": "IN_PROGRESS",
+  "production_module": "workbench/modules/land-efficiency.js",
+  "known_inputs": [
+    "le-location",
+    "le-zone",
+    "le-method",
+    "le-area",
+    "le-unit",
+    "le-basefar",
+    "le-volume-transfer",
+    "le-bonus",
+    "le-urban-renewal",
+    "le-oldbuilding",
+    "le-parking-bonus",
+    "le-rail-distance",
+    "le-rail-bonus",
+    "le-open-space-bonus",
+    "le-eff",
+    "le-landprice",
+    "le-saleprice",
+    "le-landratio",
+    "le-parking-count",
+    "le-parking-price",
+    "le-build-cost",
+    "le-soft-cost",
+    "le-finance-cost",
+    "le-tax-market-cost",
+    "le-profit-target",
+    "le-official-status",
+    "le-official-zone",
+    "le-official-coverage",
+    "le-official-far",
+    "le-approved-far",
+    "le-approved-fa",
+    "le-permit-no",
+    "le-road-width",
+    "le-height-limit",
+    "le-doc-date",
+    "le-doc-source",
+    "le-doc-note"
+  ],
+  "required_case_groups": [
+    {
+      "id": "LAND-AREA",
+      "cases": [
+        "坪與平方公尺換算",
+        "零/負數/極小/極大面積",
+        "持分換算與基地面積"
+      ]
+    },
+    {
+      "id": "LAND-FAR",
+      "cases": [
+        "法定容積率邊界",
+        "容積移轉單獨計算",
+        "法定容積與核准容積分離",
+        "非法數值拒算"
+      ]
+    },
+    {
+      "id": "LAND-REWARD",
+      "cases": [
+        "都更、危老、停車、軌道、開放空間情境",
+        "自訂獎勵空值拒算",
+        "都更與危老互斥",
+        "其他獎勵互斥/併計矩陣",
+        "總上限及地方差異",
+        "未核准獎勵不得標示已核准"
+      ]
+    },
+    {
+      "id": "LAND-REVENUE",
+      "cases": [
+        "不含車位收入",
+        "車位數量及價格同時存在才計入",
+        "只填其中一項不計入",
+        "售價空白時收入保持待填"
+      ]
+    },
+    {
+      "id": "LAND-COST",
+      "cases": [
+        "土地總價與單位地價",
+        "成本金額模式",
+        "成本百分比模式",
+        "百分比基礎與車位收入核對",
+        "成本未填完整不顯示殘值"
+      ]
+    },
+    {
+      "id": "LAND-PRINT",
+      "cases": [
+        "A4四頁分區列印",
+        "基地法規頁",
+        "選填官方查核有填才列印",
+        "土地成本頁",
+        "試算結果頁",
+        "各頁不混印",
+        "手機列印版面"
+      ]
+    }
+  ],
+  "known_mutual_exclusion_in_code": [
+    [
+      "都市更新獎勵",
+      "危老重建獎勵"
+    ]
+  ],
+  "known_gap": "目前程式只對都更與危老兩欄作互斥；其他獎勵組合並未由程式依22縣市法規判斷。手動獎勵合計仍可能只是情境假設。",
+  "exit_criteria": [
+    "每欄位有正常/空白/邊界/異常測試",
+    "面積與金額中間值交叉核算",
+    "獎勵規則由第三層法規引擎供應",
+    "列印四頁與每頁內容實際驗收"
+  ]
+}
