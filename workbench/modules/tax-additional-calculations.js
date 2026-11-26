@@ -1,18 +1,18 @@
 (()=>{
  const round=n=>Math.round(Number(n)||0);
- function calculateRentWithholding({grossAmount,residency='resident',recipientKind='individual',includeNhi=false}={}){
+ function calculateRentWithholding({grossAmount,residency='resident',recipientKind='individual',includeNhi=false,nhiExempt=false}={}){
   const gross=Number(grossAmount);
   if(!Number.isFinite(gross)||gross<0)throw new Error('租金給付金額必須是大於或等於0的有效數字');
   const nonresident=residency==='nonresident';
   const rate=nonresident?0.20:0.10;
   const rawTax=round(gross*rate);
   const withholdingTax=(!nonresident&&gross*rate<=2000)?0:rawTax;
-  const nhiEligible=includeNhi&&recipientKind==='individual'&&gross>=20000;
+  const nhiEligible=includeNhi&&!nhiExempt&&recipientKind==='individual'&&gross>=20000;
   const nhiBase=nhiEligible?Math.min(gross,10000000):0;
   const supplementaryPremium=round(nhiBase*0.0211);
   return {grossAmount:round(gross),withholdingRate:rate,rawTax,withholdingTax,supplementaryPremium,nhiBase,netToRecipient:round(gross)-withholdingTax-supplementaryPremium,totalPayerOutflow:round(gross),notes:[
    nonresident?'非境內居住者租金原則按20%扣繳；不適用境內居住者每次2,000元免扣繳門檻。':'境內居住個人或境內有固定營業場所之營利事業，每次應扣繳稅額不超過2,000元者免予扣繳。',
-   nhiEligible?'已按個人租金收入單次達20,000元、費率2.11%、單次計費上限1,000萬元估算補充保費。':includeNhi&&recipientKind==='individual'?'本次租金未達20,000元，未估列租金補充保費。':'未計入租金補充保險費（可於進階選項勾選）。',
+   nhiEligible?'已按個人租金收入單次達20,000元、費率2.11%、單次計費上限1,000萬元估算補充保費。':nhiExempt?'已依使用者勾選排除法定免扣或不具投保資格情形。':includeNhi&&recipientKind==='individual'?'本次租金未達20,000元，未估列租金補充保費。':'未計入租金補充保險費（可於進階選項勾選）。',
    '本計算假設租金給付額為扣繳及補充保費計算基礎；租約約定由承租人負擔稅費、押金設算、代付費用及特殊租賃型態不在此基本版自動加計。'
   ]};
  }
@@ -42,5 +42,24 @@
    '若計算結果為虧損，不代表可直接抵減其他類所得；應依所得稅法及個案規定判斷。'
   ]};
  }
- window.YichenTaxAdditionalCalc={calculateRentWithholding,calculateProfessionalIncome};
+
+ function calculateProfessionalWithholding({grossAmount,residency='resident',incomeType='general',includeNhi=false,nhiExempt=false}={}){
+  const gross=Number(grossAmount);
+  if(!Number.isFinite(gross)||gross<0)throw new Error('執行業務報酬必須是大於或等於0的有效數字');
+  const nonresident=residency==='nonresident',rate=nonresident?0.20:0.10,rawTax=round(gross*rate);
+  const exemptResident=!nonresident&&gross*rate<=2000;
+  const exemptNonresidentSpecial=nonresident&&incomeType==='special'&&gross<=5000;
+  const withholdingTax=(exemptResident||exemptNonresidentSpecial)?0:rawTax;
+  const nhiEligible=includeNhi&&!nhiExempt&&gross>=20000;
+  const nhiBase=nhiEligible?Math.min(gross,10000000):0;
+  const supplementaryPremium=round(nhiBase*0.0211);
+  return {grossAmount:round(gross),withholdingRate:rate,rawTax,withholdingTax,supplementaryPremium,nhiBase,netToRecipient:round(gross)-withholdingTax-supplementaryPremium,notes:[
+   nonresident?'非境內居住者執行業務報酬原則按20%扣繳。':'境內居住者執行業務報酬原則按10%扣繳；每次應扣繳稅額不超過2,000元者免予扣繳。',
+   exemptNonresidentSpecial?'本次屬稿費、版稅、樂譜、作曲、編劇、漫畫或講演鐘點費等特定所得，非居住者每次給付不超過5,000元免予扣繳。':'',
+   nhiEligible?'已按執行業務收入單次達20,000元、費率2.11%、單次計費上限1,000萬元估算補充保費。':nhiExempt?'已依使用者勾選排除法定免扣或不具投保資格情形。':includeNhi?'未達20,000元或未符合計費條件，未估列補充保費。':'未計入補充保險費（可於進階選項勾選）。',
+   '專門職業及技術人員自行執業且以職業工會身分投保者，執行業務收入依法有補充保費免扣規定；請於進階選項確認。'
+  ].filter(Boolean)};
+ }
+
+ window.YichenTaxAdditionalCalc={calculateRentWithholding,calculateProfessionalWithholding,calculateProfessionalIncome};
 })();
