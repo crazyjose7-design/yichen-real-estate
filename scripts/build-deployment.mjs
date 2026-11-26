@@ -60,7 +60,8 @@ await fs.cp(path.join(root,'versions'),path.join(pkg,'versions'),{recursive:true
 await fs.copyFile(path.join(root,'scripts','validate-regulatory-data.mjs'),path.join(pkg,'validate-regulatory-data.mjs'));
 await fs.copyFile(path.join(root,'tests','regulatory-data.test.mjs'),path.join(pkg,'regulatory-data.test.mjs'));
 await fs.copyFile(path.join(root,'tests','regulation-loader.test.mjs'),path.join(pkg,'regulation-loader.test.mjs'));
-await fs.copyFile(path.join(root,'tests','tax-additional-tools.test.mjs'),path.join(pkg,'tax-additional-tools.test.mjs'));\nawait fs.copyFile(path.join(root,'tests','tax-simpany-parity.test.mjs'),path.join(pkg,'tax-simpany-parity.test.mjs'));
+await fs.copyFile(path.join(root,'tests','tax-additional-tools.test.mjs'),path.join(pkg,'tax-additional-tools.test.mjs'));
+await fs.copyFile(path.join(root,'tests','tax-simpany-parity.test.mjs'),path.join(pkg,'tax-simpany-parity.test.mjs'));
 await fs.copyFile(path.join(root,'tests','reward-engine-runtime.test.mjs'),path.join(pkg,'reward-engine-runtime.test.mjs'));
 await fs.copyFile(path.join(root,'tests','reward-engine.test.mjs'),path.join(pkg,'reward-engine.test.mjs'));
 execFileSync(process.execPath,[path.join(root,'tests','regulatory-data.test.mjs')],{cwd:root,stdio:'inherit'});
