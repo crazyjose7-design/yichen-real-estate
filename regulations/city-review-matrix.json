@@ -3,7 +3,7 @@
   "generated_at": "2026-11-27",
   "summary": {
     "city_files": 22,
-    "source_records": 36,
+    "source_records": 42,
     "verified_cities": 0,
     "verified_official_parameters": 0,
     "auto_apply_enabled": false
@@ -58,7 +58,7 @@
       "code": "04",
       "name": "臺中市",
       "file": "cities/04-taichung.json",
-      "source_records": 1,
+      "source_records": 2,
       "verified_official_parameters": 0,
       "status": "unverified",
       "remaining": [
@@ -88,7 +88,7 @@
       "code": "06",
       "name": "高雄市",
       "file": "cities/06-kaohsiung.json",
-      "source_records": 3,
+      "source_records": 8,
       "verified_official_parameters": 0,
       "status": "unverified",
       "remaining": [
