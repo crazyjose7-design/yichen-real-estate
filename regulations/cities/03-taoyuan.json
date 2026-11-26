@@ -13,7 +13,25 @@
   "effective_to": null,
   "retrieved_at": "2026-11-27",
   "official_parameters": [],
-  "local_regulations": [],
+  "local_regulations": [
+    {
+      "id": "taoyuan-urban-renewal-volume-reward-rules",
+      "title": "桃園市都市更新建築容積獎勵辦法",
+      "status": "in_review",
+      "promulgated_at": "2016-04-19",
+      "amended_at": "2024-04-18",
+      "source": {
+        "url": "https://uract.nlma.gov.tw/rule/detail/1249",
+        "title": "內政部都市更新法規資訊－桃園市都市更新建築容積獎勵辦法",
+        "agency": "桃園市政府（中央法規資訊系統收錄）",
+        "provision": "全文第1至13條及相關附件"
+      },
+      "review_notes": [
+        "需比對桃園市政府現行法規共用系統原文與中央法規資訊系統版本。",
+        "須逐條解析地方獎勵項目、公式、額度、申請條件及互斥/上限。"
+      ]
+    }
+  ],
   "reward_programs": [],
   "user_assumptions": [],
   "application_policy": {
@@ -24,7 +42,11 @@
     "都市計畫及土地使用分區管制",
     "建蔽率、容積率、移轉/獎勵容積及個案限制",
     "地方自治法規、地方獎勵辦法與受理程序",
-    "官方公告、法規版本、生效日期及適用範圍"
+    "官方公告、法規版本、生效日期及適用範圍",
+    "地方容積獎勵完整附表與公式逐項覆核",
+    "地方公告指定設施及個案區位/時效",
+    "地方都市計畫書圖與基地土地使用分區套疊",
+    "中央法規授權及地方自治規則效力審查"
   ],
   "safety_notes": [
     "不得以縣市通用值取代基地地號與個案核定條件。",
