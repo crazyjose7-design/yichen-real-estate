@@ -107,7 +107,7 @@ await page.locator('#tax-extra-proGross').fill('5000');
 await page.locator('#tax-extra-proResidency').selectOption('nonresident');
 await page.locator('#tax-extra-proType').selectOption('special');
 await page.locator('#tax-calc').click();
-if(await page.locator('#tax-amount').innerText()!=='NT$ 0'||!(await page.locator('#tax-detail').innerText()).includes('不超過新臺幣五千元'))throw new Error('Nonresident special professional income exemption failed');
+if(await page.locator('#tax-amount').innerText()!=='NT$ 0'||!(await page.locator('#tax-detail').innerText()).includes('5,000元免予扣繳'))throw new Error('Nonresident special professional income exemption failed');
 await verifyPrintPdf('tax-print',1,'tax-professional-income');
 await verifyPrintPdf('site-print',9,'site-with-new-tax-tools');
 const printCalls=await page.evaluate(()=>window.__printCalls);
