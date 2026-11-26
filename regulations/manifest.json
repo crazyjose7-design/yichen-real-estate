@@ -148,6 +148,11 @@
     "local_sources_are_not_fully_verified": true,
     "all_tax_parameters_in_review": true,
     "auto_apply_enabled": false,
-    "cities_with_source_records_count": 22
+    "cities_with_source_records_count": 22,
+    "official_portal_directory_source": {
+      "url": "https://uract.nlma.gov.tw/content/links",
+      "title": "內政部國土管理署都市更新法規網站－22縣市主管法規查詢系統連結",
+      "retrieved_at": "2026-11-27"
+    }
   }
 }
