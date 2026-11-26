@@ -5,6 +5,16 @@ on:
     branches:
       - "work/**"
     paths:
+      - "index.html"
+      - "assets/**"
+      - "workbench/modules/**"
+      - "workbench/EXECUTION_RULES.md"
+      - "scripts/**"
+      - "tests/**"
+      - "regulations/**"
+      - "docs/**"
+      - "versions/**"
+      - ".github/workflows/deployment-package.yml"
   pull_request:
     branches:
       - "main"
