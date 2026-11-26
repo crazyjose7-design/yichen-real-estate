@@ -23,4 +23,6 @@ jobs:
         with:
           node-version: 22
       - name: Validate legal, city and incentive data
-        run: node tests/regulatory-data.test.mjs
+        run: |
+          node tests/regulatory-data.test.mjs
+          node --test tests/regulation-loader.test.mjs

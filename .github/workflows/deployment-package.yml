@@ -35,7 +35,9 @@ jobs:
       - name: Build self-contained HTML and ZIP
         run: node scripts/build-deployment.mjs
       - name: Validate legal, city and incentive data
-        run: node tests/regulatory-data.test.mjs
+        run: |
+          node tests/regulatory-data.test.mjs
+          node --test tests/regulation-loader.test.mjs
       - name: Browser smoke tests
         run: node tests/browser-smoke.mjs
       - name: Validate package contents
