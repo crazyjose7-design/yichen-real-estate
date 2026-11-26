@@ -19,7 +19,7 @@ class DecimalOracleTests(unittest.TestCase):
         # Independent benchmark: 1,000,000 at 2.4% nominal annual rate for 240 months.
         self.assertEqual(
             mortgage_payment(Decimal("1000000"), Decimal("2.4"), 240),
-            Decimal("5249.ӯ"),
+            Decimal("5250.45"),
         )
 
     def test_schedule_conserves_principal_and_ends_at_zero(self):
