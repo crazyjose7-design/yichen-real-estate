@@ -116,7 +116,13 @@
     "rewards/public-facility-open-space.json",
     "rewards/local-planning-incentives.json"
   ],
-  "tax_parameter_files": [],
+  "tax_parameter_files": [
+    "taxes/land-value-tax.json",
+    "taxes/land-value-increment-tax.json",
+    "taxes/house-land-transaction-income-tax.json",
+    "taxes/deed-tax.json",
+    "taxes/house-tax.json"
+  ],
   "policy": {
     "only_verified_auto_apply": true,
     "unverified_default_behavior": "block",
