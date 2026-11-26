@@ -174,3 +174,26 @@ test('site print excludes stale extra-tax results after the user edits inputs', 
   await expect(page.locator('body')).toHaveAttribute('data-print-invoked', '1');
   await expect(page.locator('#yichen-print-root')).not.toContainText('租金扣繳計算機');
 });
+
+test('responsive layout: desktop, tablet, mobile and landscape widths do not overflow', async ({ page }) => {
+  await page.goto('/index.html');
+  const viewports = [
+    { width: 1440, height: 900 },
+    { width: 1280, height: 800 },
+    { width: 1024, height: 768 },
+    { width: 820, height: 1180 },
+    { width: 430, height: 932 },
+    { width: 390, height: 844 },
+    { width: 360, height: 800 },
+    { width: 844, height: 390 }
+  ];
+  for (const viewport of viewports) {
+    await page.setViewportSize(viewport);
+    const dimensions = await page.evaluate(() => ({
+      viewport: document.documentElement.clientWidth,
+      document: document.documentElement.scrollWidth
+    }));
+    expect(dimensions.document, 'horizontal overflow at ' + viewport.width + 'x' + viewport.height)
+      .toBeLessThanOrEqual(dimensions.viewport + 2);
+  }
+});
