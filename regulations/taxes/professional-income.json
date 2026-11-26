@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.0.0",
+  "id": "professional-income",
+  "title": "執行業務所得計算",
+  "status": "in_review",
+  "jurisdiction_layers": [
+    "national",
+    "tax_year",
+    "profession_specific",
+    "taxpayer_specific"
+  ],
+  "governing_law": {
+    "id": "income-tax-act-house-land",
+    "title": "所得稅法",
+    "provision": "第14條第1項第2類"
+  },
+  "parameters": [
+    {
+      "id": "income-basis",
+      "name": "執行業務所得計算基礎",
+      "value": "業務收入－直接必要費用",
+      "unit": "公式",
+      "article": "所得稅法第14條第1項第2類",
+      "status": "in_review"
+    },
+    {
+      "id": "cash-basis",
+      "name": "原則採收付實現制",
+      "value": true,
+      "unit": "規則",
+      "article": "執行業務所得查核辦法第3條",
+      "status": "in_review"
+    },
+    {
+      "id": "expense-documentation",
+      "name": "費用須屬直接必要並有憑證",
+      "value": true,
+      "unit": "規則",
+      "article": "執行業務所得查核辦法第14、17條",
+      "status": "in_review"
+    }
+  ],
+  "official_sources": [
+    {
+      "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=G0340003",
+      "title": "所得稅法",
+      "agency": "財政部",
+      "provision": "第14條第1項第2類",
+      "amended_at": "2026-09-11",
+      "retrieved_at": "2026-11-27"
+    },
+    {
+      "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=G0340030",
+      "title": "執行業務所得查核辦法",
+      "agency": "財政部",
+      "provision": "第3、8、14、15、17、30條",
+      "amended_at": "2024-06-25",
+      "retrieved_at": "2026-11-27"
+    },
+    {
+      "url": "https://gazette.nat.gov.tw/EG_FileManager/eguploadpub/eg032055/ch04/type2/gov30/num6/Eg.pdf",
+      "title": "財政部114年度執行業務者費用標準（115年3月27日發布）",
+      "agency": "財政部",
+      "provision": "114年度各業費用標準",
+      "amended_at": "2026-03-27",
+      "retrieved_at": "2026-11-27"
+    }
+  ],
+  "formula_reference": "workbench/modules/tax-additional-calculations.js#calculateProfessionalIncome",
+  "test_cases": [
+    "actual-expense-income",
+    "income-with-detailed-expenses",
+    "income-fee-rate-mode",
+    "negative-net-income",
+    "withholding-credit-is-not-final-tax"
+  ],
+  "verified_by": null,
+  "application_policy": {
+    "auto_apply": false,
+    "rule": "基本模式只計算業務收入扣除使用者輸入之直接必要費用後的執行業務所得，不計算個人綜合所得稅最終應納稅額。費用率模式須由使用者依正確年度及職業別財政部公告核對後輸入，不預設未查證費用率。"
+  },
+  "review_notes": [
+    "所得稅法第14條第1項第2類定義執行業務所得為業務或演技收入扣除房租或折舊、器材設備折舊及修理費、藥品材料成本、雇用人員薪資、旅費及其他直接必要費用後餘額。",
+    "執行業務所得查核辦法第8條：能提供帳簿憑證者依帳載核實認定；未能提供者依依法核定費用標準。",
+    "第14、17條要求費用直接必要且有原始憑證。",
+    "114年度費用標準適用於114所得年度，不能直接套用到115所得年度；115年度各職業費用標準未經核實前不提供自動費用率。",
+    "已扣繳稅款是預扣/扣抵資訊，不等於個人綜合所得稅最終稅額。"
+  ]
+}
