@@ -1,0 +1,244 @@
+{
+  "dataset_version": "0.1.4",
+  "created_at": "2026-11-27",
+  "status": "development_not_approved",
+  "coverage": {
+    "city_files": 22,
+    "city_source_records": 36,
+    "verified_city_files": 0,
+    "verified_city_official_parameters": 0,
+    "central_law_files": 19,
+    "tax_parameter_files": 7,
+    "reward_files": 9
+  },
+  "new_tax_tools": [
+    "rent-withholding",
+    "professional-income-withholding",
+    "professional-income-annual-estimate"
+  ],
+  "reward_gate": {
+    "runtime": "workbench/modules/reward-engine-runtime.js",
+    "ui": "workbench/modules/land-reward-gate.js",
+    "integrated_into_land_efficiency": true,
+    "status": "implemented_pending_ci",
+    "auto_apply_allowed_only_after_verified_law_effective_date_jurisdiction_case_approval_and_combination_checks": true
+  },
+  "safety": {
+    "auto_apply_enabled": false,
+    "all_city_files_unverified": true,
+    "all_reward_files_unverified": true,
+    "review_required": 35
+  },
+  "pending": [
+    "22縣市地方自治法規、附表、都市計畫書圖、基地分區及個案核准仍須逐條覆核",
+    "五項既有稅務公式尚未全面由已核實參數檔驅動",
+    "各稅目完整公式回歸測試尚未完成",
+    "容積獎勵資料仍缺個別核准量體、有效日期及互斥/併計規則",
+    "新整合的土地坪效獎勵安全檢核須通過最新瀏覽器測試後才可列為通過"
+  ],
+  "manifest": {
+    "schema_version": "1.0.0",
+    "dataset_version": "0.1.4",
+    "generated_at": "2026-11-27",
+    "status": "in_progress",
+    "county_city_files": [
+      {
+        "code": "01",
+        "path": "cities/01-taipei.json"
+      },
+      {
+        "code": "02",
+        "path": "cities/02-new-taipei.json"
+      },
+      {
+        "code": "03",
+        "path": "cities/03-taoyuan.json"
+      },
+      {
+        "code": "04",
+        "path": "cities/04-taichung.json"
+      },
+      {
+        "code": "05",
+        "path": "cities/05-tainan.json"
+      },
+      {
+        "code": "06",
+        "path": "cities/06-kaohsiung.json"
+      },
+      {
+        "code": "07",
+        "path": "cities/07-keelung.json"
+      },
+      {
+        "code": "08",
+        "path": "cities/08-hsinchu-city.json"
+      },
+      {
+        "code": "09",
+        "path": "cities/09-chiayi-city.json"
+      },
+      {
+        "code": "10",
+        "path": "cities/10-hsinchu-county.json"
+      },
+      {
+        "code": "11",
+        "path": "cities/11-miaoli.json"
+      },
+      {
+        "code": "12",
+        "path": "cities/12-changhua.json"
+      },
+      {
+        "code": "13",
+        "path": "cities/13-nantou.json"
+      },
+      {
+        "code": "14",
+        "path": "cities/14-yunlin.json"
+      },
+      {
+        "code": "15",
+        "path": "cities/15-chiayi-county.json"
+      },
+      {
+        "code": "16",
+        "path": "cities/16-pingtung.json"
+      },
+      {
+        "code": "17",
+        "path": "cities/17-yilan.json"
+      },
+      {
+        "code": "18",
+        "path": "cities/18-hualien.json"
+      },
+      {
+        "code": "19",
+        "path": "cities/19-taitung.json"
+      },
+      {
+        "code": "20",
+        "path": "cities/20-penghu.json"
+      },
+      {
+        "code": "21",
+        "path": "cities/21-kinmen.json"
+      },
+      {
+        "code": "22",
+        "path": "cities/22-lienchiang.json"
+      }
+    ],
+    "central_law_files": [
+      "national/urban-planning-law.json",
+      "national/building-act.json",
+      "national/urban-renewal-act.json",
+      "national/hazardous-old-buildings-reconstruction-act.json",
+      "national/land-act.json",
+      "national/house-tax-act.json",
+      "national/land-value-tax-act.json",
+      "national/income-tax-act-house-land.json",
+      "national/deed-tax-act.json",
+      "national/real-estate-securitization-and-related.json",
+      "national/urban-renewal-building-volume-reward-regulations.json",
+      "national/hazardous-old-building-volume-reward-regulations.json",
+      "national/urban-renewal-act-enforcement-rules.json",
+      "national/urban-renewal-rights-transformation-implementation-regulations.json",
+      "national/hazardous-old-buildings-act-implementation-rules.json",
+      "national/withholding-rate-standards.json",
+      "national/execution-income-audit-regulations.json",
+      "national/national-health-insurance-act.json",
+      "national/supplementary-premium-collection-rules.json"
+    ],
+    "incentive_files": [
+      "rewards/urban-renewal.json",
+      "rewards/hazardous-old-building-reconstruction.json",
+      "rewards/green-building.json",
+      "rewards/smart-building.json",
+      "rewards/accessibility-universal-design.json",
+      "rewards/seismic-performance.json",
+      "rewards/transit-oriented-development.json",
+      "rewards/public-facility-open-space.json",
+      "rewards/local-planning-incentives.json"
+    ],
+    "tax_parameter_files": [
+      "taxes/land-value-tax.json",
+      "taxes/land-value-increment-tax.json",
+      "taxes/house-land-transaction-income-tax.json",
+      "taxes/deed-tax.json",
+      "taxes/house-tax.json",
+      "taxes/rent-withholding.json",
+      "taxes/professional-income.json"
+    ],
+    "policy": {
+      "only_verified_auto_apply": true,
+      "unverified_default_behavior": "block",
+      "assumptions_are_not_official": true
+    },
+    "last_research_update": "2026-11-27",
+    "research_progress": {
+      "cities_with_official_local_source_records_count": 22,
+      "remaining_cities_without_official_portal": 0,
+      "specific_local_rule_records_count": 22,
+      "portal_only_cities": [],
+      "remaining_cities_requiring_specific_rule_discovery": 0,
+      "delegated_regulations_added": 5,
+      "local_sources_are_not_fully_verified": true,
+      "all_tax_parameters_in_review": true,
+      "auto_apply_enabled": false,
+      "cities_with_source_records_count": 22,
+      "official_portal_directory_source": {
+        "url": "https://uract.nlma.gov.tw/content/links",
+        "title": "內政部國土管理署都市更新法規網站－22縣市主管法規查詢系統連結",
+        "retrieved_at": "2026-11-27"
+      },
+      "additional_tax_tools": {
+        "status": "implemented_pending_ci",
+        "tools": [
+          "rent-withholding",
+          "professional-income"
+        ],
+        "law_sources": [
+          "withholding-rate-standards",
+          "income-tax-act-house-land",
+          "execution-income-audit-regulations",
+          "national-health-insurance-act",
+          "supplementary-premium-collection-rules"
+        ],
+        "notes": [
+          "租金扣繳：境內居住者10%、非境內居住者20%、境內居住者每次扣繳稅額不超過2,000元免扣繳；租金補充保費2.11%，單次給付達20,000元，以全額計費並以1,000萬元為上限。",
+          "執行業務所得：業務收入減除直接必要費用；可用實際費用總額或明細，費用率僅在使用者自行核對年度與職業別官方標準後手動輸入。",
+          "本兩項計算器尚未計算個人綜合所得稅最終稅額，且未自動套用gross-up、押金設算或個案例外。",
+          "新增執行業務報酬扣繳：境內10%、非境內20%；境內每次應扣繳稅額不超過2,000元免扣；非境內特定稿費等每次給付不超過5,000元免扣。",
+          "補充保費依法有投保資格與免扣條件，使用者須依證明文件人工確認，系統不自動判定。"
+        ]
+      },
+      "cities_with_specific_rule_sources_pending_review": [
+        "南投縣",
+        "宜蘭縣",
+        "臺東縣"
+      ],
+      "taitung_source_quality_note": "臺東縣都市設計審議原則目前取得縣府函文副本，託載於關山鎮公所網站；尚待縣府原始公告頁及修正沿革確認。",
+      "yilan_current_version_note": "宜蘭縣都市設計審議作業要點已定位縣府公告及官方目錄；115年5月13日修正資訊尚待縣府原始法規全文確認。",
+      "nantou_scope_note": "南投縣已定位都市設計審議規範及容積移轉作業要點；附表、現行沿革及基地適用性仍待覆核。",
+      "reward_gate_integration": {
+        "status": "implemented_pending_ci",
+        "browser_runtime": "workbench/modules/reward-engine-runtime.js",
+        "land_ui": "workbench/modules/land-reward-gate.js",
+        "calculation_module": "workbench/modules/land-efficiency.js",
+        "safety": "only fully verified, effective, jurisdiction-matched and individually approved reward records can be applied; all current reward records remain blocked"
+      },
+      "city_review_matrix": {
+        "path": "regulations/city-review-matrix.json",
+        "status": "tracking_only",
+        "city_files": 22,
+        "source_records": 36,
+        "verified_cities": 0,
+        "verified_official_parameters": 0
+      }
+    },
+    "city_review_matrix": "city-review-matrix.json"
+  }
+}
