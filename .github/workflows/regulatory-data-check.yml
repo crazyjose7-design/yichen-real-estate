@@ -26,3 +26,5 @@ jobs:
         run: |
           node tests/regulatory-data.test.mjs
           node --test tests/regulation-loader.test.mjs
+          node --check scripts/build-deployment.mjs
+          node --check workbench/modules/regulation-data-runtime.js
