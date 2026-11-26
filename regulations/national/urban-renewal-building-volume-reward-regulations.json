@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "delegated_regulation",
+  "id": "urban-renewal-building-volume-reward-regulations",
+  "title": "都市更新建築容積獎勵辦法",
+  "status": "in_review",
+  "jurisdiction": "national",
+  "amended_at": "2025-01-13",
+  "effective_from": null,
+  "effective_to": null,
+  "source": {
+    "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0070027",
+    "title": "都市更新建築容積獎勵辦法－全國法規資料庫",
+    "agency": "內政部",
+    "provision": "第1至18條",
+    "amended_at": "2025-01-13",
+    "retrieved_at": "2026-11-27"
+  },
+  "extracted_rules": [
+    {
+      "id": "ur-base-volume",
+      "article": "第3條",
+      "rule": "基準容積為都市計畫法令規定容積率上限乘土地面積；原建築容積依合法建築物核准總樓地板面積及法定扣除項目認定。",
+      "status": "in_review"
+    },
+    {
+      "id": "ur-overlap-deduction",
+      "article": "第4條",
+      "rule": "另依其他法令申請建築容積獎勵時，應先向各該主管機關提出申請；獎勵重複者應予扣除。",
+      "status": "in_review"
+    },
+    {
+      "id": "ur-legacy-building",
+      "article": "第5條",
+      "rule": "實施容積管制前合法建築物原建築容積高於基準容積者，得依原建築容積建築，或依基準容積百分之十給予獎勵。",
+      "status": "in_review"
+    },
+    {
+      "id": "ur-risk-building",
+      "article": "第6條",
+      "rule": "特定危險或結構安全評估情形，分別依基準容積百分之十或百分之八給予獎勵；兩款不得累計申請。",
+      "status": "in_review"
+    },
+    {
+      "id": "ur-public-facility",
+      "article": "第7條",
+      "rule": "指定公益設施無償登記公有者，獎勵容積以基準容積百分之三十為上限，仍須確認地方公告項目、區位及條件。",
+      "status": "in_review"
+    },
+    {
+      "id": "ur-green-building",
+      "article": "第10條",
+      "rule": "候選綠建築證書依鑽石、黃金、銀、銅、合格級分別列有10%、8%、6%、4%、2%基準容積獎勵；各款不得累計申請，且另有適用限制。",
+      "status": "in_review"
+    },
+    {
+      "id": "ur-smart-building",
+      "article": "第11條",
+      "rule": "候選智慧建築證書依等級列有10%、8%、6%、4%、2%基準容積獎勵；各款不得累計申請，且另有適用限制。",
+      "status": "in_review"
+    },
+    {
+      "id": "ur-application-security",
+      "article": "第18條",
+      "rule": "申請第10至13條獎勵須簽訂協議、納入事業計畫、領使用執照前繳保證金，並於領照後二年內取得標章或通過評估。",
+      "status": "in_review"
+    }
+  ],
+  "caveats": [
+    "此檔為法條摘錄索引，不是完整獎勵項目清單。",
+    "需逐條核對第8、9、12至17條、都市更新條例第65條、地方自治法規、適用版本及個案審議核定。",
+    "不同獎勵間不得直接加總；須依各條互斥、擇一、扣除及總上限規則處理。"
+  ],
+  "verified_by": null,
+  "application_policy": {
+    "auto_apply": false,
+    "rule": "未完成全條文與地方規定雙人覆核前禁止自動套用。"
+  }
+}
