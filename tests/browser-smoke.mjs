@@ -47,6 +47,28 @@ await page.waitForTimeout(150);
 const taxAmount=await page.locator('#tax-amount').innerText();
 if(!taxAmount||taxAmount==='NT$ 0')throw new Error('Tax calculator did not produce the expected non-zero sample result; dialogs='+dialogs.join(' | '));
 
+const printCounts=[],pdfResults=[];
+async function verifyPrintPdf(id,expectedPages){
+ await page.locator('#'+id).click();
+ await page.waitForTimeout(500);
+ const titles=await page.locator('#yichen-print-root > .print-page > .print-page-content > h2').allTextContents();
+ const domPages=await page.locator('#yichen-print-root > .print-page').count();
+ if(domPages!==expectedPages)throw new Error(id+' expected '+expectedPages+' print page(s), DOM built '+domPages+'; titles='+titles.join(' | '));
+ const pdf=await page.pdf({format:'A4',printBackground:true,preferCSSPageSize:true});
+ const raw=pdf.toString('latin1');
+ const pdfPages=(raw.match(new RegExp('/Type\\s*/Page\\b','g'))||[]).length;
+ const media=[...raw.matchAll(new RegExp('/MediaBox\\s*\\[\\s*0\\s+0\\s+([0-9.]+)\\s+([0-9.]+)\\s*\\]','g'))].map(m=>[Number(m[1]),Number(m[2])]);
+ if(pdfPages!==expectedPages)throw new Error(id+' PDF page count mismatch: expected '+expectedPages+', got '+pdfPages);
+ if(!media.length||media.some(([w,h])=>Math.abs(w-595.28)>2||Math.abs(h-841.89)>2))throw new Error(id+' PDF is not portrait A4: '+JSON.stringify(media));
+ await fs.writeFile('dist/print-'+id+'.pdf',pdf);
+ pdfResults.push({id,domPages,pdfPages,pageSize:'A4 portrait',titles});
+ await page.evaluate(()=>{document.body.classList.remove('yichen-print-active');const root=document.getElementById('yichen-print-root');if(root)root.innerHTML='';});
+ printCounts.push(await page.evaluate(()=>window.__printCalls));
+}
+await verifyPrintPdf('tax-print',1);
+await verifyPrintPdf('mortgage-print',1);
+await verifyPrintPdf('le-print',1);
+await verifyPrintPdf('site-print',7);
 const extraTools={};
 await page.locator('#tax-menu button[data-yichen-extra="rentWithholding"]').click();
 if(await page.locator('#tax-title').innerText()!=='租金扣繳計算機')throw new Error('Rent withholding tool did not open');
@@ -78,28 +100,6 @@ await page.locator('#tax-extra-proFeeRate').fill('30');
 await page.locator('#tax-extra-proFeeVerified').check();
 await page.locator('#tax-calc').click();
 if(await page.locator('#tax-amount').innerText()!=='NT$ 700,000')throw new Error('Professional income verified fee-rate mode failed');
-const printCounts=[],pdfResults=[];
-async function verifyPrintPdf(id,expectedPages){
- await page.locator('#'+id).click();
- await page.waitForTimeout(500);
- const titles=await page.locator('#yichen-print-root > .print-page > .print-page-content > h2').allTextContents();
- const domPages=await page.locator('#yichen-print-root > .print-page').count();
- if(domPages!==expectedPages)throw new Error(id+' expected '+expectedPages+' print page(s), DOM built '+domPages+'; titles='+titles.join(' | '));
- const pdf=await page.pdf({format:'A4',printBackground:true,preferCSSPageSize:true});
- const raw=pdf.toString('latin1');
- const pdfPages=(raw.match(new RegExp('/Type\\s*/Page\\b','g'))||[]).length;
- const media=[...raw.matchAll(new RegExp('/MediaBox\\s*\\[\\s*0\\s+0\\s+([0-9.]+)\\s+([0-9.]+)\\s*\\]','g'))].map(m=>[Number(m[1]),Number(m[2])]);
- if(pdfPages!==expectedPages)throw new Error(id+' PDF page count mismatch: expected '+expectedPages+', got '+pdfPages);
- if(!media.length||media.some(([w,h])=>Math.abs(w-595.28)>2||Math.abs(h-841.89)>2))throw new Error(id+' PDF is not portrait A4: '+JSON.stringify(media));
- await fs.writeFile('dist/print-'+id+'.pdf',pdf);
- pdfResults.push({id,domPages,pdfPages,pageSize:'A4 portrait',titles});
- await page.evaluate(()=>{document.body.classList.remove('yichen-print-active');const root=document.getElementById('yichen-print-root');if(root)root.innerHTML='';});
- printCounts.push(await page.evaluate(()=>window.__printCalls));
-}
-await verifyPrintPdf('tax-print',1);
-await verifyPrintPdf('mortgage-print',1);
-await verifyPrintPdf('le-print',1);
-await verifyPrintPdf('site-print',7);
 const printCalls=await page.evaluate(()=>window.__printCalls);
 if(printCalls!==4)throw new Error('Expected all 4 print entry points to invoke print; counts='+printCounts.join(',')+'; dialogs='+dialogs.join(' | '));
 if(dialogs.length)throw new Error('Unexpected browser dialogs: '+dialogs.join(' | '));
