@@ -1,0 +1,237 @@
+{
+  "schema_version": "1.0.0",
+  "updated_at": "2026-11-27",
+  "status": "IN_PROGRESS",
+  "source_note": "網站版本說明列14項；workbench/modules/tax-engine.js目前抽出12個defs。租金扣繳及執行業務所得在該模組未找到計算器定義，列為阻擋查核。",
+  "acceptance": {
+    "required_case_classes": [
+      "normal",
+      "boundary",
+      "abnormal",
+      "cross_check"
+    ],
+    "expected_value_must_be_independent": true,
+    "source_and_tax_year_required": true,
+    "all_cases_pass_required": true
+  },
+  "tools": [
+    {
+      "id": "land",
+      "name": "土地增值稅",
+      "status": "IN_PROGRESS",
+      "fixture_file": "fixtures/land.json",
+      "required_cases": {
+        "normal": 0,
+        "boundary": 0,
+        "abnormal": 0,
+        "cross_check": 0
+      },
+      "verified_expected_values": 0,
+      "source_status": "NOT_YET_REVIEWED",
+      "notes": "既有單一基準案例仍是候選值，尚未完成多案例及法源覆核。"
+    },
+    {
+      "id": "house",
+      "name": "房地合一稅",
+      "status": "IN_PROGRESS",
+      "fixture_file": "fixtures/house.json",
+      "required_cases": {
+        "normal": 0,
+        "boundary": 0,
+        "abnormal": 0,
+        "cross_check": 0
+      },
+      "verified_expected_values": 0,
+      "source_status": "NOT_YET_REVIEWED",
+      "notes": "既有單一基準案例仍是候選值，尚未完成多案例及法源覆核。"
+    },
+    {
+      "id": "old",
+      "name": "財產交易所得稅（房屋舊制）",
+      "status": "IN_PROGRESS",
+      "fixture_file": "fixtures/old.json",
+      "required_cases": {
+        "normal": 0,
+        "boundary": 0,
+        "abnormal": 0,
+        "cross_check": 0
+      },
+      "verified_expected_values": 0,
+      "source_status": "NOT_YET_REVIEWED",
+      "notes": "既有單一基準案例仍是候選值，尚未完成多案例及法源覆核。"
+    },
+    {
+      "id": "vat",
+      "name": "營業稅",
+      "status": "IN_PROGRESS",
+      "fixture_file": "fixtures/vat.json",
+      "required_cases": {
+        "normal": 0,
+        "boundary": 0,
+        "abnormal": 0,
+        "cross_check": 0
+      },
+      "verified_expected_values": 0,
+      "source_status": "NOT_YET_REVIEWED",
+      "notes": "既有單一基準案例仍是候選值，尚未完成多案例及法源覆核。"
+    },
+    {
+      "id": "deed",
+      "name": "契稅",
+      "status": "IN_PROGRESS",
+      "fixture_file": "fixtures/deed.json",
+      "required_cases": {
+        "normal": 0,
+        "boundary": 0,
+        "abnormal": 0,
+        "cross_check": 0
+      },
+      "verified_expected_values": 0,
+      "source_status": "NOT_YET_REVIEWED",
+      "notes": "既有單一基準案例仍是候選值，尚未完成多案例及法源覆核。"
+    },
+    {
+      "id": "stamp",
+      "name": "印花稅",
+      "status": "IN_PROGRESS",
+      "fixture_file": "fixtures/stamp.json",
+      "required_cases": {
+        "normal": 0,
+        "boundary": 0,
+        "abnormal": 0,
+        "cross_check": 0
+      },
+      "verified_expected_values": 0,
+      "source_status": "NOT_YET_REVIEWED",
+      "notes": "既有單一基準案例仍是候選值，尚未完成多案例及法源覆核。"
+    },
+    {
+      "id": "houseTax",
+      "name": "房屋稅",
+      "status": "IN_PROGRESS",
+      "fixture_file": "fixtures/houseTax.json",
+      "required_cases": {
+        "normal": 0,
+        "boundary": 0,
+        "abnormal": 0,
+        "cross_check": 0
+      },
+      "verified_expected_values": 0,
+      "source_status": "NOT_YET_REVIEWED",
+      "notes": "既有單一基準案例仍是候選值，尚未完成多案例及法源覆核。"
+    },
+    {
+      "id": "landTax",
+      "name": "地價稅",
+      "status": "IN_PROGRESS",
+      "fixture_file": "fixtures/landTax.json",
+      "required_cases": {
+        "normal": 0,
+        "boundary": 0,
+        "abnormal": 0,
+        "cross_check": 0
+      },
+      "verified_expected_values": 0,
+      "source_status": "NOT_YET_REVIEWED",
+      "notes": "既有單一基準案例仍是候選值，尚未完成多案例及法源覆核。"
+    },
+    {
+      "id": "rent",
+      "name": "租賃所得稅",
+      "status": "IN_PROGRESS",
+      "fixture_file": "fixtures/rent.json",
+      "required_cases": {
+        "normal": 0,
+        "boundary": 0,
+        "abnormal": 0,
+        "cross_check": 0
+      },
+      "verified_expected_values": 0,
+      "source_status": "NOT_YET_REVIEWED",
+      "notes": "既有單一基準案例仍是候選值，尚未完成多案例及法源覆核。"
+    },
+    {
+      "id": "estate",
+      "name": "遺產稅",
+      "status": "IN_PROGRESS",
+      "fixture_file": "fixtures/estate.json",
+      "required_cases": {
+        "normal": 0,
+        "boundary": 0,
+        "abnormal": 0,
+        "cross_check": 0
+      },
+      "verified_expected_values": 0,
+      "source_status": "NOT_YET_REVIEWED",
+      "notes": "既有單一基準案例仍是候選值，尚未完成多案例及法源覆核。"
+    },
+    {
+      "id": "gift",
+      "name": "贈與稅",
+      "status": "IN_PROGRESS",
+      "fixture_file": "fixtures/gift.json",
+      "required_cases": {
+        "normal": 0,
+        "boundary": 0,
+        "abnormal": 0,
+        "cross_check": 0
+      },
+      "verified_expected_values": 0,
+      "source_status": "NOT_YET_REVIEWED",
+      "notes": "既有單一基準案例仍是候選值，尚未完成多案例及法源覆核。"
+    },
+    {
+      "id": "corp",
+      "name": "營利事業所得稅",
+      "status": "IN_PROGRESS",
+      "fixture_file": "fixtures/corp.json",
+      "required_cases": {
+        "normal": 0,
+        "boundary": 0,
+        "abnormal": 0,
+        "cross_check": 0
+      },
+      "verified_expected_values": 0,
+      "source_status": "NOT_YET_REVIEWED",
+      "notes": "既有單一基準案例仍是候選值，尚未完成多案例及法源覆核。"
+    },
+    {
+      "id": "rentWithholding",
+      "name": "租金扣繳",
+      "status": "BLOCKED_SOURCE",
+      "fixture_file": "fixtures/rentWithholding.json",
+      "required_cases": {
+        "normal": 0,
+        "boundary": 0,
+        "abnormal": 0,
+        "cross_check": 0
+      },
+      "verified_expected_values": 0,
+      "source_status": "NOT_YET_REVIEWED",
+      "notes": "目前抽出的計算引擎未找到此工具定義；先定位或實作計算器，再建立獨立公式。"
+    },
+    {
+      "id": "professionalIncome",
+      "name": "執行業務所得",
+      "status": "BLOCKED_SOURCE",
+      "fixture_file": "fixtures/professionalIncome.json",
+      "required_cases": {
+        "normal": 0,
+        "boundary": 0,
+        "abnormal": 0,
+        "cross_check": 0
+      },
+      "verified_expected_values": 0,
+      "source_status": "NOT_YET_REVIEWED",
+      "notes": "目前抽出的計算引擎未找到此工具定義；先定位或實作計算器，再建立獨立公式。"
+    }
+  ],
+  "overall_exit_criteria": [
+    "14項工具均有實際計算器或明確取消決策",
+    "每項公式有獨立Decimal oracle或可重現手算規格",
+    "所有expected有官方法源/官方試算/獨立推導紀錄",
+    "每項完成正常、邊界、異常、交叉核算矩陣",
+    "稅年度與地方差異有測試",
+    "全部案例通過並產生報告"
+  ]
+}
