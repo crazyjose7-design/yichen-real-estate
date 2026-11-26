@@ -36,3 +36,7 @@
 - Simpany 執行業務所得：https://simpany.co/professional-income-calc
 - Simpany 執行業務所得欄位說明：https://blog.simpany.co/professional-income-calc/
 - 台灣法規參數另以財政部及健保署現行法規為準；Simpany僅作介面與功能結構參考。
+
+
+## 法規優先於參考網站的必要差異
+Simpany 的介紹文將公司房東簡化為免處理扣繳；但財政部稅務入口網「1508 租賃所得和權利金所得如何辦理扣繳？」明確說明：所得人為境內居住個人或境內有固定營業場所之營利事業，租金按10%扣繳；非居住個人或境內無固定營業場所營利事業，按20%扣繳。因此本專案只比照其欄位及操作結構，不照抄與官方法規不一致的簡化判斷。官方依據：https://www.etax.nat.gov.tw/etwmain/tax-info/understanding/tax-q-and-a/national/individual-income-tax/withheld-rule/rule/zNMxNQQ
