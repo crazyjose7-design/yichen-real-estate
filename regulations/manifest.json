@@ -140,10 +140,13 @@
       "01 臺北市",
       "02 新北市",
       "04 臺中市",
-      "06 高雄市"
+      "05 臺南市",
+      "06 高雄市",
+      "07 基隆市",
+      "14 雲林縣"
     ],
-    "cities_with_source_records_count": 4,
-    "remaining_cities_without_source_records": 18,
+    "cities_with_source_records_count": 7,
+    "remaining_cities_without_source_records": 15,
     "local_sources_are_not_fully_verified": true
   }
 }
