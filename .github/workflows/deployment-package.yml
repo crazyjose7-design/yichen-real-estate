@@ -38,7 +38,7 @@ jobs:
       - name: Validate legal, city and incentive data
         run: |
           node tests/regulatory-data.test.mjs
-          node --test tests/regulation-loader.test.mjs
+          node --test tests/regulation-loader.test.mjs tests/reward-engine.test.mjs
       - name: Browser smoke tests
         run: node tests/browser-smoke.mjs
       - name: Validate package contents
@@ -58,6 +58,7 @@ jobs:
           node --check workbench/modules/site-print-engine.js
           node --check workbench/modules/regulation-data-loader.mjs
           node --check workbench/modules/regulation-data-runtime.js
+          node --check workbench/modules/reward-engine.mjs
       - name: Upload deployment package
         uses: actions/upload-artifact@v4
         with:
