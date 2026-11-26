@@ -34,11 +34,25 @@
       "authority": "official",
       "checkedAt": "2026-11-27",
       "status": "source_identified_not_fully_audited"
+    },
+    {
+      "title": "財政部印花稅問答實例｜買賣動產契據每件新臺幣12元",
+      "url": "https://www.etax.nat.gov.tw/etwmain/tax-info/understanding/tax-saving-manual/local/stamp-tax/lPa2Da8",
+      "authority": "official",
+      "checkedAt": "2026-11-27",
+      "status": "source_identified_not_fully_audited"
     }
   ],
   "riskFlags": [
     "須判斷憑證種類、正副本、每份金額及免稅條件。",
     "各類憑證稅率/定額及不足1元處理須逐類測試。"
   ],
-  "notes": "已依 main/index.html 靜態原始碼確認模組 key 與名稱，並登錄官方來源入口。尚未完成所有參數、年度、適用條件及公式測試查核，不得直接供計算器讀取。"
+  "notes": "已依 main/index.html 靜態原始碼確認模組 key 與名稱，並登錄官方來源入口。尚未完成所有參數、年度、適用條件及公式測試查核，不得直接供計算器讀取。",
+  "reviewFindings": [
+    {
+      "issue": "法規頁與稅務入口網表述差異",
+      "detail": "印花稅法第7條文字列示每件4元，但財政部稅務入口網最新課徵說明及問答明確列示新臺幣12元。此處涉及舊法貨幣單位與新臺幣換算；現行程式使用12元與財政部稅務入口網一致。不可僅依法規頁面字面4元逕改程式，仍需將貨幣換算依據及法規沿革納入正式審查。",
+      "status": "needs_legal_history_review"
+    }
+  ]
 }

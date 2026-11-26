@@ -1,0 +1,18 @@
+{
+  "id": "stamp-tax-movable-contract",
+  "taxModule": "stamp",
+  "sourceUrl": "https://www.etax.nat.gov.tw/etwmain/tax-info/understanding/tax-saving-manual/local/stamp-tax/lPa2Da8",
+  "status": "reference_expected_result_not_yet_executed_against_site",
+  "input": {
+    "base": 100000,
+    "copies": 2,
+    "kind": "買賣動產契據",
+    "documentVerified": "是",
+    "exemption": "不適用（已確認應稅）"
+  },
+  "expected": {
+    "perDocumentTax": 12,
+    "totalTax": 24
+  },
+  "notes": "財政部稅務入口網列示買賣動產契據每件新臺幣12元；此案例尚未實際執行目前網站互動程式。"
+}

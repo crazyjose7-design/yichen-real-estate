@@ -1,0 +1,29 @@
+{
+  "id": "land-value-increment-official-example",
+  "taxModule": "land",
+  "sourceUrl": "https://www.etax.nat.gov.tw/etwmain/tax-info/understanding/tax-saving-manual/local/land-value-increment-tax/noaGA0q",
+  "sourceDescription": "財政部官方35年持有、第3級距示例",
+  "status": "reference_expected_result_not_yet_executed_against_site",
+  "input": {
+    "previousDate": "1991-11-27",
+    "currentValue": 160000,
+    "priorValue": 20000,
+    "cpi": 200,
+    "area": 50,
+    "landType": "都市土地",
+    "selfUseApproved": "否／未核准（只計一般用地）",
+    "shareNumerator": 1,
+    "shareDenominator": 1,
+    "deductibleCosts": 80000,
+    "priorLandTaxCredit": 0
+  },
+  "expected": {
+    "landAppreciationAmount": 5920000,
+    "holdingYears": 35,
+    "taxTier": "第三級",
+    "effectiveRate": 0.34,
+    "progressiveDeduction": 420000,
+    "tax": 1592800
+  },
+  "notes": "日期需在執行測試日恰滿35年；此為官方參考案例轉錄，尚未實際執行目前網站互動程式。"
+}
