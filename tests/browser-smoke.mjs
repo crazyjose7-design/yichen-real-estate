@@ -24,6 +24,8 @@ const imgs=await page.locator('img[data-yichen-inline-image]').count();
 if(imgs!==0)throw new Error('Unembedded image placeholders remain');
 const imageSources=await page.locator('img[src^="data:image/"]').count();
 if(imageSources<4)throw new Error('Expected embedded brand images, found '+imageSources);
+const founderImage=await page.locator('.founder').evaluate(img=>({complete:img.complete,width:img.naturalWidth,height:img.naturalHeight,src:img.currentSrc.slice(0,40)}));
+if(!founderImage.complete||founderImage.width<100||founderImage.height<100)throw new Error('Founder portrait did not load from embedded image data: '+JSON.stringify(founderImage));
 
 await page.locator('#mortgageForm button[type="submit"]').click();
 await page.waitForTimeout(150);
@@ -71,6 +73,6 @@ const printCalls=await page.evaluate(()=>window.__printCalls);
 if(printCalls!==4)throw new Error('Expected all 4 print entry points to invoke print; counts='+printCounts.join(',')+'; dialogs='+dialogs.join(' | '));
 if(dialogs.length)throw new Error('Unexpected browser dialogs: '+dialogs.join(' | '));
 if(errors.length)throw new Error('Browser errors: '+errors.join(' | '));
-await fs.writeFile('dist/browser-smoke-results.json',JSON.stringify({passed:true,mortgage,land,taxAmount,embeddedImageCount:imageSources,regulatory,printCalls,printCounts,pdfResults,errors},null,2));
+await fs.writeFile('dist/browser-smoke-results.json',JSON.stringify({passed:true,mortgage,land,taxAmount,embeddedImageCount:imageSources,founderImage,regulatory,printCalls,printCounts,pdfResults,errors},null,2));
 await browser.close();
-console.log('Browser smoke tests passed: '+JSON.stringify({mortgage,land,taxAmount,imageSources,regulatory,printCalls,printCounts,pdfResults}));
+console.log('Browser smoke tests passed: '+JSON.stringify({mortgage,land,taxAmount,imageSources,founderImage,regulatory,printCalls,printCounts,pdfResults}));
