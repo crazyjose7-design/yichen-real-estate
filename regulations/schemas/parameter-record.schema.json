@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Legal and Incentive Parameter Record",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "status",
+    "jurisdiction",
+    "application_policy"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "status": {
+      "enum": [
+        "unverified",
+        "in_review",
+        "verified",
+        "deprecated"
+      ]
+    },
+    "jurisdiction": {
+      "type": [
+        "string",
+        "array"
+      ]
+    },
+    "effective_from": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
+    "effective_to": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
+    "legal_basis": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "title",
+          "provision",
+          "url",
+          "agency",
+          "retrieved_at"
+        ],
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "provision": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "agency": {
+            "type": "string"
+          },
+          "published_at": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date"
+          },
+          "effective_from": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date"
+          },
+          "retrieved_at": {
+            "type": "string",
+            "format": "date"
+          }
+        }
+      }
+    },
+    "official_sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "url",
+          "title",
+          "agency",
+          "retrieved_at"
+        ],
+        "properties": {
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "title": {
+            "type": "string"
+          },
+          "agency": {
+            "type": "string"
+          },
+          "retrieved_at": {
+            "type": "string",
+            "format": "date"
+          }
+        }
+      }
+    },
+    "verified_by": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "application_policy": {
+      "type": "object",
+      "required": [
+        "auto_apply"
+      ],
+      "properties": {
+        "auto_apply": {
+          "type": "boolean"
+        },
+        "rule": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "additionalProperties": true
+}

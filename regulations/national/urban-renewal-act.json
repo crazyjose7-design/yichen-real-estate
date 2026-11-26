@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "central_law_index",
+  "title": "都市更新條例",
+  "official_portal": "https://law.moj.gov.tw/",
+  "status": "unverified",
+  "jurisdiction": "national",
+  "published_at": null,
+  "amended_at": null,
+  "effective_from": null,
+  "effective_to": null,
+  "provisions": [],
+  "scope_note": "中央法律；都市更新程序及獎勵制度。獎勵額度須依現行條文及子法、個案條件核對。",
+  "source": {
+    "url": "https://law.moj.gov.tw/",
+    "title": "官方法規入口；尚未完成個別法規頁面與條文核驗",
+    "agency": "待核對",
+    "retrieved_at": "2026-11-27"
+  },
+  "verified_by": null,
+  "application_policy": {
+    "auto_apply": false
+  }
+}

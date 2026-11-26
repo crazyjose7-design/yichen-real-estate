@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0.0",
+  "jurisdiction": {
+    "level": "county_city",
+    "code": "15",
+    "name": "嘉義縣",
+    "slug": "chiayi-county",
+    "country": "TW"
+  },
+  "dataset_version": "0.1.0",
+  "status": "unverified",
+  "effective_from": null,
+  "effective_to": null,
+  "retrieved_at": "2026-11-27",
+  "official_parameters": [],
+  "local_regulations": [],
+  "reward_programs": [],
+  "user_assumptions": [],
+  "application_policy": {
+    "auto_apply": false,
+    "rule": "未完成官方來源、適用範圍、有效日期及雙人覆核前，任何縣市參數或獎勵均不得自動套用。"
+  },
+  "pending_verification": [
+    "都市計畫及土地使用分區管制",
+    "建蔽率、容積率、移轉/獎勵容積及個案限制",
+    "地方自治法規、地方獎勵辦法與受理程序",
+    "官方公告、法規版本、生效日期及適用範圍"
+  ],
+  "safety_notes": [
+    "不得以縣市通用值取代基地地號與個案核定條件。",
+    "全國性法規放在 regulations/national；全國性稅法放在 regulations/taxes。",
+    "容積獎勵須確認法源、上限、計算基準、互斥/累計規則及審查條件。",
+    "未查證資料不得進入計算，也不得標示為官方核定值。"
+  ]
+}

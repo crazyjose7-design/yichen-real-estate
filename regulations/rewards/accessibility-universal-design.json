@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0.0",
+  "id": "accessibility-universal-design",
+  "title": "accessibility-universal-design",
+  "status": "unverified",
+  "jurisdiction_layers": [
+    "national",
+    "county_city",
+    "project_specific"
+  ],
+  "legal_basis": [],
+  "eligibility": [],
+  "calculation_basis": null,
+  "maximum_value": null,
+  "combination_rules": null,
+  "application_procedure": [],
+  "effective_from": null,
+  "effective_to": null,
+  "official_sources": [],
+  "case_approval_records": [],
+  "verified_by": null,
+  "application_policy": {
+    "auto_apply": false,
+    "rule": "須逐案確認法源、適用資格、計算基礎、上限、互斥/併計及有效日期；未核驗不得計入坪效。"
+  }
+}
