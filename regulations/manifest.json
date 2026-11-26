@@ -135,6 +135,15 @@
     "kaohsiung_local_sources": 3,
     "kaohsiung_status": "in_review",
     "remaining_city_jurisdictions": 21,
-    "delegated_regulations_added": 2
+    "delegated_regulations_added": 2,
+    "cities_with_official_local_source_records": [
+      "01 臺北市",
+      "02 新北市",
+      "04 臺中市",
+      "06 高雄市"
+    ],
+    "cities_with_source_records_count": 4,
+    "remaining_cities_without_source_records": 18,
+    "local_sources_are_not_fully_verified": true
   }
 }
