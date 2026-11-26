@@ -24,7 +24,7 @@ for(const [code,name,slug] of cities){
 }
 const manifestForCoverage=JSON.parse(fs.readFileSync(path.join(root,'manifest.json'),'utf8'));
 if(manifestForCoverage.research_progress?.cities_with_source_records_count!==citySourceCount)errors.push('manifest local source coverage count does not match city records');
-if(citySourceCount!==14)errors.push('expected fourteen city source indexes in current research batch; found '+citySourceCount);
+if(citySourceCount!==18)errors.push('expected eighteen city source indexes in current research batch; found '+citySourceCount);
 
 for(const dir of ['national','rewards','taxes']){
  for(const f of fs.readdirSync(path.join(root,dir)).filter(x=>x.endsWith('.json'))){
