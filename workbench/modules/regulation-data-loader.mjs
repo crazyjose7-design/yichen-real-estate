@@ -23,3 +23,10 @@ export async function loadCityDataset(code, { fetchImpl = globalThis.fetch, base
   if (!response.ok) throw new Error('Unable to load county/city dataset: ' + code);
   return response.json();
 }
+
+export function buildRegulatoryBundle({ cityDataset, centralLaws = [], incentives = [], calculationDate, jurisdiction } = {}) {
+  const selected = selectVerifiedParameters(cityDataset, { date: calculationDate, jurisdiction });
+  const assumptions = Array.isArray(cityDataset?.user_assumptions) ? cityDataset.user_assumptions : [];
+  const pending = [...centralLaws, ...incentives].filter(record => record?.status !== 'verified' || record?.application_policy?.auto_apply !== true);
+  return { jurisdiction: cityDataset?.jurisdiction ?? null, calculationDate, applicableParameters: selected, userAssumptions: assumptions, centralLawReferences: centralLaws, incentiveReferences: incentives, reviewRequired: pending.map(record => record.id ?? record.title ?? 'unidentified-record'), safeToCalculate: selected.length > 0 && pending.length === 0 };
+}
