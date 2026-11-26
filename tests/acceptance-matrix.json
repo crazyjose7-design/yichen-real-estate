@@ -18,9 +18,9 @@
         "贈與稅",
         "營利事業所得稅"
       ],
-      "status": "ui_smoke_passed_formula_regression_pending",
+      "status": "131_case_matrix_added_browser_regression_pending_ci",
       "minimumTests": "法定門檻前後、邊界值、零值、空值、負數、小數、極大值、免稅/扣抵、不同身分/期間/持分、獨立手算交叉驗證",
-      "completedEvidence": "Browser smoke confirms all 12 tools open and render fields; land value increment tax has 3 new independent numeric/boundary cases; the remaining 11 calculators do not yet have full independent expected-output matrices."
+      "completedEvidence": "Browser smoke confirms all 12 tools open and render fields; land value increment tax now has 131 new case rows (130 numeric cases plus 1 decimal-rejection validation) with independently calculated expected outputs, plus 2 targeted prior-credit cases; the remaining 11 calculators do not yet have full independent expected-output matrices."
     },
     {
       "group": "稅務試算－新增2項",
