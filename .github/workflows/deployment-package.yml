@@ -52,7 +52,7 @@ jobs:
       - name: Validate legal, city and incentive data
         run: |
           node tests/regulatory-data.test.mjs
-          node --test tests/regulation-loader.test.mjs tests/reward-engine.test.mjs tests/tax-additional-tools.test.mjs tests/reward-engine-runtime.test.mjs
+          node --test tests/regulation-loader.test.mjs tests/reward-engine.test.mjs tests/tax-additional-tools.test.mjs tests/tax-simpany-parity.test.mjs tests/reward-engine-runtime.test.mjs
       - name: Browser smoke tests
         run: node tests/browser-smoke.mjs
       - name: Validate package contents
@@ -76,7 +76,7 @@ jobs:
           unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'regulations/national/withholding-rate-standards.json'
           unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'regulations/national/national-health-insurance-act.json'
           unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'regulations/national/supplementary-premium-collection-rules.json'
-          unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'tax-additional-tools.test.mjs'
+          unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'tax-additional-tools.test.mjs'\n          unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'tax-simpany-parity.test.mjs'
           unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'reward-engine-runtime.test.mjs'
           unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'modules/reward-engine-runtime.js'
           unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'modules/land-reward-gate.js'
@@ -90,7 +90,7 @@ jobs:
           node --check workbench/modules/regulation-data-runtime.js
           node --check workbench/modules/reward-engine.mjs
           node --check workbench/modules/tax-additional-calculations.js
-          node --check workbench/modules/tax-additional-tools.js
+          node --check workbench/modules/tax-additional-tools.js\n          node --check workbench/modules/tax-simpany-parity-calculations.js\n          node --check workbench/modules/tax-simpany-parity-tools.js
           node --check workbench/modules/reward-engine-runtime.js
           node --check workbench/modules/land-reward-gate.js
       - name: Upload deployment package
