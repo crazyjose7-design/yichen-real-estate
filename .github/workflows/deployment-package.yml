@@ -50,7 +50,7 @@ jobs:
           unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'regulations/national/urban-renewal-act.json'
           unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'regulations/national/urban-renewal-building-volume-reward-regulations.json'
           unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'regulations/national/hazardous-old-building-volume-reward-regulations.json'
-          unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'tests/reward-engine.test.mjs'
+          unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'reward-engine.test.mjs'
           unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'regulations/rewards/urban-renewal.json'
           unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'regulations/taxes/house-land-transaction-income-tax.json'
           unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'versions/rollback.md'
