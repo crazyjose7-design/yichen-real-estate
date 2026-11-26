@@ -28,5 +28,6 @@ export function buildRegulatoryBundle({ cityDataset, centralLaws = [], incentive
   const selected = selectVerifiedParameters(cityDataset, { date: calculationDate, jurisdiction });
   const assumptions = Array.isArray(cityDataset?.user_assumptions) ? cityDataset.user_assumptions : [];
   const pending = [...centralLaws, ...incentives].filter(record => record?.status !== 'verified' || record?.application_policy?.auto_apply !== true);
-  return { jurisdiction: cityDataset?.jurisdiction ?? null, calculationDate, applicableParameters: selected, userAssumptions: assumptions, centralLawReferences: centralLaws, incentiveReferences: incentives, taxParameterReferences: taxParameters, reviewRequired: [...pending, ...taxParameters.filter(record => record?.status !== 'verified' || record?.application_policy?.auto_apply !== true)].map(record => record.id ?? record.title ?? 'unidentified-record'), safeToCalculate: selected.length > 0 && pending.length === 0 && taxParameters.length === 0 };
+  const pendingTax = taxParameters.filter(record => record?.status !== 'verified' || record?.application_policy?.auto_apply !== true);
+  return { jurisdiction: cityDataset?.jurisdiction ?? null, calculationDate, applicableParameters: selected, userAssumptions: assumptions, centralLawReferences: centralLaws, incentiveReferences: incentives, taxParameterReferences: taxParameters, reviewRequired: [...pending, ...pendingTax].map(record => record.id ?? record.title ?? 'unidentified-record'), safeToCalculate: selected.length > 0 && pending.length === 0 && pendingTax.length === 0 };
 }
