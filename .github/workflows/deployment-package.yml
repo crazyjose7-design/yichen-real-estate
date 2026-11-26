@@ -70,6 +70,12 @@ jobs:
           unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'reward-engine.test.mjs'
           unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'regulations/rewards/urban-renewal.json'
           unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'regulations/taxes/house-land-transaction-income-tax.json'
+          unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'regulations/taxes/rent-withholding.json'
+          unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'regulations/taxes/professional-income.json'
+          unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'regulations/national/withholding-rate-standards.json'
+          unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'regulations/national/national-health-insurance-act.json'
+          unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'regulations/national/supplementary-premium-collection-rules.json'
+          unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'tax-additional-tools.test.mjs'
           unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'versions/rollback.md'
           node --check workbench/modules/tax-engine.js
           node --check workbench/modules/mortgage-calculator.js
@@ -79,6 +85,8 @@ jobs:
           node --check workbench/modules/regulation-data-loader.mjs
           node --check workbench/modules/regulation-data-runtime.js
           node --check workbench/modules/reward-engine.mjs
+          node --check workbench/modules/tax-additional-calculations.js
+          node --check workbench/modules/tax-additional-tools.js
       - name: Upload deployment package
         uses: actions/upload-artifact@v4
         with:
