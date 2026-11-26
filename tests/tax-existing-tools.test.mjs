@@ -5,10 +5,10 @@ import vm from 'node:vm';
 
 // Load the production calculator definitions without its DOM event wiring.
 const source = fs.readFileSync(new URL('../workbench/modules/tax-engine.js', import.meta.url), 'utf8');
-const marker = "const menu=document.getElementById('tax-menu')";
+const marker = 'const quickFieldIds={';
 if (!source.includes(marker)) throw new Error('Tax engine extraction marker changed; update this test harness deliberately.');
 const instrumented = source.replace(marker, 'globalThis.__yichenTaxDefs = defs; return; ' + marker);
-const context = { Intl, Math, Number, Object, Error, Date, String, Array };
+const context = { Intl, Math, Number, Object, Error, Date, String, Array, document: { getElementById() { return {}; } } };
 vm.runInNewContext(instrumented, context);
 const defs = context.__yichenTaxDefs;
 const base = {
