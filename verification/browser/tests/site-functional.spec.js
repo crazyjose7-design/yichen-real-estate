@@ -128,3 +128,48 @@ test('full-site print: requested main sections have separate pages and culture i
   await expect(pages.nth(2)).toContainText('中央橫樑');
   await expect(pages.nth(5)).toContainText('OUR BELIEF');
 });
+
+test('mortgage print: one isolated page includes six results and the first twelve periods', async ({ page }) => {
+  await page.addInitScript(() => { window.print = () => { document.body.dataset.printInvoked = '1'; }; });
+  await page.goto('/index.html');
+  await page.locator('#mortgageForm button[type="submit"]').click();
+  await page.locator('#mortgage-print').click();
+  await expect(page.locator('body')).toHaveAttribute('data-print-invoked', '1');
+  const printed = page.locator('#yichen-print-root .print-page');
+  await expect(printed).toHaveCount(1);
+  await expect(printed).toContainText('寬限期後首期月付金');
+  await expect(printed).toContainText('寬限期每月利息');
+  await expect(printed).toContainText('總利息');
+  await expect(printed).toContainText('總還款金額');
+  await expect(printed).toContainText('貸款成數');
+  await expect(printed).toContainText('預估首期還款日');
+  await expect(printed).toContainText('前 12 期還款明細');
+  await expect(printed.locator('#mortgageSchedule tr')).toHaveCount(12);
+});
+
+test('tax print: only the currently calculated rent-withholding tool is printed', async ({ page }) => {
+  await page.addInitScript(() => { window.print = () => { document.body.dataset.printInvoked = '1'; }; });
+  await page.goto('/index.html');
+  await page.locator('#tax-menu button').filter({ hasText: '租金扣繳' }).click();
+  await page.locator('#tax-extra-rentAmount').fill('30000');
+  await page.locator('#tax-calc').click();
+  await page.locator('#tax-print').click();
+  await expect(page.locator('body')).toHaveAttribute('data-print-invoked', '1');
+  const printed = page.locator('#yichen-print-root .print-page');
+  await expect(printed).toHaveCount(1);
+  await expect(printed).toContainText('租金扣繳計算機');
+  await expect(printed).toContainText('租金扣繳：NT$ 3,000');
+  await expect(printed).not.toContainText('房貸試算');
+});
+
+test('site print excludes stale extra-tax results after the user edits inputs', async ({ page }) => {
+  await page.addInitScript(() => { window.print = () => { document.body.dataset.printInvoked = '1'; }; });
+  await page.goto('/index.html');
+  await page.locator('#tax-menu button').filter({ hasText: '租金扣繳' }).click();
+  await page.locator('#tax-extra-rentAmount').fill('30000');
+  await page.locator('#tax-calc').click();
+  await page.locator('#tax-extra-rentAmount').fill('40000');
+  await page.locator('#site-print').click();
+  await expect(page.locator('body')).toHaveAttribute('data-print-invoked', '1');
+  await expect(page.locator('#yichen-print-root')).not.toContainText('租金扣繳計算機');
+});
