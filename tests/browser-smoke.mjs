@@ -76,8 +76,8 @@ async function verifyPrintPdf(id,expectedPages,outputName=id){
 }
 await verifyPrintPdf('tax-print',1);
 await verifyPrintPdf('mortgage-print',1);
-await verifyPrintPdf('le-print',1);
-await verifyPrintPdf('site-print',7);
+await verifyPrintPdf('le-print',3);
+await verifyPrintPdf('site-print',11);
 const extraTools={};
 await page.locator('#tax-menu button[data-yichen-extra="rentWithholding"]').click();
 if(await page.locator('#tax-title').innerText()!=='租金扣繳計算機')throw new Error('Rent withholding tool did not open');
@@ -111,6 +111,7 @@ extraTools.professionalWithholding=proDetail;
 await page.locator('#tax-fields details.tax-advanced').evaluate(el=>el.open=true);
 await page.locator('#tax-extra-proAnnual').fill('300000');
 await page.locator('#tax-extra-proFeeRate').fill('35');
+await page.locator('#tax-extra-proFeeVerified').check();
 await page.locator('#tax-calc').click();
 proDetail=await page.locator('#tax-detail').innerText();
 if(!proDetail.includes('計入所得淨額：NT$ 195,000'))throw new Error('Professional annual income analysis failed: '+proDetail);
@@ -121,7 +122,7 @@ await page.locator('#tax-calc').click();
 if(!(await page.locator('#tax-detail').innerText()).includes('代扣所得稅：NT$ 0'))throw new Error('Nonresident 9B withholding exemption failed');
 await verifyPrintPdf('tax-print',1,'tax-professional-income');
 if(pdfResults[pdfResults.length-1].titles[0]!=='稅務試算｜執行業務所得計算')throw new Error('Professional income print title incorrect: '+pdfResults[pdfResults.length-1].titles[0]);
-await verifyPrintPdf('site-print',9,'site-with-new-tax-tools');
+await verifyPrintPdf('site-print',13,'site-with-new-tax-tools');
 const existingTaxTools=[
  ['land','土地增值稅'],['house','房地合一稅｜專業判斷版'],['old','財產交易所得稅（房屋舊制）'],['vat','營業稅'],['deed','契稅'],['stamp','印花稅'],['houseTax','房屋稅'],['landTax','地價稅'],['rent','租賃所得稅'],['estate','遺產稅'],['gift','贈與稅'],['corp','營利事業所得稅']
 ];
