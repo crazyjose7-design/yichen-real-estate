@@ -13,7 +13,38 @@
   "effective_to": null,
   "retrieved_at": "2026-11-27",
   "official_parameters": [],
-  "local_regulations": [],
+  "local_regulations": [
+    {
+      "id": "tainan-urban-renewal-volume-reward-rules",
+      "title": "臺南市都市更新建築容積獎勵辦法",
+      "status": "in_review",
+      "promulgated_at": "2020-05-01",
+      "amended_at": "2023-04-13",
+      "source": {
+        "url": "https://www.tainan.gov.tw/News_Content.aspx?n=4977&s=8529067",
+        "title": "臺南市政府市政公報－修正臺南市都市更新建築容積獎勵辦法",
+        "agency": "臺南市政府",
+        "provision": "第1條、第4條之1修正；另參照訂定公報及現行附件"
+      },
+      "review_notes": [
+        "須取得並核對現行完整辦法及附表，逐項比對中央辦法、地方獎勵額度、互斥及計算公式。"
+      ]
+    },
+    {
+      "id": "tainan-urban-renewal-designated-public-facilities",
+      "title": "臺南市都市更新容積獎勵指定社會福利設施公告及附表",
+      "status": "in_review",
+      "source": {
+        "url": "https://udweb.tainan.gov.tw/News.aspx?n=17114&sms=17988",
+        "title": "臺南市政府都市發展局法令公告",
+        "agency": "臺南市政府都市發展局",
+        "provision": "115年10月21日公告指定社會福利設施項目及附表；115年11月4日另有個案更新單元公告"
+      },
+      "review_notes": [
+        "公告及附表具時效與區位條件，必須依公告日、適用更新單元、指定設施、獎勵係數及附表版本逐案核對；不得套用成臺南全市通用係數。"
+      ]
+    }
+  ],
   "reward_programs": [],
   "user_assumptions": [],
   "application_policy": {
@@ -24,7 +55,10 @@
     "都市計畫及土地使用分區管制",
     "建蔽率、容積率、移轉/獎勵容積及個案限制",
     "地方自治法規、地方獎勵辦法與受理程序",
-    "官方公告、法規版本、生效日期及適用範圍"
+    "官方公告、法規版本、生效日期及適用範圍",
+    "地方容積獎勵附表及公式逐項覆核",
+    "地方都市計畫書圖、土地使用分區及地號套疊",
+    "地方容積獎勵互斥、過渡案件與個案核准條件"
   ],
   "safety_notes": [
     "不得以縣市通用值取代基地地號與個案核定條件。",
