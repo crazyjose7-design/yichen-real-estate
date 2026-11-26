@@ -14,7 +14,7 @@
   result.classList.remove('show');amount.textContent='尚未計算';detail.textContent='';
   if(key==='rentWithholding'){
    title.textContent='租金扣繳計算機';desc.textContent='輸入本次租金給付金額與所得人身分，快速估算應扣繳所得稅、補充保費及出租人實收金額。';
-   fields.innerHTML='<div class="tax-quick-fields"><div class="tax-quick-title">一般案件快速試算</div><div class="tax-fields">'+field('rentGross','本次租金給付總額（元）')+field('rentResidency','所得人身分','select','',[['resident','境內居住者'],['nonresident','非境內居住者']])+field('rentRecipient','所得人類型','select','',[['individual','個人'],['company','公司／法人']])+'</div></div>'+details('進階資料（補充保費與計算說明）',check('rentNhi','一併估算租金補充保險費（個人、單次給付達2萬元）',false)+check('rentNhiExempt','已確認所得人不具投保資格或依法免扣補充保費')+'<p class="tax-field-hint">補充保費與所得稅扣繳是不同制度；須確認個人投保資格及法定免扣條件。公司／法人受款不套用個人租金補充保費。若租約約定承租人負擔稅費、押金設算或代付費用，請另行確認是否須調整扣繳基礎。</p>');
+   fields.innerHTML='<div class="tax-quick-fields"><div class="tax-quick-title">一般案件快速試算</div><div class="tax-fields">'+field('rentGross','本次租金給付總額（元）')+field('rentResidency','所得人身分','select','',[['resident','境內居住個人／境內有固定營業場所營利事業'],['nonresident','非境內居住個人／境內無固定營業場所營利事業']])+field('rentRecipient','所得人類型','select','',[['individual','個人'],['company','公司／法人']])+'</div></div>'+details('進階資料（補充保費與計算說明）',check('rentNhi','一併估算租金補充保險費（個人、單次給付達2萬元）',false)+check('rentNhiExempt','已確認所得人不具投保資格或依法免扣補充保費')+'<p class="tax-field-hint">補充保費與所得稅扣繳是不同制度；須確認個人投保資格及法定免扣條件。公司／法人受款不套用個人租金補充保費。若租約約定承租人負擔稅費、押金設算或代付費用，請另行確認是否須調整扣繳基礎。</p>');
    desc.dataset.taxExtraDesc='rentWithholding';
   }else{
    title.textContent='執行業務所得計算';desc.textContent='輸入本次執行業務報酬與所得人身分，先估算應扣繳稅款及實收金額；全年所得與費用分析收在進階資料。';
