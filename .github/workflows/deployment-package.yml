@@ -87,5 +87,6 @@ jobs:
             dist/index.html
             dist/yichen-real-estate-deployment.zip
             dist/browser-smoke-results.json
+            dist/print-*.pdf
           if-no-files-found: error
           retention-days: 30
