@@ -11,7 +11,19 @@
   "governing_law": {
     "id": "withholding-rate-standards",
     "title": "各類所得扣繳率標準",
-    "provision": "第2條、第3條、第13條"
+    "provision": "第2條、第3條、第13條",
+    "additional_laws": [
+      {
+        "id": "national-health-insurance-act",
+        "title": "全民健康保險法",
+        "provision": "第31至33條"
+      },
+      {
+        "id": "supplementary-premium-collection-rules",
+        "title": "全民健康保險扣取及繳納補充保險費辦法",
+        "provision": "第3至5條"
+      }
+    ]
   },
   "parameters": [
     {
@@ -83,6 +95,21 @@
       "title": "健保署：補充保險費計算公式",
       "agency": "衛生福利部中央健康保險署",
       "retrieved_at": "2026-11-27"
+    },
+    {
+      "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?PCode=L0060001",
+      "title": "全民健康保險法",
+      "agency": "衛生福利部",
+      "provision": "第31至33條",
+      "retrieved_at": "2026-11-27"
+    },
+    {
+      "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=L0060027",
+      "title": "全民健康保險扣取及繳納補充保險費辦法",
+      "agency": "衛生福利部",
+      "provision": "第3至5條",
+      "amended_at": "2024-03-20",
+      "retrieved_at": "2026-11-27"
     }
   ],
   "formula_reference": "workbench/modules/tax-additional-calculations.js#calculateRentWithholding",
@@ -102,6 +129,7 @@
     "境內居住者按10%，非境內居住者按20%。",
     "境內居住個人每次應扣繳稅額不超過2,000元者免予扣繳；以10%估算時，給付額20,000元以下符合此條件。",
     "租金補充保險費單次給付達20,000元時，以全額計費，費率2.11%，計費上限1,000萬元；此與所得稅扣繳門檻不同。",
-    "公司/法人受款人不以個人租金補充保費方式計算。"
+    "公司/法人受款人不以個人租金補充保費方式計算。",
+    "租金補充保險費另依全民健康保險法第31、32條及全民健康保險扣取及繳納補充保險費辦法第3至5條，須確認投保資格與免扣條件。"
   ]
 }
