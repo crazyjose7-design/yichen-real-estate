@@ -7,13 +7,62 @@
     "slug": "kaohsiung",
     "country": "TW"
   },
-  "dataset_version": "0.1.0",
+  "dataset_version": "0.1.1",
   "status": "unverified",
   "effective_from": null,
   "effective_to": null,
   "retrieved_at": "2026-11-27",
   "official_parameters": [],
-  "local_regulations": [],
+  "local_regulations": [
+    {
+      "id": "kaohsiung-urban-renewal-autonomous-ordinance",
+      "title": "高雄市都市更新自治條例",
+      "status": "in_review",
+      "promulgated_at": "2012-06-21",
+      "amended_at": "2022-10-27",
+      "source": {
+        "url": "https://outlaw.kcg.gov.tw/LawContent.aspx?id=GL000411",
+        "title": "高雄市政府主管法規共用系統－高雄市都市更新自治條例",
+        "agency": "高雄市政府",
+        "provision": "全文；優先核對第3條更新單元條件"
+      },
+      "review_notes": [
+        "須逐條擷取現行全文及附件，核對更新單元、申請門檻、地方獎勵、審查程序與中央法規銜接。",
+        "不得將更新單元面積門檻視為基地容積率。"
+      ]
+    },
+    {
+      "id": "kaohsiung-urban-planning-implementation-rules",
+      "title": "都市計畫法高雄市施行細則",
+      "status": "in_review",
+      "amended_at": "2026-06-01",
+      "source": {
+        "url": "https://urban-web.kcg.gov.tw/KDA/web_page/KDAN030100.jsp?PK01=KDA030100",
+        "title": "高雄市政府都市發展局法令公告",
+        "agency": "高雄市政府都市發展局",
+        "provision": "都市計畫法高雄市施行細則及修正公告"
+      },
+      "review_notes": [
+        "公告索引顯示115年6月1日修正發布；仍須取得最新完整條文及各都市計畫書圖。",
+        "基地實際建蔽率、容積率、用途、退縮及高度限制必須以地號套疊及個案都市計畫書圖判斷。"
+      ]
+    },
+    {
+      "id": "kaohsiung-volume-transfer-guideline",
+      "title": "高雄市政府審查容積移轉申請案件許可要點",
+      "status": "in_review",
+      "amended_at": "2025-01-23",
+      "source": {
+        "url": "https://urban-web.kcg.gov.tw/KDA/web_page/KDAN030100.jsp?PK01=KDA030100",
+        "title": "高雄市政府都市發展局法令公告",
+        "agency": "高雄市政府都市發展局",
+        "provision": "容積移轉申請案件許可要點"
+      },
+      "review_notes": [
+        "官方公告索引列有114年1月23日修正發布版本；須逐條核對送出基地、接受基地、上限、禁限建與審查條件。"
+      ]
+    }
+  ],
   "reward_programs": [],
   "user_assumptions": [],
   "application_policy": {
@@ -24,7 +73,11 @@
     "都市計畫及土地使用分區管制",
     "建蔽率、容積率、移轉/獎勵容積及個案限制",
     "地方自治法規、地方獎勵辦法與受理程序",
-    "官方公告、法規版本、生效日期及適用範圍"
+    "官方公告、法規版本、生效日期及適用範圍",
+    "地方自治法規逐條校對及版本生效日",
+    "都市計畫書圖、土地使用分區及地號套疊",
+    "地方容積移轉與都市更新獎勵之互斥、上限及申請程序",
+    "基地個案核准容積及建照資料"
   ],
   "safety_notes": [
     "不得以縣市通用值取代基地地號與個案核定條件。",
