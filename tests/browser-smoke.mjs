@@ -151,6 +151,24 @@ if(await page.locator('#tax-amount').innerText()!=='無法計算'||!landTaxDetai
 await page.locator('#tax-priorLandTaxCredit').fill('100');
 await page.locator('#tax-calc').click();
 if(await page.locator('#tax-amount').innerText()!=='NT$ 442,700')throw new Error('Land tax integer prior credit regression LT-RECON-002 failed: '+await page.locator('#tax-detail').innerText());
+const landRegressionData=JSON.parse(await fs.readFile('tests/land-tax/regression-cases.json','utf8'));
+const landRegressionResults=await page.evaluate(cases=>{
+ const set=(id,v,event='input')=>{const el=document.getElementById('tax-'+id);if(!el)throw new Error('Missing land tax field '+id);el.value=String(v);el.dispatchEvent(new Event(event,{bubbles:true}))};
+ const fmt=n=>'NT$ '+new Intl.NumberFormat('zh-TW',{maximumFractionDigits:0}).format(Math.round(Number(n)||0));
+ const out=[];
+ for(const c of cases){
+  const v=c.inputs;
+  set('previousDate',v.previousDate,'change');
+  for(const id of ['currentValue','priorValue','area','shareNumerator','shareDenominator','deductibleCosts','priorLandTaxCredit'])set(id,v[id]);
+  set('landType',v.landType,'change');
+  set('selfUseApproved',v.selfUseApproved,'change');
+  document.getElementById('tax-calc').click();
+  out.push({id:c.id,actual:document.getElementById('tax-amount').textContent.trim(),expected:c.expected.validation?'無法計算':fmt(c.expected.tax),detail:document.getElementById('tax-detail').textContent});
+ }
+ return out;
+},landRegressionData.cases);
+const landRegressionFailures=landRegressionResults.filter(x=>x.actual!==x.expected);
+if(landRegressionFailures.length)throw new Error('Land tax 131-case regression failed: '+JSON.stringify(landRegressionFailures.slice(0,10)));
 await page.locator('#mortgagePrice').fill('1000');
 await page.locator('#mortgageDown').fill('200');
 await page.locator('#mortgageYears').selectOption('20');
