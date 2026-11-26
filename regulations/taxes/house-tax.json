@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "id": "house-tax",
   "title": "房屋稅",
-  "status": "unverified",
+  "status": "in_review",
   "jurisdiction_layers": [
     "national",
     "county_city",
@@ -13,15 +13,106 @@
     "title": "房屋稅條例",
     "provision": "第3條及地方差別稅率、住家用認定等相關條文"
   },
-  "parameters": [],
+  "parameters": [
+    {
+      "id": "self-occupied",
+      "name": "自住住家用房屋稅率",
+      "value": 1.2,
+      "unit": "%",
+      "article": "房屋稅條例第5條第1項第1款",
+      "status": "in_review",
+      "conditions": "符合自住戶籍、無出租營業等條件；全國僅持有一戶且現值低於地方門檻者得適用1%特別情形。"
+    },
+    {
+      "id": "one-house-low-value",
+      "name": "全國單一自住房屋且現值低於地方門檻",
+      "value": 1,
+      "unit": "%",
+      "article": "房屋稅條例第5條第1項第1款但書",
+      "status": "in_review",
+      "conditions": "現值門檻由地方自治法規訂定並報財政部備查，尚須逐縣市核對。"
+    },
+    {
+      "id": "rental-or-inherited",
+      "name": "符合條件之出租或繼承共有住家用房屋",
+      "value": {
+        "min": 1.5,
+        "max": 2.4
+      },
+      "unit": "%",
+      "article": "房屋稅條例第5條第1項第1款第2目",
+      "status": "in_review",
+      "conditions": "地方差別稅率級距及適用條件須核對。"
+    },
+    {
+      "id": "builder-unsold-under-two-years",
+      "name": "起造人待銷售住家用房屋起課2年內",
+      "value": {
+        "min": 2,
+        "max": 3.6
+      },
+      "unit": "%",
+      "article": "房屋稅條例第5條第1項第1款第3目",
+      "status": "in_review"
+    },
+    {
+      "id": "other-residential",
+      "name": "其他住家用房屋",
+      "value": {
+        "min": 2,
+        "max": 4.8
+      },
+      "unit": "%",
+      "article": "房屋稅條例第5條第1項第1款第4目",
+      "status": "in_review"
+    },
+    {
+      "id": "business-nonresidential",
+      "name": "營業用等非住家用房屋",
+      "value": {
+        "min": 3,
+        "max": 5
+      },
+      "unit": "%",
+      "article": "房屋稅條例第5條第1項第2款",
+      "status": "in_review"
+    },
+    {
+      "id": "nonprofit-nonresidential",
+      "name": "人民團體等非營業使用非住家用房屋",
+      "value": {
+        "min": 1.5,
+        "max": 2.5
+      },
+      "unit": "%",
+      "article": "房屋稅條例第5條第1項第2款",
+      "status": "in_review"
+    }
+  ],
   "effective_from": null,
   "effective_to": null,
-  "official_sources": [],
-  "formula_reference": null,
+  "official_sources": [
+    {
+      "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=G0340102",
+      "title": "房屋稅條例",
+      "agency": "財政部",
+      "provision": "第5、6條",
+      "amended_at": "2024-01-03",
+      "retrieved_at": "2026-11-27"
+    }
+  ],
+  "formula_reference": "workbench/modules/tax-engine.js#house-tax",
   "test_cases": [],
   "verified_by": null,
   "application_policy": {
     "auto_apply": false,
-    "rule": "參數空白代表尚未查證；不可使用舊程式常數、推測值或其他縣市資料代替。"
-  }
+    "rule": "僅完成中央法條初步摘錄；雙人覆核、有效日期、子法、地方公告與公式回歸測試完成前不得自動套用。"
+  },
+  "jurisdiction": "national",
+  "retrieved_at": "2026-11-27",
+  "review_notes": [
+    "已摘錄可由中央法條確認的初步稅率或級距，所有參數仍為 in_review，不得自動套用。",
+    "仍須核對有效日期、子法、地方年度公告、歸戶/門檻、免稅減免、個案核定及現行程式公式是否完全一致。",
+    "參數的法定上限或區間不代表地方實際核定稅率；不得以區間中點代替地方公告。"
+  ]
 }
