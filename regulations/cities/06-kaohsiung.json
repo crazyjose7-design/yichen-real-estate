@@ -61,6 +61,82 @@
       "review_notes": [
         "官方公告索引列有114年1月23日修正發布版本；須逐條核對送出基地、接受基地、上限、禁限建與審查條件。"
       ]
+    },
+    {
+      "id": "kaohsiung-urban-renewal-volume-reward-rules",
+      "title": "高雄市都市更新建築容積獎勵辦法",
+      "status": "in_review",
+      "promulgated_at": "2021-05-10",
+      "source": {
+        "url": "https://urban-web.kcg.gov.tw/KDA/web_upload/KDA03/KDA0303/20210820152111-7.pdf",
+        "title": "高雄市政府都市發展局－高雄市都市更新建築容積獎勵辦法",
+        "agency": "高雄市政府都市發展局",
+        "provision": "全文第1至8條；110年5月10日訂定"
+      },
+      "review_notes": [
+        "本地方法規原先漏列，現已補入來源；第3條老舊無電梯4層以上集合住宅獎勵依基地基準容積300%以下20%、300%至420%為15%。",
+        "第4條騎樓／人行步道整修獎勵上限15%；第5條捐贈都更基金獎勵上限10%；第6條指定社福公益設施獎勵係數1.2至2，額度上限30%。",
+        "第1條仍援引都市更新條例第65條第3項；現行母法授權已編列於第65條第5項，須核對修法後舊引文之效力及地方規則是否完成配合修正。",
+        "2026年10月5日已有最新指定社會福利及公益設施公告，必須與2021年舊設施清單分開並以最新公告檢核，不得沿用舊清單。"
+      ]
+    },
+    {
+      "id": "kaohsiung-urban-renewal-designated-public-facilities",
+      "title": "高雄市都市更新容積獎勵指定之社會福利及公益設施項目",
+      "status": "in_review",
+      "amended_at": "2026-10-05",
+      "source": {
+        "url": "https://urban-web.kcg.gov.tw/KDA/web_page/KDAN030101.jsp?PK01=KDA030300008202610001",
+        "title": "高雄市政府都市發展局－115年10月5日指定社會福利及公益設施項目",
+        "agency": "高雄市政府都市發展局",
+        "provision": "115年10月5日最新公告及PDF附件；逐項設施、面積及區位待核對"
+      },
+      "review_notes": [
+        "最新公告日期已由官方都市發展法規索引確認；尚須下載附件逐項核對設施類別、面積、區位、有效期間及是否取代110年舊公告。"
+      ]
+    },
+    {
+      "id": "kaohsiung-urban-renewal-planning-design-reward-standards",
+      "title": "高雄市政府都市發展局評定都市更新單元整體規劃設計獎勵容積標準表",
+      "status": "in_review",
+      "source": {
+        "url": "https://urban-web.kcg.gov.tw/KDA/web_page/KDAN030101.jsp?PK01=KDA030300008202108005",
+        "title": "高雄市政府都市發展局法規公告索引",
+        "agency": "高雄市政府都市發展局",
+        "provision": "110年8月20日公告之整體規劃設計獎勵容積標準表"
+      },
+      "review_notes": [
+        "屬另一項可能影響容積計算的地方標準表，需逐項核對法源、評定條件、額度、是否已廢止或被新規取代。"
+      ]
+    },
+    {
+      "id": "kaohsiung-urban-renewal-168-project",
+      "title": "高雄市政府都市更新一六八專案執行原則",
+      "status": "in_review",
+      "source": {
+        "url": "https://urban-web.kcg.gov.tw/KDA/web_page/KDAN030101.jsp?PK01=KDA030300008202108015",
+        "title": "高雄市政府都市發展局法規公告索引",
+        "agency": "高雄市政府都市發展局",
+        "provision": "110年8月20日公告之一六八專案執行原則"
+      },
+      "review_notes": [
+        "專案型更新獎勵或程序規範，須核對現行有效性、適用地區、申請期限及是否仍可受理。"
+      ]
+    },
+    {
+      "id": "kaohsiung-self-designated-renewal-unit-standards",
+      "title": "高雄市未劃定更新地區自行劃定重建更新單元標準",
+      "status": "in_review",
+      "amended_at": "2022-11-10",
+      "source": {
+        "url": "https://urban-web.kcg.gov.tw/KDA/web_page/KDAN030101.jsp?PK01=KDA030300008202211001",
+        "title": "高雄市政府都市發展局法規公告索引",
+        "agency": "高雄市政府都市發展局",
+        "provision": "111年11月10日公告；更新單元認定標準"
+      },
+      "review_notes": [
+        "自治條例第6條明文援引此標準，必須與更新單元門檻及地號範圍一併核對。"
+      ]
     }
   ],
   "reward_programs": [],
@@ -77,7 +153,10 @@
     "地方自治法規逐條校對及版本生效日",
     "都市計畫書圖、土地使用分區及地號套疊",
     "地方容積移轉與都市更新獎勵之互斥、上限及申請程序",
-    "基地個案核准容積及建照資料"
+    "基地個案核准容積及建照資料",
+    "高雄市都市更新建築容積獎勵辦法第1條舊授權條次與現行母法第65條第5項之效力確認",
+    "高雄市115年10月5日指定社會福利及公益設施公告附件逐項核對，確認取代舊公告之範圍",
+    "高雄市整體規劃設計獎勵容積標準表及一六八專案執行原則之現行效力、適用範圍與互斥關係"
   ],
   "safety_notes": [
     "不得以縣市通用值取代基地地號與個案核定條件。",
