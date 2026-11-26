@@ -7,13 +7,13 @@ vm.runInNewContext(fs.readFileSync(new URL('../workbench/modules/tax-simpany-par
 const {calculateRent}=c.window.YichenSimpanyParityRent;
 const {calculateProfessional}=c.window.YichenSimpanyParityProfessional;
 test('rent basic model: resident individual, tax included',()=>{const r=calculateRent({rentAmount:30000});assert.equal(r.grossRent,30000);assert.equal(r.withholdingTax,3000);assert.equal(r.supplementaryPremium,633)});
-test('resident individual rent at withholding amount <= 2,000 exempt',()=>{const r=calculateRent({rentAmount:20000});assert.equal(r.withholdingTax,0)});
+test('resident individual rent at exact 2,000 withholding tax is exempt',()=>{const r=calculateRent({rentAmount:20000});assert.equal(r.withholdingTax,0)});\ntest('resident individual rent above exact 2,000 tax threshold is withheld',()=>{const r=calculateRent({rentAmount:20001});assert.equal(r.withholdingTax,2000)});
 test('domestic company landlord is not withheld',()=>{const r=calculateRent({rentAmount:50000,landlords:[{kind:'company',residency:'resident',share:100}]});assert.equal(r.withholdingTax,0);assert.equal(r.supplementaryPremium,0)});
 test('foreign individual landlord withholding 20%',()=>{const r=calculateRent({rentAmount:30000,landlords:[{kind:'individual',residency:'nonresident',share:100,healthStatus:'not_insured'}]});assert.equal(r.withholdingTax,6000)});
 test('rent not tax included gross-ups to landlord net target',()=>{const r=calculateRent({rentAmount:30000,rentMode:'tax_excluded'});assert.ok(r.grossRent>30000);assert.equal(r.totalPaidToLandlords,30000)});
 test('multiple landlords split by ownership share',()=>{const r=calculateRent({rentAmount:50000,landlords:[{kind:'individual',residency:'resident',share:60},{kind:'company',residency:'resident',share:40}]});assert.equal(r.landlords[0].rent,30000);assert.equal(r.landlords[1].rent,20000);assert.equal(r.withholdingTax,3000)});
 test('rent landlord shares must sum to 100 percent',()=>{assert.throws(()=>calculateRent({rentAmount:30000,landlords:[{share:50}]}),/100%/)});
-test('professional 9A resident threshold',()=>{const r=calculateProfessional({grossAmount:20000,filingType:'9A'});assert.equal(r.withholdingTax,0)});
+test('professional 9A resident exact 2,000 tax is exempt',()=>{const r=calculateProfessional({grossAmount:20000,filingType:'9A'});assert.equal(r.withholdingTax,0)});\ntest('professional 9A resident above exact 2,000 tax threshold is withheld',()=>{const r=calculateProfessional({grossAmount:20001,filingType:'9A'});assert.equal(r.withholdingTax,2000)});
 test('professional 9A nonresident is withheld at 20 percent',()=>{const r=calculateProfessional({grossAmount:5000,residency:'nonresident',filingType:'9A'});assert.equal(r.withholdingTax,1000)});
 test('professional 9B nonresident <= 5000 is exempt',()=>{const r=calculateProfessional({grossAmount:5000,residency:'nonresident',filingType:'9B'});assert.equal(r.withholdingTax,0)});
 test('professional 9B nonresident above 5000 is withheld at 20 percent',()=>{const r=calculateProfessional({grossAmount:5001,residency:'nonresident',filingType:'9B'});assert.equal(r.withholdingTax,1000)});
