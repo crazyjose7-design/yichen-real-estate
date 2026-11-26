@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0",
   "id": "professional-income",
-  "title": "執行業務所得計算",
+  "title": "執行業務報酬扣繳與執行業務所得計算",
   "status": "in_review",
   "jurisdiction_layers": [
     "national",
@@ -12,7 +12,29 @@
   "governing_law": {
     "id": "income-tax-act-house-land",
     "title": "所得稅法",
-    "provision": "第14條第1項第2類"
+    "provision": "第14條第1項第2類",
+    "additional_laws": [
+      {
+        "id": "withholding-rate-standards",
+        "title": "各類所得扣繳率標準",
+        "provision": "第2條、第3條、第13條、第13-1條"
+      },
+      {
+        "id": "execution-income-audit-regulations",
+        "title": "執行業務所得查核辦法",
+        "provision": "第3、8、14、15、17、30條"
+      },
+      {
+        "id": "national-health-insurance-act",
+        "title": "全民健康保險法",
+        "provision": "第31至33條"
+      },
+      {
+        "id": "supplementary-premium-collection-rules",
+        "title": "全民健康保險扣取及繳納補充保險費辦法",
+        "provision": "第3至5條"
+      }
+    ]
   },
   "parameters": [
     {
@@ -37,6 +59,54 @@
       "value": true,
       "unit": "規則",
       "article": "執行業務所得查核辦法第14、17條",
+      "status": "in_review"
+    },
+    {
+      "id": "resident-withholding-rate",
+      "name": "境內居住者執行業務報酬扣繳率",
+      "value": 10,
+      "unit": "%",
+      "article": "各類所得扣繳率標準第2條第1項第8款",
+      "status": "in_review"
+    },
+    {
+      "id": "nonresident-withholding-rate",
+      "name": "非境內居住者執行業務報酬扣繳率",
+      "value": 20,
+      "unit": "%",
+      "article": "各類所得扣繳率標準第3條第1項第8款",
+      "status": "in_review"
+    },
+    {
+      "id": "resident-withholding-exemption",
+      "name": "境內居住者每次扣繳稅額免扣繳上限",
+      "value": 2000,
+      "unit": "新臺幣元",
+      "article": "各類所得扣繳率標準第13條、第13-1條",
+      "status": "in_review"
+    },
+    {
+      "id": "nonresident-special-fee-exemption",
+      "name": "非境內居住者特定稿費等每次免扣繳給付額",
+      "value": 5000,
+      "unit": "新臺幣元",
+      "article": "各類所得扣繳率標準第3條第1項第8款",
+      "status": "in_review"
+    },
+    {
+      "id": "nhi-premium-rate-professional-income",
+      "name": "執行業務收入補充保險費率",
+      "value": 2.11,
+      "unit": "%",
+      "article": "全民健康保險法第31至33條",
+      "status": "in_review"
+    },
+    {
+      "id": "nhi-premium-minimum-professional-income",
+      "name": "執行業務收入補充保費單次給付下限",
+      "value": 20000,
+      "unit": "新臺幣元",
+      "article": "全民健康保險扣取及繳納補充保險費辦法第4條",
       "status": "in_review"
     }
   ],
@@ -64,6 +134,29 @@
       "provision": "114年度各業費用標準",
       "amended_at": "2026-03-27",
       "retrieved_at": "2026-11-27"
+    },
+    {
+      "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?Pcode=G0340028",
+      "title": "各類所得扣繳率標準",
+      "agency": "財政部",
+      "provision": "第2、3、13、13-1條",
+      "amended_at": "2021-06-30",
+      "retrieved_at": "2026-11-27"
+    },
+    {
+      "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=L0060001",
+      "title": "全民健康保險法",
+      "agency": "衛生福利部",
+      "provision": "第31至33條",
+      "retrieved_at": "2026-11-27"
+    },
+    {
+      "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=L0060027",
+      "title": "全民健康保險扣取及繳納補充保險費辦法",
+      "agency": "衛生福利部",
+      "provision": "第3至5條",
+      "amended_at": "2024-03-20",
+      "retrieved_at": "2026-11-27"
     }
   ],
   "formula_reference": "workbench/modules/tax-additional-calculations.js#calculateProfessionalIncome",
@@ -84,6 +177,8 @@
     "執行業務所得查核辦法第8條：能提供帳簿憑證者依帳載核實認定；未能提供者依依法核定費用標準。",
     "第14、17條要求費用直接必要且有原始憑證。",
     "114年度費用標準適用於114所得年度，不能直接套用到115所得年度；115年度各職業費用標準未經核實前不提供自動費用率。",
-    "已扣繳稅款是預扣/扣抵資訊，不等於個人綜合所得稅最終稅額。"
+    "已扣繳稅款是預扣/扣抵資訊，不等於個人綜合所得稅最終稅額。",
+    "執行業務報酬扣繳：境內居住者10%、非境內居住者20%；境內每次應扣繳稅額不超過2,000元免扣，非居住者特定稿費等每次不超過5,000元免扣。",
+    "執行業務收入補充保費：單次達20,000元原則計費2.11%，但專門職業及技術人員自行執業且以職業工會投保等法定情形免扣；須逐案核實。"
   ]
 }
