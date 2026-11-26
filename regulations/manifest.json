@@ -139,14 +139,19 @@
     "cities_with_official_local_source_records": [
       "01 臺北市",
       "02 新北市",
+      "03 桃園市",
       "04 臺中市",
       "05 臺南市",
       "06 高雄市",
       "07 基隆市",
-      "14 雲林縣"
+      "09 嘉義市",
+      "11 苗栗縣",
+      "14 雲林縣",
+      "18 花蓮縣",
+      "20 澎湖縣"
     ],
-    "cities_with_source_records_count": 7,
-    "remaining_cities_without_source_records": 15,
+    "cities_with_source_records_count": 12,
+    "remaining_cities_without_source_records": 10,
     "local_sources_are_not_fully_verified": true
   }
 }
