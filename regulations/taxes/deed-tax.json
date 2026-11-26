@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "id": "deed-tax",
   "title": "契稅",
-  "status": "unverified",
+  "status": "in_review",
   "jurisdiction_layers": [
     "national",
     "county_city",
@@ -13,15 +13,80 @@
     "title": "契稅條例",
     "provision": "第2、3條及各交易類型相關條文"
   },
-  "parameters": [],
+  "parameters": [
+    {
+      "id": "sale",
+      "name": "買賣契稅",
+      "value": 6,
+      "unit": "%",
+      "article": "契稅條例第3條第1款",
+      "status": "in_review"
+    },
+    {
+      "id": "dien",
+      "name": "典權契稅",
+      "value": 4,
+      "unit": "%",
+      "article": "契稅條例第3條第2款",
+      "status": "in_review"
+    },
+    {
+      "id": "exchange",
+      "name": "交換契稅",
+      "value": 2,
+      "unit": "%",
+      "article": "契稅條例第3條第3款",
+      "status": "in_review"
+    },
+    {
+      "id": "gift",
+      "name": "贈與契稅",
+      "value": 6,
+      "unit": "%",
+      "article": "契稅條例第3條第4款",
+      "status": "in_review"
+    },
+    {
+      "id": "partition",
+      "name": "分割契稅",
+      "value": 2,
+      "unit": "%",
+      "article": "契稅條例第3條第5款",
+      "status": "in_review"
+    },
+    {
+      "id": "possession",
+      "name": "占有契稅",
+      "value": 6,
+      "unit": "%",
+      "article": "契稅條例第3條第6款",
+      "status": "in_review"
+    }
+  ],
   "effective_from": null,
   "effective_to": null,
-  "official_sources": [],
-  "formula_reference": null,
+  "official_sources": [
+    {
+      "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=G0340105",
+      "title": "契稅條例",
+      "agency": "財政部",
+      "provision": "第2、3條",
+      "amended_at": "2010-05-05",
+      "retrieved_at": "2026-11-27"
+    }
+  ],
+  "formula_reference": "workbench/modules/tax-engine.js#deed-tax",
   "test_cases": [],
   "verified_by": null,
   "application_policy": {
     "auto_apply": false,
-    "rule": "參數空白代表尚未查證；不可使用舊程式常數、推測值或其他縣市資料代替。"
-  }
+    "rule": "僅完成中央法條初步摘錄；雙人覆核、有效日期、子法、地方公告與公式回歸測試完成前不得自動套用。"
+  },
+  "jurisdiction": "national",
+  "retrieved_at": "2026-11-27",
+  "review_notes": [
+    "已摘錄可由中央法條確認的初步稅率或級距，所有參數仍為 in_review，不得自動套用。",
+    "仍須核對有效日期、子法、地方年度公告、歸戶/門檻、免稅減免、個案核定及現行程式公式是否完全一致。",
+    "參數的法定上限或區間不代表地方實際核定稅率；不得以區間中點代替地方公告。"
+  ]
 }
