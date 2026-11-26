@@ -99,10 +99,16 @@
       "金門縣",
       "連江縣"
     ],
-    "portal_only_jurisdictions": [
+    "portal_only_jurisdictions": [],
+    "source_pending_review_jurisdictions": [
       "南投縣",
       "宜蘭縣",
       "臺東縣"
+    ],
+    "source_quality_notes": [
+      "南投縣已定位都市設計審議規範及容積移轉作業要點，附表/沿革/基地適用仍待覆核。",
+      "宜蘭縣已定位都市設計審議作業要點及官方都市計畫目錄，最新修正沿革仍待覆核。",
+      "臺東縣已取得都市設計審議原則縣府函文副本，但縣府原始公告及現行版本仍待確認。"
     ]
   },
   "statutory_framework": [
