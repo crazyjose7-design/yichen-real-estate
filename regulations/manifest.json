@@ -190,7 +190,12 @@
       "browser_runtime": "workbench/modules/reward-engine-runtime.js",
       "land_ui": "workbench/modules/land-reward-gate.js",
       "calculation_module": "workbench/modules/land-efficiency.js",
-      "safety": "only fully verified, effective, jurisdiction-matched and individually approved reward records can be applied; all current reward records remain blocked"
+      "safety": "unverified rewards remain blocked; only fully verified, effective, jurisdiction-matched, individually approved records may be applied",
+      "runtime": "workbench/modules/reward-engine-runtime.js",
+      "ui": "workbench/modules/land-reward-gate.js",
+      "calculation": "workbench/modules/land-efficiency.js",
+      "test": "tests/reward-engine-runtime.test.mjs",
+      "browser_test": "tests/browser-smoke.mjs"
     },
     "city_review_matrix": {
       "path": "regulations/city-review-matrix.json",
