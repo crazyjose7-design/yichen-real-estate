@@ -29,6 +29,16 @@ const loader=/<script id="yichen-inline-image-loader">[\s\S]*?<\/script>/;
 if(!loader.test(html)) throw new Error('Inline image loader not found');
 html=html.replace(loader,'<!-- Images embedded into this single-file build; no external asset fetch required. -->');
 if(/data-yichen-inline-image=/.test(html)) throw new Error('Unresolved inline image placeholders remain');
+const regulationRoot=path.join(root,'regulations');
+const regulationManifest=JSON.parse(await fs.readFile(path.join(regulationRoot,'manifest.json'),'utf8'));
+const regulationPaths=[...(regulationManifest.county_city_files||[]).map(x=>x.path),...(regulationManifest.central_law_files||[]),...(regulationManifest.incentive_files||[]),...(regulationManifest.tax_parameter_files||[]),'schemas/city-parameters.schema.json','schemas/parameter-record.schema.json'];
+const regulationFiles={};
+for(const relativePath of regulationPaths) regulationFiles[relativePath]=JSON.parse(await fs.readFile(path.join(regulationRoot,relativePath),'utf8'));
+const runtime=await fs.readFile(path.join(root,'workbench','modules','regulation-data-runtime.js'),'utf8');
+const embeddedPayload=JSON.stringify({manifest:regulationManifest,files:regulationFiles}).replace(/</g,'\\u003c');
+const embeddedBlock='<script type="application/json" id="yichen-regulatory-data">'+embeddedPayload+'</script>\\n<script id="yichen-regulatory-runtime">'+runtime+'</script>\\n';
+if(!/<\\/body>/i.test(html)) throw new Error('HTML body closing tag not found for regulatory data injection');
+html=html.replace(/<\\/body>/i,embeddedBlock+'</body>');
 await fs.writeFile(path.join(out,'index.html'),html);
 await fs.writeFile(path.join(pkg,'index.html'),html);
 await fs.copyFile(src,path.join(pkg,'index.multi-file.html'));
@@ -47,7 +57,7 @@ await fs.writeFile(path.join(pkg,'README.txt'),[
  '主要部署檔：index.html（單檔版，圖片已內嵌）',
  'index.multi-file.html 與 assets/ 為原始多檔參考版本；正式上傳建議使用 index.html。',
  'modules/ 是拆分後的維護來源模組，尚未替換正式頁面的 inline script。',
- 'regulations/ 包含 22 縣市、中央法規與獎勵資料；未查證資料不得自動套用。',
+ 'regulations/ 包含 22 縣市、中央法規、稅目與獎勵資料；單檔 HTML 內嵌同一資料集及安全載入 API，未查證資料不得自動套用。',
  'docs/、versions/ 與驗證器一併封裝，方便後續查核及回復。',
  '本包以 V6.2.20 已驗證基準分支為來源。'
 ].join('\n')+'\n');
