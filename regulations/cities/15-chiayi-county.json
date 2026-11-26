@@ -13,7 +13,25 @@
   "effective_to": null,
   "retrieved_at": "2026-11-27",
   "official_parameters": [],
-  "local_regulations": [],
+  "local_regulations": [
+    {
+      "id": "chiayi-county-urban-renewal-unit-designation-benchmark",
+      "title": "嘉義縣都市更新單元劃定基準",
+      "status": "in_review",
+      "promulgated_at": "2011-10-18",
+      "amended_at": "2025-03-04",
+      "source": {
+        "url": "https://uract.nlma.gov.tw/rule/detail/1297",
+        "title": "內政部都市更新法規資訊－嘉義縣都市更新單元劃定基準",
+        "agency": "嘉義縣政府（中央法規資訊系統收錄）",
+        "provision": "全文8點；114年3月4日修正第1、3、4、5、8點"
+      },
+      "review_notes": [
+        "此基準規範更新單元劃定，不是容積獎勵公式；需與嘉義縣其他都市計畫、建築及更新審議規定共同判斷。",
+        "尚須檢索嘉義縣政府現行法規系統是否另有容積獎勵核算、都市計畫、容積移轉及基地管制規則。"
+      ]
+    }
+  ],
   "reward_programs": [],
   "user_assumptions": [],
   "application_policy": {
@@ -24,7 +42,10 @@
     "都市計畫及土地使用分區管制",
     "建蔽率、容積率、移轉/獎勵容積及個案限制",
     "地方自治法規、地方獎勵辦法與受理程序",
-    "官方公告、法規版本、生效日期及適用範圍"
+    "官方公告、法規版本、生效日期及適用範圍",
+    "地方官方法規入口內都市計畫/建築/更新法規完整檢索",
+    "地方都市計畫書圖、土地使用分區及基地管制",
+    "都市更新獎勵辦法及附表、互斥與個案核准資料"
   ],
   "safety_notes": [
     "不得以縣市通用值取代基地地號與個案核定條件。",
