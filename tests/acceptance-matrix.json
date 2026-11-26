@@ -18,9 +18,9 @@
         "贈與稅",
         "營利事業所得稅"
       ],
-      "status": "131_case_matrix_added_browser_regression_pending_ci",
+      "status": "131_new_regression_cases_passed_historical_130plus_rows_not_recovered",
       "minimumTests": "法定門檻前後、邊界值、零值、空值、負數、小數、極大值、免稅/扣抵、不同身分/期間/持分、獨立手算交叉驗證",
-      "completedEvidence": "Browser smoke confirms all 12 tools open and render fields; land value increment tax now has 131 new case rows (130 numeric cases plus 1 decimal-rejection validation) with independently calculated expected outputs, plus 2 targeted prior-credit cases; the remaining 11 calculators do not yet have full independent expected-output matrices."
+      "completedEvidence": "Latest CI passed 131 new land-tax browser regression cases (130 numeric cases plus 1 decimal-rejection case), plus 2 targeted prior-credit cases; all 12 existing tools open and render fields. The other 11 tax calculators still do not have full independent expected-output matrices."
     },
     {
       "group": "稅務試算－新增2項",
@@ -28,9 +28,9 @@
         "租金扣繳",
         "執行業務所得"
       ],
-      "status": "21_unit_cases_and_browser_smoke_pending_latest_ci",
+      "status": "21_unit_cases_passed_browser_and_A4_print_passed",
       "minimumTests": "基本欄位/進階欄位、居住者/非居住者、個人/公司、9A/9B、含稅/未含稅、多房東持分、健保身分、法定門檻前後、列印A4、瀏覽器操作",
-      "completedEvidence": "Separated Simpany-style forms, 21 dedicated unit test cases, resident/nonresident/company/9A/9B/NHI/threshold/gross-up/multiple-owner cases, plus A4 print smoke."
+      "completedEvidence": "21 dedicated unit tests pass; browser smoke calculates both tools, verifies rent tax gross-up/multiple landlords/nationality field and professional 9A/9B/NHI thresholds; each prints one A4 page with correct Chinese title."
     },
     {
       "group": "土地坪效",
@@ -43,7 +43,7 @@
         "建築量體與坪效",
         "列印"
       ],
-      "status": "baseline_and_unit_conversion_smoke_only",
+      "status": "baseline_and_unit_conversion_smoke_passed_full_formula_regression_pending",
       "minimumTests": "各欄位邊界/單位/持分、分區及法規版本、獎勵互斥/併計、官方核准量體、公式獨立手算、空值與異常值、列印A4",
       "completedEvidence": "Baseline calculation/print and 100 ping versus 330.578512 square-metre conversion smoke; reward safety gate blocks unverified official reward values."
     },
@@ -59,7 +59,7 @@
         "月付金/總利息/攤還表",
         "列印"
       ],
-      "status": "baseline_and_three_edge_smokes",
+      "status": "baseline_and_three_edge_smokes_passed_full_matrix_pending",
       "minimumTests": "0利率、不同利率/年期、寬限期、提前還款(若支援)、本金/利息加總、獨立攤還公式對照、列印A4",
       "completedEvidence": "Baseline payment/print plus zero-interest annuity, zero-interest principal amortization, and one-year grace-period interest cases."
     },
