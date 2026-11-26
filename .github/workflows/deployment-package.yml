@@ -13,6 +13,7 @@ on:
       - "tests/**"
       - "regulations/**"
       - "docs/**"
+      - "versions/**"
       - ".github/workflows/deployment-package.yml"
   workflow_dispatch:
 
@@ -48,11 +49,14 @@ jobs:
           unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'regulations/cities/22-lienchiang.json'
           unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'regulations/national/urban-renewal-act.json'
           unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'regulations/rewards/urban-renewal.json'
+          unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'regulations/taxes/house-land-transaction-income-tax.json'
+          unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'versions/rollback.md'
           node --check workbench/modules/tax-engine.js
           node --check workbench/modules/mortgage-calculator.js
           node --check workbench/modules/land-efficiency.js
           node --check workbench/modules/tax-state-and-print.js
           node --check workbench/modules/site-print-engine.js
+          node --check workbench/modules/regulation-data-loader.mjs
       - name: Upload deployment package
         uses: actions/upload-artifact@v4
         with:
