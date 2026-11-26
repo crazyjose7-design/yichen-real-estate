@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "id": "house-land-transaction-income-tax",
   "title": "房地合一所得稅",
-  "status": "unverified",
+  "status": "in_review",
   "jurisdiction_layers": [
     "national",
     "county_city",
@@ -13,15 +13,98 @@
     "title": "所得稅法",
     "provision": "第4條之4、第4條之5、第14條之4至第14條之8、第24條之5"
   },
-  "parameters": [],
+  "parameters": [
+    {
+      "id": "resident-under-2y",
+      "name": "境內居住者持有2年以內",
+      "value": 45,
+      "unit": "%",
+      "article": "所得稅法第14條之4第3項第1款第1目",
+      "status": "in_review"
+    },
+    {
+      "id": "resident-2to5y",
+      "name": "境內居住者持有超過2年至5年",
+      "value": 35,
+      "unit": "%",
+      "article": "所得稅法第14條之4第3項第1款第2目",
+      "status": "in_review"
+    },
+    {
+      "id": "resident-5to10y",
+      "name": "境內居住者持有超過5年至10年",
+      "value": 20,
+      "unit": "%",
+      "article": "所得稅法第14條之4第3項第1款第3目",
+      "status": "in_review"
+    },
+    {
+      "id": "resident-over-10y",
+      "name": "境內居住者持有超過10年",
+      "value": 15,
+      "unit": "%",
+      "article": "所得稅法第14條之4第3項第1款第4目",
+      "status": "in_review"
+    },
+    {
+      "id": "nonresident-under-2y",
+      "name": "非境內居住者持有2年以內",
+      "value": 45,
+      "unit": "%",
+      "article": "所得稅法第14條之4第3項第2款第1目",
+      "status": "in_review"
+    },
+    {
+      "id": "nonresident-over-2y",
+      "name": "非境內居住者持有超過2年",
+      "value": 35,
+      "unit": "%",
+      "article": "所得稅法第14條之4第3項第2款第2目",
+      "status": "in_review"
+    },
+    {
+      "id": "special-20",
+      "name": "法定非自願、合建、都更危老等特定情形",
+      "value": 20,
+      "unit": "%",
+      "article": "所得稅法第14條之4第3項第1款第5至7目",
+      "status": "in_review",
+      "conditions": "各目資格、持有期間、公告及交易類型須逐項判斷。"
+    },
+    {
+      "id": "self-use-10",
+      "name": "符合自住房地優惠之400萬元以上部分",
+      "value": 10,
+      "unit": "%",
+      "article": "所得稅法第14條之4及第4條之5",
+      "status": "in_review",
+      "conditions": "400萬元免稅額及連續居住、持有、戶籍、未出租營業、出售前6年等法定條件需核對。"
+    }
+  ],
   "effective_from": null,
   "effective_to": null,
-  "official_sources": [],
-  "formula_reference": null,
+  "official_sources": [
+    {
+      "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=G0340003",
+      "title": "所得稅法",
+      "agency": "財政部",
+      "provision": "第4條之4、第4條之5、第14條之4至第14條之8",
+      "amended_at": "2024-07-??",
+      "retrieved_at": "2026-11-27"
+    }
+  ],
+  "formula_reference": "workbench/modules/tax-engine.js#house-land-transaction-income-tax",
   "test_cases": [],
   "verified_by": null,
   "application_policy": {
     "auto_apply": false,
-    "rule": "參數空白代表尚未查證；不可使用舊程式常數、推測值或其他縣市資料代替。"
-  }
+    "rule": "僅完成中央法條初步摘錄；雙人覆核、有效日期、子法、地方公告與公式回歸測試完成前不得自動套用。"
+  },
+  "jurisdiction": "national",
+  "retrieved_at": "2026-11-27",
+  "review_notes": [
+    "已摘錄可由中央法條確認的初步稅率或級距，所有參數仍為 in_review，不得自動套用。",
+    "仍須核對有效日期、子法、地方年度公告、歸戶/門檻、免稅減免、個案核定及現行程式公式是否完全一致。",
+    "參數的法定上限或區間不代表地方實際核定稅率；不得以區間中點代替地方公告。"
+  ]
 }
