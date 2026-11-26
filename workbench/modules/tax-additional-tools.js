@@ -25,7 +25,7 @@
  function read(id){return document.getElementById('tax-extra-'+id)}
  function num(id){const el=read(id);return el&&el.value.trim()!==''?Number(el.value):0}
  function saveSnapshot(key){
-  const panel=document.createElement('div');panel.className='tax-print-panel';panel.innerHTML='<h3>'+title.textContent+'</h3><p>'+desc.textContent+'</p>'+fields.innerHTML+'<div class="tax-result show"><small>試算結果</small><strong>'+amount.textContent+'</strong><p>'+detail.textContent+'</p></div>';
+  const panel=document.createElement('div');panel.className='tax-print-panel';panel.innerHTML='<h3 id="tax-title">'+title.textContent+'</h3><p id="tax-desc">'+desc.textContent+'</p>'+fields.innerHTML+'<div class="tax-result show"><small>試算結果</small><strong>'+amount.textContent+'</strong><p>'+detail.textContent+'</p></div>';
   const state=window.__yichenTaxState||(window.__yichenTaxState={});state[key]={shown:true,snapshot:panel.outerHTML};
  }
  menu.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.yichenExtra){e.preventDefault();e.stopImmediatePropagation();activate(b.dataset.yichenExtra)}else{activeExtra=null}},true);
