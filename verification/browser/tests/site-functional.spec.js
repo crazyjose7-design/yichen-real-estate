@@ -94,6 +94,7 @@ test('professional income: net-receipt mode grosses up to the requested take-hom
 test('land efficiency print: three pages when optional official verification is blank', async ({ page }) => {
   await page.addInitScript(() => { window.print = () => { document.body.dataset.printInvoked = '1'; }; });
   await page.goto('/index.html');
+  await page.locator('#le-calc').click();
   await page.locator('#le-print').click();
   await expect(page.locator('body')).toHaveAttribute('data-print-invoked', '1');
   await expect(page.locator('#yichen-print-root .print-page')).toHaveCount(3);
@@ -105,7 +106,9 @@ test('land efficiency print: three pages when optional official verification is 
 test('land efficiency print: optional official verification becomes its own fourth page', async ({ page }) => {
   await page.addInitScript(() => { window.print = () => { document.body.dataset.printInvoked = '1'; }; });
   await page.goto('/index.html');
+  await page.locator('.le-official-details summary').click();
   await page.locator('#le-plan-name').fill('測試都市計畫');
+  await page.locator('#le-calc').click();
   await page.locator('#le-print').click();
   await expect(page.locator('body')).toHaveAttribute('data-print-invoked', '1');
   await expect(page.locator('#yichen-print-root .print-page')).toHaveCount(4);
