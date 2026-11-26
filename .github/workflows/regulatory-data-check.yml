@@ -25,8 +25,10 @@ jobs:
       - name: Validate legal, city and incentive data
         run: |
           node tests/regulatory-data.test.mjs
-          node --test tests/regulation-loader.test.mjs tests/reward-engine.test.mjs tests/tax-additional-tools.test.mjs
+          node --test tests/regulation-loader.test.mjs tests/reward-engine.test.mjs tests/tax-additional-tools.test.mjs tests/reward-engine-runtime.test.mjs
           node --check scripts/build-deployment.mjs
           node --check workbench/modules/regulation-data-runtime.js
           node --check workbench/modules/tax-additional-calculations.js
           node --check workbench/modules/tax-additional-tools.js
+          node --check workbench/modules/reward-engine-runtime.js
+          node --check workbench/modules/land-reward-gate.js
