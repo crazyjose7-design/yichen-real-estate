@@ -13,7 +13,24 @@
   "effective_to": null,
   "retrieved_at": "2026-11-27",
   "official_parameters": [],
-  "local_regulations": [],
+  "local_regulations": [
+    {
+      "id": "nantou-official-law-portal",
+      "record_type": "source_portal",
+      "title": "南投縣政府主管法規共用系統（官方法規入口）",
+      "status": "in_review",
+      "source": {
+        "url": "https://glrs.nantou.gov.tw/",
+        "title": "南投縣政府主管法規共用系統",
+        "agency": "南投縣政府",
+        "provision": "地方自治法規、自治規則及行政規則查詢入口"
+      },
+      "review_notes": [
+        "本次已定位官方法規查詢入口，尚未定位可直接適用之都市更新容積獎勵自治法規。",
+        "後續須檢索都市計畫法南投縣施行規定、都市更新單元劃定、容積移轉、建築管理及各都市計畫書圖。"
+      ]
+    }
+  ],
   "reward_programs": [],
   "user_assumptions": [],
   "application_policy": {
@@ -24,7 +41,10 @@
     "都市計畫及土地使用分區管制",
     "建蔽率、容積率、移轉/獎勵容積及個案限制",
     "地方自治法規、地方獎勵辦法與受理程序",
-    "官方公告、法規版本、生效日期及適用範圍"
+    "官方公告、法規版本、生效日期及適用範圍",
+    "地方官方法規入口內都市計畫/建築/更新法規完整檢索",
+    "地方都市計畫書圖、土地使用分區及基地管制",
+    "都市更新獎勵辦法及附表、互斥與個案核准資料"
   ],
   "safety_notes": [
     "不得以縣市通用值取代基地地號與個案核定條件。",
