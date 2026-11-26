@@ -49,8 +49,8 @@ const printCounts=[],pdfResults=[];
 async function verifyPrintPdf(id,expectedPages){
  await page.locator('#'+id).click();
  await page.waitForTimeout(500);
- const titles=await page.locator('#yichen-print-root .print-page h2').allTextContents();
- const domPages=titles.length;
+ const titles=await page.locator('#yichen-print-root > .print-page > .print-page-content > h2').allTextContents();
+ const domPages=await page.locator('#yichen-print-root > .print-page').count();
  if(domPages!==expectedPages)throw new Error(id+' expected '+expectedPages+' print page(s), DOM built '+domPages+'; titles='+titles.join(' | '));
  const pdf=await page.pdf({format:'A4',printBackground:true,preferCSSPageSize:true});
  const raw=pdf.toString('latin1');
