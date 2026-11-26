@@ -191,6 +191,15 @@
       "land_ui": "workbench/modules/land-reward-gate.js",
       "calculation_module": "workbench/modules/land-efficiency.js",
       "safety": "only fully verified, effective, jurisdiction-matched and individually approved reward records can be applied; all current reward records remain blocked"
+    },
+    "city_review_matrix": {
+      "path": "regulations/city-review-matrix.json",
+      "status": "tracking_only",
+      "city_files": 22,
+      "source_records": 36,
+      "verified_cities": 0,
+      "verified_official_parameters": 0
     }
-  }
+  },
+  "city_review_matrix": "city-review-matrix.json"
 }
