@@ -93,6 +93,10 @@ await page.locator('#tax-extra-rentShare').fill('100');
 await page.locator('#tax-calc').click();
 rentDetail=await page.locator('#tax-detail').innerText();
 if(!rentDetail.includes('房東 1'))throw new Error('Rent multiple-landlord interface failed: '+rentDetail);
+await page.locator('input[name="tax-extra-rentKind"][value="company"]').check();
+await page.locator('#tax-calc').click();
+rentDetail=await page.locator('#tax-detail').innerText();
+if(!rentDetail.includes('二代健保補充保費：NT$ 0'))throw new Error('Company rent must not incur individual supplementary premium: '+rentDetail);
 await verifyPrintPdf('tax-print',1,'tax-rent-withholding');
 
 await page.locator('#tax-menu button[data-yichen-extra="professionalIncome"]').click();
