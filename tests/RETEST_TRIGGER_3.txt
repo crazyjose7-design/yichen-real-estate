@@ -1,0 +1,1 @@
+Run updated browser smoke test after exposing required tax verification controls.
