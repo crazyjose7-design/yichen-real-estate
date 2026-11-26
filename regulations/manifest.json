@@ -147,6 +147,7 @@
     "delegated_regulations_added": 5,
     "local_sources_are_not_fully_verified": true,
     "all_tax_parameters_in_review": true,
-    "auto_apply_enabled": false
+    "auto_apply_enabled": false,
+    "cities_with_source_records_count": 22
   }
 }
