@@ -31,3 +31,18 @@ export function buildRegulatoryBundle({ cityDataset, centralLaws = [], incentive
   const pendingTax = taxParameters.filter(record => record?.status !== 'verified' || record?.application_policy?.auto_apply !== true);
   return { jurisdiction: cityDataset?.jurisdiction ?? null, calculationDate, applicableParameters: selected, userAssumptions: assumptions, centralLawReferences: centralLaws, incentiveReferences: incentives, taxParameterReferences: taxParameters, reviewRequired: [...pending, ...pendingTax].map(record => record.id ?? record.title ?? 'unidentified-record'), safeToCalculate: selected.length > 0 && pending.length === 0 && pendingTax.length === 0 };
 }
+
+export async function loadRegulatoryBundle({ cityCode, calculationDate, jurisdiction, fetchImpl = globalThis.fetch, baseUrl = './regulations/' } = {}) {
+  if (typeof fetchImpl !== 'function') throw new TypeError('fetch is unavailable');
+  const getJson = async path => { const response = await fetchImpl(baseUrl + path); if (!response.ok) throw new Error('Unable to load regulatory file: ' + path); return response.json(); };
+  const manifest = await getJson('manifest.json');
+  const cityEntry = manifest.county_city_files?.find(item => item.code === String(cityCode));
+  if (!cityEntry) throw new Error('Unknown county/city code: ' + cityCode);
+  const [cityDataset, centralLaws, incentives, taxParameters] = await Promise.all([
+    getJson(cityEntry.path),
+    Promise.all((manifest.central_law_files ?? []).map(getJson)),
+    Promise.all((manifest.incentive_files ?? []).map(getJson)),
+    Promise.all((manifest.tax_parameter_files ?? []).map(getJson))
+  ]);
+  return buildRegulatoryBundle({ cityDataset, centralLaws, incentives, taxParameters, calculationDate, jurisdiction });
+}
