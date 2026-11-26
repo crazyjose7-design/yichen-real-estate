@@ -110,7 +110,9 @@
     "national/urban-renewal-rights-transformation-implementation-regulations.json",
     "national/hazardous-old-buildings-act-implementation-rules.json",
     "national/withholding-rate-standards.json",
-    "national/execution-income-audit-regulations.json"
+    "national/execution-income-audit-regulations.json",
+    "national/national-health-insurance-act.json",
+    "national/supplementary-premium-collection-rules.json"
   ],
   "incentive_files": [
     "rewards/urban-renewal.json",
@@ -167,7 +169,9 @@
       "law_sources": [
         "withholding-rate-standards",
         "income-tax-act-house-land",
-        "execution-income-audit-regulations"
+        "execution-income-audit-regulations",
+        "national-health-insurance-act",
+        "supplementary-premium-collection-rules"
       ],
       "notes": [
         "租金扣繳：境內居住者10%、非境內居住者20%、境內居住者每次扣繳稅額不超過2,000元免扣繳；租金補充保費2.11%，單次給付達20,000元，以全額計費並以1,000萬元為上限。",
