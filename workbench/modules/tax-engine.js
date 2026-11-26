@@ -95,7 +95,7 @@ const numericDefaults={
  old:{fee:0,otherPropertyIncome:0,priorLoss:0,baseIncome:0},
  vat:{purchase:0,priorCredit:0},deed:{exchangeDiff:0,priorDeedCredit:0},stamp:{copies:1},
  houseTax:{shareNum:1,shareDen:1,units:1,smallHouseCount:1,forceMajeureMonths:0},
- rent:{depositPrincipal:0,depositRate:0,depositDays:0,expense:43,baseIncome:0},\n rentWithholding:{share1:100,share2:0,share3:0}, professional:{annual9B:0},
+ rent:{depositPrincipal:0,depositRate:0,depositDays:0,expense:43,baseIncome:0},\n rentWithholding:{ownerCount:1,share1:100,share2:0,share3:0}, professional:{annual9B:0},
  estate:{funeral:1380000,gift2Years:0,spouse:0,children:0,childYears:0,parents:0,disabled:0,siblings:0,siblingYears:0,other:0,credit:0},
  gift:{deduct:0,credit:0}
 };
