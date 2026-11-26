@@ -17,7 +17,7 @@ const regulatory=await page.evaluate(()=>{
  const bundle=api.loadBundle('06',{date:'2026-11-27',jurisdiction:'TW-KHH'});
  return {cityCount:api.manifest.county_city_files.length,lawCount:bundle.centralLawReferences.length,taxCount:bundle.taxParameterReferences.length,rewardCount:bundle.incentiveReferences.length,safeToCalculate:bundle.safeToCalculate,reviewRequired:bundle.reviewRequired.length};
 });
-if(!regulatory||regulatory.cityCount!==22||regulatory.taxCount!==5||regulatory.rewardCount!==9||regulatory.safeToCalculate!==false)throw new Error('Embedded regulatory data integration failed: '+JSON.stringify(regulatory));
+if(!regulatory||regulatory.cityCount!==22||regulatory.lawCount!==17||regulatory.taxCount!==7||regulatory.rewardCount!==9||regulatory.safeToCalculate!==false)throw new Error('Embedded regulatory data integration failed: '+JSON.stringify(regulatory));
 const required=['tax-center','mortgage-center','land-efficiency-tool','tax-calc','tax-print','mortgageForm','mortgage-print','le-calc','le-print','site-print'];
 for(const id of required){if(await page.locator('#'+id).count()!==1)throw new Error('Missing/duplicate required element #'+id)}
 const imgs=await page.locator('img[data-yichen-inline-image]').count();
@@ -47,6 +47,37 @@ await page.waitForTimeout(150);
 const taxAmount=await page.locator('#tax-amount').innerText();
 if(!taxAmount||taxAmount==='NT$ 0')throw new Error('Tax calculator did not produce the expected non-zero sample result; dialogs='+dialogs.join(' | '));
 
+const extraTools={};
+await page.locator('#tax-menu button[data-yichen-extra="rentWithholding"]').click();
+if(await page.locator('#tax-title').innerText()!=='租金扣繳計算機')throw new Error('Rent withholding tool did not open');
+await page.locator('#tax-extra-rentGross').fill('20001');
+await page.locator('#tax-calc').click();
+extraTools.rentResidentTax=await page.locator('#tax-amount').innerText();
+let rentDetail=await page.locator('#tax-detail').innerText();
+if(!rentDetail.includes('應扣繳所得稅：NT$ 2,000'))throw new Error('Resident rent withholding threshold/rate calculation failed: '+rentDetail);
+await page.locator('#tax-fields details.tax-advanced').evaluate(el=>el.open=true);
+await page.locator('#tax-extra-rentGross').fill('20000');
+await page.locator('#tax-extra-rentNhi').check();
+await page.locator('#tax-calc').click();
+rentDetail=await page.locator('#tax-detail').innerText();
+if(!rentDetail.includes('租金補充保費：NT$ 422'))throw new Error('Rent supplementary premium calculation failed: '+rentDetail);
+extraTools.rentWithholdingNhi=rentDetail;
+
+await page.locator('#tax-menu button[data-yichen-extra="professionalIncome"]').click();
+if(await page.locator('#tax-title').innerText()!=='執行業務所得計算')throw new Error('Professional income tool did not open');
+await page.locator('#tax-extra-proRevenue').fill('1000000');
+await page.locator('#tax-extra-proExpenses').fill('300000');
+await page.locator('#tax-extra-proCredit').fill('10000');
+await page.locator('#tax-calc').click();
+extraTools.professionalIncome=await page.locator('#tax-amount').innerText();
+const proDetail=await page.locator('#tax-detail').innerText();
+if(extraTools.professionalIncome!=='NT$ 700,000'||!proDetail.includes('已扣繳稅額：NT$ 10,000'))throw new Error('Professional income actual-expense calculation failed: '+proDetail);
+await page.locator('#tax-fields details.tax-advanced').evaluate(el=>el.open=true);
+await page.locator('#tax-extra-proMode').selectOption('rate');
+await page.locator('#tax-extra-proFeeRate').fill('30');
+await page.locator('#tax-extra-proFeeVerified').check();
+await page.locator('#tax-calc').click();
+if(await page.locator('#tax-amount').innerText()!=='NT$ 700,000')throw new Error('Professional income verified fee-rate mode failed');
 const printCounts=[],pdfResults=[];
 async function verifyPrintPdf(id,expectedPages){
  await page.locator('#'+id).click();
@@ -73,6 +104,6 @@ const printCalls=await page.evaluate(()=>window.__printCalls);
 if(printCalls!==4)throw new Error('Expected all 4 print entry points to invoke print; counts='+printCounts.join(',')+'; dialogs='+dialogs.join(' | '));
 if(dialogs.length)throw new Error('Unexpected browser dialogs: '+dialogs.join(' | '));
 if(errors.length)throw new Error('Browser errors: '+errors.join(' | '));
-await fs.writeFile('dist/browser-smoke-results.json',JSON.stringify({passed:true,mortgage,land,taxAmount,embeddedImageCount:imageSources,founderImage,regulatory,printCalls,printCounts,pdfResults,errors},null,2));
+await fs.writeFile('dist/browser-smoke-results.json',JSON.stringify({passed:true,mortgage,land,taxAmount,extraTools,embeddedImageCount:imageSources,founderImage,regulatory,printCalls,printCounts,pdfResults,errors},null,2));
 await browser.close();
-console.log('Browser smoke tests passed: '+JSON.stringify({mortgage,land,taxAmount,imageSources,founderImage,regulatory,printCalls,printCounts,pdfResults}));
+console.log('Browser smoke tests passed: '+JSON.stringify({mortgage,land,taxAmount,extraTools,imageSources,founderImage,regulatory,printCalls,printCounts,pdfResults}));
