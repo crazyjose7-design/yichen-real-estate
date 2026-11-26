@@ -86,6 +86,5 @@ for (const input of cases) {
 }
 
 test('MORT-VALID-001 rejects an invalid rate-change month', () => {
-  const { elements } = runCase({ loan: 800, down: 200, price: 1000, years: 20, rate: 2, rate2: 3, changeMonth: 0, method: 'annuity' });
-  assert.equal(elements.get('mortgageMonthly').textContent, '—');
+  assert.throws(() => runCase({ loan: 800, down: 200, price: 1000, years: 20, rate: 2, rate2: 3, changeMonth: 0, method: 'annuity' }), /請確認/);
 });
