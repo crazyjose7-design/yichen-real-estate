@@ -12,5 +12,52 @@
   "checkedBy": null,
   "parameters": [],
   "sourceRecords": [],
-  "notes": "空白待查證模板；未取得該縣市現行官方公告及適用條件前，不得填入推測數值或供計算。"
+  "localParameterRequirements": [
+    {
+      "id": "house-tax-rates",
+      "name": "房屋稅地方徵收率",
+      "frequency": "annual",
+      "status": "not_researched",
+      "officialSourceUrl": null,
+      "applicableFrom": null,
+      "applicableTo": null
+    },
+    {
+      "id": "house-tax-value-thresholds",
+      "name": "房屋稅單一自住及低價住家現值門檻",
+      "frequency": "annual_or_amendment",
+      "status": "not_researched",
+      "officialSourceUrl": null,
+      "applicableFrom": null,
+      "applicableTo": null
+    },
+    {
+      "id": "land-value-tax-starting-point",
+      "name": "地價稅累進起點地價",
+      "frequency": "annual",
+      "status": "not_researched",
+      "officialSourceUrl": null,
+      "applicableFrom": null,
+      "applicableTo": null
+    },
+    {
+      "id": "old-house-income-standards",
+      "name": "房屋舊制財產交易所得設算標準",
+      "frequency": "annual",
+      "status": "not_researched",
+      "officialSourceUrl": null,
+      "applicableFrom": null,
+      "applicableTo": null
+    },
+    {
+      "id": "local-exemptions-and-reductions",
+      "name": "地方稅減免及特殊徵收率",
+      "frequency": "amendment",
+      "status": "not_researched",
+      "officialSourceUrl": null,
+      "applicableFrom": null,
+      "applicableTo": null
+    }
+  ],
+  "notes": "地方稅率、門檻及年度設算標準尚未逐筆查證；不得以其他縣市數值代填或供計算器使用。"
 }
