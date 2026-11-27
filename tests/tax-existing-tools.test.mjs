@@ -182,3 +182,23 @@ test('TAX-LAND-ABNORMAL-001 rejects invalid transferred share', () => {
   assert.equal(actual,null);
   assert.match(explanation,/持分/);
 });
+
+
+test('TAX-RENT-115-BOUNDARY-001: official 610,000 threshold enters 12% marginal bracket', () => {
+  const [actual] = defs.rent.calc({
+    ...base.rent, sales:1000, rentalMonths:1, expense:0, baseIncome:610000
+  });
+  assert.equal(actual,120);
+});
+test('TAX-RENT-115-BOUNDARY-002: official 1,380,000 threshold enters 20% marginal bracket', () => {
+  const [actual] = defs.rent.calc({
+    ...base.rent, sales:1000, rentalMonths:1, expense:0, baseIncome:1380000
+  });
+  assert.equal(actual,200);
+});
+test('TAX-OLD-115-BOUNDARY-001: old-regime property income uses the 115-year bracket schedule', () => {
+  const [actual] = defs.old.calc({
+    ...base.old, sale:1000, cost:0, fee:0, baseIncome:610000
+  });
+  assert.equal(actual,120);
+});
