@@ -92,7 +92,7 @@
     "added_cases": 9,
     "production_expected_values_checked": true,
     "reviewed_by": null,
-    "status": "pending_ci_and_second_review"
+    "status": "ci_passed_pending_second_review"
   },
   "application_policy": {
     "auto_apply": false,
