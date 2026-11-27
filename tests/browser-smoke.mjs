@@ -24,7 +24,7 @@ const regulatory=await page.evaluate(()=>{
  const bundle=api.loadBundle('06',{date:'2026-11-27',jurisdiction:'TW-KHH'});
  return {cityCount:api.manifest.county_city_files.length,lawCount:bundle.centralLawReferences.length,taxCount:bundle.taxParameterReferences.length,rewardCount:bundle.incentiveReferences.length,safeToCalculate:bundle.safeToCalculate,reviewRequired:bundle.reviewRequired.length};
 });
-if(!regulatory||regulatory.cityCount!==22||regulatory.lawCount!==19||regulatory.taxCount!==7||regulatory.rewardCount!==9||regulatory.safeToCalculate!==false)throw new Error('Embedded regulatory data integration failed: '+JSON.stringify(regulatory));
+if(!regulatory||regulatory.cityCount!==22||regulatory.lawCount!==19||regulatory.taxCount!==8||regulatory.rewardCount!==9||regulatory.safeToCalculate!==false)throw new Error('Embedded regulatory data integration failed: '+JSON.stringify(regulatory));
 const required=['tax-center','mortgage-center','land-efficiency-tool','tax-calc','tax-print','mortgageForm','mortgage-print','le-calc','le-print','site-print'];
 for(const id of required){if(await page.locator('#'+id).count()!==1)throw new Error('Missing/duplicate required element #'+id)}
 const imgs=await page.locator('img[data-yichen-inline-image]').count();
