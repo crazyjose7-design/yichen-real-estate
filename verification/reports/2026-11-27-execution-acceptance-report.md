@@ -36,8 +36,8 @@ Build browser smoke實際產生PDF並檢查頁數及A4直式：
 
 - Playwright：18項瀏覽器互動測試通過。
 - RWD水平溢出測試：1440×900、1280×800、1024×768、820×1180、430×932、390×844、360×800、844×390共8種尺寸通過。
-- Node production regression：通過。
-- Build browser smoke：93項Node測試通過；土地增值稅歷史/回歸案例131項、失敗0。
+- Node production regression：115項測試通過（含Apps Script接收端4項靜態契約/語法測試、土地增值稅5項新增獨立案例、遺產/贈與稅9項新增邊界/例外案例、115年度個人綜所稅級距3項新增案例）。
+- Build browser smoke：115項Node測試通過；土地增值稅歷史/回歸案例131項、失敗0。
 - Python Decimal oracle：13個測試方法通過；其中房貸54組矩陣、固定基準與邊界檢查通過，土地坪效算術核心通過。
 - 以上不代表所有法規參數、22縣市適用條件或人工視覺驗收已完成。
 
@@ -67,3 +67,35 @@ Build browser smoke實際產生PDF並檢查頁數及A4直式：
 - 完整部署包內含 `index.html`、`index.multi-file.html`、`modules/`、`regulations/`、`docs/`、`versions/`。
 
 以上是工作分支的可驗收交付，不是Cloudflare正式上線版本。
+
+## 2026-11-27 後續追加執行
+
+### 年度稅務法源
+- 新增 `regulations/taxes/estate-gift-tax-2026.json`：115年度遺產稅、贈與稅免稅額、級距及扣除額，來源為財政部台財稅字第11404671540號公告。
+- 新增 `regulations/taxes/individual-income-tax-2026.json`：115年度綜所稅免稅額、標準扣除額、薪資/身障扣除額、級距及退職所得參數，來源為財政部台財稅字第11404664070號公告。
+- 程式目前仍有部分年度級距硬編碼；新增JSON是可追溯法源/參數記錄，不代表所有計算器已改為動態讀取年度參數。
+
+### 法規安全
+- 中央《都市更新建築容積獎勵辦法》來源範圍已校正為全文21條。
+- 苗栗縣都市更新建築容積獎勵辦法第3條，依內政部115年1月12日台內國字第1140817216號函，已明確記錄為無效；城市JSON及schema新增失效條文紀錄，validator要求其維持auto_apply=false。
+- 臺北、臺中、高雄地方都更法規審查紀錄補入中央母法修法後條次、地方獎勵上限及最新公告注意事項；22縣市仍0個完成參數驗證。
+
+### 聯絡表單
+- 新增Google Apps Script接收端原始碼 `backend/google-apps-script/Code.gs` 及設定/部署說明；支援Email、選配LINE Messaging API與Google試算表稽核。
+- 新增4項靜態語法/契約測試，已納入Node回歸。
+- 未取得收件Email、LINE推播Token/目的地及Apps Script專案授權；接收端尚未部署，實際送達仍BLOCKED。
+
+### 視覺與列印
+- Playwright已輸出8種視窗尺寸全頁截圖，Artifact ID 15163065656（Run 45916649735）。
+- 實際PDF已人工檢視：房貸1頁A4、租金扣繳1頁A4、土地官方查核4頁A4、整站主內容6頁A4。
+- 土地四頁PDF人工檢視發現內部頁標題編號與外層頁首不一致，已修正列印clone標題並新增精確斷言；最新Playwright執行結果待完成。
+- 真實Android裝置操作及社群影片嵌入載入仍未驗收。
+
+### Cloudflare
+- 新增手動Cloudflare Pages workflow：Preview預設；Production限定main。
+- 必須設定GitHub secrets `CLOUDFLARE_API_TOKEN`、`CLOUDFLARE_ACCOUNT_ID` 及repository variable `CLOUDFLARE_PAGES_PROJECT`。
+- 尚未設定憑證或觸發部署，仍無正式部署ID/公開網址；未合併main。
+
+### 最新法規資料驗證輸出
+- 22個縣市、19項中央法規索引、9項稅務參數檔、9項獎勵資料；`safeToCalculate=false`。
+- 當前 validator 顯示 `reviewRequired=37`；來源清單完整不代表已逐條驗證，37項仍需人工/法規覆核。
