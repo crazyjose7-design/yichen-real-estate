@@ -27,7 +27,7 @@
         "cross_check": 0
       },
       "verified_expected_values": 5,
-      "source_status": "CENTRAL_RATE_SOURCE_REVIEWED_ANNUAL_CPI_AND_LOCAL_RULES_PENDING",
+      "source_status": "CI_PASSED_PENDING_ANNUAL_CPI_AND_LOCAL_RULE_REVIEW",
       "notes": "新增獨立土地增值稅案例：零漲價、20%/30%/40%三級公式及無效持分阻擋；仍待各年度官方物價指數完整校驗、長期持有減徵、自用住宅、法定減除費用及地方核定資料交叉覆核。"
     },
     {
@@ -57,7 +57,7 @@
         "cross_check": 0
       },
       "verified_expected_values": 2,
-      "source_status": "OFFICIAL_115_SCHEDULE_ADDED_PENDING_CI",
+      "source_status": "CI_PASSED_PENDING_SECOND_REVIEW",
       "notes": "115年度個人綜所稅年度級距新增官方參數檔；新增舊制財產交易所得在610,000元級距邊界的獨立增額稅額測試。程式目前仍硬編碼年度級距，尚未改為讀取參數檔；舊制核定所得、各地房屋評定現值及特殊案件仍需覆核。"
     },
     {
@@ -147,7 +147,7 @@
         "cross_check": 0
       },
       "verified_expected_values": 3,
-      "source_status": "OFFICIAL_115_SCHEDULE_ADDED_PENDING_CI",
+      "source_status": "CI_PASSED_PENDING_SECOND_REVIEW",
       "notes": "115年度個人綜所稅年度級距新增官方參數檔；新增租賃所得稅於610,000元及1,380,000元級距邊界的獨立增額稅額測試。程式目前仍硬編碼年度級距，尚未改為讀取參數檔；租賃所得特殊優惠、押金、地方差異仍需覆核。"
     },
     {
@@ -233,5 +233,14 @@
     "每項完成正常、邊界、異常、交叉核算矩陣",
     "稅年度與地方差異有測試",
     "全部案例通過並產生報告"
-  ]
+  ],
+  "research_progress": {
+    "latest_ci": {
+      "run_id": 45916637068,
+      "production_regression_tests": 115,
+      "passed": 115,
+      "failed": 0,
+      "notes": "新增租金/舊制房屋115年度個人所得稅級距案例、土地增值稅三級距案例、遺產贈與稅級距/例外案例及Apps Script靜態契約測試均通過。此結果不代表14項工具的所有法源、年度及邊界案例均完成。"
+    }
+  }
 }
