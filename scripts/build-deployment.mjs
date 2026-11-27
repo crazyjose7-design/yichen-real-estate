@@ -60,6 +60,7 @@ await fs.copyFile(path.join(root,'workbench','EXECUTION_RULES.md'),path.join(pkg
 await fs.cp(path.join(root,'regulations'),path.join(pkg,'regulations'),{recursive:true});
 await fs.cp(path.join(root,'docs'),path.join(pkg,'docs'),{recursive:true});
 await fs.cp(path.join(root,'versions'),path.join(pkg,'versions'),{recursive:true});
+await fs.cp(path.join(root,'backend'),path.join(pkg,'backend'),{recursive:true});
 await fs.copyFile(path.join(root,'scripts','validate-regulatory-data.mjs'),path.join(pkg,'validate-regulatory-data.mjs'));
 await fs.copyFile(path.join(root,'tests','regulatory-data.test.mjs'),path.join(pkg,'regulatory-data.test.mjs'));
 await fs.copyFile(path.join(root,'tests','regulation-loader.test.mjs'),path.join(pkg,'regulation-loader.test.mjs'));
@@ -84,8 +85,8 @@ await fs.writeFile(path.join(pkg,'README.txt'),[
  'regulations/ 包含 22 縣市、中央法規、稅目與獎勵資料；單檔 HTML 內嵌同一資料集及安全載入 API，未查證資料不得自動套用。',
  '稅務區新增租金扣繳與執行業務所得計算；公式及法源紀錄請見 regulations/national/、regulations/taxes/ 與 modules/tax-additional-*.js。',
  '土地坪效含官方容積獎勵安全檢核；未核實、未取得個案核准或互斥規則不明時，獎勵不得自動加入試算。',
- 'docs/、versions/ 與驗證器一併封裝，方便後續查核及回復。',
- '本包以 V6.2.20 已驗證基準分支為來源。'
+ 'docs/、versions/、backend/google-apps-script/ 接收端原始碼與驗證器一併封裝，方便後續查核及部署。',
+ '本包由目前工作分支建置；請以部署報告中的 commit SHA 作為來源版本。'
 ].join('\n')+'\n');
 execFileSync('zip',['-qr',path.join(out,'yichen-real-estate-deployment.zip'),'.'],{cwd:pkg});
 const stats=await Promise.all([path.join(out,'index.html'),path.join(out,'yichen-real-estate-deployment.zip')].map(async p=>({file:path.basename(p),bytes:(await fs.stat(p)).size})));
