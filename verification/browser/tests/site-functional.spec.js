@@ -116,6 +116,8 @@ test('land efficiency print: optional official verification becomes its own four
   await expect(page.locator('#yichen-print-root .print-page')).toHaveCount(4);
   await expect(page.locator('#yichen-print-root')).toContainText('二、官方查核');
   await expect(page.locator('#yichen-print-root')).toContainText('四、試算結果');
+  await expect(page.locator('#yichen-print-root .print-page').nth(2).locator('.le-card > h3').first()).toHaveText('三、土地成本與市場銷售條件');
+  await expect(page.locator('#yichen-print-root .print-page').nth(3).locator('.le-card > h3').first()).toHaveText('四、試算結果');
   const pdfPath = testInfo.outputPath('pdf/land-official-check.pdf');
   await fs.mkdir(path.dirname(pdfPath), { recursive: true });
   const pdf = await page.pdf({ format: 'A4', printBackground: true });
