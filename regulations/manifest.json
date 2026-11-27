@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "dataset_version": "0.1.5",
+  "dataset_version": "0.1.6",
   "generated_at": "2026-11-27",
   "status": "in_progress",
   "county_city_files": [
@@ -133,7 +133,8 @@
     "taxes/house-tax.json",
     "taxes/rent-withholding.json",
     "taxes/professional-income.json",
-    "taxes/estate-gift-tax-2026.json"
+    "taxes/estate-gift-tax-2026.json",
+    "taxes/individual-income-tax-2026.json"
   ],
   "policy": {
     "only_verified_auto_apply": true,
@@ -221,6 +222,17 @@
         "遺產稅免稅額1,333萬元；配偶553萬元、直系卑親屬56萬元、父母138萬元、重度身心障礙693萬元、喪葬費138萬元。",
         "贈與稅每位贈與人全年免稅額244萬元；同一贈與人全年各次贈與合併計算。",
         "新增測試涵蓋遺產稅兩個級距邊界、上級距起點、軍警公教執行職務死亡免稅額加倍，以及贈與稅免稅額與兩級距邊界、未核實年度合併的阻擋。"
+      ]
+    },
+    "individual_income_tax_2026": {
+      "status": "source_record_added_pending_ci",
+      "path": "taxes/individual-income-tax-2026.json",
+      "official_notice": "台財稅字第11404664070號",
+      "promulgated_at": "2025-11-27",
+      "effective_period": "2026-01-01/2026-12-31",
+      "notes": [
+        "115年度免稅額、扣除額及綜所稅級距依財政部公告建立。",
+        "目前網站租賃所得稅及房屋舊制財產交易所得計算器仍將年度級距寫在程式內，尚未改為讀取此參數檔；此檔目前為法源與測試基準，不宣稱已驅動正式計算。"
       ]
     }
   },
