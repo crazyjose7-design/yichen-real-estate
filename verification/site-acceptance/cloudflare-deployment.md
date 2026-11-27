@@ -24,7 +24,7 @@
 
 ## 目前測試證據與阻礙（2026-11-27）
 - GitHub Actions已成功產生並驗證部署包；單檔HTML已內嵌圖片及稅務模組，多檔版本的modules路徑亦已修正。
-- Artifact：run 45913252779，artifact 15161410623；部署包ZIP可正常解壓，包含modules、regulations、docs及版本資料。
+- 最新部署包：Run 45916926817，Artifact ID 15162921431；已解壓檢查，包含modules、regulations、docs、versions及Apps Script後端原始碼。
 - 目前沒有Cloudflare Pages正式部署ID、公開網址回歸或部署commit一致證據；未合併main、未切換正式流量。
 
 ## 已建立可執行的部署路徑（2026-11-27）
