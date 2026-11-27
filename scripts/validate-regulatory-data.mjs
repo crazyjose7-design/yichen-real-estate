@@ -21,6 +21,12 @@ for(const [code,name,slug] of cities){
  const d=JSON.parse(fs.readFileSync(p,'utf8'));
  if((d.local_regulations??[]).some(x=>x.source?.url))citySourceCount++;
  if(d.status==='verified'&&!(d.official_parameters??[]).length)errors.push('city marked verified without official parameters '+p);
+ if(code==='11'){
+  const invalidated=d.invalidated_provisions??[];
+  const miaoliArticle3=invalidated.find(x=>x.article==='第3條');
+  if(!miaoliArticle3||miaoliArticle3.status!=='invalidated'||miaoliArticle3.auto_apply!==false)errors.push('Miaoli invalidated Article 3 must remain explicitly blocked');
+ }
+
 }
 const manifestForCoverage=JSON.parse(fs.readFileSync(path.join(root,'manifest.json'),'utf8'));
 if(manifestForCoverage.research_progress?.cities_with_source_records_count!==citySourceCount)errors.push('manifest local source coverage count does not match city records');
