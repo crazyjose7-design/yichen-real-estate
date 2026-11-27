@@ -239,6 +239,56 @@
       "items": {
         "type": "string"
       }
+    },
+    "invalidated_provisions": {
+      "type": "array",
+      "description": "Officially invalidated local legal provisions; must never be used for automatic calculation.",
+      "items": {
+        "type": "object",
+        "required": [
+          "article",
+          "status",
+          "invalidated_at",
+          "authority",
+          "document_number",
+          "legal_basis",
+          "reason",
+          "source_url",
+          "auto_apply"
+        ],
+        "properties": {
+          "article": {
+            "type": "string"
+          },
+          "status": {
+            "const": "invalidated"
+          },
+          "invalidated_at": {
+            "type": "string",
+            "format": "date"
+          },
+          "authority": {
+            "type": "string"
+          },
+          "document_number": {
+            "type": "string"
+          },
+          "legal_basis": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "source_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "auto_apply": {
+            "const": false
+          }
+        },
+        "additionalProperties": false
+      }
     }
   },
   "additionalProperties": false
