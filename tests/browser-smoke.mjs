@@ -17,6 +17,8 @@ if(!builtHtml.includes('id="yichen-tax-additional-calculations"')||!builtHtml.in
 const multiHtml=await fs.readFile('dist/deployment-package/index.multi-file.html','utf8');
 if(!multiHtml.includes('src="modules/tax-simpany-parity-tools.js"'))throw new Error('Multi-file package module path was not rewritten');
 await fs.access('dist/deployment-package/modules/tax-simpany-parity-tools.js');
+await fs.access('dist/deployment-package/backend/google-apps-script/Code.gs');
+await fs.access('dist/deployment-package/backend/google-apps-script/README.md');
 
 const regulatory=await page.evaluate(()=>{
  const api=window.YichenRegulatoryData;
