@@ -10,21 +10,21 @@ const b=html.indexOf('</section>',a);
 assert.ok(a>=0&&b>a,'social section exists');
 const social=html.slice(a,b);
 test('no social video iframe is loaded before a click',()=>{
- assert.equal((social.match(/<iframe\\b/gi)||[]).length,0);
+ assert.equal((social.match(/<iframe\b/gi)||[]).length,0);
  assert.equal((social.match(/data-youtube-video-id=/g)||[]).length,9);
  assert.equal((social.match(/data-tiktok-short-url=/g)||[]).length,9);
 });
 test('YouTube thumbnails are lazy loaded',()=>{
- assert.equal((social.match(/<img src="https:\\/\\/i\\.ytimg\\.com\\/vi\\//g)||[]).length,9);
+ assert.equal((social.match(/<img src="https:\/\/i\.ytimg\.com\/vi\//g)||[]).length,9);
  assert.equal((social.match(/loading="lazy" decoding="async" width="480" height="360"/g)||[]).length,9);
 });
 test('players are created on click and only one is active',()=>{
- assert.match(social,/root\\.addEventListener\\('click'/);
- assert.match(social,/youtube-nocookie\\.com\\/embed\\/.*?autoplay=1/);
- assert.match(social,/tiktok\\.com\\/player\\/v1\\/.*?autoplay=1/);
- assert.match(social,/function stopOtherPlayers\\(current\\)/);
- assert.match(social,/request!==activeRequest\\|\\|activeBox!==box/);
- assert.doesNotMatch(social,/visible\\.forEach\\(mount\\)/);
+ assert.match(social,/root\.addEventListener\('click'/);
+ assert.match(social,/youtube-nocookie\.com\/embed\/.*?autoplay=1/);
+ assert.match(social,/tiktok\.com\/player\/v1\/.*?autoplay=1/);
+ assert.match(social,/function stopOtherPlayers\(current\)/);
+ assert.match(social,/request!==activeRequest\|\|activeBox!==box/);
+ assert.doesNotMatch(social,/visible\.forEach\(mount\)/);
 });
 test('four resource anchors are connected to the menu',()=>{
  for(const id of ['resource-government','resource-urban-renewal','resource-disaster','resource-private']){
