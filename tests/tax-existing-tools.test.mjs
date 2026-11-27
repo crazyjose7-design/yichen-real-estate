@@ -93,3 +93,63 @@ test('TAX-LANDTAX-EDGE-001 refuses unverified progressive starting point', () =>
   assert.equal(actual, null);
   assert.match(explanation, /累進起點地價/);
 });
+
+
+// 115年度遺產及贈與稅：依財政部114年11月27日公告建立獨立邊界案例。
+// Expected values below are independently calculated from the published brackets,
+// not copied from the production calculator's explanation text.
+const estateCase = (taxableNet, overrides={}) => ({
+  ...base.estate,
+  base: taxableNet + 13330000 + 1380000,
+  ...overrides
+});
+const giftCase = (gross, overrides={}) => ({
+  ...base.gift,
+  base: gross,
+  ...overrides
+});
+
+test('TAX-ESTATE-115-BOUNDARY-001: 10% bracket ceiling', () => {
+  const [actual] = defs.estate.calc(estateCase(56210000));
+  assert.equal(actual, 5621000);
+});
+test('TAX-ESTATE-115-BOUNDARY-002: 15% bracket ceiling', () => {
+  const [actual] = defs.estate.calc(estateCase(112420000));
+  assert.equal(actual, 14052500);
+});
+test('TAX-ESTATE-115-BOUNDARY-003: upper bracket starts immediately above 112.42m', () => {
+  const [actual] = defs.estate.calc(estateCase(112420001));
+  assert.ok(Math.abs(actual - 14052500.2) < 1e-6);
+});
+test('TAX-ESTATE-115-EXCEPTION-001: qualified public-service death doubles exemption', () => {
+  const [actual] = defs.estate.calc({
+    ...base.estate,
+    base: 30000000,
+    serviceDeath:'是',
+    funeral:1380000
+  });
+  assert.equal(actual, 196000);
+});
+test('TAX-GIFT-115-BOUNDARY-001: annual exemption is 2.44m per donor', () => {
+  const [atExemption] = defs.gift.calc(giftCase(2440000));
+  const [aboveExemption] = defs.gift.calc(giftCase(2440001));
+  assert.equal(atExemption, 0);
+  assert.ok(Math.abs(aboveExemption - 0.1) < 1e-9);
+});
+test('TAX-GIFT-115-BOUNDARY-002: 10% bracket ceiling after annual exemption', () => {
+  const [actual] = defs.gift.calc(giftCase(30550000));
+  assert.equal(actual, 2811000);
+});
+test('TAX-GIFT-115-BOUNDARY-003: 15% bracket ceiling after annual exemption', () => {
+  const [actual] = defs.gift.calc(giftCase(58650000));
+  assert.equal(actual, 7026000);
+});
+test('TAX-GIFT-115-BOUNDARY-004: upper bracket starts immediately above 56.21m net', () => {
+  const [actual] = defs.gift.calc(giftCase(58650001));
+  assert.ok(Math.abs(actual - 7026000.2) < 1e-6);
+});
+test('TAX-GIFT-115-ABNORMAL-001: refuses unverified annual donor aggregation', () => {
+  const [actual, explanation] = defs.gift.calc(giftCase(30000000,{annualGiftVerified:'否'}));
+  assert.equal(actual, null);
+  assert.match(explanation,/全年贈與總額/);
+});
