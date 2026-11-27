@@ -51,14 +51,14 @@
       "status": "IN_PROGRESS",
       "fixture_file": "fixtures/old.json",
       "required_cases": {
-        "normal": 0,
-        "boundary": 0,
+        "normal": 1,
+        "boundary": 1,
         "abnormal": 0,
         "cross_check": 0
       },
-      "verified_expected_values": 0,
-      "source_status": "NOT_YET_REVIEWED",
-      "notes": "既有單一基準案例仍是候選值，尚未完成多案例及法源覆核。"
+      "verified_expected_values": 2,
+      "source_status": "OFFICIAL_115_SCHEDULE_ADDED_PENDING_CI",
+      "notes": "115年度個人綜所稅年度級距新增官方參數檔；新增舊制財產交易所得在610,000元級距邊界的獨立增額稅額測試。程式目前仍硬編碼年度級距，尚未改為讀取參數檔；舊制核定所得、各地房屋評定現值及特殊案件仍需覆核。"
     },
     {
       "id": "vat",
@@ -141,14 +141,14 @@
       "status": "IN_PROGRESS",
       "fixture_file": "fixtures/rent.json",
       "required_cases": {
-        "normal": 0,
-        "boundary": 0,
+        "normal": 1,
+        "boundary": 2,
         "abnormal": 0,
         "cross_check": 0
       },
-      "verified_expected_values": 0,
-      "source_status": "NOT_YET_REVIEWED",
-      "notes": "既有單一基準案例仍是候選值，尚未完成多案例及法源覆核。"
+      "verified_expected_values": 3,
+      "source_status": "OFFICIAL_115_SCHEDULE_ADDED_PENDING_CI",
+      "notes": "115年度個人綜所稅年度級距新增官方參數檔；新增租賃所得稅於610,000元及1,380,000元級距邊界的獨立增額稅額測試。程式目前仍硬編碼年度級距，尚未改為讀取參數檔；租賃所得特殊優惠、押金、地方差異仍需覆核。"
     },
     {
       "id": "estate",
