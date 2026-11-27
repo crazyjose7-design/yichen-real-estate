@@ -21,4 +21,8 @@
 
 ## 變更限制
 在正式驗收全部完成前，不合併main、不修改正式流量、不宣稱已上線。正式部署如需使用者帳號授權或DNS操作，僅在真正需要時要求最小必要授權。
-\n## 目前測試證據與阻礙（2026-11-27）\n- GitHub Actions已成功產生並驗證部署包；單檔HTML已內嵌圖片及稅務模組，多檔版本的modules路徑亦已修正。\n- Artifact：run 45913252779，artifact 15161410623；部署包ZIP可正常解壓，包含modules、regulations、docs及版本資料。\n- 目前沒有Cloudflare Pages正式部署ID、公開網址回歸或部署commit一致證據；未合併main、未切換正式流量。\n
+
+## 目前測試證據與阻礙（2026-11-27）
+- GitHub Actions已成功產生並驗證部署包；單檔HTML已內嵌圖片及稅務模組，多檔版本的modules路徑亦已修正。
+- Artifact：run 45913252779，artifact 15161410623；部署包ZIP可正常解壓，包含modules、regulations、docs及版本資料。
+- 目前沒有Cloudflare Pages正式部署ID、公開網址回歸或部署commit一致證據；未合併main、未切換正式流量。
