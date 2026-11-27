@@ -21,14 +21,14 @@
       "status": "IN_PROGRESS",
       "fixture_file": "fixtures/land.json",
       "required_cases": {
-        "normal": 0,
-        "boundary": 0,
-        "abnormal": 0,
+        "normal": 1,
+        "boundary": 3,
+        "abnormal": 1,
         "cross_check": 0
       },
-      "verified_expected_values": 0,
-      "source_status": "NOT_YET_REVIEWED",
-      "notes": "計算器已存在；目前既有 tests/tax-existing-tools.test.mjs 的 expected 物件沒有 land 案例，須補獨立基準及完整矩陣。"
+      "verified_expected_values": 5,
+      "source_status": "CENTRAL_RATE_SOURCE_REVIEWED_ANNUAL_CPI_AND_LOCAL_RULES_PENDING",
+      "notes": "新增獨立土地增值稅案例：零漲價、20%/30%/40%三級公式及無效持分阻擋；仍待各年度官方物價指數完整校驗、長期持有減徵、自用住宅、法定減除費用及地方核定資料交叉覆核。"
     },
     {
       "id": "house",
