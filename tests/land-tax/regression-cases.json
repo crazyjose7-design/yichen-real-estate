@@ -1,0 +1,3674 @@
+{
+  "schemaVersion": "2.0.1",
+  "purpose": "Reconstructed 130-case regression matrix with independently calculated expected tax amounts. This is a new suite, not a recovered copy of the missing historical 130+ rows.",
+  "caseCount": 131,
+  "historicalDataRecovery": "Original historical rows remain unavailable; prior conversation only confirms aggregate 126-pass report and unresolved LT-127. These new cases are separate.",
+  "cpiValues": {
+    "2010-01-01": 125.1,
+    "2000-01-01": 139.5,
+    "1990-01-01": 183.2,
+    "1980-01-01": 261.6
+  },
+  "formulaBasis": "Land value increment tax progressive tiers, holding-period reductions (20/30/40 years), urban/non-urban self-use area limits, and prior-land-tax-credit cap at 5% of calculated tax.",
+  "cases": [
+    {
+      "id": "LT-NEW-001",
+      "inputs": {
+        "previousDate": "2010-01-01",
+        "currentValue": 19032.0805,
+        "priorValue": 10137,
+        "cpi": 125.1,
+        "area": 100,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 1,
+        "deductibleCosts": 1000,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 126814,
+        "grossTax": 126814,
+        "credit": 0,
+        "base": 1268139,
+        "gain": 634069
+      },
+      "meta": {
+        "tier": "tier1",
+        "holdingReduction": 0,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-002",
+      "inputs": {
+        "previousDate": "2010-01-01",
+        "currentValue": 19292.491,
+        "priorValue": 10274,
+        "cpi": 125.1,
+        "area": 200,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 2,
+        "deductibleCosts": 1333,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 128528,
+        "grossTax": 128528,
+        "credit": 0,
+        "base": 1285277,
+        "gain": 642639
+      },
+      "meta": {
+        "tier": "tier1",
+        "holdingReduction": 0,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-003",
+      "inputs": {
+        "previousDate": "2010-01-01",
+        "currentValue": 19543.3815,
+        "priorValue": 10411,
+        "cpi": 125.1,
+        "area": 350,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 2,
+        "shareDenominator": 3,
+        "deductibleCosts": 1666,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 303897,
+        "grossTax": 303897,
+        "credit": 0,
+        "base": 3038971,
+        "gain": 1519485
+      },
+      "meta": {
+        "tier": "tier1",
+        "holdingReduction": 0,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-004",
+      "inputs": {
+        "previousDate": "2010-01-01",
+        "currentValue": 19802.20644444,
+        "priorValue": 10548,
+        "cpi": 125.1,
+        "area": 300,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 3,
+        "shareDenominator": 4,
+        "deductibleCosts": 1999,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 296900,
+        "grossTax": 296900,
+        "credit": 0,
+        "base": 2968998,
+        "gain": 1484499
+      },
+      "meta": {
+        "tier": "tier1",
+        "holdingReduction": 0,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-005",
+      "inputs": {
+        "previousDate": "2010-01-01",
+        "currentValue": 20063.72821429,
+        "priorValue": 10685,
+        "cpi": 125.1,
+        "area": 700,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 4,
+        "deductibleCosts": 2332,
+        "priorLandTaxCredit": 250
+      },
+      "expected": {
+        "tax": 233671,
+        "grossTax": 233921,
+        "credit": 250,
+        "base": 2339214,
+        "gain": 1169607
+      },
+      "meta": {
+        "tier": "tier1",
+        "holdingReduction": 0,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-006",
+      "inputs": {
+        "previousDate": "2010-01-01",
+        "currentValue": 20311.03633333,
+        "priorValue": 10822,
+        "cpi": 125.1,
+        "area": 750,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 1,
+        "deductibleCosts": 2665,
+        "priorLandTaxCredit": 500
+      },
+      "expected": {
+        "tax": 1014874,
+        "grossTax": 1015374,
+        "credit": 500,
+        "base": 10153742,
+        "gain": 5076871
+      },
+      "meta": {
+        "tier": "tier1",
+        "holdingReduction": 0,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-007",
+      "inputs": {
+        "previousDate": "2010-01-01",
+        "currentValue": 20714.4635,
+        "priorValue": 10959,
+        "cpi": 125.1,
+        "area": 50,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 2,
+        "shareDenominator": 5,
+        "deductibleCosts": 2998,
+        "priorLandTaxCredit": 750
+      },
+      "expected": {
+        "tax": 26669,
+        "grossTax": 27419,
+        "credit": 750,
+        "base": 274194,
+        "gain": 137097
+      },
+      "meta": {
+        "tier": "tier1",
+        "holdingReduction": 0,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-008",
+      "inputs": {
+        "previousDate": "2010-01-01",
+        "currentValue": 20827.19566667,
+        "priorValue": 11096,
+        "cpi": 125.1,
+        "area": 1000,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 3,
+        "shareDenominator": 5,
+        "deductibleCosts": 3331,
+        "priorLandTaxCredit": 1000
+      },
+      "expected": {
+        "tax": 831866,
+        "grossTax": 832866,
+        "credit": 1000,
+        "base": 8328658,
+        "gain": 4164329
+      },
+      "meta": {
+        "tier": "tier1",
+        "holdingReduction": 0,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-009",
+      "inputs": {
+        "previousDate": "2010-01-01",
+        "currentValue": 21122.6925,
+        "priorValue": 11233,
+        "cpi": 125.1,
+        "area": 250,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 3,
+        "deductibleCosts": 3664,
+        "priorLandTaxCredit": 1250
+      },
+      "expected": {
+        "tax": 115854,
+        "grossTax": 117104,
+        "credit": 1250,
+        "base": 1171040,
+        "gain": 585520
+      },
+      "meta": {
+        "tier": "tier1",
+        "holdingReduction": 0,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-010",
+      "inputs": {
+        "previousDate": "2010-01-01",
+        "currentValue": 18772.994,
+        "priorValue": 10000,
+        "cpi": 125.1,
+        "area": 500,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 1,
+        "deductibleCosts": 3997,
+        "priorLandTaxCredit": 1500
+      },
+      "expected": {
+        "tax": 624000,
+        "grossTax": 625500,
+        "credit": 1500,
+        "base": 6255000,
+        "gain": 3127500
+      },
+      "meta": {
+        "tier": "tier1",
+        "holdingReduction": 0,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-011",
+      "inputs": {
+        "previousDate": "2010-01-01",
+        "currentValue": 31713.4675,
+        "priorValue": 10137,
+        "cpi": 125.1,
+        "area": 100,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 1,
+        "deductibleCosts": 1000,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 443849,
+        "grossTax": 443849,
+        "credit": 0,
+        "base": 1268139,
+        "gain": 1902208
+      },
+      "meta": {
+        "tier": "tier2",
+        "holdingReduction": 0,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-012",
+      "inputs": {
+        "previousDate": "2010-01-01",
+        "currentValue": 32145.265,
+        "priorValue": 10274,
+        "cpi": 125.1,
+        "area": 200,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 2,
+        "deductibleCosts": 1333,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 449847,
+        "grossTax": 449847,
+        "credit": 0,
+        "base": 1285277,
+        "gain": 1927916
+      },
+      "meta": {
+        "tier": "tier2",
+        "holdingReduction": 0,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-013",
+      "inputs": {
+        "previousDate": "2010-01-01",
+        "currentValue": 32567.5425,
+        "priorValue": 10411,
+        "cpi": 125.1,
+        "area": 350,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 2,
+        "shareDenominator": 3,
+        "deductibleCosts": 1666,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 1063640,
+        "grossTax": 1063640,
+        "credit": 0,
+        "base": 3038971,
+        "gain": 4558456
+      },
+      "meta": {
+        "tier": "tier2",
+        "holdingReduction": 0,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-014",
+      "inputs": {
+        "previousDate": "2010-01-01",
+        "currentValue": 32997.75444444,
+        "priorValue": 10548,
+        "cpi": 125.1,
+        "area": 300,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 3,
+        "shareDenominator": 4,
+        "deductibleCosts": 1999,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 1039149,
+        "grossTax": 1039149,
+        "credit": 0,
+        "base": 2968998,
+        "gain": 4453497
+      },
+      "meta": {
+        "tier": "tier2",
+        "holdingReduction": 0,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-015",
+      "inputs": {
+        "previousDate": "2010-01-01",
+        "currentValue": 33430.66321429,
+        "priorValue": 10685,
+        "cpi": 125.1,
+        "area": 700,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 4,
+        "deductibleCosts": 2332,
+        "priorLandTaxCredit": 250
+      },
+      "expected": {
+        "tax": 818475,
+        "grossTax": 818725,
+        "credit": 250,
+        "base": 2339214,
+        "gain": 3508820
+      },
+      "meta": {
+        "tier": "tier2",
+        "holdingReduction": 0,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-016",
+      "inputs": {
+        "previousDate": "2010-01-01",
+        "currentValue": 33849.35833333,
+        "priorValue": 10822,
+        "cpi": 125.1,
+        "area": 750,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 1,
+        "deductibleCosts": 2665,
+        "priorLandTaxCredit": 500
+      },
+      "expected": {
+        "tax": 3553310,
+        "grossTax": 3553810,
+        "credit": 500,
+        "base": 10153742,
+        "gain": 15230612
+      },
+      "meta": {
+        "tier": "tier2",
+        "holdingReduction": 0,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-017",
+      "inputs": {
+        "previousDate": "2010-01-01",
+        "currentValue": 34424.1725,
+        "priorValue": 10959,
+        "cpi": 125.1,
+        "area": 50,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 2,
+        "shareDenominator": 5,
+        "deductibleCosts": 2998,
+        "priorLandTaxCredit": 750
+      },
+      "expected": {
+        "tax": 95218,
+        "grossTax": 95968,
+        "credit": 750,
+        "base": 274194,
+        "gain": 411291
+      },
+      "meta": {
+        "tier": "tier2",
+        "holdingReduction": 0,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-018",
+      "inputs": {
+        "previousDate": "2010-01-01",
+        "currentValue": 34708.29166667,
+        "priorValue": 11096,
+        "cpi": 125.1,
+        "area": 1000,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 3,
+        "shareDenominator": 5,
+        "deductibleCosts": 3331,
+        "priorLandTaxCredit": 1000
+      },
+      "expected": {
+        "tax": 2914030,
+        "grossTax": 2915030,
+        "credit": 1000,
+        "base": 8328658,
+        "gain": 12492986
+      },
+      "meta": {
+        "tier": "tier2",
+        "holdingReduction": 0,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-019",
+      "inputs": {
+        "previousDate": "2010-01-01",
+        "currentValue": 35175.1755,
+        "priorValue": 11233,
+        "cpi": 125.1,
+        "area": 250,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 3,
+        "deductibleCosts": 3664,
+        "priorLandTaxCredit": 1250
+      },
+      "expected": {
+        "tax": 408614,
+        "grossTax": 409864,
+        "credit": 1250,
+        "base": 1171040,
+        "gain": 1756560
+      },
+      "meta": {
+        "tier": "tier2",
+        "holdingReduction": 0,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-020",
+      "inputs": {
+        "previousDate": "2010-01-01",
+        "currentValue": 31282.994,
+        "priorValue": 10000,
+        "cpi": 125.1,
+        "area": 500,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 1,
+        "deductibleCosts": 3997,
+        "priorLandTaxCredit": 1500
+      },
+      "expected": {
+        "tax": 2187750,
+        "grossTax": 2189250,
+        "credit": 1500,
+        "base": 6255000,
+        "gain": 9382500
+      },
+      "meta": {
+        "tier": "tier2",
+        "holdingReduction": 0,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-021",
+      "inputs": {
+        "previousDate": "2010-01-01",
+        "currentValue": 44394.8545,
+        "priorValue": 10137,
+        "cpi": 125.1,
+        "area": 100,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 1,
+        "deductibleCosts": 1000,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 887697,
+        "grossTax": 887697,
+        "credit": 0,
+        "base": 1268139,
+        "gain": 3170347
+      },
+      "meta": {
+        "tier": "tier3",
+        "holdingReduction": 0,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-022",
+      "inputs": {
+        "previousDate": "2010-01-01",
+        "currentValue": 44998.039,
+        "priorValue": 10274,
+        "cpi": 125.1,
+        "area": 200,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 2,
+        "deductibleCosts": 1333,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 899694,
+        "grossTax": 899694,
+        "credit": 0,
+        "base": 1285277,
+        "gain": 3213193
+      },
+      "meta": {
+        "tier": "tier3",
+        "holdingReduction": 0,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-023",
+      "inputs": {
+        "previousDate": "2010-01-01",
+        "currentValue": 45591.7035,
+        "priorValue": 10411,
+        "cpi": 125.1,
+        "area": 350,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 2,
+        "shareDenominator": 3,
+        "deductibleCosts": 1666,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 2127280,
+        "grossTax": 2127280,
+        "credit": 0,
+        "base": 3038971,
+        "gain": 7597427
+      },
+      "meta": {
+        "tier": "tier3",
+        "holdingReduction": 0,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-024",
+      "inputs": {
+        "previousDate": "2010-01-01",
+        "currentValue": 46193.30244444,
+        "priorValue": 10548,
+        "cpi": 125.1,
+        "area": 300,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 3,
+        "shareDenominator": 4,
+        "deductibleCosts": 1999,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 2078299,
+        "grossTax": 2078299,
+        "credit": 0,
+        "base": 2968998,
+        "gain": 7422496
+      },
+      "meta": {
+        "tier": "tier3",
+        "holdingReduction": 0,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-025",
+      "inputs": {
+        "previousDate": "2010-01-01",
+        "currentValue": 46797.59821429,
+        "priorValue": 10685,
+        "cpi": 125.1,
+        "area": 700,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 4,
+        "deductibleCosts": 2332,
+        "priorLandTaxCredit": 250
+      },
+      "expected": {
+        "tax": 1637200,
+        "grossTax": 1637450,
+        "credit": 250,
+        "base": 2339214,
+        "gain": 5848034
+      },
+      "meta": {
+        "tier": "tier3",
+        "holdingReduction": 0,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-026",
+      "inputs": {
+        "previousDate": "2010-01-01",
+        "currentValue": 47387.68033333,
+        "priorValue": 10822,
+        "cpi": 125.1,
+        "area": 750,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 1,
+        "deductibleCosts": 2665,
+        "priorLandTaxCredit": 500
+      },
+      "expected": {
+        "tax": 7107119,
+        "grossTax": 7107619,
+        "credit": 500,
+        "base": 10153742,
+        "gain": 25384354
+      },
+      "meta": {
+        "tier": "tier3",
+        "holdingReduction": 0,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-027",
+      "inputs": {
+        "previousDate": "2010-01-01",
+        "currentValue": 48133.8815,
+        "priorValue": 10959,
+        "cpi": 125.1,
+        "area": 50,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 2,
+        "shareDenominator": 5,
+        "deductibleCosts": 2998,
+        "priorLandTaxCredit": 750
+      },
+      "expected": {
+        "tax": 191186,
+        "grossTax": 191936,
+        "credit": 750,
+        "base": 274194,
+        "gain": 685485
+      },
+      "meta": {
+        "tier": "tier3",
+        "holdingReduction": 0,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-028",
+      "inputs": {
+        "previousDate": "2010-01-01",
+        "currentValue": 48589.38766667,
+        "priorValue": 11096,
+        "cpi": 125.1,
+        "area": 1000,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 3,
+        "shareDenominator": 5,
+        "deductibleCosts": 3331,
+        "priorLandTaxCredit": 1000
+      },
+      "expected": {
+        "tax": 5829060,
+        "grossTax": 5830060,
+        "credit": 1000,
+        "base": 8328658,
+        "gain": 20821644
+      },
+      "meta": {
+        "tier": "tier3",
+        "holdingReduction": 0,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-029",
+      "inputs": {
+        "previousDate": "2010-01-01",
+        "currentValue": 49227.6585,
+        "priorValue": 11233,
+        "cpi": 125.1,
+        "area": 250,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 3,
+        "deductibleCosts": 3664,
+        "priorLandTaxCredit": 1250
+      },
+      "expected": {
+        "tax": 818478,
+        "grossTax": 819728,
+        "credit": 1250,
+        "base": 1171040,
+        "gain": 2927601
+      },
+      "meta": {
+        "tier": "tier3",
+        "holdingReduction": 0,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-030",
+      "inputs": {
+        "previousDate": "2010-01-01",
+        "currentValue": 43792.994,
+        "priorValue": 10000,
+        "cpi": 125.1,
+        "area": 500,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 1,
+        "deductibleCosts": 3997,
+        "priorLandTaxCredit": 1500
+      },
+      "expected": {
+        "tax": 4377000,
+        "grossTax": 4378500,
+        "credit": 1500,
+        "base": 6255000,
+        "gain": 15637500
+      },
+      "meta": {
+        "tier": "tier3",
+        "holdingReduction": 0,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-031",
+      "inputs": {
+        "previousDate": "2000-01-01",
+        "currentValue": 21221.6725,
+        "priorValue": 10137,
+        "cpi": 139.5,
+        "area": 100,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 1,
+        "deductibleCosts": 1000,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 141411,
+        "grossTax": 141411,
+        "credit": 0,
+        "base": 1414112,
+        "gain": 707056
+      },
+      "meta": {
+        "tier": "tier1",
+        "holdingReduction": 0.2,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-032",
+      "inputs": {
+        "previousDate": "2000-01-01",
+        "currentValue": 21511.675,
+        "priorValue": 10274,
+        "cpi": 139.5,
+        "area": 200,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 2,
+        "deductibleCosts": 1333,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 143322,
+        "grossTax": 143322,
+        "credit": 0,
+        "base": 1433223,
+        "gain": 716612
+      },
+      "meta": {
+        "tier": "tier1",
+        "holdingReduction": 0.2,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-033",
+      "inputs": {
+        "previousDate": "2000-01-01",
+        "currentValue": 21792.1575,
+        "priorValue": 10411,
+        "cpi": 139.5,
+        "area": 350,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 2,
+        "shareDenominator": 3,
+        "deductibleCosts": 1666,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 338878,
+        "grossTax": 338878,
+        "credit": 0,
+        "base": 3388781,
+        "gain": 1694390
+      },
+      "meta": {
+        "tier": "tier1",
+        "holdingReduction": 0.2,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-034",
+      "inputs": {
+        "previousDate": "2000-01-01",
+        "currentValue": 22080.57444444,
+        "priorValue": 10548,
+        "cpi": 139.5,
+        "area": 300,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 3,
+        "shareDenominator": 4,
+        "deductibleCosts": 1999,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 331075,
+        "grossTax": 331075,
+        "credit": 0,
+        "base": 3310754,
+        "gain": 1655377
+      },
+      "meta": {
+        "tier": "tier1",
+        "holdingReduction": 0.2,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-035",
+      "inputs": {
+        "previousDate": "2000-01-01",
+        "currentValue": 22371.68821429,
+        "priorValue": 10685,
+        "cpi": 139.5,
+        "area": 700,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 4,
+        "deductibleCosts": 2332,
+        "priorLandTaxCredit": 250
+      },
+      "expected": {
+        "tax": 260598,
+        "grossTax": 260848,
+        "credit": 250,
+        "base": 2608476,
+        "gain": 1304238
+      },
+      "meta": {
+        "tier": "tier1",
+        "holdingReduction": 0.2,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-036",
+      "inputs": {
+        "previousDate": "2000-01-01",
+        "currentValue": 22648.58833333,
+        "priorValue": 10822,
+        "cpi": 139.5,
+        "area": 750,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 1,
+        "deductibleCosts": 2665,
+        "priorLandTaxCredit": 500
+      },
+      "expected": {
+        "tax": 1131752,
+        "grossTax": 1132252,
+        "credit": 500,
+        "base": 11322518,
+        "gain": 5661259
+      },
+      "meta": {
+        "tier": "tier1",
+        "holdingReduction": 0.2,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-037",
+      "inputs": {
+        "previousDate": "2000-01-01",
+        "currentValue": 23081.6075,
+        "priorValue": 10959,
+        "cpi": 139.5,
+        "area": 50,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 2,
+        "shareDenominator": 5,
+        "deductibleCosts": 2998,
+        "priorLandTaxCredit": 750
+      },
+      "expected": {
+        "tax": 29826,
+        "grossTax": 30576,
+        "credit": 750,
+        "base": 305756,
+        "gain": 152878
+      },
+      "meta": {
+        "tier": "tier1",
+        "holdingReduction": 0.2,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-038",
+      "inputs": {
+        "previousDate": "2000-01-01",
+        "currentValue": 23223.93166667,
+        "priorValue": 11096,
+        "cpi": 139.5,
+        "area": 1000,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 3,
+        "shareDenominator": 5,
+        "deductibleCosts": 3331,
+        "priorLandTaxCredit": 1000
+      },
+      "expected": {
+        "tax": 927735,
+        "grossTax": 928735,
+        "credit": 1000,
+        "base": 9287352,
+        "gain": 4643676
+      },
+      "meta": {
+        "tier": "tier1",
+        "holdingReduction": 0.2,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-039",
+      "inputs": {
+        "previousDate": "2000-01-01",
+        "currentValue": 23549.0205,
+        "priorValue": 11233,
+        "cpi": 139.5,
+        "area": 250,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 3,
+        "deductibleCosts": 3664,
+        "priorLandTaxCredit": 1250
+      },
+      "expected": {
+        "tax": 129334,
+        "grossTax": 130584,
+        "credit": 1250,
+        "base": 1305836,
+        "gain": 652918
+      },
+      "meta": {
+        "tier": "tier1",
+        "holdingReduction": 0.2,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-040",
+      "inputs": {
+        "previousDate": "2000-01-01",
+        "currentValue": 20932.994,
+        "priorValue": 10000,
+        "cpi": 139.5,
+        "area": 500,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 1,
+        "deductibleCosts": 3997,
+        "priorLandTaxCredit": 1500
+      },
+      "expected": {
+        "tax": 696000,
+        "grossTax": 697500,
+        "credit": 1500,
+        "base": 6975000,
+        "gain": 3487500
+      },
+      "meta": {
+        "tier": "tier1",
+        "holdingReduction": 0.2,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-041",
+      "inputs": {
+        "previousDate": "2000-01-01",
+        "currentValue": 35362.7875,
+        "priorValue": 10137,
+        "cpi": 139.5,
+        "area": 100,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 1,
+        "deductibleCosts": 1000,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 480798,
+        "grossTax": 480798,
+        "credit": 0,
+        "base": 1414112,
+        "gain": 2121167
+      },
+      "meta": {
+        "tier": "tier2",
+        "holdingReduction": 0.2,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-042",
+      "inputs": {
+        "previousDate": "2000-01-01",
+        "currentValue": 35843.905,
+        "priorValue": 10274,
+        "cpi": 139.5,
+        "area": 200,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 2,
+        "deductibleCosts": 1333,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 487296,
+        "grossTax": 487296,
+        "credit": 0,
+        "base": 1433223,
+        "gain": 2149835
+      },
+      "meta": {
+        "tier": "tier2",
+        "holdingReduction": 0.2,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-043",
+      "inputs": {
+        "previousDate": "2000-01-01",
+        "currentValue": 36315.5025,
+        "priorValue": 10411,
+        "cpi": 139.5,
+        "area": 350,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 2,
+        "shareDenominator": 3,
+        "deductibleCosts": 1666,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 1152185,
+        "grossTax": 1152185,
+        "credit": 0,
+        "base": 3388781,
+        "gain": 5083171
+      },
+      "meta": {
+        "tier": "tier2",
+        "holdingReduction": 0.2,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-044",
+      "inputs": {
+        "previousDate": "2000-01-01",
+        "currentValue": 36795.03444444,
+        "priorValue": 10548,
+        "cpi": 139.5,
+        "area": 300,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 3,
+        "shareDenominator": 4,
+        "deductibleCosts": 1999,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 1125656,
+        "grossTax": 1125656,
+        "credit": 0,
+        "base": 3310754,
+        "gain": 4966130
+      },
+      "meta": {
+        "tier": "tier2",
+        "holdingReduction": 0.2,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-045",
+      "inputs": {
+        "previousDate": "2000-01-01",
+        "currentValue": 37277.26321429,
+        "priorValue": 10685,
+        "cpi": 139.5,
+        "area": 700,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 4,
+        "deductibleCosts": 2332,
+        "priorLandTaxCredit": 250
+      },
+      "expected": {
+        "tax": 886632,
+        "grossTax": 886882,
+        "credit": 250,
+        "base": 2608476,
+        "gain": 3912713
+      },
+      "meta": {
+        "tier": "tier2",
+        "holdingReduction": 0.2,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-046",
+      "inputs": {
+        "previousDate": "2000-01-01",
+        "currentValue": 37745.27833333,
+        "priorValue": 10822,
+        "cpi": 139.5,
+        "area": 750,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 1,
+        "deductibleCosts": 2665,
+        "priorLandTaxCredit": 500
+      },
+      "expected": {
+        "tax": 3849156,
+        "grossTax": 3849656,
+        "credit": 500,
+        "base": 11322518,
+        "gain": 16983776
+      },
+      "meta": {
+        "tier": "tier2",
+        "holdingReduction": 0.2,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-047",
+      "inputs": {
+        "previousDate": "2000-01-01",
+        "currentValue": 38369.4125,
+        "priorValue": 10959,
+        "cpi": 139.5,
+        "area": 50,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 2,
+        "shareDenominator": 5,
+        "deductibleCosts": 2998,
+        "priorLandTaxCredit": 750
+      },
+      "expected": {
+        "tax": 103207,
+        "grossTax": 103957,
+        "credit": 750,
+        "base": 305756,
+        "gain": 458634
+      },
+      "meta": {
+        "tier": "tier2",
+        "holdingReduction": 0.2,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-048",
+      "inputs": {
+        "previousDate": "2000-01-01",
+        "currentValue": 38702.85166667,
+        "priorValue": 11096,
+        "cpi": 139.5,
+        "area": 1000,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 3,
+        "shareDenominator": 5,
+        "deductibleCosts": 3331,
+        "priorLandTaxCredit": 1000
+      },
+      "expected": {
+        "tax": 3156700,
+        "grossTax": 3157700,
+        "credit": 1000,
+        "base": 9287352,
+        "gain": 13931028
+      },
+      "meta": {
+        "tier": "tier2",
+        "holdingReduction": 0.2,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-049",
+      "inputs": {
+        "previousDate": "2000-01-01",
+        "currentValue": 39219.0555,
+        "priorValue": 11233,
+        "cpi": 139.5,
+        "area": 250,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 3,
+        "deductibleCosts": 3664,
+        "priorLandTaxCredit": 1250
+      },
+      "expected": {
+        "tax": 442734,
+        "grossTax": 443984,
+        "credit": 1250,
+        "base": 1305836,
+        "gain": 1958754
+      },
+      "meta": {
+        "tier": "tier2",
+        "holdingReduction": 0.2,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-050",
+      "inputs": {
+        "previousDate": "2000-01-01",
+        "currentValue": 34882.994,
+        "priorValue": 10000,
+        "cpi": 139.5,
+        "area": 500,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 1,
+        "deductibleCosts": 3997,
+        "priorLandTaxCredit": 1500
+      },
+      "expected": {
+        "tax": 2370000,
+        "grossTax": 2371500,
+        "credit": 1500,
+        "base": 6975000,
+        "gain": 10462500
+      },
+      "meta": {
+        "tier": "tier2",
+        "holdingReduction": 0.2,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-051",
+      "inputs": {
+        "previousDate": "2000-01-01",
+        "currentValue": 49503.9025,
+        "priorValue": 10137,
+        "cpi": 139.5,
+        "area": 100,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 1,
+        "deductibleCosts": 1000,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 933314,
+        "grossTax": 933314,
+        "credit": 0,
+        "base": 1414112,
+        "gain": 3535279
+      },
+      "meta": {
+        "tier": "tier3",
+        "holdingReduction": 0.2,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-052",
+      "inputs": {
+        "previousDate": "2000-01-01",
+        "currentValue": 50176.135,
+        "priorValue": 10274,
+        "cpi": 139.5,
+        "area": 200,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 2,
+        "deductibleCosts": 1333,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 945927,
+        "grossTax": 945927,
+        "credit": 0,
+        "base": 1433223,
+        "gain": 3583058
+      },
+      "meta": {
+        "tier": "tier3",
+        "holdingReduction": 0.2,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-053",
+      "inputs": {
+        "previousDate": "2000-01-01",
+        "currentValue": 50838.8475,
+        "priorValue": 10411,
+        "cpi": 139.5,
+        "area": 350,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 2,
+        "shareDenominator": 3,
+        "deductibleCosts": 1666,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 2236595,
+        "grossTax": 2236595,
+        "credit": 0,
+        "base": 3388781,
+        "gain": 8471951
+      },
+      "meta": {
+        "tier": "tier3",
+        "holdingReduction": 0.2,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-054",
+      "inputs": {
+        "previousDate": "2000-01-01",
+        "currentValue": 51509.49444444,
+        "priorValue": 10548,
+        "cpi": 139.5,
+        "area": 300,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 3,
+        "shareDenominator": 4,
+        "deductibleCosts": 1999,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 2185097,
+        "grossTax": 2185097,
+        "credit": 0,
+        "base": 3310754,
+        "gain": 8276884
+      },
+      "meta": {
+        "tier": "tier3",
+        "holdingReduction": 0.2,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-055",
+      "inputs": {
+        "previousDate": "2000-01-01",
+        "currentValue": 52182.83821429,
+        "priorValue": 10685,
+        "cpi": 139.5,
+        "area": 700,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 4,
+        "deductibleCosts": 2332,
+        "priorLandTaxCredit": 250
+      },
+      "expected": {
+        "tax": 1721344,
+        "grossTax": 1721594,
+        "credit": 250,
+        "base": 2608476,
+        "gain": 6521189
+      },
+      "meta": {
+        "tier": "tier3",
+        "holdingReduction": 0.2,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-056",
+      "inputs": {
+        "previousDate": "2000-01-01",
+        "currentValue": 52841.96833333,
+        "priorValue": 10822,
+        "cpi": 139.5,
+        "area": 750,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 1,
+        "deductibleCosts": 2665,
+        "priorLandTaxCredit": 500
+      },
+      "expected": {
+        "tax": 7472362,
+        "grossTax": 7472862,
+        "credit": 500,
+        "base": 11322518,
+        "gain": 28306294
+      },
+      "meta": {
+        "tier": "tier3",
+        "holdingReduction": 0.2,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-057",
+      "inputs": {
+        "previousDate": "2000-01-01",
+        "currentValue": 53657.2175,
+        "priorValue": 10959,
+        "cpi": 139.5,
+        "area": 50,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 2,
+        "shareDenominator": 5,
+        "deductibleCosts": 2998,
+        "priorLandTaxCredit": 750
+      },
+      "expected": {
+        "tax": 201049,
+        "grossTax": 201799,
+        "credit": 750,
+        "base": 305756,
+        "gain": 764390
+      },
+      "meta": {
+        "tier": "tier3",
+        "holdingReduction": 0.2,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-058",
+      "inputs": {
+        "previousDate": "2000-01-01",
+        "currentValue": 54181.77166667,
+        "priorValue": 11096,
+        "cpi": 139.5,
+        "area": 1000,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 3,
+        "shareDenominator": 5,
+        "deductibleCosts": 3331,
+        "priorLandTaxCredit": 1000
+      },
+      "expected": {
+        "tax": 6128652,
+        "grossTax": 6129652,
+        "credit": 1000,
+        "base": 9287352,
+        "gain": 23218380
+      },
+      "meta": {
+        "tier": "tier3",
+        "holdingReduction": 0.2,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-059",
+      "inputs": {
+        "previousDate": "2000-01-01",
+        "currentValue": 54889.0905,
+        "priorValue": 11233,
+        "cpi": 139.5,
+        "area": 250,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 3,
+        "deductibleCosts": 3664,
+        "priorLandTaxCredit": 1250
+      },
+      "expected": {
+        "tax": 860602,
+        "grossTax": 861852,
+        "credit": 1250,
+        "base": 1305836,
+        "gain": 3264591
+      },
+      "meta": {
+        "tier": "tier3",
+        "holdingReduction": 0.2,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-060",
+      "inputs": {
+        "previousDate": "2000-01-01",
+        "currentValue": 48832.994,
+        "priorValue": 10000,
+        "cpi": 139.5,
+        "area": 500,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 1,
+        "deductibleCosts": 3997,
+        "priorLandTaxCredit": 1500
+      },
+      "expected": {
+        "tax": 4602000,
+        "grossTax": 4603500,
+        "credit": 1500,
+        "base": 6975000,
+        "gain": 17437500
+      },
+      "meta": {
+        "tier": "tier3",
+        "holdingReduction": 0.2,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-061",
+      "inputs": {
+        "previousDate": "1990-01-01",
+        "currentValue": 27866.476,
+        "priorValue": 10137,
+        "cpi": 183.2,
+        "area": 100,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 1,
+        "deductibleCosts": 1000,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 185710,
+        "grossTax": 185710,
+        "credit": 0,
+        "base": 1857098,
+        "gain": 928549
+      },
+      "meta": {
+        "tier": "tier1",
+        "holdingReduction": 0.3,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-062",
+      "inputs": {
+        "previousDate": "1990-01-01",
+        "currentValue": 28246.282,
+        "priorValue": 10274,
+        "cpi": 183.2,
+        "area": 200,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 2,
+        "deductibleCosts": 1333,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 188220,
+        "grossTax": 188220,
+        "credit": 0,
+        "base": 1882197,
+        "gain": 941098
+      },
+      "meta": {
+        "tier": "tier1",
+        "holdingReduction": 0.3,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-063",
+      "inputs": {
+        "previousDate": "1990-01-01",
+        "currentValue": 28616.568,
+        "priorValue": 10411,
+        "cpi": 183.2,
+        "area": 350,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 2,
+        "shareDenominator": 3,
+        "deductibleCosts": 1666,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 445036,
+        "grossTax": 445036,
+        "credit": 0,
+        "base": 4450355,
+        "gain": 2225178
+      },
+      "meta": {
+        "tier": "tier1",
+        "holdingReduction": 0.3,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-064",
+      "inputs": {
+        "previousDate": "1990-01-01",
+        "currentValue": 28994.78844444,
+        "priorValue": 10548,
+        "cpi": 183.2,
+        "area": 300,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 3,
+        "shareDenominator": 4,
+        "deductibleCosts": 1999,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 434789,
+        "grossTax": 434789,
+        "credit": 0,
+        "base": 4347886,
+        "gain": 2173943
+      },
+      "meta": {
+        "tier": "tier1",
+        "holdingReduction": 0.3,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-065",
+      "inputs": {
+        "previousDate": "1990-01-01",
+        "currentValue": 29375.70571429,
+        "priorValue": 10685,
+        "cpi": 183.2,
+        "area": 700,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 4,
+        "deductibleCosts": 2332,
+        "priorLandTaxCredit": 250
+      },
+      "expected": {
+        "tax": 342311,
+        "grossTax": 342561,
+        "credit": 250,
+        "base": 3425611,
+        "gain": 1712806
+      },
+      "meta": {
+        "tier": "tier1",
+        "holdingReduction": 0.3,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-066",
+      "inputs": {
+        "previousDate": "1990-01-01",
+        "currentValue": 29742.40933333,
+        "priorValue": 10822,
+        "cpi": 183.2,
+        "area": 750,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 1,
+        "deductibleCosts": 2665,
+        "priorLandTaxCredit": 500
+      },
+      "expected": {
+        "tax": 1486443,
+        "grossTax": 1486943,
+        "credit": 500,
+        "base": 14869428,
+        "gain": 7434714
+      },
+      "meta": {
+        "tier": "tier1",
+        "holdingReduction": 0.3,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-067",
+      "inputs": {
+        "previousDate": "1990-01-01",
+        "currentValue": 30265.232,
+        "priorValue": 10959,
+        "cpi": 183.2,
+        "area": 50,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 2,
+        "shareDenominator": 5,
+        "deductibleCosts": 2998,
+        "priorLandTaxCredit": 750
+      },
+      "expected": {
+        "tax": 39404,
+        "grossTax": 40154,
+        "credit": 750,
+        "base": 401538,
+        "gain": 200769
+      },
+      "meta": {
+        "tier": "tier1",
+        "holdingReduction": 0.3,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-068",
+      "inputs": {
+        "previousDate": "1990-01-01",
+        "currentValue": 30497.35966667,
+        "priorValue": 11096,
+        "cpi": 183.2,
+        "area": 1000,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 3,
+        "shareDenominator": 5,
+        "deductibleCosts": 3331,
+        "priorLandTaxCredit": 1000
+      },
+      "expected": {
+        "tax": 1218672,
+        "grossTax": 1219672,
+        "credit": 1000,
+        "base": 12196723,
+        "gain": 6098362
+      },
+      "meta": {
+        "tier": "tier1",
+        "holdingReduction": 0.3,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-069",
+      "inputs": {
+        "previousDate": "1990-01-01",
+        "currentValue": 30912.252,
+        "priorValue": 11233,
+        "cpi": 183.2,
+        "area": 250,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 3,
+        "deductibleCosts": 3664,
+        "priorLandTaxCredit": 1250
+      },
+      "expected": {
+        "tax": 170240,
+        "grossTax": 171490,
+        "credit": 1250,
+        "base": 1714905,
+        "gain": 857452
+      },
+      "meta": {
+        "tier": "tier1",
+        "holdingReduction": 0.3,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-070",
+      "inputs": {
+        "previousDate": "1990-01-01",
+        "currentValue": 27487.994,
+        "priorValue": 10000,
+        "cpi": 183.2,
+        "area": 500,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 1,
+        "deductibleCosts": 3997,
+        "priorLandTaxCredit": 1500
+      },
+      "expected": {
+        "tax": 914500,
+        "grossTax": 916000,
+        "credit": 1500,
+        "base": 9160000,
+        "gain": 4580000
+      },
+      "meta": {
+        "tier": "tier1",
+        "holdingReduction": 0.3,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-071",
+      "inputs": {
+        "previousDate": "1990-01-01",
+        "currentValue": 46437.46,
+        "priorValue": 10137,
+        "cpi": 183.2,
+        "area": 100,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 1,
+        "deductibleCosts": 1000,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 622128,
+        "grossTax": 622128,
+        "credit": 0,
+        "base": 1857098,
+        "gain": 2785648
+      },
+      "meta": {
+        "tier": "tier2",
+        "holdingReduction": 0.3,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-072",
+      "inputs": {
+        "previousDate": "1990-01-01",
+        "currentValue": 47068.25,
+        "priorValue": 10274,
+        "cpi": 183.2,
+        "area": 200,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 2,
+        "deductibleCosts": 1333,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 630536,
+        "grossTax": 630536,
+        "credit": 0,
+        "base": 1882197,
+        "gain": 2823295
+      },
+      "meta": {
+        "tier": "tier2",
+        "holdingReduction": 0.3,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-073",
+      "inputs": {
+        "previousDate": "1990-01-01",
+        "currentValue": 47689.52,
+        "priorValue": 10411,
+        "cpi": 183.2,
+        "area": 350,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 2,
+        "shareDenominator": 3,
+        "deductibleCosts": 1666,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 1490869,
+        "grossTax": 1490869,
+        "credit": 0,
+        "base": 4450355,
+        "gain": 6675533
+      },
+      "meta": {
+        "tier": "tier2",
+        "holdingReduction": 0.3,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-074",
+      "inputs": {
+        "previousDate": "1990-01-01",
+        "currentValue": 48318.72444444,
+        "priorValue": 10548,
+        "cpi": 183.2,
+        "area": 300,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 3,
+        "shareDenominator": 4,
+        "deductibleCosts": 1999,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 1456542,
+        "grossTax": 1456542,
+        "credit": 0,
+        "base": 4347886,
+        "gain": 6521828
+      },
+      "meta": {
+        "tier": "tier2",
+        "holdingReduction": 0.3,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-075",
+      "inputs": {
+        "previousDate": "1990-01-01",
+        "currentValue": 48950.62571429,
+        "priorValue": 10685,
+        "cpi": 183.2,
+        "area": 700,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 4,
+        "deductibleCosts": 2332,
+        "priorLandTaxCredit": 250
+      },
+      "expected": {
+        "tax": 1147330,
+        "grossTax": 1147580,
+        "credit": 250,
+        "base": 3425611,
+        "gain": 5138417
+      },
+      "meta": {
+        "tier": "tier2",
+        "holdingReduction": 0.3,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-076",
+      "inputs": {
+        "previousDate": "1990-01-01",
+        "currentValue": 49568.31333333,
+        "priorValue": 10822,
+        "cpi": 183.2,
+        "area": 750,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 1,
+        "deductibleCosts": 2665,
+        "priorLandTaxCredit": 500
+      },
+      "expected": {
+        "tax": 4980758,
+        "grossTax": 4981258,
+        "credit": 500,
+        "base": 14869428,
+        "gain": 22304142
+      },
+      "meta": {
+        "tier": "tier2",
+        "holdingReduction": 0.3,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-077",
+      "inputs": {
+        "previousDate": "1990-01-01",
+        "currentValue": 50342.12,
+        "priorValue": 10959,
+        "cpi": 183.2,
+        "area": 50,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 2,
+        "shareDenominator": 5,
+        "deductibleCosts": 2998,
+        "priorLandTaxCredit": 750
+      },
+      "expected": {
+        "tax": 133765,
+        "grossTax": 134515,
+        "credit": 750,
+        "base": 401538,
+        "gain": 602307
+      },
+      "meta": {
+        "tier": "tier2",
+        "holdingReduction": 0.3,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-078",
+      "inputs": {
+        "previousDate": "1990-01-01",
+        "currentValue": 50825.23166667,
+        "priorValue": 11096,
+        "cpi": 183.2,
+        "area": 1000,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 3,
+        "shareDenominator": 5,
+        "deductibleCosts": 3331,
+        "priorLandTaxCredit": 1000
+      },
+      "expected": {
+        "tax": 4084902,
+        "grossTax": 4085902,
+        "credit": 1000,
+        "base": 12196723,
+        "gain": 18295085
+      },
+      "meta": {
+        "tier": "tier2",
+        "holdingReduction": 0.3,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-079",
+      "inputs": {
+        "previousDate": "1990-01-01",
+        "currentValue": 51491.108,
+        "priorValue": 11233,
+        "cpi": 183.2,
+        "area": 250,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 3,
+        "deductibleCosts": 3664,
+        "priorLandTaxCredit": 1250
+      },
+      "expected": {
+        "tax": 573243,
+        "grossTax": 574493,
+        "credit": 1250,
+        "base": 1714905,
+        "gain": 2572357
+      },
+      "meta": {
+        "tier": "tier2",
+        "holdingReduction": 0.3,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-080",
+      "inputs": {
+        "previousDate": "1990-01-01",
+        "currentValue": 45807.994,
+        "priorValue": 10000,
+        "cpi": 183.2,
+        "area": 500,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 1,
+        "deductibleCosts": 3997,
+        "priorLandTaxCredit": 1500
+      },
+      "expected": {
+        "tax": 3067100,
+        "grossTax": 3068600,
+        "credit": 1500,
+        "base": 9160000,
+        "gain": 13740000
+      },
+      "meta": {
+        "tier": "tier2",
+        "holdingReduction": 0.3,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-081",
+      "inputs": {
+        "previousDate": "1990-01-01",
+        "currentValue": 65008.444,
+        "priorValue": 10137,
+        "cpi": 183.2,
+        "area": 100,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 1,
+        "deductibleCosts": 1000,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 1188543,
+        "grossTax": 1188543,
+        "credit": 0,
+        "base": 1857098,
+        "gain": 4642746
+      },
+      "meta": {
+        "tier": "tier3",
+        "holdingReduction": 0.3,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-082",
+      "inputs": {
+        "previousDate": "1990-01-01",
+        "currentValue": 65890.218,
+        "priorValue": 10274,
+        "cpi": 183.2,
+        "area": 200,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 2,
+        "deductibleCosts": 1333,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 1204606,
+        "grossTax": 1204606,
+        "credit": 0,
+        "base": 1882197,
+        "gain": 4705492
+      },
+      "meta": {
+        "tier": "tier3",
+        "holdingReduction": 0.3,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-083",
+      "inputs": {
+        "previousDate": "1990-01-01",
+        "currentValue": 66762.472,
+        "priorValue": 10411,
+        "cpi": 183.2,
+        "area": 350,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 2,
+        "shareDenominator": 3,
+        "deductibleCosts": 1666,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 2848227,
+        "grossTax": 2848227,
+        "credit": 0,
+        "base": 4450355,
+        "gain": 11125889
+      },
+      "meta": {
+        "tier": "tier3",
+        "holdingReduction": 0.3,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-084",
+      "inputs": {
+        "previousDate": "1990-01-01",
+        "currentValue": 67642.66044444,
+        "priorValue": 10548,
+        "cpi": 183.2,
+        "area": 300,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 3,
+        "shareDenominator": 4,
+        "deductibleCosts": 1999,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 2782647,
+        "grossTax": 2782647,
+        "credit": 0,
+        "base": 4347886,
+        "gain": 10869714
+      },
+      "meta": {
+        "tier": "tier3",
+        "holdingReduction": 0.3,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-085",
+      "inputs": {
+        "previousDate": "1990-01-01",
+        "currentValue": 68525.54571429,
+        "priorValue": 10685,
+        "cpi": 183.2,
+        "area": 700,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 4,
+        "deductibleCosts": 2332,
+        "priorLandTaxCredit": 250
+      },
+      "expected": {
+        "tax": 2192141,
+        "grossTax": 2192391,
+        "credit": 250,
+        "base": 3425611,
+        "gain": 8564028
+      },
+      "meta": {
+        "tier": "tier3",
+        "holdingReduction": 0.3,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-086",
+      "inputs": {
+        "previousDate": "1990-01-01",
+        "currentValue": 69394.21733333,
+        "priorValue": 10822,
+        "cpi": 183.2,
+        "area": 750,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 1,
+        "deductibleCosts": 2665,
+        "priorLandTaxCredit": 500
+      },
+      "expected": {
+        "tax": 9515934,
+        "grossTax": 9516434,
+        "credit": 500,
+        "base": 14869428,
+        "gain": 37173570
+      },
+      "meta": {
+        "tier": "tier3",
+        "holdingReduction": 0.3,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-087",
+      "inputs": {
+        "previousDate": "1990-01-01",
+        "currentValue": 70419.008,
+        "priorValue": 10959,
+        "cpi": 183.2,
+        "area": 50,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 2,
+        "shareDenominator": 5,
+        "deductibleCosts": 2998,
+        "priorLandTaxCredit": 750
+      },
+      "expected": {
+        "tax": 256234,
+        "grossTax": 256984,
+        "credit": 750,
+        "base": 401538,
+        "gain": 1003844
+      },
+      "meta": {
+        "tier": "tier3",
+        "holdingReduction": 0.3,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-088",
+      "inputs": {
+        "previousDate": "1990-01-01",
+        "currentValue": 71153.10366667,
+        "priorValue": 11096,
+        "cpi": 183.2,
+        "area": 1000,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 3,
+        "shareDenominator": 5,
+        "deductibleCosts": 3331,
+        "priorLandTaxCredit": 1000
+      },
+      "expected": {
+        "tax": 7804903,
+        "grossTax": 7805903,
+        "credit": 1000,
+        "base": 12196723,
+        "gain": 30491808
+      },
+      "meta": {
+        "tier": "tier3",
+        "holdingReduction": 0.3,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-089",
+      "inputs": {
+        "previousDate": "1990-01-01",
+        "currentValue": 72069.964,
+        "priorValue": 11233,
+        "cpi": 183.2,
+        "area": 250,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 3,
+        "deductibleCosts": 3664,
+        "priorLandTaxCredit": 1250
+      },
+      "expected": {
+        "tax": 1096289,
+        "grossTax": 1097539,
+        "credit": 1250,
+        "base": 1714905,
+        "gain": 4287262
+      },
+      "meta": {
+        "tier": "tier3",
+        "holdingReduction": 0.3,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-090",
+      "inputs": {
+        "previousDate": "1990-01-01",
+        "currentValue": 64127.994,
+        "priorValue": 10000,
+        "cpi": 183.2,
+        "area": 500,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 1,
+        "deductibleCosts": 3997,
+        "priorLandTaxCredit": 1500
+      },
+      "expected": {
+        "tax": 5860900,
+        "grossTax": 5862400,
+        "credit": 1500,
+        "base": 9160000,
+        "gain": 22900000
+      },
+      "meta": {
+        "tier": "tier3",
+        "holdingReduction": 0.3,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-091",
+      "inputs": {
+        "previousDate": "1980-01-01",
+        "currentValue": 39787.588,
+        "priorValue": 10137,
+        "cpi": 261.6,
+        "area": 100,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 1,
+        "deductibleCosts": 1000,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 265184,
+        "grossTax": 265184,
+        "credit": 0,
+        "base": 2651839,
+        "gain": 1325920
+      },
+      "meta": {
+        "tier": "tier1",
+        "holdingReduction": 0.4,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-092",
+      "inputs": {
+        "previousDate": "1980-01-01",
+        "currentValue": 40328.506,
+        "priorValue": 10274,
+        "cpi": 261.6,
+        "area": 200,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 2,
+        "deductibleCosts": 1333,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 268768,
+        "grossTax": 268768,
+        "credit": 0,
+        "base": 2687678,
+        "gain": 1343839
+      },
+      "meta": {
+        "tier": "tier1",
+        "holdingReduction": 0.4,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-093",
+      "inputs": {
+        "previousDate": "1980-01-01",
+        "currentValue": 40859.904,
+        "priorValue": 10411,
+        "cpi": 261.6,
+        "area": 350,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 2,
+        "shareDenominator": 3,
+        "deductibleCosts": 1666,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 635487,
+        "grossTax": 635487,
+        "credit": 0,
+        "base": 6354874,
+        "gain": 3177437
+      },
+      "meta": {
+        "tier": "tier1",
+        "holdingReduction": 0.4,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-094",
+      "inputs": {
+        "previousDate": "1980-01-01",
+        "currentValue": 41399.23644444,
+        "priorValue": 10548,
+        "cpi": 261.6,
+        "area": 300,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 3,
+        "shareDenominator": 4,
+        "deductibleCosts": 1999,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 620855,
+        "grossTax": 620855,
+        "credit": 0,
+        "base": 6208553,
+        "gain": 3104276
+      },
+      "meta": {
+        "tier": "tier1",
+        "holdingReduction": 0.4,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-095",
+      "inputs": {
+        "previousDate": "1980-01-01",
+        "currentValue": 41941.26571429,
+        "priorValue": 10685,
+        "cpi": 261.6,
+        "area": 700,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 4,
+        "deductibleCosts": 2332,
+        "priorLandTaxCredit": 250
+      },
+      "expected": {
+        "tax": 488909,
+        "grossTax": 489159,
+        "credit": 250,
+        "base": 4891593,
+        "gain": 2445797
+      },
+      "meta": {
+        "tier": "tier1",
+        "holdingReduction": 0.4,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-096",
+      "inputs": {
+        "previousDate": "1980-01-01",
+        "currentValue": 42469.08133333,
+        "priorValue": 10822,
+        "cpi": 261.6,
+        "area": 750,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 1,
+        "deductibleCosts": 2665,
+        "priorLandTaxCredit": 500
+      },
+      "expected": {
+        "tax": 2122776,
+        "grossTax": 2123276,
+        "credit": 500,
+        "base": 21232764,
+        "gain": 10616382
+      },
+      "meta": {
+        "tier": "tier1",
+        "holdingReduction": 0.4,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-097",
+      "inputs": {
+        "previousDate": "1980-01-01",
+        "currentValue": 43153.016,
+        "priorValue": 10959,
+        "cpi": 261.6,
+        "area": 50,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 2,
+        "shareDenominator": 5,
+        "deductibleCosts": 2998,
+        "priorLandTaxCredit": 750
+      },
+      "expected": {
+        "tax": 56587,
+        "grossTax": 57337,
+        "credit": 750,
+        "base": 573375,
+        "gain": 286687
+      },
+      "meta": {
+        "tier": "tier1",
+        "holdingReduction": 0.4,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-098",
+      "inputs": {
+        "previousDate": "1980-01-01",
+        "currentValue": 43546.25566667,
+        "priorValue": 11096,
+        "cpi": 261.6,
+        "area": 1000,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 3,
+        "shareDenominator": 5,
+        "deductibleCosts": 3331,
+        "priorLandTaxCredit": 1000
+      },
+      "expected": {
+        "tax": 1740628,
+        "grossTax": 1741628,
+        "credit": 1000,
+        "base": 17416282,
+        "gain": 8708141
+      },
+      "meta": {
+        "tier": "tier1",
+        "holdingReduction": 0.4,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-099",
+      "inputs": {
+        "previousDate": "1980-01-01",
+        "currentValue": 44122.26,
+        "priorValue": 11233,
+        "cpi": 261.6,
+        "area": 250,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 3,
+        "deductibleCosts": 3664,
+        "priorLandTaxCredit": 1250
+      },
+      "expected": {
+        "tax": 243629,
+        "grossTax": 244879,
+        "credit": 1250,
+        "base": 2448794,
+        "gain": 1224397
+      },
+      "meta": {
+        "tier": "tier1",
+        "holdingReduction": 0.4,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-100",
+      "inputs": {
+        "previousDate": "1980-01-01",
+        "currentValue": 39247.994,
+        "priorValue": 10000,
+        "cpi": 261.6,
+        "area": 500,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 1,
+        "deductibleCosts": 3997,
+        "priorLandTaxCredit": 1500
+      },
+      "expected": {
+        "tax": 1306500,
+        "grossTax": 1308000,
+        "credit": 1500,
+        "base": 13080000,
+        "gain": 6540000
+      },
+      "meta": {
+        "tier": "tier1",
+        "holdingReduction": 0.4,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-101",
+      "inputs": {
+        "previousDate": "1980-01-01",
+        "currentValue": 66305.98,
+        "priorValue": 10137,
+        "cpi": 261.6,
+        "area": 100,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 1,
+        "deductibleCosts": 1000,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 875107,
+        "grossTax": 875107,
+        "credit": 0,
+        "base": 2651839,
+        "gain": 3977759
+      },
+      "meta": {
+        "tier": "tier2",
+        "holdingReduction": 0.4,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-102",
+      "inputs": {
+        "previousDate": "1980-01-01",
+        "currentValue": 67205.29,
+        "priorValue": 10274,
+        "cpi": 261.6,
+        "area": 200,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 2,
+        "deductibleCosts": 1333,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 886934,
+        "grossTax": 886934,
+        "credit": 0,
+        "base": 2687678,
+        "gain": 4031518
+      },
+      "meta": {
+        "tier": "tier2",
+        "holdingReduction": 0.4,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-103",
+      "inputs": {
+        "previousDate": "1980-01-01",
+        "currentValue": 68095.08,
+        "priorValue": 10411,
+        "cpi": 261.6,
+        "area": 350,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 2,
+        "shareDenominator": 3,
+        "deductibleCosts": 1666,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 2097109,
+        "grossTax": 2097109,
+        "credit": 0,
+        "base": 6354874,
+        "gain": 9532312
+      },
+      "meta": {
+        "tier": "tier2",
+        "holdingReduction": 0.4,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-104",
+      "inputs": {
+        "previousDate": "1980-01-01",
+        "currentValue": 68992.80444444,
+        "priorValue": 10548,
+        "cpi": 261.6,
+        "area": 300,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 3,
+        "shareDenominator": 4,
+        "deductibleCosts": 1999,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 2048822,
+        "grossTax": 2048822,
+        "credit": 0,
+        "base": 6208553,
+        "gain": 9312829
+      },
+      "meta": {
+        "tier": "tier2",
+        "holdingReduction": 0.4,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-105",
+      "inputs": {
+        "previousDate": "1980-01-01",
+        "currentValue": 69893.22571429,
+        "priorValue": 10685,
+        "cpi": 261.6,
+        "area": 700,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 4,
+        "deductibleCosts": 2332,
+        "priorLandTaxCredit": 250
+      },
+      "expected": {
+        "tax": 1613976,
+        "grossTax": 1614226,
+        "credit": 250,
+        "base": 4891593,
+        "gain": 7337390
+      },
+      "meta": {
+        "tier": "tier2",
+        "holdingReduction": 0.4,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-106",
+      "inputs": {
+        "previousDate": "1980-01-01",
+        "currentValue": 70779.43333333,
+        "priorValue": 10822,
+        "cpi": 261.6,
+        "area": 750,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 1,
+        "deductibleCosts": 2665,
+        "priorLandTaxCredit": 500
+      },
+      "expected": {
+        "tax": 7006312,
+        "grossTax": 7006812,
+        "credit": 500,
+        "base": 21232764,
+        "gain": 31849146
+      },
+      "meta": {
+        "tier": "tier2",
+        "holdingReduction": 0.4,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-107",
+      "inputs": {
+        "previousDate": "1980-01-01",
+        "currentValue": 71821.76,
+        "priorValue": 10959,
+        "cpi": 261.6,
+        "area": 50,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 2,
+        "shareDenominator": 5,
+        "deductibleCosts": 2998,
+        "priorLandTaxCredit": 750
+      },
+      "expected": {
+        "tax": 188464,
+        "grossTax": 189214,
+        "credit": 750,
+        "base": 573375,
+        "gain": 860062
+      },
+      "meta": {
+        "tier": "tier2",
+        "holdingReduction": 0.4,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-108",
+      "inputs": {
+        "previousDate": "1980-01-01",
+        "currentValue": 72573.39166667,
+        "priorValue": 11096,
+        "cpi": 261.6,
+        "area": 1000,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 3,
+        "shareDenominator": 5,
+        "deductibleCosts": 3331,
+        "priorLandTaxCredit": 1000
+      },
+      "expected": {
+        "tax": 5746373,
+        "grossTax": 5747373,
+        "credit": 1000,
+        "base": 17416282,
+        "gain": 26124422
+      },
+      "meta": {
+        "tier": "tier2",
+        "holdingReduction": 0.4,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-109",
+      "inputs": {
+        "previousDate": "1980-01-01",
+        "currentValue": 73507.788,
+        "priorValue": 11233,
+        "cpi": 261.6,
+        "area": 250,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 3,
+        "deductibleCosts": 3664,
+        "priorLandTaxCredit": 1250
+      },
+      "expected": {
+        "tax": 806852,
+        "grossTax": 808102,
+        "credit": 1250,
+        "base": 2448794,
+        "gain": 3673191
+      },
+      "meta": {
+        "tier": "tier2",
+        "holdingReduction": 0.4,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-110",
+      "inputs": {
+        "previousDate": "1980-01-01",
+        "currentValue": 65407.994,
+        "priorValue": 10000,
+        "cpi": 261.6,
+        "area": 500,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 1,
+        "deductibleCosts": 3997,
+        "priorLandTaxCredit": 1500
+      },
+      "expected": {
+        "tax": 4314900,
+        "grossTax": 4316400,
+        "credit": 1500,
+        "base": 13080000,
+        "gain": 19620000
+      },
+      "meta": {
+        "tier": "tier2",
+        "holdingReduction": 0.4,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-111",
+      "inputs": {
+        "previousDate": "1980-01-01",
+        "currentValue": 92824.372,
+        "priorValue": 10137,
+        "cpi": 261.6,
+        "area": 100,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 1,
+        "deductibleCosts": 1000,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 1644140,
+        "grossTax": 1644140,
+        "credit": 0,
+        "base": 2651839,
+        "gain": 6629598
+      },
+      "meta": {
+        "tier": "tier3",
+        "holdingReduction": 0.4,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-112",
+      "inputs": {
+        "previousDate": "1980-01-01",
+        "currentValue": 94082.074,
+        "priorValue": 10274,
+        "cpi": 261.6,
+        "area": 200,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 2,
+        "deductibleCosts": 1333,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 1666361,
+        "grossTax": 1666361,
+        "credit": 0,
+        "base": 2687678,
+        "gain": 6719196
+      },
+      "meta": {
+        "tier": "tier3",
+        "holdingReduction": 0.4,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-113",
+      "inputs": {
+        "previousDate": "1980-01-01",
+        "currentValue": 95330.256,
+        "priorValue": 10411,
+        "cpi": 261.6,
+        "area": 350,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 2,
+        "shareDenominator": 3,
+        "deductibleCosts": 1666,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 3940022,
+        "grossTax": 3940022,
+        "credit": 0,
+        "base": 6354874,
+        "gain": 15887186
+      },
+      "meta": {
+        "tier": "tier3",
+        "holdingReduction": 0.4,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-114",
+      "inputs": {
+        "previousDate": "1980-01-01",
+        "currentValue": 96586.37244444,
+        "priorValue": 10548,
+        "cpi": 261.6,
+        "area": 300,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 3,
+        "shareDenominator": 4,
+        "deductibleCosts": 1999,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 3849303,
+        "grossTax": 3849303,
+        "credit": 0,
+        "base": 6208553,
+        "gain": 15521382
+      },
+      "meta": {
+        "tier": "tier3",
+        "holdingReduction": 0.4,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-115",
+      "inputs": {
+        "previousDate": "1980-01-01",
+        "currentValue": 97845.18571429,
+        "priorValue": 10685,
+        "cpi": 261.6,
+        "area": 700,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 4,
+        "deductibleCosts": 2332,
+        "priorLandTaxCredit": 250
+      },
+      "expected": {
+        "tax": 3032538,
+        "grossTax": 3032788,
+        "credit": 250,
+        "base": 4891593,
+        "gain": 12228983
+      },
+      "meta": {
+        "tier": "tier3",
+        "holdingReduction": 0.4,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-116",
+      "inputs": {
+        "previousDate": "1980-01-01",
+        "currentValue": 99089.78533333,
+        "priorValue": 10822,
+        "cpi": 261.6,
+        "area": 750,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 1,
+        "deductibleCosts": 2665,
+        "priorLandTaxCredit": 500
+      },
+      "expected": {
+        "tax": 13163814,
+        "grossTax": 13164314,
+        "credit": 500,
+        "base": 21232764,
+        "gain": 53081910
+      },
+      "meta": {
+        "tier": "tier3",
+        "holdingReduction": 0.4,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-117",
+      "inputs": {
+        "previousDate": "1980-01-01",
+        "currentValue": 100490.504,
+        "priorValue": 10959,
+        "cpi": 261.6,
+        "area": 50,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 2,
+        "shareDenominator": 5,
+        "deductibleCosts": 2998,
+        "priorLandTaxCredit": 750
+      },
+      "expected": {
+        "tax": 354742,
+        "grossTax": 355492,
+        "credit": 750,
+        "base": 573375,
+        "gain": 1433437
+      },
+      "meta": {
+        "tier": "tier3",
+        "holdingReduction": 0.4,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-118",
+      "inputs": {
+        "previousDate": "1980-01-01",
+        "currentValue": 101600.52766667,
+        "priorValue": 11096,
+        "cpi": 261.6,
+        "area": 1000,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 3,
+        "shareDenominator": 5,
+        "deductibleCosts": 3331,
+        "priorLandTaxCredit": 1000
+      },
+      "expected": {
+        "tax": 10797095,
+        "grossTax": 10798095,
+        "credit": 1000,
+        "base": 17416282,
+        "gain": 43540704
+      },
+      "meta": {
+        "tier": "tier3",
+        "holdingReduction": 0.4,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-119",
+      "inputs": {
+        "previousDate": "1980-01-01",
+        "currentValue": 102893.316,
+        "priorValue": 11233,
+        "cpi": 261.6,
+        "area": 250,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 3,
+        "deductibleCosts": 3664,
+        "priorLandTaxCredit": 1250
+      },
+      "expected": {
+        "tax": 1517002,
+        "grossTax": 1518252,
+        "credit": 1250,
+        "base": 2448794,
+        "gain": 6121985
+      },
+      "meta": {
+        "tier": "tier3",
+        "holdingReduction": 0.4,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-120",
+      "inputs": {
+        "previousDate": "1980-01-01",
+        "currentValue": 91567.994,
+        "priorValue": 10000,
+        "cpi": 261.6,
+        "area": 500,
+        "landType": "非都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 1,
+        "deductibleCosts": 3997,
+        "priorLandTaxCredit": 1500
+      },
+      "expected": {
+        "tax": 8108100,
+        "grossTax": 8109600,
+        "credit": 1500,
+        "base": 13080000,
+        "gain": 32700000
+      },
+      "meta": {
+        "tier": "tier3",
+        "holdingReduction": 0.4,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-121",
+      "inputs": {
+        "previousDate": "2000-01-01",
+        "currentValue": 35358.50178571,
+        "priorValue": 10137,
+        "cpi": 139.5,
+        "area": 350,
+        "landType": "都市土地",
+        "selfUseApproved": "是／已核准適用自用住宅用地",
+        "shareNumerator": 1,
+        "shareDenominator": 1,
+        "deductibleCosts": 2000,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 876749,
+        "grossTax": 876749,
+        "credit": 0,
+        "base": 4949390,
+        "gain": 7424085
+      },
+      "meta": {
+        "tier": "tier2",
+        "holdingReduction": 0.2,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-122",
+      "inputs": {
+        "previousDate": "2000-01-01",
+        "currentValue": 35838.90833333,
+        "priorValue": 10274,
+        "cpi": 139.5,
+        "area": 300,
+        "landType": "都市土地",
+        "selfUseApproved": "是／已核准適用自用住宅用地",
+        "shareNumerator": 1,
+        "shareDenominator": 1,
+        "deductibleCosts": 2500,
+        "priorLandTaxCredit": 300
+      },
+      "expected": {
+        "tax": 644650,
+        "grossTax": 644950,
+        "credit": 300,
+        "base": 4299669,
+        "gain": 6449503
+      },
+      "meta": {
+        "tier": "tier2",
+        "holdingReduction": 0.2,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-123",
+      "inputs": {
+        "previousDate": "2000-01-01",
+        "currentValue": 36312.3625,
+        "priorValue": 10411,
+        "cpi": 139.5,
+        "area": 750,
+        "landType": "非都市土地",
+        "selfUseApproved": "是／已核准適用自用住宅用地",
+        "shareNumerator": 1,
+        "shareDenominator": 1,
+        "deductibleCosts": 3000,
+        "priorLandTaxCredit": 600
+      },
+      "expected": {
+        "tax": 1771248,
+        "grossTax": 1771848,
+        "credit": 600,
+        "base": 10892509,
+        "gain": 16338763
+      },
+      "meta": {
+        "tier": "tier2",
+        "holdingReduction": 0.2,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-124",
+      "inputs": {
+        "previousDate": "2000-01-01",
+        "currentValue": 36791.15,
+        "priorValue": 10548,
+        "cpi": 139.5,
+        "area": 700,
+        "landType": "非都市土地",
+        "selfUseApproved": "是／已核准適用自用住宅用地",
+        "shareNumerator": 1,
+        "shareDenominator": 1,
+        "deductibleCosts": 3500,
+        "priorLandTaxCredit": 900
+      },
+      "expected": {
+        "tax": 1544118,
+        "grossTax": 1545018,
+        "credit": 900,
+        "base": 10300122,
+        "gain": 15450183
+      },
+      "meta": {
+        "tier": "tier2",
+        "holdingReduction": 0.2,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-125",
+      "inputs": {
+        "previousDate": "2000-01-01",
+        "currentValue": 37267.9375,
+        "priorValue": 10685,
+        "cpi": 139.5,
+        "area": 1000,
+        "landType": "非都市土地",
+        "selfUseApproved": "是／已核准適用自用住宅用地",
+        "shareNumerator": 1,
+        "shareDenominator": 1,
+        "deductibleCosts": 4000,
+        "priorLandTaxCredit": 1200
+      },
+      "expected": {
+        "tax": 3084254,
+        "grossTax": 3085454,
+        "credit": 1200,
+        "base": 14905575,
+        "gain": 22358363
+      },
+      "meta": {
+        "tier": "tier2",
+        "holdingReduction": 0.2,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-126",
+      "inputs": {
+        "previousDate": "2010-01-01",
+        "currentValue": 10000,
+        "priorValue": 10000,
+        "cpi": 125.1,
+        "area": 100,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 1,
+        "deductibleCosts": 0,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 0,
+        "gain": 0
+      },
+      "meta": {
+        "tier": "no-gain",
+        "holdingReduction": 0,
+        "independentFormula": "no positive land value increment yields zero tax"
+      }
+    },
+    {
+      "id": "LT-NEW-127",
+      "inputs": {
+        "previousDate": "2010-01-01",
+        "currentValue": 27419.418,
+        "priorValue": 10959,
+        "cpi": 125.1,
+        "area": 100,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 1,
+        "deductibleCosts": 0,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 274194,
+        "grossTax": 274194,
+        "credit": 0,
+        "base": 1370971,
+        "gain": 1370971
+      },
+      "meta": {
+        "tier": "tier2",
+        "holdingReduction": 0,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-128",
+      "inputs": {
+        "previousDate": "2010-01-01",
+        "currentValue": 41643.288,
+        "priorValue": 11096,
+        "cpi": 125.1,
+        "area": 100,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 1,
+        "deductibleCosts": 0,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 694055,
+        "grossTax": 694055,
+        "credit": 0,
+        "base": 1388110,
+        "gain": 2776219
+      },
+      "meta": {
+        "tier": "tier2",
+        "holdingReduction": 0,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-129",
+      "inputs": {
+        "previousDate": "2010-01-01",
+        "currentValue": 28104.95194752,
+        "priorValue": 11233,
+        "cpi": 125.1,
+        "area": 100,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 1,
+        "deductibleCosts": 0,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 281049,
+        "grossTax": 281049,
+        "credit": 0,
+        "base": 1405248,
+        "gain": 1405247
+      },
+      "meta": {
+        "tier": "tier1",
+        "holdingReduction": 0,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-NEW-130",
+      "inputs": {
+        "previousDate": "2010-01-01",
+        "currentValue": 37530.01251,
+        "priorValue": 10000,
+        "cpi": 125.1,
+        "area": 100,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 1,
+        "deductibleCosts": 0,
+        "priorLandTaxCredit": 0
+      },
+      "expected": {
+        "tax": 625501,
+        "grossTax": 625501,
+        "credit": 0,
+        "base": 1251000,
+        "gain": 2502001
+      },
+      "meta": {
+        "tier": "tier3",
+        "holdingReduction": 0,
+        "independentFormula": "progressive land value increment tax with holding-period reduction and 5% prior-land-tax-credit cap"
+      }
+    },
+    {
+      "id": "LT-RECON-003",
+      "inputs": {
+        "previousDate": "2020-01-01",
+        "currentValue": 30000,
+        "priorValue": 10000,
+        "cpi": 114.3,
+        "area": 100,
+        "landType": "都市土地",
+        "selfUseApproved": "否／未核准（只計一般用地）",
+        "shareNumerator": 1,
+        "shareDenominator": 1,
+        "deductibleCosts": 0,
+        "priorLandTaxCredit": 100.5
+      },
+      "expected": {
+        "validation": "reject decimal priorLandTaxCredit"
+      },
+      "meta": {
+        "independentFormula": "priorLandTaxCredit must be a non-negative integer number of NT dollars; decimal input must be rejected, not truncated."
+      }
+    }
+  ]
+}

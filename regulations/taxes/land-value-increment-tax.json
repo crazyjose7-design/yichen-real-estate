@@ -1,0 +1,101 @@
+{
+  "schema_version": "1.0.0",
+  "id": "land-value-increment-tax",
+  "title": "土地增值稅",
+  "status": "in_review",
+  "jurisdiction_layers": [
+    "national",
+    "county_city",
+    "property_specific"
+  ],
+  "governing_law": {
+    "id": "land-value-tax-act",
+    "title": "土地稅法",
+    "provision": "第28至39條及相關移轉現值、漲價總數額與減免規定"
+  },
+  "parameters": [
+    {
+      "id": "first-bracket",
+      "name": "漲價總數額未達原地價或前次移轉現值100%",
+      "value": 20,
+      "unit": "%",
+      "article": "土地稅法第33條第1項第1款",
+      "status": "in_review"
+    },
+    {
+      "id": "second-bracket",
+      "name": "超過100%至未達200%部分",
+      "value": 30,
+      "unit": "%",
+      "article": "土地稅法第33條第1項第2款",
+      "status": "in_review"
+    },
+    {
+      "id": "third-bracket",
+      "name": "超過200%部分",
+      "value": 40,
+      "unit": "%",
+      "article": "土地稅法第33條第1項第3款",
+      "status": "in_review"
+    },
+    {
+      "id": "long-term-over-20",
+      "name": "持有超過20年之最低稅率以上部分減徵",
+      "value": 20,
+      "unit": "%",
+      "article": "土地稅法第33條",
+      "status": "in_review"
+    },
+    {
+      "id": "long-term-over-30",
+      "name": "持有超過30年之最低稅率以上部分減徵",
+      "value": 30,
+      "unit": "%",
+      "article": "土地稅法第33條",
+      "status": "in_review"
+    },
+    {
+      "id": "long-term-over-40",
+      "name": "持有超過40年之最低稅率以上部分減徵",
+      "value": 40,
+      "unit": "%",
+      "article": "土地稅法第33條",
+      "status": "in_review"
+    },
+    {
+      "id": "self-use",
+      "name": "符合自用住宅用地條件之優惠稅率",
+      "value": 10,
+      "unit": "%",
+      "article": "土地稅法第34條",
+      "status": "in_review",
+      "conditions": "都市土地3公畝、非都市土地7公畝上限，並須符合出售前使用、戶籍、持有期間及次數等法定條件。"
+    }
+  ],
+  "effective_from": null,
+  "effective_to": null,
+  "official_sources": [
+    {
+      "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=G0340096",
+      "title": "土地稅法",
+      "agency": "財政部",
+      "provision": "第31至35條",
+      "amended_at": "2025-01-24",
+      "retrieved_at": "2026-11-27"
+    }
+  ],
+  "formula_reference": "workbench/modules/tax-engine.js#land",
+  "test_cases": [],
+  "verified_by": null,
+  "application_policy": {
+    "auto_apply": false,
+    "rule": "僅完成中央法條初步摘錄；雙人覆核、有效日期、子法、地方公告與公式回歸測試完成前不得自動套用。"
+  },
+  "jurisdiction": "national",
+  "retrieved_at": "2026-11-27",
+  "review_notes": [
+    "已摘錄可由中央法條確認的初步稅率或級距，所有參數仍為 in_review，不得自動套用。",
+    "仍須核對有效日期、子法、地方年度公告、歸戶/門檻、免稅減免、個案核定及現行程式公式是否完全一致。",
+    "參數的法定上限或區間不代表地方實際核定稅率；不得以區間中點代替地方公告。"
+  ]
+}

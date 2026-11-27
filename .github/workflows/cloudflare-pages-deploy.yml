@@ -1,0 +1,81 @@
+name: Cloudflare Pages deployment
+
+on:
+  workflow_dispatch:
+    inputs:
+      target:
+        description: "Deployment target"
+        required: true
+        type: choice
+        options:
+          - preview
+          - production
+        default: preview
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cloudflare-pages-${{ inputs.target }}
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.target }}
+    steps:
+      - name: Restrict production to main
+        if: inputs.target == 'production' && github.ref != 'refs/heads/main'
+        run: |
+          echo "::error::Production deployment is only allowed from the main branch."
+          exit 1
+
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Build and verify deployment package
+        run: node scripts/build-deployment.mjs
+
+      - name: Verify Cloudflare deployment credentials
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_PAGES_PROJECT: ${{ vars.CLOUDFLARE_PAGES_PROJECT }}
+        run: |
+          test -n "$CLOUDFLARE_API_TOKEN" || { echo "::error::Missing CLOUDFLARE_API_TOKEN secret."; exit 1; }
+          test -n "$CLOUDFLARE_ACCOUNT_ID" || { echo "::error::Missing CLOUDFLARE_ACCOUNT_ID secret."; exit 1; }
+          test -n "$CLOUDFLARE_PAGES_PROJECT" || { echo "::error::Missing CLOUDFLARE_PAGES_PROJECT repository variable."; exit 1; }
+          test -s dist/deployment-package/index.html
+
+      - name: Deploy preview or production to Cloudflare Pages
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_PAGES_PROJECT: ${{ vars.CLOUDFLARE_PAGES_PROJECT }}
+          DEPLOY_TARGET: ${{ inputs.target }}
+          SOURCE_BRANCH: ${{ github.ref_name }}
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          if [ "$DEPLOY_TARGET" = "production" ]; then
+            DEPLOY_BRANCH="main"
+          else
+            DEPLOY_BRANCH="$SOURCE_BRANCH"
+          fi
+          npx --yes wrangler@4 pages deploy dist/deployment-package \
+            --project-name "$CLOUDFLARE_PAGES_PROJECT" \
+            --branch "$DEPLOY_BRANCH" \
+            --commit-hash "$SOURCE_SHA" \
+            --commit-message "億辰房產網站 $DEPLOY_TARGET $SOURCE_SHA"
+
+      - name: Upload deployment package for audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: yichen-pages-${{ inputs.target }}-${{ github.sha }}
+          path: dist/deployment-package
+          if-no-files-found: warn

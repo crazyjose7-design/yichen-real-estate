@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "delegated_regulation",
+  "id": "hazardous-old-building-volume-reward-regulations",
+  "title": "都市危險及老舊建築物建築容積獎勵辦法",
+  "status": "in_review",
+  "jurisdiction": "national",
+  "amended_at": "2025-03-04",
+  "effective_from": null,
+  "effective_to": null,
+  "source": {
+    "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0070258",
+    "title": "都市危險及老舊建築物建築容積獎勵辦法－全國法規資料庫",
+    "agency": "內政部",
+    "provision": "第1至13條",
+    "amended_at": "2025-03-04",
+    "retrieved_at": "2026-11-27"
+  },
+  "extracted_rules": [
+    {
+      "id": "ho-base-volume",
+      "article": "第2條",
+      "rule": "基準容積為都市計畫法令規定容積率上限乘土地面積；原建築容積依合法建築物核准總樓地板面積及法定扣除項目認定。",
+      "status": "in_review"
+    },
+    {
+      "id": "ho-original-volume",
+      "article": "第3條",
+      "rule": "原建築容積高於基準容積者，獎勵額度為基準容積百分之十，或依原建築容積建築。",
+      "status": "in_review"
+    },
+    {
+      "id": "ho-public-land",
+      "article": "第10條",
+      "rule": "協助取得及開闢重建計畫周邊公共設施用地且產權登記公有者，獎勵上限為基準容積百分之五，並須符合清理、開闢及移轉登記條件。",
+      "status": "in_review"
+    },
+    {
+      "id": "ho-agreement",
+      "article": "第11條",
+      "rule": "申請第6至9條獎勵須簽訂協議書、領使用執照前繳保證金，並於領照後二年內取得指定標章或通過評估。",
+      "status": "in_review"
+    },
+    {
+      "id": "ho-order",
+      "article": "第12條",
+      "rule": "申請第3至6條獎勵後仍未達母法第6條第1項上限，始得申請第7至10條獎勵。",
+      "status": "in_review"
+    },
+    {
+      "id": "ho-transition",
+      "article": "第12條之1",
+      "rule": "實施容積管制前已申請建造執照之合法建築物，於2025年3月4日修正施行前已提出重建計畫申請者，得適用修正後規定。",
+      "status": "in_review"
+    }
+  ],
+  "caveats": [
+    "母法第6條另有1.3倍基準容積或1.15倍原建築容積上限及期間性獎勵規定，須合併判斷。",
+    "必須核對母法、所有獎勵條文、申請日期、過渡條款及個案核准重建計畫。",
+    "不得把單項獎勵比例視為可直接加總的總獎勵比例。"
+  ],
+  "verified_by": null,
+  "application_policy": {
+    "auto_apply": false,
+    "rule": "僅作子法查核索引，禁止自動套用。"
+  }
+}

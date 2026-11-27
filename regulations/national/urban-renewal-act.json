@@ -1,0 +1,62 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "central_law",
+  "id": "urban-renewal-act",
+  "title": "都市更新條例",
+  "status": "in_review",
+  "jurisdiction": "national",
+  "amended_at": "2024-11-13",
+  "effective_from": null,
+  "effective_to": null,
+  "important_provisions": [
+    {
+      "article": "第2條",
+      "topic": "中央及地方主管機關"
+    },
+    {
+      "article": "第65條第1項",
+      "topic": "一般都市更新容積獎勵上限：原則不得超過基準容積1.5倍，且不得超過都市計畫法施行細則上限"
+    },
+    {
+      "article": "第65條第2項",
+      "topic": "特定合法既有建築物及策略性更新地區之擇優容積上限，須按各款條件判斷"
+    },
+    {
+      "article": "第65條第3項",
+      "topic": "符合特定耐震不足且有明顯公共安全危害之建築物，適用特別上限後不得再申請第5項獎勵"
+    },
+    {
+      "article": "第65條第5項",
+      "topic": "中央訂定獎勵辦法；地方得依都市發展特性另訂自治法規"
+    },
+    {
+      "article": "第65條第6項",
+      "topic": "地方自治法規獎勵額度原則上不得超過基準容積0.2倍；策略性更新地區特定案件不得超過0.4倍"
+    },
+    {
+      "article": "第65條第10項",
+      "topic": "新舊法過渡適用，依事業計畫擬訂報核日期判斷"
+    }
+  ],
+  "source": {
+    "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0070008",
+    "title": "都市更新條例－全國法規資料庫",
+    "agency": "內政部",
+    "provision": "第2條、第65條第1至10項",
+    "amended_at": "2024-11-13",
+    "retrieved_at": "2026-11-27"
+  },
+  "verified_by": null,
+  "application_policy": {
+    "auto_apply": false,
+    "rule": "第65條為現行容積獎勵核心法源；仍須核對授權子法、地方自治法規、過渡條款及個案核定後才能套用。"
+  },
+  "version_correction": {
+    "previous_recorded_article": "第44條",
+    "current_article": "第65條",
+    "reason": "現行全國法規資料庫修正後，容積獎勵規定及授權已編列於第65條；舊第44條資料不可作現行法源引用。",
+    "verified_against": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0070008",
+    "verified_at": "2026-11-27",
+    "status": "in_review"
+  }
+}

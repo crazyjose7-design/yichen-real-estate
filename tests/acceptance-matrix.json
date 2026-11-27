@@ -1,0 +1,79 @@
+{
+  "version": "1.0.0",
+  "status": "partial_acceptance_only",
+  "groups": [
+    {
+      "group": "稅務試算－既有12項",
+      "items": [
+        "土地增值稅",
+        "房地合一稅",
+        "舊制房屋財產交易所得稅",
+        "營業稅",
+        "契稅",
+        "印花稅",
+        "房屋稅",
+        "地價稅",
+        "租賃所得稅",
+        "遺產稅",
+        "贈與稅",
+        "營利事業所得稅"
+      ],
+      "status": "131_land_tax_cases_passed_plus_11_existing_tax_baselines_and_3_guardrails_passed_full_tax_matrices_pending",
+      "minimumTests": "法定門檻前後、邊界值、零值、空值、負數、小數、極大值、免稅/扣抵、不同身分/期間/持分、獨立手算交叉驗證",
+      "completedEvidence": "Latest CI commit 83adb7b passed 90 Node tests and browser smoke. Added tests/tax-existing-tools.test.mjs: 11 independent baseline expected-value cases for the 11 existing tax tools plus VAT, house-tax and land-tax guardrail cases. The 131 land-tax browser cases remain 0 failures. These are initial baselines, not full boundary/identity/annual matrices; historical 130+ source rows remain unrecovered."
+    },
+    {
+      "group": "稅務試算－新增2項",
+      "items": [
+        "租金扣繳",
+        "執行業務所得"
+      ],
+      "status": "21_unit_cases_passed_browser_and_A4_print_passed",
+      "minimumTests": "基本欄位/進階欄位、居住者/非居住者、個人/公司、9A/9B、含稅/未含稅、多房東持分、健保身分、法定門檻前後、列印A4、瀏覽器操作",
+      "completedEvidence": "21 dedicated unit tests pass; browser smoke calculates both tools, verifies rent tax gross-up/multiple landlords/nationality field and professional 9A/9B/NHI thresholds; each prints one A4 page with correct Chinese title."
+    },
+    {
+      "group": "土地坪效",
+      "items": [
+        "基地條件輸入",
+        "法定容積",
+        "獎勵容積",
+        "容積移轉",
+        "建蔽率/高度/退縮等限制",
+        "建築量體與坪效",
+        "列印"
+      ],
+      "status": "6_independent_formula_and_boundary_cases_passed_full_field_and_regulatory_matrix_pending",
+      "minimumTests": "各欄位邊界/單位/持分、分區及法規版本、獎勵互斥/併計、官方核准量體、公式獨立手算、空值與異常值、列印A4",
+      "completedEvidence": "Added tests/land-efficiency.test.mjs with 6 independent cases for baseline area/buildable/saleable/cost/revenue, ping-square-metre conversion, scenario reward effect, custom reward required input, negative price rejection and parking revenue. Existing browser smoke and A4 print pass; reward safety gate blocks unverified official reward values. Full field-by-field and zoning/legal reward matrix remains pending."
+    },
+    {
+      "group": "房貸試算",
+      "items": [
+        "貸款本金",
+        "利率",
+        "年期",
+        "寬限期",
+        "本息平均攤還",
+        "本金平均攤還",
+        "月付金/總利息/攤還表",
+        "列印"
+      ],
+      "status": "9_independent_amortization_cases_passed_full_rate_term_grace_matrix_pending",
+      "minimumTests": "0利率、不同利率/年期、寬限期、提前還款(若支援)、本金/利息加總、獨立攤還公式對照、列印A4",
+      "completedEvidence": "Added tests/mortgage-calculator.test.mjs with 8 independent amortization matrix cases plus invalid rate-change month rejection, covering annuity/principal methods, zero interest, grace period, stepped rate and long term. Browser baseline and A4 print pass. Full combinations and every amortization-row reconciliation remain pending."
+    },
+    {
+      "group": "法規與獎勵資料",
+      "items": [
+        "22縣市自治法規",
+        "中央法規與子法",
+        "五項既有稅務參數",
+        "九類容積獎勵"
+      ],
+      "status": "pending_official_source_review",
+      "completedEvidence": "22 city files, 19 central law records, 7 tax parameter files, 9 reward datasets; safeToCalculate remains false and 35 review items remain."
+    }
+  ],
+  "acceptanceRule": "所有測試案例必須有唯一ID、輸入、獨立計算的預期值、實際值、差異、法源/公式依據、測試時間及執行版本；通過數量不等於完整性，未通過或無證據不得宣稱可正式投入使用。"
+}

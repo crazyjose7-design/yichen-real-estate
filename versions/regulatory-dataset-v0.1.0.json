@@ -1,0 +1,29 @@
+{
+  "version": "0.1.0",
+  "created_at": "2026-11-27",
+  "status": "development_not_approved",
+  "branch": "work/city-parameter-files-2026-11-27",
+  "base_commit_sha": "3e31f8ec80fa1528a5578243ee2613b9b57b36a8",
+  "release_commit_sha": null,
+  "approved_by": null,
+  "deployment_id": null,
+  "components": {
+    "county_city_files": 22,
+    "central_law_records": 10,
+    "tax_parameter_files": 5,
+    "incentive_files": 9,
+    "verified_city_parameter_count": 0,
+    "verified_tax_parameter_count": 0,
+    "verified_incentive_parameter_count": 0
+  },
+  "quality_gates": {
+    "json_validation": "automated",
+    "loader_unit_tests": "automated",
+    "browser_smoke_tests": "automated_in_package_workflow",
+    "formula_regression": "not_started",
+    "a4_print_validation": "not_started",
+    "legal_double_review": "not_started",
+    "production_deployment": "not_authorized"
+  },
+  "rollback_document": "versions/rollback.md"
+}

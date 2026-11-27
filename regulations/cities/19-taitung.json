@@ -1,0 +1,94 @@
+{
+  "schema_version": "1.0.0",
+  "jurisdiction": {
+    "level": "county_city",
+    "code": "19",
+    "name": "臺東縣",
+    "slug": "taitung",
+    "country": "TW"
+  },
+  "dataset_version": "0.1.3",
+  "status": "unverified",
+  "effective_from": null,
+  "effective_to": null,
+  "retrieved_at": "2026-11-27",
+  "official_parameters": [],
+  "local_regulations": [
+    {
+      "id": "taitung-official-law-portal",
+      "record_type": "source_portal",
+      "title": "臺東縣政府主管法規共用系統（官方法規入口）",
+      "status": "in_review",
+      "source": {
+        "url": "https://law.taitung.gov.tw/",
+        "title": "臺東縣政府主管法規共用系統",
+        "agency": "臺東縣政府",
+        "provision": "地方自治法規及行政規則查詢入口"
+      },
+      "review_notes": [
+        "本次已定位臺東縣政府主管法規系統網址，尚未定位可直接適用之都市更新容積獎勵自治法規。",
+        "後續須檢索都市計畫法臺東縣施行規定、都市計畫書圖、土地使用分區及基地建築管制。"
+      ]
+    },
+    {
+      "id": "taitung-urban-design-review-principles-2023",
+      "record_type": "local_regulation_copy",
+      "title": "臺東縣都市設計審議原則",
+      "status": "in_review",
+      "issued_at": "2023-07-21",
+      "source": {
+        "url": "https://www.guanshan.gov.tw/upload/376540000A_1120157141_ATTACH1.pdf",
+        "title": "臺東縣都市設計審議原則（府建都字第1120157141號函副本）",
+        "agency": "臺東縣政府（文件副本由關山鎮公所網站提供）",
+        "provision": "全文第1至4點"
+      },
+      "scope": "臺東縣都市設計審議案件；人行/車行空間、停車配置、基地退縮及公益案件例外",
+      "review_notes": [
+        "文件內容載明由臺東縣政府於112年7月21日以府建都字第1120157141號函訂定。",
+        "目前取得的是鄉鎮公所網站所提供的政府函文副本，尚未找到臺東縣政府原始公告頁及最新修正沿革，故不標示為已核實現行版本。",
+        "原則包含住宅每戶汽車位及機車位、商業使用每150平方公尺設汽車位及機車位等設計要求；是否適用仍須核對個別都市計畫及審議規定。"
+      ]
+    },
+    {
+      "id": "taitung-urban-plan-control-index",
+      "record_type": "official_source_index",
+      "title": "臺東縣政府建設處都市計畫及土地使用分區查詢入口",
+      "status": "in_review",
+      "source": {
+        "url": "https://www.taitung.gov.tw/",
+        "title": "臺東縣政府官方網站",
+        "agency": "臺東縣政府",
+        "provision": "建設處都市計畫及土地使用分區相關公告入口"
+      },
+      "scope": "臺東縣各都市計畫書圖、土地使用分區及基地管制",
+      "review_notes": [
+        "都市土地分區管制須依各縣市都市計畫書圖，應向土地所在地主管機關查詢。",
+        "臺東縣各都市計畫土地使用分區管制要點參考本目前僅取得非縣府網域的參考檔，且明示以核定計畫書為準，尚不可當作現行法規正式參數。"
+      ]
+    }
+  ],
+  "reward_programs": [],
+  "user_assumptions": [],
+  "application_policy": {
+    "auto_apply": false,
+    "rule": "未完成官方來源、適用範圍、有效日期及雙人覆核前，任何縣市參數或獎勵均不得自動套用。"
+  },
+  "pending_verification": [
+    "都市計畫及土地使用分區管制",
+    "建蔽率、容積率、移轉/獎勵容積及個案限制",
+    "地方自治法規、地方獎勵辦法與受理程序",
+    "官方公告、法規版本、生效日期及適用範圍",
+    "地方官方法規入口內都市計畫/建築/更新法規完整檢索",
+    "地方都市計畫書圖、土地使用分區及基地管制",
+    "都市更新獎勵辦法及附表、互斥與個案核准資料",
+    "最新修正沿革、附表與附件逐項核對",
+    "各都市計畫區主要計畫/細部計畫書圖及土地使用分區逐基地套疊",
+    "地方容積獎勵項目、計算額度、互斥及個案核定資料"
+  ],
+  "safety_notes": [
+    "不得以縣市通用值取代基地地號與個案核定條件。",
+    "全國性法規放在 regulations/national；全國性稅法放在 regulations/taxes。",
+    "容積獎勵須確認法源、上限、計算基準、互斥/累計規則及審查條件。",
+    "未查證資料不得進入計算，也不得標示為官方核定值。"
+  ]
+}

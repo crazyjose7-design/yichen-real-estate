@@ -1,0 +1,26 @@
+name: Modular workbench checks
+
+on:
+  push:
+    branches:
+      - "work/**"
+    paths:
+      - "workbench/modules/**"
+      - ".github/workflows/modular-workbench-check.yml"
+  workflow_dispatch:
+
+jobs:
+  syntax:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Check extracted module syntax
+        run: |
+          set -eu
+          for file in workbench/modules/*.js; do
+            echo "Checking $file"
+            node --check "$file"
+          done

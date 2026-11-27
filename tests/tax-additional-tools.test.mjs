@@ -1,0 +1,30 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import vm from 'node:vm';
+const context={window:{},Intl,Math,Number,Object,Error};
+vm.runInNewContext(fs.readFileSync(new URL('../workbench/modules/tax-additional-calculations.js',import.meta.url),'utf8'),context);
+const {calculateRentWithholding,calculateProfessionalWithholding,calculateProfessionalIncome}=context.window.YichenTaxAdditionalCalc;
+test('resident rent at 20,000 has 2,000 withholding and is exempt',()=>{const r=calculateRentWithholding({grossAmount:20000});assert.equal(r.rawTax,2000);assert.equal(r.withholdingTax,0)});
+test('resident rent at 20,001 is withheld at 10%',()=>{const r=calculateRentWithholding({grossAmount:20001});assert.equal(r.withholdingTax,2000)});
+test('nonresident rent is 20% and has no resident 2,000 exemption',()=>{const r=calculateRentWithholding({grossAmount:10000,residency:'nonresident'});assert.equal(r.withholdingTax,2000)});
+test('individual rent premium threshold and rate',()=>{const r=calculateRentWithholding({grossAmount:20000,includeNhi:true});assert.equal(r.supplementaryPremium,422)});
+test('company rent recipient does not calculate individual NHI premium',()=>{const r=calculateRentWithholding({grossAmount:50000,includeNhi:true,recipientKind:'company'});assert.equal(r.supplementaryPremium,0)});
+test('rent premium base is capped at ten million',()=>{const r=calculateRentWithholding({grossAmount:12000000,includeNhi:true});assert.equal(r.nhiBase,10000000);assert.equal(r.supplementaryPremium,211000)});
+test('professional income uses receipts minus actual expenses',()=>{const r=calculateProfessionalIncome({revenue:1000000,expenseTotal:300000});assert.equal(r.netProfessionalIncome,700000)});
+test('professional income details replace total expenses',()=>{const r=calculateProfessionalIncome({revenue:1000000,expenseMode:'detail',expenseTotal:500000,expenses:{rent:100000,staff:200000,travel:50000}});assert.equal(r.deductibleExpenses,350000);assert.equal(r.netProfessionalIncome,650000)});
+test('fee rate requires official verification',()=>{assert.throws(()=>calculateProfessionalIncome({revenue:100000,expenseMode:'rate',feeRate:30}),/已核對/)});
+test('fee rate calculates only after explicit verification',()=>{const r=calculateProfessionalIncome({revenue:100000,expenseMode:'rate',feeRate:30,feeRateVerified:true});assert.equal(r.deductibleExpenses,30000)});
+test('negative net income is displayed as loss, not other-income offset',()=>{const r=calculateProfessionalIncome({revenue:100000,expenseTotal:120000});assert.equal(r.businessLoss,20000);assert.equal(r.taxableIncomeEstimate,0)});
+test('withholding credit is not deducted from professional income',()=>{const r=calculateProfessionalIncome({revenue:100000,expenseTotal:20000,withholdingCredit:5000});assert.equal(r.netProfessionalIncome,80000);assert.equal(r.withholdingCredit,5000)});
+
+test('resident professional fee at 20,000 is exempt under 2,000 withholding threshold',()=>{const r=calculateProfessionalWithholding({grossAmount:20000});assert.equal(r.withholdingTax,0)});
+test('resident professional fee at 20,001 is withheld at 10%',()=>{const r=calculateProfessionalWithholding({grossAmount:20001});assert.equal(r.withholdingTax,2000)});
+test('nonresident general professional fee is withheld at 20%',()=>{const r=calculateProfessionalWithholding({grossAmount:5000,residency:'nonresident'});assert.equal(r.withholdingTax,1000)});
+test('nonresident special copyright and lecture income up to 5,000 is exempt',()=>{const r=calculateProfessionalWithholding({grossAmount:5000,residency:'nonresident',incomeType:'special'});assert.equal(r.withholdingTax,0)});
+test('nonresident special income over 5,000 is withheld at 20%',()=>{const r=calculateProfessionalWithholding({grossAmount:5001,residency:'nonresident',incomeType:'special'});assert.equal(r.withholdingTax,1000)});
+test('professional income supplementary premium threshold and rate',()=>{const r=calculateProfessionalWithholding({grossAmount:20000,includeNhi:true});assert.equal(r.supplementaryPremium,422)});
+test('self-employed professional insured through occupational union is excluded when confirmed',()=>{const r=calculateProfessionalWithholding({grossAmount:50000,includeNhi:true,nhiExempt:true});assert.equal(r.supplementaryPremium,0)});
+
+test('resident company rent uses the same 2,000 withholding exemption threshold',()=>{const r=calculateRentWithholding({grossAmount:20000,residency:'resident',recipientKind:'company'});assert.equal(r.withholdingTax,0)});
+test('rent supplementary premium can be excluded when statutory exemption is confirmed',()=>{const r=calculateRentWithholding({grossAmount:50000,includeNhi:true,nhiExempt:true});assert.equal(r.supplementaryPremium,0)});

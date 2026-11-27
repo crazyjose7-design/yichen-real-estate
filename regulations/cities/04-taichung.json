@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.0.0",
+  "jurisdiction": {
+    "level": "county_city",
+    "code": "04",
+    "name": "臺中市",
+    "slug": "taichung",
+    "country": "TW"
+  },
+  "dataset_version": "0.1.0",
+  "status": "unverified",
+  "effective_from": null,
+  "effective_to": null,
+  "retrieved_at": "2026-11-27",
+  "official_parameters": [],
+  "local_regulations": [
+    {
+      "id": "taichung-urban-renewal-autonomous-ordinance",
+      "title": "臺中市都市更新自治條例",
+      "status": "in_review",
+      "promulgated_at": "2011-06-29",
+      "amended_at": "2022-01-20",
+      "source": {
+        "url": "https://law.taichung.gov.tw/LawContent.aspx?KeyWord=%E9%83%BD%E5%B8%82%E6%9B%B4%E6%96%B0&id=GL000968",
+        "title": "臺中市政府主管法規共用系統",
+        "agency": "臺中市政府",
+        "provision": "全文；111年1月20日修正"
+      },
+      "review_notes": [
+        "須逐條核對更新單元、地方獎勵、補償及審查條件。"
+      ]
+    },
+    {
+      "id": "taichung-urban-renewal-volume-reward-rules",
+      "title": "臺中市都市更新建築容積獎勵辦法",
+      "status": "in_review",
+      "promulgated_at": "2020-11-03",
+      "source": {
+        "url": "https://law.taichung.gov.tw/LawContent.aspx?id=GL003931",
+        "title": "臺中市政府主管法規共用系統－臺中市都市更新建築容積獎勵辦法",
+        "agency": "臺中市政府",
+        "provision": "全文第1至5條及第4條附表；109年11月3日訂定發布"
+      },
+      "review_notes": [
+        "官方現行頁面確認第1至5條；第4條附表為實際獎勵項目、評定基準及額度，附件ODT尚須逐項解析。",
+        "第1條仍援引都市更新條例第65條第3項；現行母法授權已編列於第65條第5項，須核對是否為修法後未更新的舊引文及其效力。",
+        "第4條對第8條策略性更新地區、依第12條第1項方式辦理且更新單元達10,000平方公尺者，規定依附表獎勵額度二倍核予；須檢核母法第65條總上限及適用條件，禁止直接自動加倍。",
+        "臺中市法規系統沿革頁顯示本辦法於109年11月3日訂定發布全文5條，現有官方來源仍可定位全文及第4條附表；須核對是否有後續修正、附表公告或個案補充函釋。",
+        "中央母法第65條已於113年11月13日修正，地方辦法引用母法授權條次及地方0.2倍/0.4倍上限須重新交叉核對；未完成前不自動套用。"
+      ]
+    }
+  ],
+  "reward_programs": [],
+  "user_assumptions": [],
+  "application_policy": {
+    "auto_apply": false,
+    "rule": "未完成官方來源、適用範圍、有效日期及雙人覆核前，任何縣市參數或獎勵均不得自動套用。"
+  },
+  "pending_verification": [
+    "都市計畫及土地使用分區管制",
+    "建蔽率、容積率、移轉/獎勵容積及個案限制",
+    "地方自治法規、地方獎勵辦法與受理程序",
+    "官方公告、法規版本、生效日期及適用範圍",
+    "地方都市更新自治法規逐條及附件覆核",
+    "地方都市計畫施行規定與基地計畫書圖套疊",
+    "地方容積獎勵項目、額度、互斥及併計規則",
+    "個案主管機關核准容積資料",
+    "臺中市都市更新建築容積獎勵辦法第4條附表逐項解析、策略性更新區二倍規則與現行都市更新條例第65條上限銜接"
+  ],
+  "safety_notes": [
+    "不得以縣市通用值取代基地地號與個案核定條件。",
+    "全國性法規放在 regulations/national；全國性稅法放在 regulations/taxes。",
+    "容積獎勵須確認法源、上限、計算基準、互斥/累計規則及審查條件。",
+    "未查證資料不得進入計算，也不得標示為官方核定值。"
+  ]
+}

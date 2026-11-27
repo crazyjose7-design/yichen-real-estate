@@ -1,0 +1,295 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://yichen-real-estate.example/schemas/city-parameters.schema.json",
+  "title": "Yichen County/City Parameters",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "jurisdiction",
+    "dataset_version",
+    "status",
+    "retrieved_at",
+    "official_parameters",
+    "user_assumptions",
+    "application_policy"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string"
+    },
+    "dataset_version": {
+      "type": "string"
+    },
+    "retrieved_at": {
+      "type": "string",
+      "format": "date"
+    },
+    "jurisdiction": {
+      "type": "object",
+      "required": [
+        "level",
+        "code",
+        "name",
+        "slug",
+        "country"
+      ],
+      "properties": {
+        "level": {
+          "const": "county_city"
+        },
+        "code": {
+          "type": "string",
+          "pattern": "^[0-9]{2}$"
+        },
+        "name": {
+          "type": "string"
+        },
+        "slug": {
+          "type": "string"
+        },
+        "country": {
+          "const": "TW"
+        }
+      },
+      "additionalProperties": false
+    },
+    "status": {
+      "enum": [
+        "unverified",
+        "in_review",
+        "verified",
+        "deprecated"
+      ]
+    },
+    "effective_from": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
+    "effective_to": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date"
+    },
+    "official_parameters": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "category",
+          "name",
+          "value",
+          "unit",
+          "jurisdiction",
+          "effective_from",
+          "source",
+          "status",
+          "verified_by"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "value": {},
+          "unit": {
+            "type": "string"
+          },
+          "jurisdiction": {
+            "type": "string"
+          },
+          "effective_from": {
+            "type": "string",
+            "format": "date"
+          },
+          "effective_to": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date"
+          },
+          "source": {
+            "type": "object",
+            "required": [
+              "url",
+              "title",
+              "provision",
+              "issued_at",
+              "retrieved_at",
+              "agency"
+            ],
+            "properties": {
+              "url": {
+                "type": "string",
+                "format": "uri"
+              },
+              "title": {
+                "type": "string"
+              },
+              "provision": {
+                "type": "string"
+              },
+              "issued_at": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date"
+              },
+              "retrieved_at": {
+                "type": "string",
+                "format": "date"
+              },
+              "agency": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          },
+          "status": {
+            "enum": [
+              "unverified",
+              "in_review",
+              "verified",
+              "deprecated"
+            ]
+          },
+          "verified_by": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "user_assumptions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "value",
+          "unit",
+          "provided_by",
+          "created_at"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "value": {},
+          "unit": {
+            "type": "string"
+          },
+          "provided_by": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date"
+          },
+          "note": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "application_policy": {
+      "type": "object",
+      "required": [
+        "auto_apply",
+        "rule"
+      ],
+      "properties": {
+        "auto_apply": {
+          "type": "boolean"
+        },
+        "rule": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "pending_verification": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "safety_notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "invalidated_provisions": {
+      "type": "array",
+      "description": "Officially invalidated local legal provisions; must never be used for automatic calculation.",
+      "items": {
+        "type": "object",
+        "required": [
+          "article",
+          "status",
+          "invalidated_at",
+          "authority",
+          "document_number",
+          "legal_basis",
+          "reason",
+          "source_url",
+          "auto_apply"
+        ],
+        "properties": {
+          "article": {
+            "type": "string"
+          },
+          "status": {
+            "const": "invalidated"
+          },
+          "invalidated_at": {
+            "type": "string",
+            "format": "date"
+          },
+          "authority": {
+            "type": "string"
+          },
+          "document_number": {
+            "type": "string"
+          },
+          "legal_basis": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "source_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "auto_apply": {
+            "const": false
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

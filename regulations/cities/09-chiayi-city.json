@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0.0",
+  "jurisdiction": {
+    "level": "county_city",
+    "code": "09",
+    "name": "嘉義市",
+    "slug": "chiayi-city",
+    "country": "TW"
+  },
+  "dataset_version": "0.1.0",
+  "status": "unverified",
+  "effective_from": null,
+  "effective_to": null,
+  "retrieved_at": "2026-11-27",
+  "official_parameters": [],
+  "local_regulations": [
+    {
+      "id": "chiayi-city-urban-renewal-volume-reward-rules",
+      "title": "嘉義市都市更新建築容積獎勵辦法",
+      "status": "in_review",
+      "promulgated_at": "2020-12-16",
+      "amended_at": "2025-02-16",
+      "source": {
+        "url": "https://uract.nlma.gov.tw/rule/detail/1294",
+        "title": "內政部都市更新法規資訊－嘉義市都市更新建築容積獎勵辦法",
+        "agency": "嘉義市政府（中央法規資訊系統收錄）",
+        "provision": "全文第1至8條及附表"
+      },
+      "review_notes": [
+        "114年2月16日修正後，捐贈都市發展更新基金獎勵額度上限為基準容積10%，公式以捐贈金額及報核日公告土地現值等資料計算；須逐條核對現行完整公式與附件。",
+        "不得將捐贈公式或10%上限視為所有更新案件通用獎勵。"
+      ]
+    }
+  ],
+  "reward_programs": [],
+  "user_assumptions": [],
+  "application_policy": {
+    "auto_apply": false,
+    "rule": "未完成官方來源、適用範圍、有效日期及雙人覆核前，任何縣市參數或獎勵均不得自動套用。"
+  },
+  "pending_verification": [
+    "都市計畫及土地使用分區管制",
+    "建蔽率、容積率、移轉/獎勵容積及個案限制",
+    "地方自治法規、地方獎勵辦法與受理程序",
+    "官方公告、法規版本、生效日期及適用範圍",
+    "地方容積獎勵完整附表與公式逐項覆核",
+    "地方公告指定設施及個案區位/時效",
+    "地方都市計畫書圖與基地土地使用分區套疊",
+    "中央法規授權及地方自治規則效力審查"
+  ],
+  "safety_notes": [
+    "不得以縣市通用值取代基地地號與個案核定條件。",
+    "全國性法規放在 regulations/national；全國性稅法放在 regulations/taxes。",
+    "容積獎勵須確認法源、上限、計算基準、互斥/累計規則及審查條件。",
+    "未查證資料不得進入計算，也不得標示為官方核定值。"
+  ]
+}

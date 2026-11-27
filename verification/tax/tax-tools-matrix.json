@@ -1,0 +1,246 @@
+{
+  "schema_version": "1.0.0",
+  "updated_at": "2026-11-27",
+  "status": "IN_PROGRESS",
+  "source_note": "網站14項稅務工具現由12項既有tax-engine定義及2項獨立Simpany parity模組組成；兩項新增工具已載入正式頁面並嵌入單檔部署版。新增工具共有21項獨立公式回歸案例（租金9、執行業務所得12）通過；14項完整法源/年度矩陣仍未全數完成。",
+  "acceptance": {
+    "required_case_classes": [
+      "normal",
+      "boundary",
+      "abnormal",
+      "cross_check"
+    ],
+    "expected_value_must_be_independent": true,
+    "source_and_tax_year_required": true,
+    "all_cases_pass_required": true
+  },
+  "tools": [
+    {
+      "id": "land",
+      "name": "土地增值稅",
+      "status": "IN_PROGRESS",
+      "fixture_file": "fixtures/land.json",
+      "required_cases": {
+        "normal": 1,
+        "boundary": 3,
+        "abnormal": 1,
+        "cross_check": 0
+      },
+      "verified_expected_values": 5,
+      "source_status": "CI_PASSED_PENDING_ANNUAL_CPI_AND_LOCAL_RULE_REVIEW",
+      "notes": "新增獨立土地增值稅案例：零漲價、20%/30%/40%三級公式及無效持分阻擋；仍待各年度官方物價指數完整校驗、長期持有減徵、自用住宅、法定減除費用及地方核定資料交叉覆核。"
+    },
+    {
+      "id": "house",
+      "name": "房地合一稅",
+      "status": "IN_PROGRESS",
+      "fixture_file": "fixtures/house.json",
+      "required_cases": {
+        "normal": 0,
+        "boundary": 0,
+        "abnormal": 0,
+        "cross_check": 0
+      },
+      "verified_expected_values": 0,
+      "source_status": "NOT_YET_REVIEWED",
+      "notes": "既有單一基準案例仍是候選值，尚未完成多案例及法源覆核。"
+    },
+    {
+      "id": "old",
+      "name": "財產交易所得稅（房屋舊制）",
+      "status": "IN_PROGRESS",
+      "fixture_file": "fixtures/old.json",
+      "required_cases": {
+        "normal": 1,
+        "boundary": 1,
+        "abnormal": 0,
+        "cross_check": 0
+      },
+      "verified_expected_values": 2,
+      "source_status": "CI_PASSED_PENDING_SECOND_REVIEW",
+      "notes": "115年度個人綜所稅年度級距新增官方參數檔；新增舊制財產交易所得在610,000元級距邊界的獨立增額稅額測試。程式目前仍硬編碼年度級距，尚未改為讀取參數檔；舊制核定所得、各地房屋評定現值及特殊案件仍需覆核。"
+    },
+    {
+      "id": "vat",
+      "name": "營業稅",
+      "status": "IN_PROGRESS",
+      "fixture_file": "fixtures/vat.json",
+      "required_cases": {
+        "normal": 0,
+        "boundary": 0,
+        "abnormal": 0,
+        "cross_check": 0
+      },
+      "verified_expected_values": 0,
+      "source_status": "NOT_YET_REVIEWED",
+      "notes": "既有單一基準案例仍是候選值，尚未完成多案例及法源覆核。"
+    },
+    {
+      "id": "deed",
+      "name": "契稅",
+      "status": "IN_PROGRESS",
+      "fixture_file": "fixtures/deed.json",
+      "required_cases": {
+        "normal": 0,
+        "boundary": 0,
+        "abnormal": 0,
+        "cross_check": 0
+      },
+      "verified_expected_values": 0,
+      "source_status": "NOT_YET_REVIEWED",
+      "notes": "既有單一基準案例仍是候選值，尚未完成多案例及法源覆核。"
+    },
+    {
+      "id": "stamp",
+      "name": "印花稅",
+      "status": "IN_PROGRESS",
+      "fixture_file": "fixtures/stamp.json",
+      "required_cases": {
+        "normal": 0,
+        "boundary": 0,
+        "abnormal": 0,
+        "cross_check": 0
+      },
+      "verified_expected_values": 0,
+      "source_status": "NOT_YET_REVIEWED",
+      "notes": "既有單一基準案例仍是候選值，尚未完成多案例及法源覆核。"
+    },
+    {
+      "id": "houseTax",
+      "name": "房屋稅",
+      "status": "IN_PROGRESS",
+      "fixture_file": "fixtures/houseTax.json",
+      "required_cases": {
+        "normal": 0,
+        "boundary": 0,
+        "abnormal": 0,
+        "cross_check": 0
+      },
+      "verified_expected_values": 0,
+      "source_status": "NOT_YET_REVIEWED",
+      "notes": "既有單一基準案例仍是候選值，尚未完成多案例及法源覆核。"
+    },
+    {
+      "id": "landTax",
+      "name": "地價稅",
+      "status": "IN_PROGRESS",
+      "fixture_file": "fixtures/landTax.json",
+      "required_cases": {
+        "normal": 0,
+        "boundary": 0,
+        "abnormal": 0,
+        "cross_check": 0
+      },
+      "verified_expected_values": 0,
+      "source_status": "NOT_YET_REVIEWED",
+      "notes": "既有單一基準案例仍是候選值，尚未完成多案例及法源覆核。"
+    },
+    {
+      "id": "rent",
+      "name": "租賃所得稅",
+      "status": "IN_PROGRESS",
+      "fixture_file": "fixtures/rent.json",
+      "required_cases": {
+        "normal": 1,
+        "boundary": 2,
+        "abnormal": 0,
+        "cross_check": 0
+      },
+      "verified_expected_values": 3,
+      "source_status": "CI_PASSED_PENDING_SECOND_REVIEW",
+      "notes": "115年度個人綜所稅年度級距新增官方參數檔；新增租賃所得稅於610,000元及1,380,000元級距邊界的獨立增額稅額測試。程式目前仍硬編碼年度級距，尚未改為讀取參數檔；租賃所得特殊優惠、押金、地方差異仍需覆核。"
+    },
+    {
+      "id": "estate",
+      "name": "遺產稅",
+      "status": "IN_PROGRESS",
+      "fixture_file": "fixtures/estate.json",
+      "required_cases": {
+        "normal": 1,
+        "boundary": 3,
+        "abnormal": 0,
+        "cross_check": 1
+      },
+      "verified_expected_values": 5,
+      "source_status": "CI_PASSED_PENDING_SECOND_REVIEW",
+      "notes": "新增115年度官方金額資料regulations/taxes/estate-gift-tax-2026.json；獨立案例含10%/15%級距邊界、20%級距起點及執行職務死亡免稅額加倍。海外財產範圍、各項扣除資格、其他年度及完整遺產項目尚未覆核。 新增案例已由CI驗證通過，仍待第二人法規覆核及完整特殊情境審查。"
+    },
+    {
+      "id": "gift",
+      "name": "贈與稅",
+      "status": "IN_PROGRESS",
+      "fixture_file": "fixtures/gift.json",
+      "required_cases": {
+        "normal": 1,
+        "boundary": 4,
+        "abnormal": 1,
+        "cross_check": 0
+      },
+      "verified_expected_values": 6,
+      "source_status": "CI_PASSED_PENDING_SECOND_REVIEW",
+      "notes": "新增115年度官方金額資料regulations/taxes/estate-gift-tax-2026.json；獨立案例含244萬元年度免稅額、10%/15%/20%級距邊界及未核實全年贈與資料阻擋。特殊不計入贈與總額、非居住者及其他年度尚未覆核。 新增案例已由CI驗證通過，仍待第二人法規覆核及完整特殊情境審查。"
+    },
+    {
+      "id": "corp",
+      "name": "營利事業所得稅",
+      "status": "IN_PROGRESS",
+      "fixture_file": "fixtures/corp.json",
+      "required_cases": {
+        "normal": 0,
+        "boundary": 0,
+        "abnormal": 0,
+        "cross_check": 0
+      },
+      "verified_expected_values": 0,
+      "source_status": "NOT_YET_REVIEWED",
+      "notes": "既有單一基準案例仍是候選值，尚未完成多案例及法源覆核。"
+    },
+    {
+      "id": "rentWithholding",
+      "name": "租金扣繳",
+      "status": "IN_PROGRESS",
+      "fixture_file": "fixtures/rentWithholding.json",
+      "required_cases": {
+        "normal": 4,
+        "boundary": 2,
+        "abnormal": 1,
+        "cross_check": 2
+      },
+      "verified_expected_values": 9,
+      "source_status": "PARTIALLY_REVIEWED",
+      "notes": "已整合workbench/modules/tax-simpany-parity-calculations.js及tools.js；9項獨立測試通過，涵蓋境內/非居住者、個人/公司、扣繳門檻、二代健保、未稅反推、多房東持分及錯誤持分。尚待完整年度法源/人工案例覆核及PDF逐項驗收。"
+    },
+    {
+      "id": "professionalIncome",
+      "name": "執行業務所得",
+      "status": "IN_PROGRESS",
+      "fixture_file": "fixtures/professionalIncome.json",
+      "required_cases": {
+        "normal": 1,
+        "boundary": 7,
+        "abnormal": 1,
+        "cross_check": 3
+      },
+      "verified_expected_values": 12,
+      "source_status": "PARTIALLY_REVIEWED",
+      "notes": "已整合Simpany parity計算器，12項獨立測試通過，涵蓋9A/9B、居住者/非居住者扣繳門檻、二代健保門檻/上限/免扣身分、9B年度18萬元免稅額及9A費用率不猜測。9A費用率需使用者核對當年度/職業別官方標準後勾選；尚待完整年度法源與人工案例覆核。"
+    }
+  ],
+  "overall_exit_criteria": [
+    "14項工具均有實際計算器或明確取消決策",
+    "每項公式有獨立Decimal oracle或可重現手算規格",
+    "所有expected有官方法源/官方試算/獨立推導紀錄",
+    "每項完成正常、邊界、異常、交叉核算矩陣",
+    "稅年度與地方差異有測試",
+    "全部案例通過並產生報告"
+  ],
+  "research_progress": {
+    "latest_ci": {
+      "run_id": 45916637068,
+      "production_regression_tests": 115,
+      "passed": 115,
+      "failed": 0,
+      "notes": "新增租金/舊制房屋115年度個人所得稅級距案例、土地增值稅三級距案例、遺產贈與稅級距/例外案例及Apps Script靜態契約測試均通過。此結果不代表14項工具的所有法源、年度及邊界案例均完成。"
+    }
+  }
+}

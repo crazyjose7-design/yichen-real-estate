@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "central_law",
+  "id": "execution-income-audit-regulations",
+  "title": "執行業務所得查核辦法",
+  "status": "in_review",
+  "jurisdiction": "national",
+  "amended_at": "2024-06-25",
+  "effective_from": null,
+  "effective_to": null,
+  "important_provisions": [
+    {
+      "article": "第3條",
+      "topic": "執行業務所得計算原則上採收付實現制"
+    },
+    {
+      "article": "第8條",
+      "topic": "能提供帳簿憑證者依帳載核實認定；未能提示者依法依費用標準核定"
+    },
+    {
+      "article": "第14條",
+      "topic": "非屬執行業務直接必要費用不得列支"
+    },
+    {
+      "article": "第15條",
+      "topic": "執行業務場所兼作非業務使用，租金等費用須按業務使用比例計算"
+    },
+    {
+      "article": "第17條",
+      "topic": "費用及損失須有原始憑證"
+    },
+    {
+      "article": "第30條",
+      "topic": "業務固定資產折舊採平均法，依耐用年數及成本限制計算"
+    }
+  ],
+  "source": {
+    "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=G0340030",
+    "title": "執行業務所得查核辦法－全國法規資料庫",
+    "agency": "財政部",
+    "provision": "第3、8、14、15、17、30條",
+    "amended_at": "2024-06-25",
+    "retrieved_at": "2026-11-27"
+  },
+  "verified_by": null,
+  "application_policy": {
+    "auto_apply": false,
+    "rule": "此紀錄支援所得估算及費用分類；個案費用是否必要、比例及憑證有效性仍由納稅人留存資料並依稽徵機關查核，不可將試算當成核定所得。"
+  }
+}

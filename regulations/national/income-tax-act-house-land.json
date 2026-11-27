@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "central_law",
+  "id": "income-tax-act-house-land",
+  "title": "所得稅法－房屋土地交易所得",
+  "status": "in_review",
+  "jurisdiction": "national",
+  "amended_at": null,
+  "effective_from": null,
+  "effective_to": null,
+  "important_provisions": [
+    {
+      "topic": "第4條之4、第4條之5、第14條之4至第14條之8及第24條之5；須依交易日及適用版本判斷"
+    }
+  ],
+  "source": {
+    "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=G0340003",
+    "title": "所得稅法－房屋土地交易所得－全國法規資料庫",
+    "agency": "財政部",
+    "provision": "第4條之4、第4條之5、第14條之4至第14條之8及第24條之5；須依交易日及適用版本判斷",
+    "amended_at": null,
+    "retrieved_at": "2026-11-27"
+  },
+  "verified_by": null,
+  "application_policy": {
+    "auto_apply": false,
+    "rule": "中央法規已定位；稅率、免稅/優惠、適用身分、交易日期與地方自治參數仍須逐項核對，未完成覆核不得自動套用。"
+  }
+}

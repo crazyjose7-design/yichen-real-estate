@@ -1,0 +1,112 @@
+name: Build and verify deployment package
+
+on:
+  push:
+    branches:
+      - "work/**"
+    paths:
+      - "index.html"
+      - "assets/**"
+      - "workbench/modules/**"
+      - "workbench/EXECUTION_RULES.md"
+      - "scripts/**"
+      - "tests/**"
+      - "regulations/**"
+      - "docs/**"
+      - "versions/**"
+      - ".github/workflows/deployment-package.yml"
+  pull_request:
+    branches:
+      - "main"
+    paths:
+      - "index.html"
+      - "assets/**"
+      - "workbench/modules/**"
+      - "workbench/EXECUTION_RULES.md"
+      - "scripts/**"
+      - "tests/**"
+      - "regulations/**"
+      - "docs/**"
+      - "versions/**"
+      - ".github/workflows/deployment-package.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-test-package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install browser test dependencies
+        run: |
+          npm init -y
+          npm install --no-save playwright
+          npx playwright install --with-deps chromium
+      - name: Build self-contained HTML and ZIP
+        run: node scripts/build-deployment.mjs
+      - name: Validate legal, city and incentive data
+        run: |
+          node tests/regulatory-data.test.mjs
+          node --test tests/regulation-loader.test.mjs tests/reward-engine.test.mjs tests/tax-additional-tools.test.mjs tests/tax-simpany-parity.test.mjs tests/reward-engine-runtime.test.mjs tests/mortgage-calculator.test.mjs tests/tax-existing-tools.test.mjs tests/land-efficiency.test.mjs tests/regulation-completeness.test.mjs
+      - name: Browser smoke tests
+        run: node tests/browser-smoke.mjs
+      - name: Validate package contents
+        run: |
+          test -s dist/index.html
+          test -s dist/yichen-real-estate-deployment.zip
+          unzip -t dist/yichen-real-estate-deployment.zip
+          unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'regulations/cities/22-lienchiang.json'
+          unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'regulations/city-review-matrix.json'
+          unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'regulations/national/urban-renewal-act.json'
+          unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'regulations/national/urban-renewal-building-volume-reward-regulations.json'
+          unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'regulations/national/hazardous-old-building-volume-reward-regulations.json'
+          unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'regulations/national/urban-renewal-act-enforcement-rules.json'
+          unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'regulations/national/urban-renewal-rights-transformation-implementation-regulations.json'
+          unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'regulations/national/hazardous-old-buildings-act-implementation-rules.json'
+          unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'reward-engine.test.mjs'
+          unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'regulations/rewards/urban-renewal.json'
+          unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'regulations/taxes/house-land-transaction-income-tax.json'
+          unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'regulations/taxes/rent-withholding.json'
+          unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'regulations/taxes/professional-income.json'
+          unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'regulations/national/withholding-rate-standards.json'
+          unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'regulations/national/national-health-insurance-act.json'
+          unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'regulations/national/supplementary-premium-collection-rules.json'
+          unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'tax-additional-tools.test.mjs' 
+          unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'tax-simpany-parity.test.mjs'
+          unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'tests/land-tax/regression-cases.json'
+          unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'tests/land-tax/historical-test-evidence.json'
+          unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'tests/acceptance-matrix.json'
+          unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'reward-engine-runtime.test.mjs'
+          unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'modules/reward-engine-runtime.js'
+          unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'modules/land-reward-gate.js'
+          unzip -l dist/yichen-real-estate-deployment.zip | grep -q 'versions/rollback.md'
+          node --check workbench/modules/tax-engine.js
+          node --check workbench/modules/mortgage-calculator.js
+          node --check workbench/modules/land-efficiency.js
+          node --check workbench/modules/tax-state-and-print.js
+          node --check workbench/modules/site-print-engine.js
+          node --check workbench/modules/regulation-data-loader.mjs
+          node --check workbench/modules/regulation-data-runtime.js
+          node --check workbench/modules/reward-engine.mjs
+          node --check workbench/modules/tax-additional-calculations.js
+          node --check workbench/modules/tax-additional-tools.js 
+          node --check workbench/modules/tax-simpany-parity-calculations.js 
+          node --check workbench/modules/tax-simpany-parity-tools.js
+          node --check workbench/modules/reward-engine-runtime.js
+          node --check workbench/modules/land-reward-gate.js
+      - name: Upload deployment package
+        uses: actions/upload-artifact@v4
+        with:
+          name: yichen-real-estate-deployment-v6.2.21
+          path: |
+            dist/index.html
+            dist/yichen-real-estate-deployment.zip
+            dist/browser-smoke-results.json
+            dist/print-*.pdf
+          if-no-files-found: error
+          retention-days: 30

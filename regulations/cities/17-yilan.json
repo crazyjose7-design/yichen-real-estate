@@ -1,0 +1,94 @@
+{
+  "schema_version": "1.0.0",
+  "jurisdiction": {
+    "level": "county_city",
+    "code": "17",
+    "name": "宜蘭縣",
+    "slug": "yilan",
+    "country": "TW"
+  },
+  "dataset_version": "0.1.3",
+  "status": "unverified",
+  "effective_from": null,
+  "effective_to": null,
+  "retrieved_at": "2026-11-27",
+  "official_parameters": [],
+  "local_regulations": [
+    {
+      "id": "yilan-official-law-portal",
+      "record_type": "source_portal",
+      "title": "宜蘭縣政府主管法規查詢系統（官方法規入口）",
+      "status": "in_review",
+      "source": {
+        "url": "https://glrslaw.e-land.gov.tw/",
+        "title": "宜蘭縣政府主管法規查詢系統",
+        "agency": "宜蘭縣政府",
+        "provision": "地方自治法規及行政規則查詢入口"
+      },
+      "review_notes": [
+        "本次已由宜蘭縣政府官方網站確認法規查詢系統網址，尚未定位可直接適用之都市更新容積獎勵自治法規。",
+        "後續須檢索都市計畫、土地使用分區、建築管理、更新單元及容積移轉規定。"
+      ]
+    },
+    {
+      "id": "yilan-urban-design-review-guideline",
+      "record_type": "local_regulation",
+      "title": "宜蘭縣都市設計審議作業要點",
+      "status": "in_review",
+      "issued_at": "2021-03-15",
+      "source": {
+        "url": "https://yilan.e-land.gov.tw/News_Content.aspx?n=18694&s=370864",
+        "title": "宜蘭縣政府公告：宜蘭縣都市設計審議作業要點訂定發布",
+        "agency": "宜蘭縣政府工務單位",
+        "provision": "全文及附件；府建國字第1100042385B號令"
+      },
+      "scope": "都市計畫書規定應都市設計審議、整體開發地區、基地綜合設計、放寬退縮及其他法令指定案件",
+      "review_notes": [
+        "官方公告確認110年3月15日訂定發布、110年3月18日生效。",
+        "官方國土計畫暨都市計畫目錄另列A3-02及相關都市設計/土地使用管制文件；須逐一取回現行全文與附表。",
+        "民間建築資料目錄提示115年5月13日曾修正第6點、第8點；尚待以縣府原始公告及法規全文確認最新版本，故維持in_review。"
+      ]
+    },
+    {
+      "id": "yilan-urban-planning-rule-index",
+      "record_type": "official_source_index",
+      "title": "宜蘭縣國土計畫暨都市計畫法規與公告目錄",
+      "status": "in_review",
+      "source": {
+        "url": "https://eadept.e-land.gov.tw/News.aspx?n=15686&sms=15490",
+        "title": "宜蘭縣政府國土計畫暨都市計畫A類法規目錄",
+        "agency": "宜蘭縣政府",
+        "provision": "A2-04至A3-06及都市設計、土地使用管制公告"
+      },
+      "scope": "地方都市計畫、都市設計審議、開發回饋及土地使用管制文件索引",
+      "review_notes": [
+        "縣府官方目錄列有都市計畫開發回饋及代金審議作業要點、都市設計審議作業要點、部分變更免再審通案原則及土地使用管制公告。",
+        "此為官方目錄索引，不代表各項文件、附表、現行效力及基地適用性已完成覆核。"
+      ]
+    }
+  ],
+  "reward_programs": [],
+  "user_assumptions": [],
+  "application_policy": {
+    "auto_apply": false,
+    "rule": "未完成官方來源、適用範圍、有效日期及雙人覆核前，任何縣市參數或獎勵均不得自動套用。"
+  },
+  "pending_verification": [
+    "都市計畫及土地使用分區管制",
+    "建蔽率、容積率、移轉/獎勵容積及個案限制",
+    "地方自治法規、地方獎勵辦法與受理程序",
+    "官方公告、法規版本、生效日期及適用範圍",
+    "地方官方法規入口內都市計畫/建築/更新法規完整檢索",
+    "地方都市計畫書圖、土地使用分區及基地管制",
+    "都市更新獎勵辦法及附表、互斥與個案核准資料",
+    "最新修正沿革、附表與附件逐項核對",
+    "各都市計畫區主要計畫/細部計畫書圖及土地使用分區逐基地套疊",
+    "地方容積獎勵項目、計算額度、互斥及個案核定資料"
+  ],
+  "safety_notes": [
+    "不得以縣市通用值取代基地地號與個案核定條件。",
+    "全國性法規放在 regulations/national；全國性稅法放在 regulations/taxes。",
+    "容積獎勵須確認法源、上限、計算基準、互斥/累計規則及審查條件。",
+    "未查證資料不得進入計算，也不得標示為官方核定值。"
+  ]
+}

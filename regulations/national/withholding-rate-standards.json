@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "central_law",
+  "id": "withholding-rate-standards",
+  "title": "各類所得扣繳率標準",
+  "status": "in_review",
+  "jurisdiction": "national",
+  "amended_at": "2021-06-30",
+  "effective_from": "2021-07-01",
+  "effective_to": null,
+  "important_provisions": [
+    {
+      "article": "第2條第1項第5款",
+      "topic": "境內居住者及境內有固定營業場所營利事業給付租金，按給付額10%扣繳；執行業務者報酬按給付額10%扣繳"
+    },
+    {
+      "article": "第3條第1項第5款、第8款",
+      "topic": "非境內居住者或境內無固定營業場所營利事業租金及執行業務報酬原則按給付額20%扣繳；個人稿費等特定項目另有免扣繳條件"
+    },
+    {
+      "article": "第13條",
+      "topic": "境內居住個人每次應扣繳稅額不超過新臺幣2,000元者免予扣繳；特定分離課稅所得除外"
+    },
+    {
+      "article": "第13-1條",
+      "topic": "境內有固定營業場所之營利事業每次應扣繳稅額不超過2,000元者免予扣繳"
+    }
+  ],
+  "source": {
+    "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?Pcode=G0340028",
+    "title": "各類所得扣繳率標準－全國法規資料庫",
+    "agency": "財政部",
+    "provision": "第2條、第3條、第13條",
+    "amended_at": "2021-06-30",
+    "retrieved_at": "2026-11-27"
+  },
+  "verified_by": null,
+  "application_policy": {
+    "auto_apply": false,
+    "rule": "已定位現行扣繳率及境內居住者每次2,000元起扣門檻；仍須覆核所得人身分、所得類別、給付型態、免扣繳例外及扣繳申報期限，參數不得視為個案稅務核定。 境內固定營業場所營利事業之2,000元門檻另依第13-1條。"
+  }
+}

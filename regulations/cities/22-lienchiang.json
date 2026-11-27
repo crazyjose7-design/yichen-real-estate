@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0.0",
+  "jurisdiction": {
+    "level": "county_city",
+    "code": "22",
+    "name": "連江縣",
+    "slug": "lienchiang",
+    "country": "TW"
+  },
+  "dataset_version": "0.1.0",
+  "status": "unverified",
+  "effective_from": null,
+  "effective_to": null,
+  "retrieved_at": "2026-11-27",
+  "official_parameters": [],
+  "local_regulations": [
+    {
+      "id": "lienchiang-urban-renewal-development-fund-regulations",
+      "title": "連江縣都市更新及發展基金收支保管及運用辦法",
+      "status": "in_review",
+      "promulgated_at": "2024-05-10",
+      "source": {
+        "url": "https://uract.nlma.gov.tw/uploads/rule/B301-11305.pdf",
+        "title": "連江縣政府令及辦法全文",
+        "agency": "連江縣政府",
+        "provision": "全文第1至12條"
+      },
+      "review_notes": [
+        "第4條將都市計畫容積獎勵回饋收入、容積移轉收入、都市更新審議及保證金等列為基金來源。",
+        "此法規是基金收支管理依據，不等於已建立連江縣容積獎勵項目或計算公式；仍須另查都市計畫、地方容積獎勵及個案審議規定。"
+      ]
+    }
+  ],
+  "reward_programs": [],
+  "user_assumptions": [],
+  "application_policy": {
+    "auto_apply": false,
+    "rule": "未完成官方來源、適用範圍、有效日期及雙人覆核前，任何縣市參數或獎勵均不得自動套用。"
+  },
+  "pending_verification": [
+    "都市計畫及土地使用分區管制",
+    "建蔽率、容積率、移轉/獎勵容積及個案限制",
+    "地方自治法規、地方獎勵辦法與受理程序",
+    "官方公告、法規版本、生效日期及適用範圍",
+    "地方容積獎勵辦法現行效力、附表與公式覆核",
+    "地方更新單元劃定基準及都市計畫書圖",
+    "舊條號、舊施行細則與中央現行法規銜接",
+    "個案主管機關核准紀錄"
+  ],
+  "safety_notes": [
+    "不得以縣市通用值取代基地地號與個案核定條件。",
+    "全國性法規放在 regulations/national；全國性稅法放在 regulations/taxes。",
+    "容積獎勵須確認法源、上限、計算基準、互斥/累計規則及審查條件。",
+    "未查證資料不得進入計算，也不得標示為官方核定值。"
+  ]
+}

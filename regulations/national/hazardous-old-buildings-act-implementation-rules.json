@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "delegated_regulation",
+  "id": "hazardous-old-buildings-act-implementation-rules",
+  "title": "都市危險及老舊建築物加速重建條例施行細則",
+  "status": "in_review",
+  "jurisdiction": "national",
+  "promulgated_at": "2017-08-01",
+  "amended_at": "2017-08-01",
+  "source": {
+    "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0070256",
+    "title": "都市危險及老舊建築物加速重建條例施行細則－全國法規資料庫",
+    "agency": "內政部",
+    "provision": "第1至12條",
+    "amended_at": "2017-08-01",
+    "retrieved_at": "2026-11-27"
+  },
+  "extracted_rules": [
+    {
+      "id": "ho-er-building-age",
+      "article": "第2條",
+      "rule": "屋齡自使用執照核發日，或主管機關依建物第一次登記、合法建物證明、房屋稅籍、門牌、水電等文件認定之完工日起算，至申請重建日止。",
+      "status": "in_review"
+    },
+    {
+      "id": "ho-er-eligibility",
+      "article": "第3條",
+      "rule": "耐震能力未達一定標準及改善不具效益等認定，依細則所列評估等級及成本門檻判斷；不得只以屋齡推定危老資格。",
+      "status": "in_review"
+    },
+    {
+      "id": "ho-er-application",
+      "article": "第4至6條",
+      "rule": "重建計畫應檢附合法建物證明、全體土地及合法建物所有權人同意書、重建計畫，並載明土地使用分區、建築師簽證圖說、容積獎勵項目及額度；主管機關審核原則30日，補正後15日內審查。",
+      "status": "in_review"
+    },
+    {
+      "id": "ho-er-building-permit",
+      "article": "第7條",
+      "rule": "核准重建後應於次日起180日內申請建造執照；經主管機關同意得延長一次180日。",
+      "status": "in_review"
+    },
+    {
+      "id": "ho-er-tax-relief",
+      "article": "第8至11條",
+      "rule": "危老重建土地及房屋稅減免起算、申請及通知程序依細則規定辦理，須由主管機關與稅捐機關核定。",
+      "status": "in_review"
+    }
+  ],
+  "caveats": [
+    "施行細則發布日期為106年8月1日，須確認現行條文與母法112年12月6日修正後是否有未同步修正或解釋函令。",
+    "母法申請期限至民國116年5月31日；申請案件仍須依個案日期、過渡條款及地方主管機關核准紀錄判斷。"
+  ],
+  "verified_by": null,
+  "application_policy": {
+    "auto_apply": false,
+    "rule": "資格、程序及稅務優惠均須地方主管機關核准，未完成版本與個案覆核前禁止自動套用。"
+  }
+}

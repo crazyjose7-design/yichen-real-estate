@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "central_law",
+  "id": "national-health-insurance-act",
+  "title": "全民健康保險法",
+  "status": "in_review",
+  "jurisdiction": "national",
+  "amended_at": null,
+  "effective_from": null,
+  "effective_to": null,
+  "important_provisions": [
+    {
+      "article": "第31條",
+      "topic": "租金收入及執行業務收入屬補充保險費計費項目；單次給付逾1,000萬元部分及未達一定金額者免扣取"
+    },
+    {
+      "article": "第32條",
+      "topic": "未具投保資格、喪失投保資格或依法免扣取者，應於受領前主動告知扣費義務人"
+    },
+    {
+      "article": "第33條",
+      "topic": "補充保險費率由主管機關逐年公告"
+    }
+  ],
+  "source": {
+    "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?PCode=L0060001",
+    "title": "全民健康保險法－全國法規資料庫",
+    "agency": "衛生福利部",
+    "provision": "第31至33條",
+    "retrieved_at": "2026-11-27"
+  },
+  "verified_by": null,
+  "application_policy": {
+    "auto_apply": false,
+    "rule": "補充保險費仍須確認受款人投保資格、法定免扣情形、所得種類、單次給付門檻及上限；計算器僅提供估算。"
+  }
+}

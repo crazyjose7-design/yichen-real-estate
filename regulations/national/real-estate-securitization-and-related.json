@@ -1,0 +1,24 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "central_law_index",
+  "title": "不動產交易與登記相關中央規範",
+  "official_portal": "https://law.moj.gov.tw/",
+  "status": "unverified",
+  "jurisdiction": "national",
+  "published_at": null,
+  "amended_at": null,
+  "effective_from": null,
+  "effective_to": null,
+  "provisions": [],
+  "scope_note": "待確認實際適用法規後逐件建檔，不將本索引視為完整法規清單。",
+  "source": {
+    "url": "https://law.moj.gov.tw/",
+    "title": "官方法規入口；尚未完成個別法規頁面與條文核驗",
+    "agency": "待核對",
+    "retrieved_at": "2026-11-27"
+  },
+  "verified_by": null,
+  "application_policy": {
+    "auto_apply": false
+  }
+}

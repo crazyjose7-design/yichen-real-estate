@@ -1,0 +1,47 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "delegated_regulation",
+  "id": "urban-renewal-act-enforcement-rules",
+  "title": "都市更新條例施行細則",
+  "status": "in_review",
+  "jurisdiction": "national",
+  "promulgated_at": "2019-05-15",
+  "amended_at": "2019-05-15",
+  "source": {
+    "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0070010",
+    "title": "都市更新條例施行細則－全國法規資料庫",
+    "agency": "內政部",
+    "provision": "第1至47條",
+    "amended_at": "2019-05-15",
+    "retrieved_at": "2026-11-27"
+  },
+  "extracted_rules": [
+    {
+      "id": "ur-er-notice",
+      "article": "第3條",
+      "rule": "依都市更新條例第9條第2項公告，應刊登政府公報或新聞紙三日，並於主管機關專頁公告；公告期間不得少於30日。",
+      "status": "in_review"
+    },
+    {
+      "id": "ur-er-implementation",
+      "article": "第4至5條",
+      "rule": "依都市更新條例第12條委託或同意實施者時，主管機關應規定期限擬訂事業計畫報核；逾期經催告仍未報核者，得另行委託或同意其他機關構辦理。",
+      "status": "in_review"
+    },
+    {
+      "id": "ur-er-completion-date",
+      "article": "第46條",
+      "rule": "都市更新事業完成日依更新方式分別認定：整建維護為驗收完畢/合格日；權利變換為完成登記日；協議合建等為使用執照核發日。",
+      "status": "in_review"
+    }
+  ],
+  "caveats": [
+    "施行細則全文仍須與都市更新條例現行條文、地方程序規定及案件報核日期交叉核對。",
+    "本細則不直接提供容積獎勵比例，不能以程序條文推導獎勵數值。"
+  ],
+  "verified_by": null,
+  "application_policy": {
+    "auto_apply": false,
+    "rule": "僅作中央程序法源索引，尚未逐條覆核，不得自動套用。"
+  }
+}

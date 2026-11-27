@@ -1,0 +1,50 @@
+name: Independent verification layers
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - 'work/**'
+
+jobs:
+  independent-oracles:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run independent Decimal oracle tests
+        run: python -m unittest discover -s verification/python -p 'test_*.py' -v
+
+  production-regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Run existing isolated production tests
+        run: node --test tests/*.test.mjs
+
+  browser-functional-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Playwright
+        run: npm install --no-save @playwright/test
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Run real browser interaction tests
+        run: npx playwright test
+      - name: Upload browser screenshots and print PDFs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: browser-visual-and-print-evidence
+          path: test-results/
+          if-no-files-found: warn

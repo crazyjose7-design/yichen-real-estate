@@ -1,0 +1,73 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "annual_tax_parameters",
+  "id": "individual-income-tax-2026",
+  "title": "115年度綜合所得稅年度參數",
+  "tax_year": 115,
+  "calendar_year": 2026,
+  "status": "in_review",
+  "effective_from": "2026-01-01",
+  "effective_to": "2026-12-31",
+  "currency": "TWD",
+  "exemption": {
+    "general": 101000,
+    "age_70_qualified": 151500
+  },
+  "deductions": {
+    "standard_single": 136000,
+    "standard_married": 272000,
+    "salary_special_per_person": 227000,
+    "disability_special_per_person": 227000
+  },
+  "brackets": [
+    {
+      "taxable_net_max": 610000,
+      "rate": 0.05,
+      "quick_deduction": 0
+    },
+    {
+      "taxable_net_max": 1380000,
+      "rate": 0.12,
+      "quick_deduction": 42700
+    },
+    {
+      "taxable_net_max": 2770000,
+      "rate": 0.2,
+      "quick_deduction": 153100
+    },
+    {
+      "taxable_net_max": 5190000,
+      "rate": 0.3,
+      "quick_deduction": 430100
+    },
+    {
+      "taxable_net_max": null,
+      "rate": 0.4,
+      "quick_deduction": 949100
+    }
+  ],
+  "retirement_income": {
+    "lump_sum_zero_per_service_year": 206000,
+    "lump_sum_half_tax_upper_per_service_year": 414000,
+    "installment_annual_exemption": 894000
+  },
+  "source": {
+    "url": "https://gazette.nat.gov.tw/egFront/eguploadpubWrapper?file=%2FEG_FileManager%2Feguploadpub%2Feg031224%2Fch04%2Ftype3%2Fgov30%2Fnum12%2FEg.htm&metaid=161826",
+    "title": "財政部公告：公告115年度綜合所得稅免稅額、標準扣除額、薪資所得特別扣除額、身心障礙特別扣除額、課稅級距及計算退職所得定額免稅之金額",
+    "agency": "財政部",
+    "document_number": "台財稅字第11404664070號",
+    "promulgated_at": "2025-11-27",
+    "provisions": "所得稅法第5條、第5條之1、第14條第4項"
+  },
+  "cross_checks": [
+    {
+      "url": "https://www.dot.gov.tw/singlehtml/ch26?WT.mc_id=facebook_ownedsocial_organic&cntId=cf5db69f558d42409aa56c70838e8802",
+      "title": "財政部賦稅署公告115年度綜合所得稅及所得基本稅額相關免稅額、扣除額及課稅級距",
+      "published_at": "2025-11-27"
+    }
+  ],
+  "application_policy": {
+    "auto_apply": false,
+    "rule": "此為115曆年度個人綜合所得稅公告參數；適用於116年5月申報115年度所得。114年度及其他年度不得沿用。"
+  }
+}

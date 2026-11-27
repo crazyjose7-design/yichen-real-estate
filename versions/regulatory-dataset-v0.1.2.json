@@ -1,0 +1,220 @@
+{
+  "dataset_version": "0.1.2",
+  "created_at": "2026-11-27",
+  "status": "development_not_approved",
+  "manifest": {
+    "schema_version": "1.0.0",
+    "dataset_version": "0.1.2",
+    "generated_at": "2026-11-27",
+    "status": "in_progress",
+    "county_city_files": [
+      {
+        "code": "01",
+        "path": "cities/01-taipei.json"
+      },
+      {
+        "code": "02",
+        "path": "cities/02-new-taipei.json"
+      },
+      {
+        "code": "03",
+        "path": "cities/03-taoyuan.json"
+      },
+      {
+        "code": "04",
+        "path": "cities/04-taichung.json"
+      },
+      {
+        "code": "05",
+        "path": "cities/05-tainan.json"
+      },
+      {
+        "code": "06",
+        "path": "cities/06-kaohsiung.json"
+      },
+      {
+        "code": "07",
+        "path": "cities/07-keelung.json"
+      },
+      {
+        "code": "08",
+        "path": "cities/08-hsinchu-city.json"
+      },
+      {
+        "code": "09",
+        "path": "cities/09-chiayi-city.json"
+      },
+      {
+        "code": "10",
+        "path": "cities/10-hsinchu-county.json"
+      },
+      {
+        "code": "11",
+        "path": "cities/11-miaoli.json"
+      },
+      {
+        "code": "12",
+        "path": "cities/12-changhua.json"
+      },
+      {
+        "code": "13",
+        "path": "cities/13-nantou.json"
+      },
+      {
+        "code": "14",
+        "path": "cities/14-yunlin.json"
+      },
+      {
+        "code": "15",
+        "path": "cities/15-chiayi-county.json"
+      },
+      {
+        "code": "16",
+        "path": "cities/16-pingtung.json"
+      },
+      {
+        "code": "17",
+        "path": "cities/17-yilan.json"
+      },
+      {
+        "code": "18",
+        "path": "cities/18-hualien.json"
+      },
+      {
+        "code": "19",
+        "path": "cities/19-taitung.json"
+      },
+      {
+        "code": "20",
+        "path": "cities/20-penghu.json"
+      },
+      {
+        "code": "21",
+        "path": "cities/21-kinmen.json"
+      },
+      {
+        "code": "22",
+        "path": "cities/22-lienchiang.json"
+      }
+    ],
+    "central_law_files": [
+      "national/urban-planning-law.json",
+      "national/building-act.json",
+      "national/urban-renewal-act.json",
+      "national/hazardous-old-buildings-reconstruction-act.json",
+      "national/land-act.json",
+      "national/house-tax-act.json",
+      "national/land-value-tax-act.json",
+      "national/income-tax-act-house-land.json",
+      "national/deed-tax-act.json",
+      "national/real-estate-securitization-and-related.json",
+      "national/urban-renewal-building-volume-reward-regulations.json",
+      "national/hazardous-old-building-volume-reward-regulations.json",
+      "national/urban-renewal-act-enforcement-rules.json",
+      "national/urban-renewal-rights-transformation-implementation-regulations.json",
+      "national/hazardous-old-buildings-act-implementation-rules.json"
+    ],
+    "incentive_files": [
+      "rewards/urban-renewal.json",
+      "rewards/hazardous-old-building-reconstruction.json",
+      "rewards/green-building.json",
+      "rewards/smart-building.json",
+      "rewards/accessibility-universal-design.json",
+      "rewards/seismic-performance.json",
+      "rewards/transit-oriented-development.json",
+      "rewards/public-facility-open-space.json",
+      "rewards/local-planning-incentives.json"
+    ],
+    "tax_parameter_files": [
+      "taxes/land-value-tax.json",
+      "taxes/land-value-increment-tax.json",
+      "taxes/house-land-transaction-income-tax.json",
+      "taxes/deed-tax.json",
+      "taxes/house-tax.json"
+    ],
+    "policy": {
+      "only_verified_auto_apply": true,
+      "unverified_default_behavior": "block",
+      "assumptions_are_not_official": true
+    },
+    "last_research_update": "2026-11-27",
+    "research_progress": {
+      "cities_with_official_local_source_records_count": 22,
+      "remaining_cities_without_official_portal": 0,
+      "specific_local_rule_records_count": 19,
+      "portal_only_cities": [
+        "南投縣",
+        "宜蘭縣",
+        "臺東縣"
+      ],
+      "remaining_cities_requiring_specific_rule_discovery": 3,
+      "delegated_regulations_added": 5,
+      "local_sources_are_not_fully_verified": true,
+      "all_tax_parameters_in_review": true,
+      "auto_apply_enabled": false,
+      "cities_with_source_records_count": 22,
+      "official_portal_directory_source": {
+        "url": "https://uract.nlma.gov.tw/content/links",
+        "title": "內政部國土管理署都市更新法規網站－22縣市主管法規查詢系統連結",
+        "retrieved_at": "2026-11-27"
+      }
+    }
+  },
+  "coverage": {
+    "city_portals": 22,
+    "cities_with_specific_local_rule_sources": 19,
+    "portal_only": [
+      "南投縣",
+      "宜蘭縣",
+      "臺東縣"
+    ],
+    "central_laws_and_delegated_rules": 15,
+    "tax_parameter_files": 5,
+    "incentive_files": 9
+  },
+  "print_acceptance": {
+    "ci_run_id": 45880456619,
+    "commit_sha": "b55bd7821da3b0ba671d0a6179e5c3c3d89ec58f",
+    "status": "passed",
+    "founder_image": {
+      "loaded": true,
+      "width": 1200,
+      "height": 1200
+    },
+    "pdfs": [
+      {
+        "id": "tax-print",
+        "pages": 1,
+        "size": "A4 portrait"
+      },
+      {
+        "id": "mortgage-print",
+        "pages": 1,
+        "size": "A4 portrait"
+      },
+      {
+        "id": "le-print",
+        "pages": 1,
+        "size": "A4 portrait"
+      },
+      {
+        "id": "site-print",
+        "pages": 7,
+        "size": "A4 portrait"
+      }
+    ],
+    "browser_errors": 0
+  },
+  "release_gate": {
+    "auto_apply_enabled": false,
+    "production_deploy_allowed": false,
+    "merge_to_main_allowed": false
+  },
+  "known_gaps": [
+    "地方自治法規、附表及基地圖資尚未逐條完成覆核",
+    "南投、宜蘭、臺東尚待定位具體地方更新/容積獎勵規定",
+    "稅務參數仍在in_review，未接入正式稅務公式",
+    "容積獎勵安全引擎尚未接入正式土地坪效UI",
+    "各稅目完整公式回歸測試仍未完成"
+  ]
+}

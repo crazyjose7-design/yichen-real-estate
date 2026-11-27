@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "central_law",
+  "id": "urban-planning-law",
+  "title": "都市計畫法",
+  "status": "in_review",
+  "jurisdiction": "national",
+  "amended_at": "2021-05-26",
+  "effective_from": null,
+  "effective_to": null,
+  "important_provisions": [
+    {
+      "article": "第22條",
+      "topic": "細部計畫應表明土地使用分區管制"
+    },
+    {
+      "article": "第23條",
+      "topic": "細部計畫核定實施權責"
+    },
+    {
+      "article": "第24條",
+      "topic": "土地權利關係人自行擬定/變更細部計畫"
+    }
+  ],
+  "source": {
+    "url": "https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=D0070001",
+    "title": "都市計畫法－全國法規資料庫",
+    "agency": "內政部",
+    "provision": "第22、23、24條",
+    "amended_at": "2021-05-26",
+    "retrieved_at": "2026-11-27"
+  },
+  "verified_by": null,
+  "application_policy": {
+    "auto_apply": false,
+    "rule": "都市計畫法提供法制框架，實際分區、建蔽率及容積率須讀取基地所在都市計畫書圖與地方管制規定。"
+  }
+}
