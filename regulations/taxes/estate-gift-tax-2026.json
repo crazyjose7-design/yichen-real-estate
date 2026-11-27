@@ -1,0 +1,101 @@
+{
+  "schema_version": "1.0.0",
+  "record_type": "annual_tax_parameters",
+  "id": "estate-gift-tax-2026",
+  "title": "115年發生之繼承或贈與案件－遺產稅及贈與稅年度金額",
+  "tax_year": 115,
+  "calendar_year": 2026,
+  "status": "in_review",
+  "effective_from": "2026-01-01",
+  "effective_to": "2026-12-31",
+  "currency": "TWD",
+  "estate_tax": {
+    "exemption": 13330000,
+    "public_service_death_exemption_multiplier": 2,
+    "brackets": [
+      {
+        "taxable_net_max": 56210000,
+        "rate": 0.1,
+        "quick_deduction": 0
+      },
+      {
+        "taxable_net_max": 112420000,
+        "rate": 0.15,
+        "quick_deduction": 2810500
+      },
+      {
+        "taxable_net_max": null,
+        "rate": 0.2,
+        "quick_deduction": 8431500
+      }
+    ],
+    "deductions": {
+      "spouse": 5530000,
+      "lineal_descendant_per_person": 560000,
+      "minor_descendant_per_remaining_year": 560000,
+      "parent_per_person": 1380000,
+      "severe_disability_per_person": 6930000,
+      "dependent_sibling_or_grandparent_per_person": 560000,
+      "minor_dependent_sibling_per_remaining_year": 560000,
+      "funeral": 1380000
+    },
+    "non_included_estate": {
+      "daily_life_necessities": 1000000,
+      "occupational_tools": 560000
+    }
+  },
+  "gift_tax": {
+    "annual_exemption_per_donor": 2440000,
+    "brackets": [
+      {
+        "taxable_net_max": 28110000,
+        "rate": 0.1,
+        "quick_deduction": 0
+      },
+      {
+        "taxable_net_max": 56210000,
+        "rate": 0.15,
+        "quick_deduction": 1405500
+      },
+      {
+        "taxable_net_max": null,
+        "rate": 0.2,
+        "quick_deduction": 4216000
+      }
+    ],
+    "aggregation_rule": "同一贈與人同一曆年內各次贈與合併計算，免稅額按贈與人而非受贈人計算。"
+  },
+  "source": {
+    "url": "https://gazette.nat.gov.tw/EG_FileManager/eguploadpub/eg031225/ch04/type3/gov30/num11/Eg.htm",
+    "title": "財政部公告：公告115年發生之繼承或贈與案件應適用遺產及贈與稅法第12條之1第1項各款金額",
+    "agency": "財政部",
+    "document_number": "台財稅字第11404671540號",
+    "promulgated_at": "2025-11-27",
+    "provisions": "遺產及贈與稅法第12條之1、第18條、第19條、第22條"
+  },
+  "cross_checks": [
+    {
+      "source": "https://www.mof.gov.tw/singlehtml/384fb3077bb349ea973e7fc6f13b6974?cntId=f2a148bdd1614850be9fa56df8cc9d5c",
+      "title": "財政部北區國稅局：115年度遺產稅免稅額及各項扣除額金額",
+      "published_at": "2026-06",
+      "checks": "遺產稅免稅額及扣除額"
+    },
+    {
+      "source": "https://www.mof.gov.tw/singlehtml/384fb3077bb349ea973e7fc6f13b6974?cntId=91cb1acdc7ca48f2881347a231c057a6",
+      "title": "財政部臺北國稅局：免稅額用錯了，小心贈與稅找上門",
+      "published_at": "2026-09-14",
+      "checks": "同一贈與人全年合併及244萬元免稅額"
+    }
+  ],
+  "verification": {
+    "independent_test_file": "tests/tax-existing-tools.test.mjs",
+    "added_cases": 9,
+    "production_expected_values_checked": true,
+    "reviewed_by": null,
+    "status": "pending_ci_and_second_review"
+  },
+  "application_policy": {
+    "auto_apply": false,
+    "rule": "年度金額僅適用繼承事實發生或贈與行為發生於2026年；完整法定資格、海外財產、債務、配偶剩餘財產差額分配及其他個案排除仍須人工核實。"
+  }
+}
