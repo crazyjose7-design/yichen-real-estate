@@ -1,4 +1,6 @@
 const { test, expect } = require('@playwright/test');
+const fs = require('node:fs/promises');
+const path = require('node:path');
 
 test('desktop: core calculator sections load without page errors', async ({ page }) => {
   const errors = [];
@@ -103,7 +105,7 @@ test('land efficiency print: three pages when optional official verification is 
   await expect(page.locator('#yichen-print-root')).toContainText('三、試算結果');
 });
 
-test('land efficiency print: optional official verification becomes its own fourth page', async ({ page }) => {
+test('land efficiency print: optional official verification becomes its own fourth page', async ({ page }, testInfo) => {
   await page.addInitScript(() => { window.print = () => { document.body.dataset.printInvoked = '1'; }; });
   await page.goto('/index.html');
   await page.locator('.le-official-details summary').click();
@@ -114,9 +116,14 @@ test('land efficiency print: optional official verification becomes its own four
   await expect(page.locator('#yichen-print-root .print-page')).toHaveCount(4);
   await expect(page.locator('#yichen-print-root')).toContainText('二、官方查核');
   await expect(page.locator('#yichen-print-root')).toContainText('四、試算結果');
+  const pdfPath = testInfo.outputPath('pdf/land-official-check.pdf');
+  await fs.mkdir(path.dirname(pdfPath), { recursive: true });
+  const pdf = await page.pdf({ format: 'A4', printBackground: true });
+  expect(pdf.subarray(0, 5).toString()).toBe('%PDF-');
+  await fs.writeFile(pdfPath, pdf);
 });
 
-test('full-site print: requested main sections have separate pages and culture is expanded', async ({ page }) => {
+test('full-site print: requested main sections have separate pages and culture is expanded', async ({ page }, testInfo) => {
   await page.addInitScript(() => { window.print = () => { document.body.dataset.printInvoked = '1'; }; });
   await page.goto('/index.html');
   await page.locator('#site-print').click();
@@ -131,6 +138,11 @@ test('full-site print: requested main sections have separate pages and culture i
   await expect(pages.nth(5)).toContainText('市場觀點與 OUR BELIEF');
   await expect(pages.nth(2)).toContainText('中央橫樑');
   await expect(pages.nth(5)).toContainText('OUR BELIEF');
+  const pdfPath = testInfo.outputPath('pdf/full-site.pdf');
+  await fs.mkdir(path.dirname(pdfPath), { recursive: true });
+  const pdf = await page.pdf({ format: 'A4', printBackground: true });
+  expect(pdf.subarray(0, 5).toString()).toBe('%PDF-');
+  await fs.writeFile(pdfPath, pdf);
 });
 
 test('mortgage print: one isolated page includes six results and the first twelve periods', async ({ page }) => {
@@ -179,7 +191,7 @@ test('site print excludes stale extra-tax results after the user edits inputs', 
   await expect(page.locator('#yichen-print-root')).not.toContainText('租金扣繳計算機');
 });
 
-test('responsive layout: desktop, tablet, mobile and landscape widths do not overflow', async ({ page }) => {
+test('responsive layout: desktop, tablet, mobile and landscape widths do not overflow', async ({ page }, testInfo) => {
   await page.goto('/index.html');
   const viewports = [
     { width: 1440, height: 900 },
@@ -199,6 +211,9 @@ test('responsive layout: desktop, tablet, mobile and landscape widths do not ove
     }));
     expect(dimensions.document, 'horizontal overflow at ' + viewport.width + 'x' + viewport.height)
       .toBeLessThanOrEqual(dimensions.viewport + 2);
+    const screenshotPath = testInfo.outputPath('visual-evidence/viewport-' + viewport.width + 'x' + viewport.height + '.png');
+    await fs.mkdir(path.dirname(screenshotPath), { recursive: true });
+    await page.screenshot({ path: screenshotPath, fullPage: true, animations: 'disabled' });
   }
 });
 
