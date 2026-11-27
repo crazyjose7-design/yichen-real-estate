@@ -162,8 +162,8 @@
         "cross_check": 1
       },
       "verified_expected_values": 5,
-      "source_status": "OFFICIAL_2026_SOURCE_ADDED_PENDING_CI",
-      "notes": "新增115年度官方金額資料regulations/taxes/estate-gift-tax-2026.json；獨立案例含10%/15%級距邊界、20%級距起點及執行職務死亡免稅額加倍。海外財產範圍、各項扣除資格、其他年度及完整遺產項目尚未覆核。"
+      "source_status": "CI_PASSED_PENDING_SECOND_REVIEW",
+      "notes": "新增115年度官方金額資料regulations/taxes/estate-gift-tax-2026.json；獨立案例含10%/15%級距邊界、20%級距起點及執行職務死亡免稅額加倍。海外財產範圍、各項扣除資格、其他年度及完整遺產項目尚未覆核。 新增案例已由CI驗證通過，仍待第二人法規覆核及完整特殊情境審查。"
     },
     {
       "id": "gift",
@@ -177,8 +177,8 @@
         "cross_check": 0
       },
       "verified_expected_values": 6,
-      "source_status": "OFFICIAL_2026_SOURCE_ADDED_PENDING_CI",
-      "notes": "新增115年度官方金額資料regulations/taxes/estate-gift-tax-2026.json；獨立案例含244萬元年度免稅額、10%/15%/20%級距邊界及未核實全年贈與資料阻擋。特殊不計入贈與總額、非居住者及其他年度尚未覆核。"
+      "source_status": "CI_PASSED_PENDING_SECOND_REVIEW",
+      "notes": "新增115年度官方金額資料regulations/taxes/estate-gift-tax-2026.json；獨立案例含244萬元年度免稅額、10%/15%/20%級距邊界及未核實全年贈與資料阻擋。特殊不計入贈與總額、非居住者及其他年度尚未覆核。 新增案例已由CI驗證通過，仍待第二人法規覆核及完整特殊情境審查。"
     },
     {
       "id": "corp",
