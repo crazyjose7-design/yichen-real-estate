@@ -145,7 +145,7 @@ test('full-site print: requested main sections have separate pages and culture i
   await fs.writeFile(pdfPath, pdf);
 });
 
-test('mortgage print: one isolated page includes six results and the first twelve periods', async ({ page }) => {
+test('mortgage print: one isolated page includes six results and the first twelve periods', async ({ page }, testInfo) => {
   await page.addInitScript(() => { window.print = () => { document.body.dataset.printInvoked = '1'; }; });
   await page.goto('/index.html');
   await page.locator('#mortgageForm button[type="submit"]').click();
@@ -161,9 +161,14 @@ test('mortgage print: one isolated page includes six results and the first twelv
   await expect(printed).toContainText('預估首期還款日');
   await expect(printed).toContainText('前 12 期還款明細');
   await expect(printed.locator('#mortgageSchedule tr')).toHaveCount(12);
+  const pdfPath = testInfo.outputPath('pdf/mortgage.pdf');
+  await fs.mkdir(path.dirname(pdfPath), { recursive: true });
+  const pdf = await page.pdf({ format: 'A4', printBackground: true });
+  expect(pdf.subarray(0, 5).toString()).toBe('%PDF-');
+  await fs.writeFile(pdfPath, pdf);
 });
 
-test('tax print: only the currently calculated rent-withholding tool is printed', async ({ page }) => {
+test('tax print: only the currently calculated rent-withholding tool is printed', async ({ page }, testInfo) => {
   await page.addInitScript(() => { window.print = () => { document.body.dataset.printInvoked = '1'; }; });
   await page.goto('/index.html');
   await page.locator('#tax-menu button').filter({ hasText: '租金扣繳' }).click();
@@ -177,6 +182,11 @@ test('tax print: only the currently calculated rent-withholding tool is printed'
   await expect(printed).toContainText('租金扣繳：NT$ 3,000');
   await expect(printed.locator('#tax-extra-rentAmount')).toHaveAttribute('value', '30000');
   await expect(printed).not.toContainText('房貸試算');
+  const pdfPath = testInfo.outputPath('pdf/tax-rent-withholding.pdf');
+  await fs.mkdir(path.dirname(pdfPath), { recursive: true });
+  const pdf = await page.pdf({ format: 'A4', printBackground: true });
+  expect(pdf.subarray(0, 5).toString()).toBe('%PDF-');
+  await fs.writeFile(pdfPath, pdf);
 });
 
 test('site print excludes stale extra-tax results after the user edits inputs', async ({ page }) => {
