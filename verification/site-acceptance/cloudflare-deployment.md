@@ -39,3 +39,9 @@
 - 缺少任何必要設定時，workflow 會明確失敗，不會假裝部署成功。
 
 **目前狀態仍為 BLOCKED**：尚未取得 Cloudflare 專案名稱及上述憑證，尚未實際觸發部署，沒有部署 ID 或公開網址。新增 workflow 只是把可重現部署路徑準備好，不代表 Cloudflare 已上線。
+
+
+## 部署自動化新增（2026-11-27）
+- 已新增 `.github/workflows/cloudflare-pages-deploy.yml`，手動觸發，預設Preview；Production只允許從main部署。
+- 部署前會重建部署包，檢查Cloudflare API Token、Account ID及Pages project name；缺少設定會明確失敗。
+- 仍未取得上述Secrets/Variable，也未實際部署；正式部署狀態保持BLOCKED。
