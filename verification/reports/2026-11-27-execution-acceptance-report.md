@@ -1,101 +1,125 @@
-# 2026-11-27 網站功能執行與驗收進度
+# 2026-11-27 網站功能執行與驗收報告
 
-## 本輪已完成並有自動化證據的項目
+## 本輪可重現交付
 
-驗收來源分為 Build browser smoke、Playwright 瀏覽器互動、Node 回歸、Python Decimal 獨立 oracle 及法規資料結構驗證；各層不得互相替代。
+- 工作分支：`work/city-parameter-files-2026-11-27`
+- 驗收程式碼 commit：`7ddbb3158141967dff56ffb25369f4842b3a3664`
+- 未合併 `main`，未切換正式網站流量。
+- 最新部署包 Artifact：Run 45916926817，Artifact ID 15162921431。
+- 最新瀏覽器/視覺證據 Artifact：Run 45916926815，Artifact ID 15162272978。
 
-### 1. 稅務工具
+## 1. CI實際結果
 
-- 原網站12項計算器保留。
-- 租金扣繳與執行業務所得以獨立模組整合至網站，正式頁面選單為14項。
-- 新增21項獨立公式測試：租金扣繳9項、執行業務所得12項。
-- 測試涵蓋境內/非居住者、個人/公司、10%/20%扣繳、租金含稅/未稅反推、多位房東持分、2,000元扣繳門檻、20,000元補充保費門檻、1,000萬元補充保費上限、9A/9B及9B年度18萬元免稅額。
-- 9A費用率不硬猜；須按所得年度與職業別核對官方標準後才允許計入年度所得淨額。
-- 稅務工具完整14項官方法源/年度測試矩陣尚未完成；目前只有新增兩項完成上述獨立案例。
-
-### 2. 列印與網站分頁
-
-Build browser smoke實際產生PDF並檢查頁數及A4直式：
-
-| 功能 | PDF頁數 | 自動化結果 |
+| 驗收工作 | Run | 結果 |
 |---|---:|---|
-| 單一稅務工具（營所稅） | 1 | 通過 |
-| 房貸專區 | 1 | 通過 |
-| 土地坪效（官方查核未填） | 3 | 通過 |
-| 整份網站（房貸、營所稅、土地坪效已試算） | 11 | 通過 |
-| 租金扣繳單項 | 1 | 通過 |
-| 執行業務所得單項 | 1 | 通過 |
-| 整份網站（再加入租金扣繳、執行業務所得） | 13 | 通過 |
+| Build and verify deployment package | 45916926817 | PASS |
+| Independent verification layers | 45916926815 | PASS（3個jobs） |
+| Regulatory data validation | 45916926904 | PASS |
 
-- 土地坪效官方查核有填時，Playwright確認官方查核獨立成第2頁，整體為4頁；仍待保存實際4頁PDF並人工抽查。
-- 房貸Playwright檢查六項結果及前12期明細。
-- 整份網站主區塊已拆成：人物、關於億辰、企業徽章文化、專業服務、服務流程、市場觀點與OUR BELIEF；已完成試算才追加各工具頁。
-- 修正部署包建置：單檔版內嵌稅務模組，不再引用不存在的workbench路徑；多檔版改用modules/路徑，並隨包附上modules資料夾。
+Independent verification layers：
+- Node production regression：115項通過、0失敗。
+- Playwright browser functional tests：18項通過。
+- Python independent Decimal oracles：13個測試方法通過。
+- RWD尺寸：1440×900、1280×800、1024×768、820×1180、430×932、390×844、360×800、844×390，共8種尺寸，無水平溢出。
+- Apps Script接收端：4項靜態語法/契約測試通過；這不等於Apps Script已部署或郵件已送達。
+- 房貸獨立Decimal oracle：54組矩陣及固定基準/邊界測試通過。
+- 土地坪效獨立Decimal oracle：算術基準通過。
+- 土地增值稅回歸：131項、失敗0。
 
-### 3. 瀏覽器與獨立計算
+## 2. 稅務工作進度
 
-- Playwright：18項瀏覽器互動測試通過。
-- RWD水平溢出測試：1440×900、1280×800、1024×768、820×1180、430×932、390×844、360×800、844×390共8種尺寸通過。
-- Node production regression：115項測試通過（含Apps Script接收端4項靜態契約/語法測試、土地增值稅5項新增獨立案例、遺產/贈與稅9項新增邊界/例外案例、115年度個人綜所稅級距3項新增案例）。
-- Build browser smoke：115項Node測試通過；土地增值稅歷史/回歸案例131項、失敗0。
-- Python Decimal oracle：13個測試方法通過；其中房貸54組矩陣、固定基準與邊界檢查通過，土地坪效算術核心通過。
-- 以上不代表所有法規參數、22縣市適用條件或人工視覺驗收已完成。
+網站仍保留原12項稅務工具，並已整合租金扣繳及執行業務所得，頁面選單共14項。
 
-## CI執行證據
+本輪新增年度法源資料：
+- `regulations/taxes/individual-income-tax-2026.json`：財政部台財稅字第11404664070號，115年度綜所稅免稅額、扣除額、級距及退職所得標準。
+- `regulations/taxes/estate-gift-tax-2026.json`：財政部台財稅字第11404671540號，115年度遺產/贈與稅免稅額、級距及扣除額。
 
-- Build and verify deployment package：Run 45913252779，成功。
-- Independent verification layers：Run 45913252912，production regression、browser functional tests、independent oracles全部成功。
-- Regulatory data validation：Run 45913252798，成功。
-- 部署包 Artifact ID：15161410623。
-- Artifact網址：https://github.com/crazyjose7-design/yichen-real-estate/actions/runs/45913252779/artifacts/15161410623
+新增獨立案例：
+- 租金扣繳：9項；執行業務所得：12項。
+- 遺產/贈與稅：9項級距、免稅額及例外案例。
+- 土地增值稅：5項零漲價、三級距及無效持分案例。
+- 租賃所得及房屋舊制財產交易所得：3項115年度個人綜所稅級距案例。
 
-## 尚未完成／不得宣稱通過
+限制：
+- 14項工具的完整官方法源、所有年度差異、正常/邊界/異常/交叉矩陣尚未全部完成。
+- 部分年度參數仍硬編碼；新增JSON是可追溯法源資料，不代表所有計算器已動態讀取。
+- 尚未為14項工具逐一輸出獨立PDF；目前有營所稅、租金扣繳及執行業務所得等單項PDF證據。
 
-1. **其餘12項稅務工具**：獨立預期值、正常/邊界/異常/交叉矩陣及官方年度法源仍未逐項完成；稅務列印也未逐項產出14份PDF。
-2. **中央及22縣市法規**：資料格式驗證成功不等於法規覆核。當前22縣市官方參數仍未完成，中央及地方資料共35項需審查；safeToCalculate仍為false，未查證獎勵不得自動套用。
-3. **土地坪效**：算術 oracle 與列印初驗已完成，法規獎勵互斥/併計及22縣市參數尚未驗收。
-4. **人工視覺驗收**：多尺寸無水平溢出通過，但全頁截圖、真實Android裝置、PDF字級/裁切/縮放人工審查尚未完成。
-5. **聯絡表單實際送達**：Playwright只攔截模擬Apps Script回應，確認payload與前端不假報成功；未取得收件端郵件/紀錄。Apps Script後端程式不在GitHub專案內，Google Drive連接器不可用。
-6. **Cloudflare Pages正式部署**：已產生可解壓部署包，但沒有正式部署ID、公開網址、部署commit一致性與公開站回歸證據。
-7. **正式整合閘門**：維持BLOCKED；未合併main、未切換正式流量。
+## 3. 列印與PDF人工檢視
 
-## 交付檔案
+最新瀏覽器證據Artifact：15162272978。
 
-本輪CI下載後已另存：
-- `yichen-real-estate-deployment-v6.2.21.zip`：外層CI artifact，內含完整部署包ZIP、單檔HTML、PDF與browser smoke結果。
-- `yichen-real-estate-v6.2.21.html`：可獨立部署的單檔HTML。
-- 完整部署包內含 `index.html`、`index.multi-file.html`、`modules/`、`regulations/`、`docs/`、`versions/`。
+| PDF | 實際頁數 | 紙張 |
+|---|---:|---|
+| 房貸獨立列印 | 1 | A4直式 |
+| 租金扣繳單項列印 | 1 | A4直式 |
+| 土地坪效（官方查核已填） | 4 | A4直式 |
+| 整份網站主內容（未加入試算） | 6 | A4直式 |
 
-以上是工作分支的可驗收交付，不是Cloudflare正式上線版本。
+Build smoke另確認：
+- 土地坪效官方查核未填時3頁。
+- 整份網站有已完成房貸/稅務/土地試算時11頁。
+- 再加入租金扣繳及執行業務所得試算時13頁。
 
-## 2026-11-27 後續追加執行
+已逐頁檢視土地四頁PDF，發現內部標題編號錯位後已修正；最新Playwright 18項全數通過，並對第3、4頁內部標題新增精確斷言。房貸PDF包含六項結果及前12期明細。
 
-### 年度稅務法源
-- 新增 `regulations/taxes/estate-gift-tax-2026.json`：115年度遺產稅、贈與稅免稅額、級距及扣除額，來源為財政部台財稅字第11404671540號公告。
-- 新增 `regulations/taxes/individual-income-tax-2026.json`：115年度綜所稅免稅額、標準扣除額、薪資/身障扣除額、級距及退職所得參數，來源為財政部台財稅字第11404664070號公告。
-- 程式目前仍有部分年度級距硬編碼；新增JSON是可追溯法源/參數記錄，不代表所有計算器已改為動態讀取年度參數。
+## 4. RWD視覺檢查
 
-### 法規安全
-- 中央《都市更新建築容積獎勵辦法》來源範圍已校正為全文21條。
-- 苗栗縣都市更新建築容積獎勵辦法第3條，依內政部115年1月12日台內國字第1140817216號函，已明確記錄為無效；城市JSON及schema新增失效條文紀錄，validator要求其維持auto_apply=false。
-- 臺北、臺中、高雄地方都更法規審查紀錄補入中央母法修法後條次、地方獎勵上限及最新公告注意事項；22縣市仍0個完成參數驗證。
+- CI已保存8種尺寸全頁截圖，人工抽查1440桌面及390手機分段畫面。
+- 未見水平溢出、卡片超出畫面或主要區塊重疊；手機採單欄堆疊及漢堡選單。
+- 社群影片區仍出現黑色預留框，需確認公開網域/外部影片權限。
+- 尚未以真實Android裝置完成觸控、鍵盤及PDF檢視器驗收，不能標示整體視覺PASS。
 
-### 聯絡表單
-- 新增Google Apps Script接收端原始碼 `backend/google-apps-script/Code.gs` 及設定/部署說明；支援Email、選配LINE Messaging API與Google試算表稽核。
-- 新增4項靜態語法/契約測試，已納入Node回歸。
-- 未取得收件Email、LINE推播Token/目的地及Apps Script專案授權；接收端尚未部署，實際送達仍BLOCKED。
+## 5. 中央及22縣市法規
 
-### 視覺與列印
-- Playwright已輸出8種視窗尺寸全頁截圖，Artifact ID 15163065656（Run 45916649735）。
-- 實際PDF已人工檢視：房貸1頁A4、租金扣繳1頁A4、土地官方查核4頁A4、整站主內容6頁A4。
-- 土地四頁PDF人工檢視發現內部頁標題編號與外層頁首不一致，已修正列印clone標題並新增精確斷言；最新Playwright執行結果待完成。
-- 真實Android裝置操作及社群影片嵌入載入仍未驗收。
+- 22縣市資料檔：22/22存在並有官方來源索引。
+- 中央法規索引：19項。
+- 稅務參數檔：9項。
+- 獎勵資料檔：9項。
+- 最新build smoke顯示 `reviewRequired=37`，`safeToCalculate=false`。
+- 22縣市已驗證官方參數仍為0；來源清單存在不等於逐條法規及地方參數已驗證。
+- 中央《都市更新建築容積獎勵辦法》引用範圍已校正為現行全文21條。
+- 苗栗縣《都市更新建築容積獎勵辦法》第3條，依內政部115年1月12日台內國字第1140817216號函，已記錄為無效；city schema及validator已要求該條保持 `auto_apply=false`。
+- 臺北、臺中、高雄地方都更規則已補充中央母法修法後條次、地方上限及附表審查風險；仍維持in_review。
+- 未核實獎勵不自動套用，正式法規閘門維持BLOCKED。
 
-### Cloudflare
-- 新增手動Cloudflare Pages workflow：Preview預設；Production限定main。
-- 必須設定GitHub secrets `CLOUDFLARE_API_TOKEN`、`CLOUDFLARE_ACCOUNT_ID` 及repository variable `CLOUDFLARE_PAGES_PROJECT`。
-- 尚未設定憑證或觸發部署，仍無正式部署ID/公開網址；未合併main。
+## 6. 聯絡表單實際送達
 
-### 最新法規資料驗證輸出
-- 22個縣市、19項中央法規索引、9項稅務參數檔、9項獎勵資料；`safeToCalculate=false`。
-- 當前 validator 顯示 `reviewRequired=37`；來源清單完整不代表已逐條驗證，37項仍需人工/法規覆核。
+已新增：
+- `backend/google-apps-script/Code.gs`：Email接收、選配LINE Messaging API推播、Google試算表留存、案件編號及執行紀錄。
+- `backend/google-apps-script/README.md`：部署、Script Properties、收件及驗收說明。
+- 4項靜態語法/契約測試。
+
+尚未取得收件Email、LINE官方帳號Token/目的地ID及Apps Script專案授權；新後端尚未部署，也未替換網站現有endpoint。沒有真實收件郵件/試算表/LINE證據，送達狀態仍BLOCKED。
+
+## 7. Cloudflare Pages
+
+已新增手動工作流程 `.github/workflows/cloudflare-pages-deploy.yml`：
+- 預設部署Preview。
+- Production限定從main執行。
+- 需要GitHub secrets：`CLOUDFLARE_API_TOKEN`、`CLOUDFLARE_ACCOUNT_ID`。
+- 需要repository variable：`CLOUDFLARE_PAGES_PROJECT`。
+- 部署前會重新建置並檢查部署包。
+
+目前尚未設定憑證或觸發Cloudflare部署，沒有正式部署ID、公開網址或公開站回歸證據；仍未合併main。
+
+## 8. 交付檔案
+
+- 完整部署包：`yichen-real-estate-deployment-v6.2.21-final.zip`
+- 單檔網站：`yichen-real-estate-v6.2.21-final.html`
+- 視覺及PDF證據：`browser-visual-and-print-evidence-final.zip`
+
+完整部署包已解壓檢查，包含：
+`index.html`、`index.multi-file.html`、`modules/`、`regulations/`、`docs/`、`versions/`、`backend/google-apps-script/`。
+部署包已由CI成功產生及驗證，但不是Cloudflare正式上線版本。
+
+## 9. 最終閘門
+
+仍未完成：
+1. 14項稅務工具逐項法源、年度、邊界矩陣及PDF。
+2. 中央及22縣市法規逐條覆核、地方官方參數及獎勵互斥/併計。
+3. 真實Android實機及社群影片嵌入檢查。
+4. Apps Script真實收件端部署與Email/LINE驗收。
+5. Cloudflare Preview部署、公開網址回歸及正式部署授權。
+
+因此整合閘門仍為BLOCKED。不得合併main、不得宣稱正式上線。
