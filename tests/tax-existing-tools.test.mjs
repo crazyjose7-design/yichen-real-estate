@@ -153,3 +153,32 @@ test('TAX-GIFT-115-ABNORMAL-001: refuses unverified annual donor aggregation', (
   assert.equal(actual, null);
   assert.match(explanation,/全年贈與總額/);
 });
+
+
+const landCase = (overrides={}) => ({
+  previousDate:'2020-01-01', currentValue:180, priorValue:100, cpi:'100|100',
+  area:100, landType:'都市土地', selfUseApproved:'否／未核准（只計一般用地）',
+  shareNumerator:1, shareDenominator:1, deductibleCosts:0, priorLandTaxCredit:0,
+  ...overrides
+});
+test('TAX-LAND-BASE-001 independent no-gain floor', () => {
+  const [actual] = defs.land.calc(landCase({currentValue:100}));
+  assert.equal(actual,0);
+});
+test('TAX-LAND-BOUNDARY-001 independent first bracket expected value', () => {
+  const [actual] = defs.land.calc(landCase());
+  assert.equal(actual,1600);
+});
+test('TAX-LAND-BOUNDARY-002 independent second bracket expected value', () => {
+  const [actual] = defs.land.calc(landCase({currentValue:250}));
+  assert.equal(actual,3500);
+});
+test('TAX-LAND-BOUNDARY-003 independent third bracket expected value', () => {
+  const [actual] = defs.land.calc(landCase({currentValue:350}));
+  assert.equal(actual,7000);
+});
+test('TAX-LAND-ABNORMAL-001 rejects invalid transferred share', () => {
+  const [actual, explanation] = defs.land.calc(landCase({shareNumerator:2,shareDenominator:1}));
+  assert.equal(actual,null);
+  assert.match(explanation,/持分/);
+});
