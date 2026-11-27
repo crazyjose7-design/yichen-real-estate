@@ -24,3 +24,10 @@
 - Playwright以攔截/模擬Apps Script回應方式，確認表單送出欄位、請求payload及前端不會誤報「已成功送達」。這只證明瀏覽器送出請求，不代表真實收件。
 - GitHub專案未包含Apps Script後端程式；目前無法讀取接收端部署設定、收件地址或郵件/LINE發送紀錄。Google Drive連接器目前不可用，真實收件端證據尚未取得。
 - 因此不得標示送達PASS；需取得後端/收件端存取權限並完成唯一測試碼的真實收件驗證。
+
+
+## 新增後端替代實作（2026-11-27）
+- 已新增 `backend/google-apps-script/Code.gs`，支援必要欄位驗證、Email寄送、選配LINE Messaging API推播、Google試算表紀錄及案件編號/執行紀錄。
+- 已新增部署與設定說明 `backend/google-apps-script/README.md`，並新增4項靜態契約/語法測試。
+- 靜態測試不等於Google Apps Script實際執行；目前未取得收件Email、LINE官方帳號token/推播目的地及Google Apps Script專案授權，程式尚未部署，也未更換網站目前的既有endpoint。
+- 真實收件仍為BLOCKED，需由帳號持有人設定Script Properties並部署後，以唯一測試碼驗證郵件、試算表及LINE（若啟用）實際到達。
