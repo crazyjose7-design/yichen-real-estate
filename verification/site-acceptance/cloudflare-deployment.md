@@ -26,3 +26,16 @@
 - GitHub Actions已成功產生並驗證部署包；單檔HTML已內嵌圖片及稅務模組，多檔版本的modules路徑亦已修正。
 - Artifact：run 45913252779，artifact 15161410623；部署包ZIP可正常解壓，包含modules、regulations、docs及版本資料。
 - 目前沒有Cloudflare Pages正式部署ID、公開網址回歸或部署commit一致證據；未合併main、未切換正式流量。
+
+## 已建立可執行的部署路徑（2026-11-27）
+
+新增 GitHub Actions：`.github/workflows/cloudflare-pages-deploy.yml`。
+
+- 手動觸發，預設只部署 Preview，不會自動部署正式環境。
+- Preview 從目前選定的工作分支建置並以該分支名稱部署。
+- Production 僅允許從 `main` 執行，並使用 GitHub `production` Environment（若設定保護規則可要求人工核准）。
+- 部署前重新執行 `scripts/build-deployment.mjs`，部署 `dist/deployment-package`。
+- 需要 GitHub Actions secrets：`CLOUDFLARE_API_TOKEN`、`CLOUDFLARE_ACCOUNT_ID`；以及 repository variable：`CLOUDFLARE_PAGES_PROJECT`。
+- 缺少任何必要設定時，workflow 會明確失敗，不會假裝部署成功。
+
+**目前狀態仍為 BLOCKED**：尚未取得 Cloudflare 專案名稱及上述憑證，尚未實際觸發部署，沒有部署 ID 或公開網址。新增 workflow 只是把可重現部署路徑準備好，不代表 Cloudflare 已上線。
