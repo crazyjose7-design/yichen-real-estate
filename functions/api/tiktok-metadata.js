@@ -91,44 +91,39 @@ export async function onRequestGet({ request }) {
 }
 
 function normalize({ title = "", thumbnail = "", video_id = "" }) {
-  let thumbnailUrl = String(thumbnail || "").replace(/\\\\u002F/g, "/").replace(/\\\\u0026/g, "&").trim();
+  let thumbnailUrl = String(thumbnail || "").replace(/\\u002F/g, "/").replace(/\\u0026/g, "&").trim();
   if (thumbnailUrl.startsWith("//")) thumbnailUrl = "https:" + thumbnailUrl;
   try {
     const parsed = new URL(thumbnailUrl);
     if (parsed.protocol !== "https:") thumbnailUrl = "";
   } catch { thumbnailUrl = ""; }
-  const cleanTitle = String(title || "").replace(/<[^>]*>/g, " ").replace(/\\s+/g, " ").trim();
+  const cleanTitle = String(title || "").replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
   if (!cleanTitle && !thumbnailUrl && !video_id) return null;
   return { title: cleanTitle, thumbnail_url: thumbnailUrl, video_id: String(video_id || "") };
 }
 
 function extractMeta(html, keys) {
-  for (const key of keys) {
-    const escaped = key.replace(/[.*+?^${}()|[\\]\\\\]/g, "\\\\$&");
-    const patterns = [
-      new RegExp('<meta[^>]+property=["\\']' + escaped + '["\\'][^>]+content=["\\']([^"\\']+)', "i"),
-      new RegExp('<meta[^>]+name=["\\']' + escaped + '["\\'][^>]+content=["\\']([^"\\']+)', "i"),
-      new RegExp('<meta[^>]+content=["\\']([^"\\']+)["\\'][^>]+property=["\\']' + escaped + '["\\']', "i")
-    ];
-    for (const pattern of patterns) {
-      const match = html.match(pattern);
-      if (match) return decodeHtml(match[1]);
-    }
+  const tags = html.match(/<meta\b[^>]*>/gi) || [];
+  for (const tag of tags) {
+    const name = tag.match(/\b(?:property|name)\s*=\s*["']([^"']+)["']/i)?.[1] || "";
+    if (!keys.includes(name.toLowerCase())) continue;
+    const content = tag.match(/\bcontent\s*=\s*["']([^"']*)["']/i)?.[1] || "";
+    if (content) return decodeHtml(content);
   }
   return "";
 }
 
 function extractEmbeddedValue(html, keys) {
   for (const key of keys) {
-    const pattern = new RegExp('["\\']' + key + '["\\']\\s*:\\s*["\\']((?:\\\\.|[^"\\']){3,500})["\\']', "i");
+    const pattern = new RegExp('"' + key + '"\\s*:\\s*"([^"]{3,500})"', "i");
     const match = html.match(pattern);
-    if (match) return decodeHtml(match[1].replace(/\\\\(["'\\\\])/g, "$1"));
+    if (match) return decodeHtml(match[1]);
   }
   return "";
 }
 
 function decodeHtml(value) {
-  return String(value || "").replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/\\\\u002F/g, "/").replace(/\\\\u0026/g, "&");
+  return String(value || "").replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/\\u002F/g, "/").replace(/\\u0026/g, "&");
 }
 
 function json(data, status = 200, extraHeaders = {}) {
