@@ -951,7 +951,13 @@ header{background:rgba(10,10,9,.94);border-bottom:1px solid rgba(228,208,166,.18
 #social-media .social-video-loading.social-video-error{display:flex;flex-direction:column;gap:10px;color:#fff}
 #social-media .social-video-loading button{padding:9px 14px;border:1px solid #fff;border-radius:20px;background:transparent;color:#fff;cursor:pointer}
 @media(max-width:760px){#social-media .social-links-under-title{gap:8px;margin:14px auto 8px}#social-media .social-links-under-title a{min-height:38px;padding:8px 12px;font-size:13px}#social-media .video-facade-play{min-height:150px}}
-</style></head>
+</style><style id="yichen-social-toolbar-font-unification">
+#social-media .social-links-under-title a{
+ font-family:'Noto Sans TC',sans-serif!important;
+ font-size:14px!important;
+}
+</style>
+</head>
 <body><div class="topline"></div>
 <header><nav class="nav" id="nav"><a class="brand" href="#home"><img alt="億辰企業徽章：辰字古金圓徽" src="/assets/yichen-brand-emblem.jpg?rev=20261128-3" loading="eager" decoding="async" fetchpriority="high"/><span class="brand-name"><strong>億辰不動產集團</strong></span></a><div class="links"><a href="#about">關於億辰</a><a href="#culture">徽章與企業文化</a><a href="#services">專業服務</a><a href="#method">服務流程</a><a href="#insight">市場觀點</a><a href="#qa">常見問題</a><div class="nav-dropdown"><button aria-expanded="false" class="nav-drop-trigger" type="button">房產相關 <span aria-hidden="true">⌄</span></button><div class="nav-drop-menu"><a href="#property-search">找房專區</a><a href="#property-tools">房產工具專區</a><a href="#mortgage-center">房貸試算</a><a href="#land-efficiency-tool">土地坪效試算</a><a href="#resource-government">政府專區</a><a href="#resource-urban-renewal">各縣市都市更新專區</a><a href="#resource-disaster">防災與嫌惡設施專區</a><a href="#resource-private">民間專區</a><a href="#tax-center">稅務試算</a></div></div><a href="#social-media">社群媒體</a></div><a class="nav-cta" href="#contact">預約房產諮詢</a><button aria-label="開啟選單" class="menu" id="menu">☰</button></nav></header>
 <main id="home"><section class="hero"><div class="hero-inner"><div class="founder-wrap"><img alt="億辰不動產集團創辦人形象照" class="founder" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" data-yichen-inline-image="founder" data-yichen-inline-type="image/png"/><div class="hero-stamp">專業・信任・價值・永續</div></div><div class="hero-copy"><div class="eyebrow">YICHEN REAL ESTATE GROUP　｜　EST. EXPERIENCE 22 YEARS</div><h1>看見不動產的<br/><em>真正價值。</em></h1><p>深耕不動產實務22年，專注商用不動產與高端住宅。從市場判讀、物件媒合到交易管理，以專業、透明與長期信任，陪伴每一次重要資產決策。</p><div class="hero-actions"><a class="btn" href="#contact">開始一場專業對談　→</a><a class="btn outline" href="#services">探索億辰服務</a></div></div></div></section>
@@ -1166,13 +1172,42 @@ async function loadOneVideoMetadata(box){
  function mountYouTube(box){if(box.dataset.playerLoaded==='1')return;stopOtherPlayers(box);const id=box.dataset.youtubeVideoId,title=box.dataset.videoTitle||'YouTube 影片';const iframe=document.createElement('iframe');iframe.src='https://www.youtube-nocookie.com/embed/'+encodeURIComponent(id)+'?autoplay=1&rel=0&playsinline=1';iframe.title=title;iframe.loading='eager';iframe.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';iframe.allowFullscreen=true;iframe.referrerPolicy='strict-origin-when-cross-origin';box.replaceChildren(iframe);box.dataset.playerLoaded='1'}
  async function mountTikTok(box){if(box.dataset.playerLoaded==='1'||box.dataset.playerLoading==='1')return;stopOtherPlayers(box);const request=activeRequest;box.dataset.playerLoading='1';loading(box,'正在連接 TikTok 播放器…');const short=box.dataset.tiktokShortUrl,title=box.dataset.tiktokTitle||'TikTok 影片';try{const key='yichen_tiktok_player_id_v3:'+short;let id='';try{id=localStorage.getItem(key)||''}catch(e){}if(!/^\d{8,}$/.test(id)){const canonical=await resolveCanonical(short);id=videoIdFrom(canonical)||'';if(!id){const data=JSON.parse(await readText('https://www.tiktok.com/oembed?url='+encodeURIComponent(canonical)));id=data.embed_product_id||videoIdFrom(data.html)||''}if(/^\d{8,}$/.test(id)){try{localStorage.setItem(key,id)}catch(e){}}}if(request!==activeRequest||activeBox!==box)return;if(!/^\d{8,}$/.test(id))throw new Error('TikTok 影片 ID 無效');const iframe=document.createElement('iframe');iframe.src='https://www.tiktok.com/player/v1/'+id+'?autoplay=1&force_muted=0&controls=1&description=1&music_info=1&rel=0';iframe.title=title;iframe.loading='eager';iframe.allow='accelerometer; autoplay; clipboard-write; encrypted-media; fullscreen; gyroscope; picture-in-picture; web-share';iframe.allowFullscreen=true;iframe.referrerPolicy='strict-origin-when-cross-origin';const onTikTokMessage=event=>{if(event.source!==iframe.contentWindow)return;const data=event.data;if(data&&data['x-tiktok-player']===true&&data.type==='onPlayerReady'){iframe.contentWindow.postMessage({type:'unMute','x-tiktok-player':true},'*')}};iframe.__yichenTikTokMessageHandler=onTikTokMessage;window.addEventListener('message',onTikTokMessage);box.replaceChildren(iframe);box.dataset.playerLoaded='1'}catch(err){if(request===activeRequest&&activeBox===box)showError(box,'TikTok 站內播放器暫時無法載入，請稍後重試。影片不會跳轉離開本網站。')}}
  let videoScrollSnapshot=null;
- function rememberVideoScroll(){videoScrollSnapshot={top:window.scrollY||window.pageYOffset||0,width:window.innerWidth,height:window.innerHeight,sawHidden:false,sawViewportChange:false};}
- function restoreVideoScroll(){const saved=videoScrollSnapshot;if(!saved)return;videoScrollSnapshot=null;const top=saved.top;requestAnimationFrame(()=>{window.scrollTo({left:0,top,behavior:'instant'});requestAnimationFrame(()=>window.scrollTo(0,top))});}
- document.addEventListener('visibilitychange',()=>{if(!videoScrollSnapshot)return;if(document.visibilityState==='hidden')videoScrollSnapshot.sawHidden=true;else if(videoScrollSnapshot.sawHidden)setTimeout(restoreVideoScroll,80)});
- document.addEventListener('fullscreenchange',()=>{if(!document.fullscreenElement&&videoScrollSnapshot)setTimeout(restoreVideoScroll,60)});
- document.addEventListener('webkitfullscreenchange',()=>{if(!document.webkitFullscreenElement&&videoScrollSnapshot)setTimeout(restoreVideoScroll,60)});
- window.addEventListener('resize',()=>{const saved=videoScrollSnapshot;if(!saved)return;const changed=Math.abs(window.innerHeight-saved.height)>Math.max(120,saved.height*.18)||Math.abs(window.innerWidth-saved.width)>Math.max(120,saved.width*.18);if(changed)saved.sawViewportChange=true;else if(saved.sawViewportChange)setTimeout(restoreVideoScroll,80)});
- window.addEventListener('pageshow',()=>{if(videoScrollSnapshot?.sawHidden)setTimeout(restoreVideoScroll,80)});
+ let videoScrollRestoreTimer=null;
+ function rememberVideoScroll(){videoScrollSnapshot={top:window.scrollY||window.pageYOffset||0,width:window.innerWidth,height:window.innerHeight,sawHidden:false,sawBlur:false};}
+ function restoreVideoScroll(){
+  if(!videoScrollSnapshot)return;
+  if(videoScrollRestoreTimer!==null)clearTimeout(videoScrollRestoreTimer);
+  videoScrollRestoreTimer=setTimeout(()=>{
+   requestAnimationFrame(()=>{
+    const saved=videoScrollSnapshot;
+    if(!saved){videoScrollRestoreTimer=null;return;}
+    window.scrollTo({left:0,top:saved.top,behavior:'instant'});
+    videoScrollSnapshot=null;
+    videoScrollRestoreTimer=null;
+   });
+  },180);
+ }
+ document.addEventListener('visibilitychange',()=>{
+  if(!videoScrollSnapshot)return;
+  if(document.visibilityState==='hidden')videoScrollSnapshot.sawHidden=true;
+  else if(videoScrollSnapshot.sawHidden)restoreVideoScroll();
+ });
+ document.addEventListener('fullscreenchange',()=>{
+  if(videoScrollSnapshot&&!document.fullscreenElement)restoreVideoScroll();
+ });
+ document.addEventListener('webkitfullscreenchange',()=>{
+  if(videoScrollSnapshot&&!document.webkitFullscreenElement)restoreVideoScroll();
+ });
+ window.addEventListener('blur',()=>{if(videoScrollSnapshot)videoScrollSnapshot.sawBlur=true;});
+ window.addEventListener('focus',()=>{if(videoScrollSnapshot)restoreVideoScroll();});
+ window.addEventListener('resize',()=>{
+  const saved=videoScrollSnapshot;
+  if(!saved)return;
+  const widthNear=Math.abs(window.innerWidth-saved.width)<=Math.max(120,saved.width*.18);
+  const heightNear=Math.abs(window.innerHeight-saved.height)<=Math.max(120,saved.height*.18);
+  if(widthNear&&heightNear)restoreVideoScroll();
+ });
+ window.addEventListener('pageshow',()=>{if(videoScrollSnapshot)restoreVideoScroll();});
  loadVideoTitles();
  root.addEventListener('click',e=>{const btn=e.target.closest('.video-facade-play');if(!btn||!root.contains(btn))return;const box=btn.closest('.social-video-frame');if(!box)return;rememberVideoScroll();if(box.dataset.youtubeVideoId)mountYouTube(box);else if(box.dataset.tiktokShortUrl)mountTikTok(box)});
  // Initial markup intentionally contains no video iframe; players are created only after a click.
