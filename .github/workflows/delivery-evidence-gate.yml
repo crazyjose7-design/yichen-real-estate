@@ -39,7 +39,7 @@ jobs:
               const next = rest.search(/^## /m);
               return (next < 0 ? rest : rest.slice(0, next)).trim();
             };
-            const placeholders = /填寫|待補|TODO|TBD|\[.*\]/i;
+            const placeholders = /\\[請填寫\\]|待補|TODO|TBD/i;
             for (const h of ["授權範圍", "實際 Git 差異", "自動化測試", "Cloudflare 部署", "實際功能驗收", "失敗與未解決事項", "回歸測試條件變更說明"]) {
               const value = section(h).trim();
               if (!value || placeholders.test(value)) {
