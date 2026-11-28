@@ -11,6 +11,12 @@ const checks = [
   ["Open Graph title kept in sync", html.includes('property="og:title" content="億辰不動產集團 V6.3.3"')],
   ["Twitter title kept in sync", html.includes('name="twitter:title" content="億辰不動產集團 V6.3.3"')],
   ["Homepage hero title preserved", html.includes("<h1>看見不動產的<br/><em>真正價值。</em></h1>")],
+
+  ["Desktop brand version remains visible", html.includes(".brand-version{display:inline-flex!important;align-items:center;color:#e4d0a6;font-size:12px")],
+  ["Custom saleable factor starts empty", html.includes('id="le-custom-eff" max="5" min="0.01" placeholder="請自行輸入比例" step="0.01" type="number"/>')],
+  ["Custom saleable factor reset remains empty", html.includes("$('le-custom-eff').value=''")],
+  ["TikTok featured card 02 uses isolated direct metadata", html.includes('data-tiktok-metadata-direct="1"') && html.includes("const directCard=box.dataset.tiktokMetadataDirect==='1'") && html.includes("yichen_tiktok_metadata_v4:")],
+  ["TikTok featured card 02 uses same-origin endpoint before short-link resolver", html.indexOf("readText('/api/tiktok-metadata?url='+encodeURIComponent(shortUrl),18000)") < html.indexOf("canonical=await resolveCanonical(shortUrl)")],
   ["Homepage social preview image configured", html.includes('property="og:image"') && html.includes('name="twitter:image"') && html.includes('name="twitter:card" content="summary_large_image"')],
   ["Homepage favicon configured", html.includes('rel="icon" type="image/svg+xml" href="/assets/yichen-favicon.svg"')],
   ["Three featured TikTok videos retained", (html.match(/data-tiktok-title="TikTok 精選影片 0[1-3]"/g) || []).length === 3],
