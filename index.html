@@ -1188,16 +1188,18 @@ async function loadOneVideoMetadata(box){
    // Wait for the viewport dimensions to settle after Chrome exits iframe fullscreen.
    let lastHeight=window.innerHeight;
    let lastVisualHeight=window.visualViewport?window.visualViewport.height:0;
+   let lastScrollY=window.scrollY;
    let stableFrames=0;
    let checkedFrames=0;
    function restoreAfterViewportSettles(){
      const visualHeight=window.visualViewport?window.visualViewport.height:0;
-     if(window.innerHeight===lastHeight&&visualHeight===lastVisualHeight){
+     if(window.innerHeight===lastHeight&&visualHeight===lastVisualHeight&&window.scrollY===lastScrollY){
        stableFrames++;
      }else{
        stableFrames=0;
        lastHeight=window.innerHeight;
        lastVisualHeight=visualHeight;
+       lastScrollY=window.scrollY;
      }
      checkedFrames++;
      if(stableFrames>=3||checkedFrames>=30){
