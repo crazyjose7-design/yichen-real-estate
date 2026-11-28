@@ -11,7 +11,7 @@ export async function onRequestGet({ request }) {
   }
 
   const cache = caches.default;
-  const cacheKey = new Request(new URL("/api/tiktok-metadata?url=" + encodeURIComponent(videoUrl), request.url).toString());
+  const cacheKey = new Request(new URL("/api/tiktok-metadata-v3?url=" + encodeURIComponent(videoUrl), request.url).toString());
   const cached = await cache.match(cacheKey);
   if (cached) return cached;
 
@@ -50,7 +50,7 @@ export async function onRequestGet({ request }) {
 
   // Route 2: fetch the public TikTok page and extract Open Graph / embedded state.
   // This is independent of TikWM and does not depend on TikTok oEmbed fields.
-  if (!result || (!result.title && !result.thumbnail_url)) {
+  if (!result || !result.title || !result.thumbnail_url) {
     try {
       const pageResponse = await fetch(videoUrl, {
         redirect: "follow",
@@ -74,7 +74,7 @@ export async function onRequestGet({ request }) {
         video_id: videoId
       });
       if (pageData && (pageData.title || pageData.thumbnail_url)) {
-        result = { ...(result || {}), ...pageData };
+        result = { ...(result || {}), title: result?.title || pageData.title, thumbnail_url: result?.thumbnail_url || pageData.thumbnail_url, video_id: result?.video_id || pageData.video_id };
       }
     } catch (error) {
       errors.push("TikTok page: " + String(error && error.message || error));
@@ -86,7 +86,7 @@ export async function onRequestGet({ request }) {
   }
 
   const response = json({ ok: true, ...result }, 200, { "Cache-Control": "public, max-age=1800" });
-  await cache.put(cacheKey, response.clone());
+  if (result.title && result.thumbnail_url) await cache.put(cacheKey, response.clone());
   return response;
 }
 
