@@ -587,7 +587,7 @@ header{background:rgba(10,10,9,.94);border-bottom:1px solid rgba(228,208,166,.18
 .social-video-label{min-height:48px}
 .social-video-label span{display:block;color:#9a743e;font-size:10px;font-weight:800;letter-spacing:2px}
 .social-video-label h3{margin:4px 0 0;color:#2b261e;font-family:'Noto Serif TC',serif;font-size:17px;letter-spacing:.04em}
-.social-video-frame{width:100%;position:relative;overflow:hidden;background:#111;border:1px solid #332a1d;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center}
+.social-video-frame{width:100%;position:relative;overflow:hidden;background:#111;border:1px solid #332a1d;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;overflow-anchor:none}
 .social-video-frame iframe{display:block;width:100%;height:100%;border:0}
 .social-video-youtube{aspect-ratio:16/9}
 .social-video-tiktok iframe{width:auto;height:100%;max-width:100%;aspect-ratio:9/16;flex:0 1 auto}
@@ -951,6 +951,16 @@ header{background:rgba(10,10,9,.94);border-bottom:1px solid rgba(228,208,166,.18
 #social-media .social-video-loading.social-video-error{display:flex;flex-direction:column;gap:10px;color:#fff}
 #social-media .social-video-loading button{padding:9px 14px;border:1px solid #fff;border-radius:20px;background:transparent;color:#fff;cursor:pointer}
 @media(max-width:760px){#social-media .social-links-under-title{gap:8px;margin:14px auto 8px}#social-media .social-links-under-title a{min-height:38px;padding:8px 12px;font-size:13px}#social-media .video-facade-play{min-height:150px}}
+</style><style id="yichen-video-overlay-v1">
+#social-media .social-video-frame{position:relative}
+#social-media .video-expand-button{position:absolute;z-index:3;top:8px;right:8px;border:1px solid rgba(255,255,255,.7);border-radius:999px;background:rgba(0,0,0,.78);color:#fff;padding:8px 12px;font-size:12px;font-weight:700;cursor:pointer}
+.yichen-video-overlay{position:fixed;inset:0;z-index:2147483000;background:rgba(0,0,0,.96);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:58px 14px 20px;box-sizing:border-box}
+.yichen-video-overlay-close{position:absolute;top:max(12px,env(safe-area-inset-top));right:14px;z-index:2;border:1px solid rgba(255,255,255,.65);border-radius:999px;background:#242424;color:#fff;padding:10px 16px;font-size:14px;font-weight:700}
+.yichen-video-overlay-stage{width:min(100%,1200px);aspect-ratio:16/9;max-height:78dvh;background:#000;display:flex;align-items:center;justify-content:center}
+.yichen-video-overlay-stage.is-tiktok{width:auto;height:min(78dvh,850px);max-width:100%;aspect-ratio:9/16}
+.yichen-video-overlay-stage iframe{display:block;width:100%;height:100%;border:0}
+.yichen-video-overlay-title{max-width:100%;color:#fff;text-align:center;font-size:14px;line-height:1.5}
+@media(max-width:600px){.yichen-video-overlay{padding:58px 8px 18px}.yichen-video-overlay-stage{width:100%;max-height:72dvh}.yichen-video-overlay-stage.is-tiktok{width:auto;height:72dvh;max-width:100%}}
 </style></head>
 <body><div class="topline"></div>
 <header><nav class="nav" id="nav"><a class="brand" href="#home"><img alt="億辰企業徽章：辰字古金圓徽" src="/assets/yichen-brand-emblem.jpg?rev=20261128-3" loading="eager" decoding="async" fetchpriority="high"/><span class="brand-name"><strong>億辰不動產集團</strong></span></a><div class="links"><a href="#about">關於億辰</a><a href="#culture">徽章與企業文化</a><a href="#services">專業服務</a><a href="#method">服務流程</a><a href="#insight">市場觀點</a><a href="#qa">常見問題</a><div class="nav-dropdown"><button aria-expanded="false" class="nav-drop-trigger" type="button">房產相關 <span aria-hidden="true">⌄</span></button><div class="nav-drop-menu"><a href="#property-search">找房專區</a><a href="#property-tools">房產工具專區</a><a href="#mortgage-center">房貸試算</a><a href="#land-efficiency-tool">土地坪效試算</a><a href="#resource-government">政府專區</a><a href="#resource-urban-renewal">各縣市都市更新專區</a><a href="#resource-disaster">防災與嫌惡設施專區</a><a href="#resource-private">民間專區</a><a href="#tax-center">稅務試算</a></div></div><a href="#social-media">社群媒體</a></div><a class="nav-cta" href="#contact">預約房產諮詢</a><button aria-label="開啟選單" class="menu" id="menu">☰</button></nav></header>
@@ -1163,18 +1173,45 @@ async function loadOneVideoMetadata(box){
  function stopOtherPlayers(current){activeRequest++;root.querySelectorAll('.social-video-frame iframe').forEach(frame=>{const box=frame.closest('.social-video-frame');if(box&&box!==current)poster(box)});activeBox=current}
  function loading(box,msg){const el=document.createElement('div');el.className='social-video-loading';el.textContent=msg;box.replaceChildren(el)}
  function showError(box,message){const el=document.createElement('div');el.className='social-video-loading social-video-error';const text=document.createElement('span');text.textContent=message;const retry=document.createElement('button');retry.type='button';retry.className='video-facade-retry';retry.textContent='重新載入';retry.addEventListener('click',()=>poster(box));el.append(text,retry);box.replaceChildren(el);delete box.dataset.playerLoading;box.dataset.playerError='1'}
- function mountYouTube(box){if(box.dataset.playerLoaded==='1')return;stopOtherPlayers(box);const id=box.dataset.youtubeVideoId,title=box.dataset.videoTitle||'YouTube 影片';const iframe=document.createElement('iframe');iframe.src='https://www.youtube-nocookie.com/embed/'+encodeURIComponent(id)+'?autoplay=1&rel=0&playsinline=1';iframe.title=title;iframe.loading='eager';iframe.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';iframe.allowFullscreen=true;iframe.referrerPolicy='strict-origin-when-cross-origin';box.replaceChildren(iframe);box.dataset.playerLoaded='1'}
- async function mountTikTok(box){if(box.dataset.playerLoaded==='1'||box.dataset.playerLoading==='1')return;stopOtherPlayers(box);const request=activeRequest;box.dataset.playerLoading='1';loading(box,'正在連接 TikTok 播放器…');const short=box.dataset.tiktokShortUrl,title=box.dataset.tiktokTitle||'TikTok 影片';try{const key='yichen_tiktok_player_id_v3:'+short;let id='';try{id=localStorage.getItem(key)||''}catch(e){}if(!/^\d{8,}$/.test(id)){const canonical=await resolveCanonical(short);id=videoIdFrom(canonical)||'';if(!id){const data=JSON.parse(await readText('https://www.tiktok.com/oembed?url='+encodeURIComponent(canonical)));id=data.embed_product_id||videoIdFrom(data.html)||''}if(/^\d{8,}$/.test(id)){try{localStorage.setItem(key,id)}catch(e){}}}if(request!==activeRequest||activeBox!==box)return;if(!/^\d{8,}$/.test(id))throw new Error('TikTok 影片 ID 無效');const iframe=document.createElement('iframe');iframe.src='https://www.tiktok.com/player/v1/'+id+'?autoplay=1&force_muted=0&controls=1&description=1&music_info=1&rel=0';iframe.title=title;iframe.loading='eager';iframe.allow='accelerometer; autoplay; clipboard-write; encrypted-media; fullscreen; gyroscope; picture-in-picture; web-share';iframe.allowFullscreen=true;iframe.referrerPolicy='strict-origin-when-cross-origin';const onTikTokMessage=event=>{if(event.source!==iframe.contentWindow)return;const data=event.data;if(data&&data['x-tiktok-player']===true&&data.type==='onPlayerReady'){iframe.contentWindow.postMessage({type:'unMute','x-tiktok-player':true},'*')}};iframe.__yichenTikTokMessageHandler=onTikTokMessage;window.addEventListener('message',onTikTokMessage);box.replaceChildren(iframe);box.dataset.playerLoaded='1'}catch(err){if(request===activeRequest&&activeBox===box)showError(box,'TikTok 站內播放器暫時無法載入，請稍後重試。影片不會跳轉離開本網站。')}}
- let videoScrollSnapshot=null;
- function rememberVideoScroll(){videoScrollSnapshot={top:window.scrollY||window.pageYOffset||0,width:window.innerWidth,height:window.innerHeight,sawHidden:false,sawViewportChange:false};}
- function restoreVideoScroll(){const saved=videoScrollSnapshot;if(!saved)return;videoScrollSnapshot=null;const top=saved.top;requestAnimationFrame(()=>{window.scrollTo({left:0,top,behavior:'instant'});requestAnimationFrame(()=>window.scrollTo(0,top))});}
- document.addEventListener('visibilitychange',()=>{if(!videoScrollSnapshot)return;if(document.visibilityState==='hidden')videoScrollSnapshot.sawHidden=true;else if(videoScrollSnapshot.sawHidden)setTimeout(restoreVideoScroll,80)});
- document.addEventListener('fullscreenchange',()=>{if(!document.fullscreenElement&&videoScrollSnapshot)setTimeout(restoreVideoScroll,60)});
- document.addEventListener('webkitfullscreenchange',()=>{if(!document.webkitFullscreenElement&&videoScrollSnapshot)setTimeout(restoreVideoScroll,60)});
- window.addEventListener('resize',()=>{const saved=videoScrollSnapshot;if(!saved)return;const changed=Math.abs(window.innerHeight-saved.height)>Math.max(120,saved.height*.18)||Math.abs(window.innerWidth-saved.width)>Math.max(120,saved.width*.18);if(changed)saved.sawViewportChange=true;else if(saved.sawViewportChange)setTimeout(restoreVideoScroll,80)});
- window.addEventListener('pageshow',()=>{if(videoScrollSnapshot?.sawHidden)setTimeout(restoreVideoScroll,80)});
+ function addExpandButton(box,iframe){
+   const btn=document.createElement('button');
+   btn.type='button';btn.className='video-expand-button';btn.textContent='⛶ 放大播放';
+   btn.setAttribute('aria-label','放大影片');
+   btn.addEventListener('click',()=>openVideoOverlay(box,iframe));
+   box.append(btn);
+ }
+ function openVideoOverlay(box,iframe){
+   if(!iframe||!iframe.isConnected||document.querySelector('.yichen-video-overlay'))return;
+   const placeholder=document.createComment('yichen-video-origin');
+   iframe.parentNode.insertBefore(placeholder,iframe);
+   const overlay=document.createElement('div');
+   overlay.className='yichen-video-overlay';
+   overlay.setAttribute('role','dialog');overlay.setAttribute('aria-modal','true');
+   overlay.setAttribute('aria-label',(box.dataset.videoTitle||box.dataset.tiktokTitle||'影片')+'放大播放');
+   const close=document.createElement('button');
+   close.type='button';close.className='yichen-video-overlay-close';close.textContent='✕ 關閉';
+   close.setAttribute('aria-label','關閉放大播放');
+   const stage=document.createElement('div');stage.className='yichen-video-overlay-stage';
+   if(box.classList.contains('social-video-tiktok'))stage.classList.add('is-tiktok');
+   const title=document.createElement('div');title.className='yichen-video-overlay-title';
+   title.textContent=box.dataset.videoTitle||box.dataset.tiktokTitle||'影片';
+   const finish=()=>{
+     if(!overlay.isConnected)return;
+     if(placeholder.parentNode)placeholder.parentNode.insertBefore(iframe,placeholder);
+     placeholder.remove();overlay.remove();
+     document.removeEventListener('keydown',onKey);
+   };
+   const onKey=e=>{if(e.key==='Escape')finish()};
+   close.addEventListener('click',finish);
+   overlay.addEventListener('click',e=>{if(e.target===overlay)finish()});
+   document.addEventListener('keydown',onKey);
+   stage.append(iframe);overlay.append(close,stage,title);document.body.append(overlay);
+   close.focus({preventScroll:true});
+ }
+ function mountYouTube(box){if(box.dataset.playerLoaded==='1')return;stopOtherPlayers(box);const id=box.dataset.youtubeVideoId,title=box.dataset.videoTitle||'YouTube 影片';const iframe=document.createElement('iframe');iframe.src='https://www.youtube-nocookie.com/embed/'+encodeURIComponent(id)+'?autoplay=1&rel=0&playsinline=1&fs=0';iframe.title=title;iframe.loading='eager';iframe.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';iframe.allowFullscreen=false;iframe.referrerPolicy='strict-origin-when-cross-origin';box.replaceChildren(iframe);box.dataset.playerLoaded='1';addExpandButton(box,iframe)}
+ async function mountTikTok(box){if(box.dataset.playerLoaded==='1'||box.dataset.playerLoading==='1')return;stopOtherPlayers(box);const request=activeRequest;box.dataset.playerLoading='1';loading(box,'正在連接 TikTok 播放器…');const short=box.dataset.tiktokShortUrl,title=box.dataset.tiktokTitle||'TikTok 影片';try{const key='yichen_tiktok_player_id_v3:'+short;let id='';try{id=localStorage.getItem(key)||''}catch(e){}if(!/^\d{8,}$/.test(id)){const canonical=await resolveCanonical(short);id=videoIdFrom(canonical)||'';if(!id){const data=JSON.parse(await readText('https://www.tiktok.com/oembed?url='+encodeURIComponent(canonical)));id=data.embed_product_id||videoIdFrom(data.html)||''}if(/^\d{8,}$/.test(id)){try{localStorage.setItem(key,id)}catch(e){}}}if(request!==activeRequest||activeBox!==box)return;if(!/^\d{8,}$/.test(id))throw new Error('TikTok 影片 ID 無效');const iframe=document.createElement('iframe');iframe.src='https://www.tiktok.com/player/v1/'+id+'?autoplay=1&force_muted=0&controls=1&fullscreen_button=0&description=1&music_info=1&rel=0';iframe.title=title;iframe.loading='eager';iframe.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';iframe.allowFullscreen=false;iframe.referrerPolicy='strict-origin-when-cross-origin';const onTikTokMessage=event=>{if(event.source!==iframe.contentWindow)return;const data=event.data;if(data&&data['x-tiktok-player']===true&&data.type==='onPlayerReady'){iframe.contentWindow.postMessage({type:'unMute','x-tiktok-player':true},'*')}};iframe.__yichenTikTokMessageHandler=onTikTokMessage;window.addEventListener('message',onTikTokMessage);box.replaceChildren(iframe);box.dataset.playerLoaded='1';addExpandButton(box,iframe)}catch(err){if(request===activeRequest&&activeBox===box)showError(box,'TikTok 站內播放器暫時無法載入，請稍後重試。影片不會跳轉離開本網站。')}}
  loadVideoTitles();
- root.addEventListener('click',e=>{const btn=e.target.closest('.video-facade-play');if(!btn||!root.contains(btn))return;const box=btn.closest('.social-video-frame');if(!box)return;rememberVideoScroll();if(box.dataset.youtubeVideoId)mountYouTube(box);else if(box.dataset.tiktokShortUrl)mountTikTok(box)});
+ root.addEventListener('click',e=>{const btn=e.target.closest('.video-facade-play');if(!btn||!root.contains(btn))return;const box=btn.closest('.social-video-frame');if(!box)return;if(box.dataset.youtubeVideoId)mountYouTube(box);else if(box.dataset.tiktokShortUrl)mountTikTok(box)});
  // Initial markup intentionally contains no video iframe; players are created only after a click.
 })();
 </script></section>
