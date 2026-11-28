@@ -28,7 +28,7 @@ test('players are created on click and only one is active',()=>{
 });
 test('video cards retrieve their real titles from platform metadata',()=>{
  assert.match(social,/youtube\.com\/oembed\?url=/);
- assert.match(social,/tiktok\.com\/oembed\?url=/);
+ assert.match(social,/api\/tiktok-metadata\?url=/);
  assert.match(social,/applyVideoTitle\(box,metadata\.title\)/);
 });
 test('TikTok player enables sound and requests unmute when ready',()=>{
@@ -57,12 +57,20 @@ test('video titles keep only the first segment and remove hashtags',()=>{
  assert.ok(code.includes('withoutLeadingTags.split(/\\s+#/u)[0]'));
  assert.ok(code.includes("replace(/#[\\p{L}\\p{N}_]+/gu,'')"));
 });
-test('TikTok cards load and restore real thumbnail images',()=>{
- assert.match(html,/metadata\?\.thumbnail_url\)applyVideoThumbnail\(box,metadata\.thumbnail_url\)/);
- assert.match(html,/meta\[property="og:image"\]/);
- assert.match(html,/box\.dataset\.tiktokThumbnailUrl/);
+test('TikTok cards use server metadata for real titles and thumbnails',()=>{
+ assert.match(html,/api\/tiktok-metadata\?url=/);
+ assert.match(html,/metadata\?\.ok&&metadata\.title\)applyVideoTitle\(box,metadata\.title\)/);
+ assert.match(html,/metadata\?\.ok&&metadata\.thumbnail_url\)applyVideoThumbnail\(box,metadata\.thumbnail_url\)/);
  assert.match(html,/box\.dataset\.tiktokThumbnailUrl/);
  assert.match(html,/has-tiktok-thumbnail/);
+});
+test('server-side TikTok metadata endpoint resolves public titles and covers',()=>{
+ const endpoint=readFileSync(resolve(here,'../functions/api/tiktok-metadata.js'),'utf8');
+ assert.match(endpoint,/https:\/\/www\.tikwm\.com\/api\//);
+ assert.match(endpoint,/method: "POST"/);
+ assert.match(endpoint,/data\.title \|\| data\.desc/);
+ assert.match(endpoint,/data\.cover \|\| data\.origin_cover/);
+ assert.match(endpoint,/caches\.default/);
 });
 test('page title ends immediately after the version number',()=>{
  const match=html.match(/<title>億辰不動產集團｜V[0-9]+(?:\.[0-9]+)*<\/title>/);
