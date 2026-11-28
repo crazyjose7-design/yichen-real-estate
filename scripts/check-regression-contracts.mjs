@@ -25,6 +25,15 @@ const checks = [
   ["County selector retained", html.includes('id="le-city-select"')],
 ];
 
+  ["Homepage social preview image configured", html.includes('property="og:image"') && html.includes('name="twitter:image"') && html.includes('name="twitter:card" content="summary_large_image"')],
+  ["Official land result panel added", html.includes('id="le-official-out-base"') && html.includes('id="le-official-out-approved"')],
+  ["User estimate panel explicitly separated", html.includes("B. 使用者自行輸入預估情境結果")],
+  ["Manual FAR input is labelled as an assumption", html.includes("使用者自行輸入的法定容積率假設（%）")],
+  ["Official FAR requires verified status, source and date", html.includes("const officialValid=written&&officialFar!==null&&officialFar>0&&source!==''&&date!==''")],
+  ["Approved area requires approval status, permit and date", html.includes("const approvedValid=approved&&((approvedSqm!==null&&approvedSqm>0)||(approvedFar!==null&&approvedFar>0))&&permit!==''&&date!==''")],
+  ["Official calculation does not use manual reward totals", html.includes("const statutoryPing=officialValid?areaPing*officialFar/100:null;") && html.includes("const approvedPing=approvedValid?")],
+  ["Official result refreshes when source fields change", html.includes("['le-official-status','le-official-far','le-approved-far','le-approved-fa','le-permit-no','le-doc-date','le-doc-source'")],
+  ["All inline JavaScript parses", [...html.matchAll(/<script\\b[^>]*>([\\s\\S]*?)<\\/script>/gi)].every(match => { try { new Function(match[1]); return true; } catch { return false; } })],
 for (const [name, ok] of checks) {
   console.log((ok ? "PASS " : "FAIL ") + name);
   assert.ok(ok, name);
