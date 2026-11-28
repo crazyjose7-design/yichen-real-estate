@@ -4,6 +4,7 @@ import assert from "node:assert/strict";
 const html = await readFile(new URL("../index.html", import.meta.url), "utf8");
 const api = await readFile(new URL("../functions/api/tiktok-metadata.js", import.meta.url), "utf8");
 const headers = await readFile(new URL("../_headers", import.meta.url), "utf8");
+const manifest = JSON.parse(await readFile(new URL("../site.webmanifest", import.meta.url), "utf8"));
 const metadata = JSON.parse(await readFile(new URL("../assets/video-metadata.json", import.meta.url), "utf8"));
 const count = (value, needle) => value.split(needle).length - 1;
 const videoCards = [...html.matchAll(/<article\b[^>]*class="[^"]*social-video-card[^"]*"[^>]*>[\s\S]*?<\/article>/g)].map(match => match[0]);
@@ -11,6 +12,8 @@ const videoCards = [...html.matchAll(/<article\b[^>]*class="[^"]*social-video-ca
 const checks = [
   ["UTF-8 document declaration", html.includes('<meta charset="utf-8"/>')],
   ["Exact document title", html.includes("<title>億辰不動產集團</title>")],
+  ["Browser and Apple app names use exact Chinese brand", html.includes('<meta name="application-name" content="億辰不動產集團"/>') && html.includes('<meta name="apple-mobile-web-app-title" content="億辰不動產集團"/>')],
+  ["Web app shortcut name and short name use exact Chinese brand", manifest.name === "億辰不動產集團" && manifest.short_name === "億辰不動產集團" && manifest.start_url === "/" && manifest.scope === "/" && manifest.icons.some(icon => icon.src === "/assets/yichen-favicon.svg" && icon.sizes === "512x512")],
   ["Open Graph title kept in sync", html.includes('property="og:title" content="億辰不動產集團"')],
   ["Twitter title kept in sync", html.includes('name="twitter:title" content="億辰不動產集團"')],
   ["Homepage hero title preserved", html.includes("<h1>看見不動產的<br/><em>真正價值。</em></h1>")],
