@@ -89,3 +89,12 @@ test('TikTok metadata requests are serialized to respect provider rate limits an
  assert.match(code,/30\*60\*1000/);
  assert.doesNotMatch(code,/Promise\.all\(cards\.map/);
 });
+
+test('TikTok metadata endpoint has an independent public-page fallback',()=>{
+ const endpoint=readFileSync(resolve(here,'../functions/api/tiktok-metadata.js'),'utf8');
+ assert.match(endpoint,/fetch\(videoUrl,[\s\S]*redirect: "follow"/);
+ assert.match(endpoint,/extractMeta\(html, \["og:title", "twitter:title"\]\)/);
+ assert.match(endpoint,/extractMeta\(html, \["og:image", "twitter:image"\]\)/);
+ assert.match(endpoint,/extractEmbeddedValue\(html/);
+ assert.match(endpoint,/TikTok page HTTP/);
+});
