@@ -3,6 +3,7 @@ import assert from "node:assert/strict";
 
 const html = await readFile(new URL("../index.html", import.meta.url), "utf8");
 const api = await readFile(new URL("../functions/api/tiktok-metadata.js", import.meta.url), "utf8");
+const headers = await readFile(new URL("../_headers", import.meta.url), "utf8");
 const count = (value, needle) => value.split(needle).length - 1;
 
 const checks = [
@@ -17,6 +18,10 @@ const checks = [
   ["Custom saleable factor reset remains empty", html.includes("$('le-custom-eff').value=''")],
   ["TikTok featured card 02 uses isolated direct metadata", html.includes('data-tiktok-metadata-direct="1"') && html.includes("const directCard=box.dataset.tiktokMetadataDirect==='1'") && html.includes("yichen_tiktok_metadata_v4:")],
   ["TikTok featured card 02 uses same-origin endpoint before short-link resolver", html.indexOf("readText('/api/tiktok-metadata?url='+encodeURIComponent(shortUrl),18000)") < html.indexOf("canonical=await resolveCanonical(shortUrl)")],
+
+  ["HTML response explicitly declares UTF-8", headers.includes("/\\n  Content-Type: text/html; charset=utf-8") && headers.includes("/index.html\\n  Content-Type: text/html; charset=utf-8")],
+  ["Homepage icon and social preview URLs cache-busted", html.includes("yichen-favicon.svg?rev=20261128-2") && html.includes("yichen-og-cover.svg?rev=20261128-2")],
+  ["Custom factor empty selection has a clear blocking message", html.includes("你已選擇「自訂可出售面積換算比例」，請自行輸入比例；留白不會自動套用1.3或其他預設值。")],
   ["Homepage social preview image configured", html.includes('property="og:image"') && html.includes('name="twitter:image"') && html.includes('name="twitter:card" content="summary_large_image"')],
   ["Homepage favicon configured", html.includes('rel="icon" type="image/svg+xml" href="/assets/yichen-favicon.svg"')],
   ["Three featured TikTok videos retained", (html.match(/data-tiktok-title="TikTok 精選影片 0[1-3]"/g) || []).length === 3],
