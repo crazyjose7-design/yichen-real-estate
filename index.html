@@ -1218,6 +1218,58 @@ async function loadOneVideoMetadata(box){
  }
  document.addEventListener('fullscreenchange',handleVideoFullscreenChange);
  document.addEventListener('webkitfullscreenchange',handleVideoFullscreenChange);
+ // TikTok's cross-origin player does not expose a fullscreen-exit callback.
+ // Preserve the page position when its iframe takes focus, then correct only
+ // when focus returns to the page after the player has been dismissed.
+ let tiktokFocusScrollSnapshot=null;
+ function captureTikTokFocusPosition(){
+   if(!activeBox||!activeBox.dataset.tiktokShortUrl)return;
+   const iframe=activeBox.querySelector('iframe');
+   if(!iframe||document.activeElement!==iframe)return;
+   tiktokFocusScrollSnapshot={box:activeBox,iframe,y:window.scrollY};
+ }
+ root.addEventListener('focusin',captureTikTokFocusPosition);
+ window.addEventListener('blur',captureTikTokFocusPosition);
+ function restoreTikTokFocusPosition(){
+   const snapshot=tiktokFocusScrollSnapshot;
+   if(!snapshot||snapshot.box!==activeBox||!snapshot.iframe.isConnected)return;
+   if(document.fullscreenElement||document.webkitFullscreenElement)return;
+   let stableFrames=0,checkedFrames=0;
+   let lastHeight=window.innerHeight;
+   let lastVisualHeight=window.visualViewport?window.visualViewport.height:0;
+   function waitForTikTokViewport(){
+     if(document.fullscreenElement||document.webkitFullscreenElement)return;
+     const visualHeight=window.visualViewport?window.visualViewport.height:0;
+     if(window.innerHeight===lastHeight&&visualHeight===lastVisualHeight){
+       stableFrames++;
+     }else{
+       stableFrames=0;
+       lastHeight=window.innerHeight;
+       lastVisualHeight=visualHeight;
+     }
+     checkedFrames++;
+     if(stableFrames>=3||checkedFrames>=30){
+       if(Math.abs(window.scrollY-snapshot.y)>2){
+         const rootStyle=document.documentElement.style;
+         const previousScrollBehavior=rootStyle.scrollBehavior;
+         rootStyle.scrollBehavior='auto';
+         window.scrollTo(0,snapshot.y);
+         rootStyle.scrollBehavior=previousScrollBehavior;
+       }
+       tiktokFocusScrollSnapshot=null;
+       return;
+     }
+     requestAnimationFrame(waitForTikTokViewport);
+   }
+   requestAnimationFrame(waitForTikTokViewport);
+ }
+ window.addEventListener('focus',restoreTikTokFocusPosition);
+ document.addEventListener('fullscreenchange',()=>{
+   if(!document.fullscreenElement)restoreTikTokFocusPosition();
+ });
+ document.addEventListener('webkitfullscreenchange',()=>{
+   if(!document.webkitFullscreenElement)restoreTikTokFocusPosition();
+ });
  loadVideoTitles();
  root.addEventListener('click',e=>{const btn=e.target.closest('.video-facade-play');if(!btn||!root.contains(btn))return;const box=btn.closest('.social-video-frame');if(!box)return;if(box.dataset.youtubeVideoId)mountYouTube(box);else if(box.dataset.tiktokShortUrl)mountTikTok(box)});
  // Initial markup intentionally contains no video iframe; players are created only after a click.
