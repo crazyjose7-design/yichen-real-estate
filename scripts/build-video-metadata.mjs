@@ -42,7 +42,7 @@ for(const {0:card} of cards){
  if(t){
    const videoId=m.videoId||String(t[1].match(/(\d{8,})/)?.[1]||Date.now());
    const candidates=[...(m.thumbnailCandidates||[]),m.thumbnail].filter((v,i,a)=>v&&a.indexOf(v)===i);
-   const downloadSources=candidates.flatMap(candidate=>[candidate,"https://wsrv.nl/?url="+encodeURIComponent(candidate)]);
+   const downloadSources=candidates.flatMap(candidate=>[candidate,"https://images.weserv.nl/?url="+encodeURIComponent(candidate),"https://wsrv.nl/?url="+encodeURIComponent(candidate)]);
    let saved=false,lastError=null;
    for(const candidate of downloadSources){
      try{
