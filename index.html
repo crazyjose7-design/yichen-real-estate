@@ -1093,7 +1093,7 @@ async function loadVideoTitles(){
          if(metadata?.title)applyVideoTitle(box,metadata.title);
        }else if(box.dataset.tiktokShortUrl){
          const shortUrl=box.dataset.tiktokShortUrl;
-         const cacheKey='yichen_tiktok_metadata_v2:'+shortUrl;
+         const cacheKey='yichen_tiktok_metadata_v3:'+shortUrl;
          let metadata=null;
          try{
            const cached=JSON.parse(sessionStorage.getItem(cacheKey)||'null');
@@ -1124,7 +1124,7 @@ async function loadVideoTitles(){
                }
              }catch(fallbackError){console.warn('TikTok 備援 metadata 暫時無法取得',shortUrl,fallbackError)}
            }
-           try{sessionStorage.setItem(cacheKey,JSON.stringify({savedAt:Date.now(),data:metadata}))}catch(cacheError){}
+           if(metadata?.title&&metadata?.thumbnail_url){try{sessionStorage.setItem(cacheKey,JSON.stringify({savedAt:Date.now(),data:metadata}))}catch(cacheError){}}
          }
          if(metadata?.title)applyVideoTitle(box,metadata.title);
          if(metadata?.thumbnail_url)applyVideoThumbnail(box,metadata.thumbnail_url);
