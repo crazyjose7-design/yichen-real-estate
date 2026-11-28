@@ -1,0 +1,84 @@
+name: Delivery evidence gate
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  evidence-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Require delivery evidence and honest acceptance status
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const body = context.payload.pull_request.body || "";
+            const required = [
+              "授權範圍",
+              "實際 Git 差異",
+              "自動化測試",
+              "Cloudflare 部署",
+              "實際功能驗收",
+              "失敗與未解決事項",
+              "回歸測試條件變更說明"
+            ];
+            const missing = required.filter(h => !body.includes(h));
+            if (missing.length) {
+              core.setFailed("PR 缺少必要交付證據欄位：" + missing.join("、"));
+              return;
+            }
+
+            const section = (heading) => {
+              const start = body.indexOf(heading);
+              if (start < 0) return "";
+              const rest = body.slice(start + heading.length);
+              const next = rest.search(/^## /m);
+              return (next < 0 ? rest : rest.slice(0, next)).trim();
+            };
+            const placeholders = /填寫|待補|TODO|TBD|\[.*\]/i;
+            for (const h of ["授權範圍", "實際 Git 差異", "自動化測試", "Cloudflare 部署", "實際功能驗收", "失敗與未解決事項", "回歸測試條件變更說明"]) {
+              const value = section(h).replace(/^[-*]\s*.*$/gm, "").trim();
+              if (!value || placeholders.test(value)) {
+                core.setFailed("PR 欄位尚未提供實質內容：" + h);
+                return;
+              }
+            }
+
+            const acceptance = section("實際功能驗收");
+            const isPass = /\bPASS\b/.test(acceptance);
+            const isUnverified = /\bNOT VERIFIED\b/.test(acceptance);
+            if (isPass === isUnverified) {
+              core.setFailed("實際功能驗收必須且只能明確選擇 PASS 或 NOT VERIFIED。");
+              return;
+            }
+            if (isPass && !/https?:\/\//.test(acceptance)) {
+              core.setFailed("標記 PASS 必須附上可核對的實際驗收證據連結；否則請標記 NOT VERIFIED。");
+              return;
+            }
+
+            const deployment = section("Cloudflare 部署");
+            if (!/https?:\/\//.test(deployment) && !/未部署[：:].+/.test(deployment)) {
+              core.setFailed("Cloudflare 部署欄必須提供實際部署網址，或說明未部署及原因。");
+              return;
+            }
+
+            const { data: files } = await github.rest.pulls.listFiles({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number,
+              per_page: 100
+            });
+            const testFilesChanged = files.some(f =>
+              /(^|\/)(scripts\/.*test|scripts\/check-regression-contracts\.mjs|\.github\/workflows\/)/i.test(f.filename)
+            );
+            const testChangeNote = section("回歸測試條件變更說明");
+            if (testFilesChanged && /未修改/.test(testChangeNote)) {
+              core.setFailed("本 PR 修改了測試或 CI，必須交代原斷言、修改原因及獨立證據，不能填「未修改」。");
+              return;
+            }
+
+            core.info("Delivery evidence fields are present. This gate checks disclosure, not whether external evidence is truthful; reviewers must verify the linked artifacts and real-device acceptance.");
