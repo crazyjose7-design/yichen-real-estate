@@ -56,3 +56,8 @@ test('video titles keep only the first segment and remove hashtags',()=>{
  assert.match(code,/raw\.split\(\/\\s\+#\/u\)\[0\]/);
  assert.match(code,/replace\(\/#\[\\p\{L\}\\p\{N\}_\]\+\/gu,''\)/);
 });
+
+test('page title ends immediately after the version number',()=>{
+ const match=html.match(/<title>億辰不動產集團｜V[0-9]+(?:\\.[0-9]+)*<\\/title>/);
+ assert.ok(match,'page title contains brand and version only, with no suffix');
+});
