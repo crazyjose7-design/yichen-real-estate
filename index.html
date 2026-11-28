@@ -1081,7 +1081,8 @@ header{background:rgba(10,10,9,.94);border-bottom:1px solid rgba(228,208,166,.18
  }
 async function loadVideoTitles(){
    const cards=[...root.querySelectorAll('.social-video-youtube,.social-video-tiktok')];
-   await Promise.all(cards.map(async box=>{
+   let nextTikTokRequestAt=0;
+   for(const box of cards){
      try{
        if(box.dataset.youtubeVideoId){
          const videoUrl='https://www.youtube.com/watch?v='+encodeURIComponent(box.dataset.youtubeVideoId);
@@ -1091,13 +1092,26 @@ async function loadVideoTitles(){
          catch(firstError){metadata=JSON.parse(await readText('https://cors.tools/'+endpoint,12000))}
          if(metadata?.title)applyVideoTitle(box,metadata.title);
        }else if(box.dataset.tiktokShortUrl){
-         const endpoint='/api/tiktok-metadata?url='+encodeURIComponent(box.dataset.tiktokShortUrl);
-         const metadata=JSON.parse(await readText(endpoint,18000));
+         const shortUrl=box.dataset.tiktokShortUrl;
+         const cacheKey='yichen_tiktok_metadata_v1:'+shortUrl;
+         let metadata=null;
+         try{
+           const cached=JSON.parse(sessionStorage.getItem(cacheKey)||'null');
+           if(cached&&Date.now()-cached.savedAt<30*60*1000)metadata=cached.data;
+         }catch(cacheError){}
+         if(!metadata){
+           const wait=Math.max(0,nextTikTokRequestAt-Date.now());
+           if(wait)await new Promise(resolve=>setTimeout(resolve,wait));
+           nextTikTokRequestAt=Date.now()+1200;
+           const endpoint='/api/tiktok-metadata?url='+encodeURIComponent(shortUrl);
+           metadata=JSON.parse(await readText(endpoint,18000));
+           if(metadata?.ok){try{sessionStorage.setItem(cacheKey,JSON.stringify({savedAt:Date.now(),data:metadata}))}catch(cacheError){}}
+         }
          if(metadata?.ok&&metadata.title)applyVideoTitle(box,metadata.title);
          if(metadata?.ok&&metadata.thumbnail_url)applyVideoThumbnail(box,metadata.thumbnail_url);
        }
      }catch(error){console.warn('影片標題或縮圖資料暫時無法取得',box.dataset.youtubeVideoId||box.dataset.tiktokShortUrl,error)}
-   }));
+   }
  }
  async function readText(url,ms=10000){const c=new AbortController(),t=setTimeout(()=>c.abort(),ms);try{const r=await fetch(url,{signal:c.signal,redirect:'follow',cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);return await r.text()}finally{clearTimeout(t)}}
  async function resolveCanonical(shortUrl){
