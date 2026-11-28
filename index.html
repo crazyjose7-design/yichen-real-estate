@@ -1093,22 +1093,41 @@ async function loadVideoTitles(){
          if(metadata?.title)applyVideoTitle(box,metadata.title);
        }else if(box.dataset.tiktokShortUrl){
          const shortUrl=box.dataset.tiktokShortUrl;
-         const cacheKey='yichen_tiktok_metadata_v1:'+shortUrl;
+         const cacheKey='yichen_tiktok_metadata_v2:'+shortUrl;
          let metadata=null;
          try{
            const cached=JSON.parse(sessionStorage.getItem(cacheKey)||'null');
            if(cached&&Date.now()-cached.savedAt<30*60*1000)metadata=cached.data;
          }catch(cacheError){}
          if(!metadata){
-           const wait=Math.max(0,nextTikTokRequestAt-Date.now());
-           if(wait)await new Promise(resolve=>setTimeout(resolve,wait));
-           nextTikTokRequestAt=Date.now()+1200;
-           const endpoint='/api/tiktok-metadata?url='+encodeURIComponent(shortUrl);
-           metadata=JSON.parse(await readText(endpoint,18000));
-           if(metadata?.ok){try{sessionStorage.setItem(cacheKey,JSON.stringify({savedAt:Date.now(),data:metadata}))}catch(cacheError){}}
+           // Restore the previously accepted V6.3.1 path: resolve the short link,
+           // then ask TikTok oEmbed directly, with the known CORS proxy fallback.
+           const canonical=await resolveCanonical(shortUrl);
+           let oembed=null;
+           const endpoint='https://www.tiktok.com/oembed?url='+encodeURIComponent(canonical);
+           try{oembed=JSON.parse(await readText(endpoint,9000))}
+           catch(firstError){
+             try{oembed=JSON.parse(await readText('https://cors.tools/'+endpoint,12000))}
+             catch(proxyError){}
+           }
+           metadata={ok:true,title:oembed?.title||'',thumbnail_url:oembed?.thumbnail_url||''};
+           // Only use the same-origin metadata Function to fill missing fields.
+           if(!metadata.title||!metadata.thumbnail_url){
+             const wait=Math.max(0,nextTikTokRequestAt-Date.now());
+             if(wait)await new Promise(resolve=>setTimeout(resolve,wait));
+             nextTikTokRequestAt=Date.now()+1200;
+             try{
+               const fallback=JSON.parse(await readText('/api/tiktok-metadata?url='+encodeURIComponent(canonical),18000));
+               if(fallback?.ok){
+                 metadata.title=metadata.title||fallback.title||'';
+                 metadata.thumbnail_url=metadata.thumbnail_url||fallback.thumbnail_url||'';
+               }
+             }catch(fallbackError){console.warn('TikTok 備援 metadata 暫時無法取得',shortUrl,fallbackError)}
+           }
+           try{sessionStorage.setItem(cacheKey,JSON.stringify({savedAt:Date.now(),data:metadata}))}catch(cacheError){}
          }
-         if(metadata?.ok&&metadata.title)applyVideoTitle(box,metadata.title);
-         if(metadata?.ok&&metadata.thumbnail_url)applyVideoThumbnail(box,metadata.thumbnail_url);
+         if(metadata?.title)applyVideoTitle(box,metadata.title);
+         if(metadata?.thumbnail_url)applyVideoThumbnail(box,metadata.thumbnail_url);
        }
      }catch(error){console.warn('影片標題或縮圖資料暫時無法取得',box.dataset.youtubeVideoId||box.dataset.tiktokShortUrl,error)}
    }
