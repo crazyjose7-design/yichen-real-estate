@@ -12,7 +12,7 @@
 - 本 PR 的 GitHub Actions Checks：由 GitHub 本身顯示，不得以本地推測代替。
 
 ## Cloudflare 部署
-- Preview URL，或填寫「未部署」並說明原因：[請填寫]
+- Preview URL，或未部署原因：[請填寫]
 - Cloudflare deployment / build 紀錄：[請填寫]
 
 ## 實際功能驗收
