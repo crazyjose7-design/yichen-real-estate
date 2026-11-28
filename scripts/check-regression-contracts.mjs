@@ -6,7 +6,7 @@ const api = await readFile(new URL("../functions/api/tiktok-metadata.js", import
 const headers = await readFile(new URL("../_headers", import.meta.url), "utf8");
 const metadata = JSON.parse(await readFile(new URL("../assets/video-metadata.json", import.meta.url), "utf8"));
 const count = (value, needle) => value.split(needle).length - 1;
-const videoCards = [...html.matchAll(/<article\\b[^>]*class="[^"]*social-video-card[^"]*"[^>]*>[\\s\\S]*?<\\/article>/g)].map(match => match[0]);
+const videoCards = [...html.matchAll(/<article\b[^>]*class="[^"]*social-video-card[^"]*"[^>]*>[\s\S]*?<\/article>/g)].map(match => match[0]);
 
 const checks = [
   ["UTF-8 document declaration", html.includes('<meta charset="utf-8"/>')],
