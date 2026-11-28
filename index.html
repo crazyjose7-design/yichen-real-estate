@@ -1075,7 +1075,7 @@ header{background:rgba(10,10,9,.94);border-bottom:1px solid rgba(228,208,166,.18
    if(!btn)return;
    let img=btn.querySelector('img');
    if(!img){img=document.createElement('img');img.loading='lazy';img.decoding='async';img.width=480;img.height=360;btn.prepend(img)}
-   img.src=url;img.alt=(box.dataset.tiktokTitle||'TikTok')+'影片縮圖';
+   img.src=url;img.referrerPolicy='no-referrer';img.alt=(box.dataset.tiktokTitle||'TikTok')+'影片縮圖';
    img.onerror=()=>{img.remove();box.classList.remove('has-tiktok-thumbnail')};
    box.classList.add('has-tiktok-thumbnail');
  }
@@ -1083,34 +1083,22 @@ async function loadVideoTitles(){
    const cards=[...root.querySelectorAll('.social-video-youtube,.social-video-tiktok')];
    await Promise.all(cards.map(async box=>{
      try{
-       let endpoint;
        if(box.dataset.youtubeVideoId){
          const videoUrl='https://www.youtube.com/watch?v='+encodeURIComponent(box.dataset.youtubeVideoId);
-         endpoint='https://www.youtube.com/oembed?url='+encodeURIComponent(videoUrl)+'&format=json';
-       }else{
-         const canonical=await resolveCanonical(box.dataset.tiktokShortUrl);
-         endpoint='https://www.tiktok.com/oembed?url='+encodeURIComponent(canonical);
+         const endpoint='https://www.youtube.com/oembed?url='+encodeURIComponent(videoUrl)+'&format=json';
+         let metadata;
+         try{metadata=JSON.parse(await readText(endpoint,9000))}
+         catch(firstError){metadata=JSON.parse(await readText('https://cors.tools/'+endpoint,12000))}
+         if(metadata?.title)applyVideoTitle(box,metadata.title);
+       }else if(box.dataset.tiktokShortUrl){
+         const endpoint='/api/tiktok-metadata?url='+encodeURIComponent(box.dataset.tiktokShortUrl);
+         const metadata=JSON.parse(await readText(endpoint,18000));
+         if(metadata?.ok&&metadata.title)applyVideoTitle(box,metadata.title);
+         if(metadata?.ok&&metadata.thumbnail_url)applyVideoThumbnail(box,metadata.thumbnail_url);
        }
-       let metadata;
-       try{metadata=JSON.parse(await readText(endpoint,9000))}
-       catch(firstError){metadata=JSON.parse(await readText('https://cors.tools/'+endpoint,12000))}
-       if(metadata?.title)applyVideoTitle(box,metadata.title);
-       if(metadata?.thumbnail_url)applyVideoThumbnail(box,metadata.thumbnail_url);
-       if(box.dataset.tiktokShortUrl&&!metadata?.thumbnail_url){
-         try{
-           const canonical=await resolveCanonical(box.dataset.tiktokShortUrl);
-           const page=await readText('https://cors.tools/'+canonical,14000);
-           const doc=new DOMParser().parseFromString(page,'text/html');
-           const image=doc.querySelector('meta[property="og:image"]')?.content||doc.querySelector('meta[name="twitter:image"]')?.content;
-           const pageTitle=doc.querySelector('meta[property="og:title"]')?.content||doc.querySelector('meta[name="twitter:title"]')?.content;
-           if(image)applyVideoThumbnail(box,image);
-           if(pageTitle&&!metadata?.title)applyVideoTitle(box,pageTitle);
-         }catch(fallbackError){console.warn('TikTok 縮圖備援讀取失敗',box.dataset.tiktokShortUrl,fallbackError)}
-       }
-     }catch(error){console.warn('影片標題 metadata 暫時無法取得',box.dataset.youtubeVideoId||box.dataset.tiktokShortUrl,error)}
+     }catch(error){console.warn('影片標題或縮圖資料暫時無法取得',box.dataset.youtubeVideoId||box.dataset.tiktokShortUrl,error)}
    }));
  }
-
  async function readText(url,ms=10000){const c=new AbortController(),t=setTimeout(()=>c.abort(),ms);try{const r=await fetch(url,{signal:c.signal,redirect:'follow',cache:'no-store'});if(!r.ok)throw new Error('HTTP '+r.status);return await r.text()}finally{clearTimeout(t)}}
  async function resolveCanonical(shortUrl){
    const resolver='https://lnky.api.stanleymasinde.com/?url='+encodeURIComponent(shortUrl);
