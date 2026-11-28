@@ -58,6 +58,6 @@ test('video titles keep only the first segment and remove hashtags',()=>{
 });
 
 test('page title ends immediately after the version number',()=>{
- const match=html.match(/<title>億辰不動產集團｜V[0-9]+(?:\\.[0-9]+)*<\\/title>/);
+ const match=html.match(/<title>億辰不動產集團｜V[0-9]+(?:\.[0-9]+)*<\/title>/);
  assert.ok(match,'page title contains brand and version only, with no suffix');
 });
