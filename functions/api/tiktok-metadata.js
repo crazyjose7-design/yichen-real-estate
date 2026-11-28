@@ -65,7 +65,7 @@ export async function onRequestGet({ request }) {
       const title = extractMeta(html, ["og:title", "twitter:title"]);
       const thumbnail = extractMeta(html, ["og:image", "twitter:image"]);
       const canonical = pageResponse.url || videoUrl;
-      const videoId = (canonical.match(/\\/video\\/(\\d{8,})/) || [])[1] || "";
+      const videoId = canonical.split("/video/")[1]?.match(/^\d{8,}/)?.[0] || "";
       const embeddedTitle = extractEmbeddedValue(html, ["desc", "description", "title"]);
       const embeddedCover = extractEmbeddedValue(html, ["originCover", "cover", "dynamicCover"]);
       const pageData = normalize({
