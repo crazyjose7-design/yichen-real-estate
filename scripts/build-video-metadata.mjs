@@ -8,7 +8,7 @@ const clean = v => String(v || "").replace(/<[^>]*>/g," ").replace(/&amp;/g,"&")
 const esc = v => clean(v).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
 async function getYT(id) {
  const url="https://www.youtube.com/watch?v="+encodeURIComponent(id);
- const r=await fetch("https://www.youtube.com/oembed?url="+encodeURIComponent(url)+"&format=json",{headers:{"user-agent":"Mozilla/5.0"}});
+ const r=await fetch("https://www.youtube.com/oembed?url="+encodeURIComponent(url)+"&format=json",{headers:{"user-agent":"Mozilla/5.0"},signal:AbortSignal.timeout(20000)});
  if(!r.ok) throw Error("YouTube oEmbed "+id+" HTTP "+r.status);
  const d=await r.json(), title=clean(d.title).split("#")[0].trim(), thumbnail=d.thumbnail_url||"https://i.ytimg.com/vi/"+id+"/hqdefault.jpg";
  if(!title||!thumbnail) throw Error("Incomplete YouTube metadata "+id);
@@ -16,7 +16,7 @@ async function getYT(id) {
 }
 async function getTT(url) {
  const body=new URLSearchParams({url,hd:"1",web:"1"});
- const r=await fetch("https://www.tikwm.com/api/",{method:"POST",headers:{"content-type":"application/x-www-form-urlencoded; charset=UTF-8","user-agent":"Mozilla/5.0",origin:"https://www.tikwm.com",referer:"https://www.tikwm.com/"},body});
+ const r=await fetch("https://www.tikwm.com/api/",{method:"POST",headers:{"content-type":"application/x-www-form-urlencoded; charset=UTF-8","user-agent":"Mozilla/5.0",origin:"https://www.tikwm.com",referer:"https://www.tikwm.com/"},body,signal:AbortSignal.timeout(20000)});
  if(!r.ok) throw Error("TikWM HTTP "+r.status+" "+url);
  const d=(await r.json())?.data, title=clean(d?.title||d?.desc), thumbnail=d?.cover||d?.origin_cover||d?.ai_dynamic_cover||"";
  if(!title||!thumbnail) throw Error("TikWM incomplete metadata "+url);
