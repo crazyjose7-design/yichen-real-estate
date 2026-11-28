@@ -13,7 +13,7 @@ const checks = [
   ["Twitter title kept in sync", html.includes('name="twitter:title" content="億辰不動產集團 V6.3.3"')],
   ["Homepage hero title preserved", html.includes("<h1>看見不動產的<br/><em>真正價值。</em></h1>")],
 
-  ["Desktop brand version remains visible", html.includes(".brand-version{display:inline-flex!important;align-items:center;color:#e4d0a6;font-size:12px")],
+  ["Desktop navigation shows exact Chinese brand name and version in one line", html.includes('<span class="brand-name"><strong>億辰不動產集團</strong><small>YICHEN REAL ESTATE GROUP</small></span><span class="brand-version">V6.3.3</span>') && html.includes(".brand-name{display:block;flex:0 0 auto;white-space:nowrap}") && html.includes(".brand-version{display:inline-flex!important")],
   ["Custom factor input is embedded in the original coefficient field", html.includes('id="le-eff"') && html.includes('id="le-custom-eff" aria-label="自訂坪效換算係數"') && !html.includes('id="le-custom-wrap"')],
   ["Custom saleable factor reset remains empty", html.includes("$('le-custom-eff').value=''")],
   ["TikTok featured card 02 uses isolated direct metadata", html.includes('data-tiktok-metadata-direct="1"') && html.includes("const directCard=box.dataset.tiktokMetadataDirect==='1'") && html.includes("yichen_video_metadata_v5:tiktok:")],
