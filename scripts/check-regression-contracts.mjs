@@ -35,6 +35,10 @@ const checks = [
   ["Official result refreshes when source fields change", html.includes("['le-official-status','le-official-far','le-approved-far','le-approved-fa','le-permit-no','le-doc-date','le-doc-source'")],
   ["All inline JavaScript parses", [...html.matchAll(/<script\\b[^>]*>([\\s\\S]*?)<\\/script>/gi)].every(match => { try { new Function(match[1]); return true; } catch { return false; } })],
   ["Official result requires official land area", html.includes('id="le-official-area"') && html.includes("officialAreaSqm/3.305785")],
+  ["Homepage favicon configured", html.includes('rel="icon" type="image/svg+xml" href="/assets/yichen-favicon.svg"')],
+  ["Compact brand applies to phone and tablet widths", html.includes("@media(max-width:900px){") && html.includes(".brand-motto,.brand>span:not(.brand-version){display:none!important}")],
+  ["Mobile brand preserves emblem and version only", html.includes(".brand img{display:block!important;width:40px!important;height:40px!important}") && html.includes(".brand-version{display:inline-flex!important")],
+  ["Land PDF includes both official and estimate result panels", html.includes("officialResult=cardFor('A. 法定／官方核定結果')") && html.includes("estimateResult=cardFor('B. 使用者自行輸入預估情境結果')")],
 for (const [name, ok] of checks) {
   console.log((ok ? "PASS " : "FAIL ") + name);
   assert.ok(ok, name);
