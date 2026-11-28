@@ -46,5 +46,5 @@ if(data.length!==18||data.some(v=>!v.title||!v.thumbnail)) throw Error("18-recor
 let i=0; html=html.replace(re,()=>out[i++]); if(i!==18) throw Error("Failed to replace all video cards");
 await fs.writeFile(file,html,"utf8");
 await fs.mkdir("assets",{recursive:true});
-await fs.writeFile("assets/video-metadata.json",JSON.stringify({generatedAt:new Date().toISOString(),count:data.length,videos:data},null,2)+"\n");
+await fs.writeFile("assets/video-metadata.json",JSON.stringify({count:data.length,videos:data},null,2)+"\n");
 console.log("Static metadata generated for "+data.length+" videos.");
