@@ -6,6 +6,7 @@ const api = await readFile(new URL("../functions/api/tiktok-metadata.js", import
 const headers = await readFile(new URL("../_headers", import.meta.url), "utf8");
 const metadata = JSON.parse(await readFile(new URL("../assets/video-metadata.json", import.meta.url), "utf8"));
 const count = (value, needle) => value.split(needle).length - 1;
+const videoCards = [...html.matchAll(/<article\\b[^>]*class="[^"]*social-video-card[^"]*"[^>]*>[\\s\\S]*?<\\/article>/g)].map(match => match[0]);
 
 const checks = [
   ["UTF-8 document declaration", html.includes('<meta charset="utf-8"/>')],
@@ -25,7 +26,7 @@ const checks = [
   ["Custom factor empty selection has a clear blocking message", html.includes("你已選擇「自訂」坪效換算係數，請直接在同一欄位輸入係數；留白不會自動套用1.3或其他預設值。")],
   ["Homepage social preview image configured", html.includes('property="og:image"') && html.includes('name="twitter:image"') && html.includes('name="twitter:card" content="summary_large_image"')],
   ["Homepage favicon configured", html.includes('rel="icon" type="image/svg+xml" sizes="any" href="/assets/yichen-favicon.svg?rev=20261128-2"')],
-  ["All 18 videos have verified static titles and absolute thumbnail URLs", metadata.count === 18 && metadata.videos.length === 18 && metadata.videos.every(v => v.title && /^https:\/\//.test(v.thumbnail)) && !/YouTube 精選影片|TikTok 精選影片|TikTok 影片 0[1-9]/.test(html)],
+  ["All 18 videos have verified static titles and absolute thumbnail URLs", metadata.count === 18 && metadata.videos.length === 18 && metadata.videos.every(v => v.title && /^https:\/\//.test(v.thumbnail)) && videoCards.length === 18 && videoCards.every(card => !/YouTube 精選影片|TikTok 精選影片|TikTok 影片 0[1-9]/.test(card))],
   ["Three featured TikTok videos and all nine TikTok cards retained", count(html, "data-tiktok-short-url=") === 9 && count(html, "class=\"social-video-frame social-video-tiktok\"") === 9],
   ["All nine TikTok cards retained", count(html, "data-tiktok-short-url=") === 9],
   ["TikTok accepted canonical/oEmbed path retained", html.includes("canonical=await resolveCanonical(shortUrl);") && html.includes("https://www.tiktok.com/oembed?url=") && html.includes("const fallback=JSON.parse(await readText('/api/tiktok-metadata?url='+encodeURIComponent(canonical),18000))")],
