@@ -18,7 +18,7 @@ async function getTT(url) {
  const body=new URLSearchParams({url,hd:"1",web:"1"});
  const r=await fetch("https://www.tikwm.com/api/",{method:"POST",headers:{"content-type":"application/x-www-form-urlencoded; charset=UTF-8","user-agent":"Mozilla/5.0",origin:"https://www.tikwm.com",referer:"https://www.tikwm.com/"},body,signal:AbortSignal.timeout(20000)});
  if(!r.ok) throw Error("TikWM HTTP "+r.status+" "+url);
- const d=(await r.json())?.data, title=clean(d?.title||d?.desc), rawThumbnail=d?.cover||d?.origin_cover||d?.ai_dynamic_cover||"", thumbnail=rawThumbnail.startsWith("/")?"https://www.tikwm.com"+rawThumbnail:rawThumbnail;
+ const d=(await r.json())?.data, title=clean(d?.title||d?.desc).split("#")[0].trim(), rawThumbnail=d?.cover||d?.origin_cover||d?.ai_dynamic_cover||"", thumbnail=rawThumbnail.startsWith("/")?"https://www.tikwm.com"+rawThumbnail:rawThumbnail;
  if(!title||!thumbnail) throw Error("TikWM incomplete metadata "+url);
  return {title,thumbnail};
 }
