@@ -1,0 +1,19 @@
+{
+  "id": "/",
+  "name": "億辰不動產集團",
+  "short_name": "億辰不動產集團",
+  "description": "億辰不動產集團",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#11110f",
+  "theme_color": "#11110f",
+  "icons": [
+    {
+      "src": "/assets/yichen-favicon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

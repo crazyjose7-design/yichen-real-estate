@@ -1,0 +1,37 @@
+name: Refresh static video metadata
+on:
+  push:
+    branches: [release/v6.3.3-tiktok-only-2026-11-28]
+  workflow_dispatch:
+  schedule:
+    - cron: "17 2 * * *"
+permissions:
+  contents: write
+concurrency:
+  group: static-video-metadata
+  cancel-in-progress: false
+jobs:
+  refresh:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: release/v6.3.3-tiktok-only-2026-11-28
+          fetch-depth: 1
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Fetch and validate all 18 video titles and thumbnails
+        run: node scripts/build-video-metadata.mjs
+      - name: Commit static metadata for first paint
+        run: |
+          if git diff --quiet -- index.html assets/video-metadata.json; then
+            echo "No metadata changes."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html assets/video-metadata.json
+          git commit -m "Build static metadata for all homepage videos"
+          git push origin HEAD:release/v6.3.3-tiktok-only-2026-11-28
