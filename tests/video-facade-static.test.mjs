@@ -47,3 +47,12 @@ test('six official social links and publishing disclaimer are below the heading'
  assert.ok(title>=0&&links>title&&disclaimer>links&&videos>disclaimer);
  for(const label of ['YouTube','Threads','TikTok','抖音','Instagram','Facebook'])assert.equal((social.match(new RegExp('>'+label+'</a>','g'))||[]).length,1,label);
 });
+
+test('video titles keep only the first segment and remove hashtags',()=>{
+ const p=html.indexOf('function applyVideoTitle');
+ const q=html.indexOf('async function loadVideoTitles',p);
+ const code=html.slice(p,q);
+ assert.match(code,/split\('\\n'\)\[0\]/);
+ assert.match(code,/raw\.split\(\/\\s\+#\/u\)\[0\]/);
+ assert.match(code,/replace\(\/#\[\\p\{L\}\\p\{N\}_\]\+\/gu,''\)/);
+});
