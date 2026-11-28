@@ -41,7 +41,7 @@ jobs:
             };
             const placeholders = /填寫|待補|TODO|TBD|\[.*\]/i;
             for (const h of ["授權範圍", "實際 Git 差異", "自動化測試", "Cloudflare 部署", "實際功能驗收", "失敗與未解決事項", "回歸測試條件變更說明"]) {
-              const value = section(h).replace(/^[-*]\s*.*$/gm, "").trim();
+              const value = section(h).trim();
               if (!value || placeholders.test(value)) {
                 core.setFailed("PR 欄位尚未提供實質內容：" + h);
                 return;
@@ -76,7 +76,7 @@ jobs:
               /(^|\/)(scripts\/.*test|scripts\/check-regression-contracts\.mjs|\.github\/workflows\/)/i.test(f.filename)
             );
             const testChangeNote = section("回歸測試條件變更說明");
-            if (testFilesChanged && /未修改/.test(testChangeNote)) {
+            if (testFilesChanged && (/未修改/.test(testChangeNote) || !/https?:\\/\\//.test(testChangeNote))) {
               core.setFailed("本 PR 修改了測試或 CI，必須交代原斷言、修改原因及獨立證據，不能填「未修改」。");
               return;
             }
