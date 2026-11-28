@@ -53,7 +53,8 @@ test('video titles keep only the first segment and remove hashtags',()=>{
  const q=html.indexOf('async function loadVideoTitles',p);
  const code=html.slice(p,q);
  assert.ok(code.includes("split('\\n')[0]"));
- assert.ok(code.includes('raw.split(/\\s+#/u)[0]'));
+ assert.ok(code.includes("raw.replace(/^(?:\\s*#[\\p{L}\\p{N}_]+)+\\s*/u,'')"));
+ assert.ok(code.includes('withoutLeadingTags.split(/\\s+#/u)[0]'));
  assert.ok(code.includes("replace(/#[\\p{L}\\p{N}_]+/gu,'')"));
 });
 test('page title ends immediately after the version number',()=>{
