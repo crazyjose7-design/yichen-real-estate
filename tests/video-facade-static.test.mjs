@@ -52,9 +52,9 @@ test('video titles keep only the first segment and remove hashtags',()=>{
  const p=html.indexOf('function applyVideoTitle');
  const q=html.indexOf('async function loadVideoTitles',p);
  const code=html.slice(p,q);
- assert.ok(code.includes(String.raw\`split('\n')[0]\`));
- assert.ok(code.includes(String.raw\`raw.split(/\s+#/u)[0]\`));
- assert.ok(code.includes(String.raw\`replace(/#[\p{L}\p{N}_]+/gu,'')\`));
+ assert.ok(code.includes("split('\\n')[0]"));
+ assert.ok(code.includes('raw.split(/\\s+#/u)[0]'));
+ assert.ok(code.includes("replace(/#[\\p{L}\\p{N}_]+/gu,'')"));
 });
 test('page title ends immediately after the version number',()=>{
  const match=html.match(/<title>億辰不動產集團｜V[0-9]+(?:\.[0-9]+)*<\/title>/);
