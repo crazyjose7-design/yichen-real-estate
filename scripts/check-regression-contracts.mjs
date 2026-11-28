@@ -32,7 +32,7 @@ const checks = [
   ["Manual FAR input is labelled as an assumption", html.includes("使用者自行輸入的法定容積率假設（%）")],
   ["Official result requires official land area", html.includes('id="le-official-area"') && html.includes("officialAreaSqm/3.305785")],
   ["Official FAR requires verified status, source and date", html.includes("const officialValid=written&&officialAreaPing!==null&&officialFar!==null&&officialFar>0&&source!==''&&date!==''")],
-  ["Approved area requires approval status, permit and date", html.includes("const approvedValid=approved&&((approvedSqm!==null&&approvedSqm>0)||(officialAreaPing!==null&&approvedFar!==null&&approvedFar>0))&&permit!==''&&date!==''")],
+  ["Approved area requires approval status, permit and date", html.includes("const approvedValid=approved&&((approvedSqm!==null&&approvedSqm>0)||(officialAreaPing!==null&&approvedFar!==null&&approvedFar>0))&&permit!==''&&date!==''&&source!==''")],
   ["Official calculation excludes manual reward assumptions", html.includes("const statutoryPing=officialValid?officialAreaPing*officialFar/100:null;") && html.includes("const approvedPing=approvedValid?")],
   ["Official result refreshes when source fields change", html.includes("['le-official-status','le-official-area','le-official-far','le-approved-far','le-approved-fa','le-permit-no','le-doc-date','le-doc-source'")],
   ["Land PDF includes both official and estimate result panels", html.includes("officialResult=cardFor('A. 法定／官方核定結果')") && html.includes("estimateResult=cardFor('B. 使用者自行輸入預估情境結果')")],
