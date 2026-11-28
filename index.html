@@ -1250,7 +1250,7 @@ async function loadVideoTitles(){
 <div class="le-field"><label for="le-finance-cost-mode">貸款利息及資金成本</label><select id="le-finance-cost-mode"><option value="amount">金額（萬元）</option><option value="percent">預估銷售總收入百分比（%）</option></select><input id="le-finance-cost" min="0" placeholder="不知道請略過勿填" step="any" type="number"/><small>可填貸款利息及資金成本；選擇金額或預估銷售總收入百分比後輸入。未知可略過。</small></div>
 <div class="le-field"><label for="le-tax-market-cost-mode">稅費、銷售及管理費用</label><select id="le-tax-market-cost-mode"><option value="amount">金額（萬元）</option><option value="percent">預估銷售總收入百分比（%）</option></select><input id="le-tax-market-cost" min="0" placeholder="不知道請略過勿填" step="any" type="number"/><small>可填稅費、銷售及管理費用；選擇金額或預估銷售總收入百分比後輸入。未知可略過。</small></div>
 </div>
-</div><div class="le-actions"><button class="le-btn primary" id="le-calc" type="button">立即試算</button><button class="le-btn secondary" id="le-reset" type="button">恢復範例</button><button class="le-btn secondary" id="le-print" type="button">列印／存成 PDF</button></div></div><div class="le-card le-official-result-card"><h3>A. 法定／官方核定結果</h3><p class="le-muted">只採用已填入且符合查核條件的官方法定資料或核准文件。未核實的欄位不會帶入本區；官方資料不足時明確顯示尚未核實。</p><div class="le-results"><div class="le-result"><span>官方法定容積樓地板面積</span><strong id="le-official-out-base">尚未核實</strong><em>官方法定容積率 × 土地面積</em></div><div class="le-result"><span>個案已核准容積樓地板面積</span><strong id="le-official-out-approved">尚未核准／未提供</strong><em>只採核准文件所載面積或核准容積率</em></div><div class="le-result"><span>依官方／核准量體推估可出售面積</span><strong id="le-official-out-saleable">尚無可計算資料</strong><em>坪效係數仍屬使用者估算，不是官方核定坪數</em></div><div class="le-result"><span>依官方／核准量體推估銷售總收入</span><strong id="le-official-out-revenue">尚無可計算資料</strong><em>使用者輸入銷售單價 × 推估可出售面積</em></div></div><p class="le-warning" id="le-official-note">尚未提供可核對的官方法定容積資料。請展開上方「官方基地條件／核准量體查核紀錄」填寫資料來源、日期及官方數值。</p></div>
+</div><div class="le-actions"><button class="le-btn primary" id="le-calc" type="button">立即試算</button><button class="le-btn secondary" id="le-reset" type="button">恢復範例</button><button class="le-btn secondary" id="le-print" type="button">列印／存成 PDF</button></div></div><div class="le-card le-official-result-card"><h3>A. 法定／官方核定結果</h3><p class="le-muted">只採用使用者登錄的官方書面資料或核准文件數值，並檢查基地面積、查核狀態、資料來源、日期及核准文號是否完整；資料不足時明確顯示尚未核實。系統不會自動向主管機關驗證文件真偽或個案法規適用性。</p><div class="le-results"><div class="le-result"><span>官方法定容積樓地板面積</span><strong id="le-official-out-base">尚未核實</strong><em>官方法定容積率 × 土地面積</em></div><div class="le-result"><span>個案已核准容積樓地板面積</span><strong id="le-official-out-approved">尚未核准／未提供</strong><em>只採核准文件所載面積或核准容積率</em></div><div class="le-result"><span>依官方／核准量體推估可出售面積</span><strong id="le-official-out-saleable">尚無可計算資料</strong><em>坪效係數仍屬使用者估算，不是官方核定坪數</em></div><div class="le-result"><span>依官方／核准量體推估銷售總收入</span><strong id="le-official-out-revenue">尚無可計算資料</strong><em>使用者輸入銷售單價 × 推估可出售面積</em></div></div><p class="le-warning" id="le-official-note">尚未提供可核對的官方法定容積資料。請展開上方「官方基地條件／核准量體查核紀錄」填寫資料來源、日期及官方數值。</p></div>
 <div aria-live="polite" class="le-card"><h3>B. 使用者自行輸入預估情境結果</h3><p class="le-muted">以下結果依使用者自行輸入的法定容積假設、獎勵、容積移轉及坪效係數計算；未核准項目只代表假設情境，不代表主管機關核准。</p><div class="le-results">
 <div class="le-result"><span>土地面積（坪）</span><strong id="le-out-area">100.00</strong><em>已換算</em></div>
 <div class="le-result"><span>使用者輸入容積假設所計算的基礎樓地板面積</span><strong id="le-out-base">200.00 坪</strong><em>土地坪數 × 法定容積率</em></div>
@@ -1500,7 +1500,7 @@ const verificationFields={
   const source=String($('le-doc-source').value||'').trim(), date=String($('le-doc-date').value||'').trim(), permit=String($('le-permit-no').value||'').trim();
   const written=['已取得主管機關書面資料','已取得核准建照／核准計畫'].includes(status), approved=status==='已取得核准建照／核准計畫';
   const officialValid=written&&officialAreaPing!==null&&officialFar!==null&&officialFar>0&&source!==''&&date!=='';
-  const approvedValid=approved&&((approvedSqm!==null&&approvedSqm>0)||(officialAreaPing!==null&&approvedFar!==null&&approvedFar>0))&&permit!==''&&date!=='';
+  const approvedValid=approved&&((approvedSqm!==null&&approvedSqm>0)||(officialAreaPing!==null&&approvedFar!==null&&approvedFar>0))&&permit!==''&&date!==''&&source!=='';
   const statutoryPing=officialValid?officialAreaPing*officialFar/100:null;
   const approvedPing=approvedValid?(approvedSqm!==null?approvedSqm/3.305785:officialAreaPing*approvedFar/100):null;
   const sourcePing=approvedPing??statutoryPing, saleable=sourcePing!==null&&factor>0?sourcePing*factor:null;
@@ -1509,7 +1509,7 @@ const verificationFields={
   show('le-official-out-approved',approvedPing===null?'尚未核准／未提供':fmt(approvedPing)+' 坪');
   show('le-official-out-saleable',saleable===null?'尚無可計算資料':fmt(saleable)+' 坪');
   show('le-official-out-revenue',revenue===null?'尚未輸入銷售單價':fmt(revenue)+' 萬元');
-  let note='';if(!officialValid)note+='官方法定容積尚未核實：須選擇已取得主管機關書面資料或核准計畫，並填官方法定容積率、資料來源及日期。';
+  let note='本區依使用者登錄的官方書面資料／核准文件計算；系統不會自動向主管機關驗真，仍須人工確認文件效力、附款及法規適用。';if(!officialValid)note+=' 官方法定容積尚未核實：須選擇已取得主管機關書面資料或核准計畫，並填官方基地面積、官方法定容積率、資料來源及日期。';
   if(!approvedValid)note+=' 個案核准量體尚未核實：須選擇已取得核准建照／核准計畫，並填核准樓地板面積或核准容積率、核准文號及文件日期。';
   if(sourcePing!==null)note+=' 本區推估可出售面積仍使用上方坪效換算係數，該係數不是官方核定數字。';
   if(revenue===null)note+=' 尚未輸入有效銷售單價，因此不計算銷售收入。';show('le-official-note',note);
