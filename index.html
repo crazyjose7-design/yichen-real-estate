@@ -1048,7 +1048,8 @@ header{background:rgba(10,10,9,.94);border-bottom:1px solid rgba(228,208,166,.18
  const safeTikTokUrl=u=>{try{const x=new URL(u);return /(^|\.)tiktok\.com$/i.test(x.hostname)&&x.protocol==='https:'?x.href:null}catch{return null}};
  function applyVideoTitle(box,title){
    const raw=String(title||'').replace(/\r/g,'').split('\n')[0].trim();
-   const firstSegment=raw.split(/\s+#/u)[0].trim();\n   const clean=firstSegment.replace(/#[\p{L}\p{N}_]+/gu,'').replace(/\s+/g,' ').replace(/[，,、|｜·•\-–—:：;；]+$/u,'').trim();
+   const firstSegment=raw.split(/\s+#/u)[0].trim();
+   const clean=firstSegment.replace(/#[\p{L}\p{N}_]+/gu,'').replace(/\s+/g,' ').replace(/[，,、|｜·•\-–—:：;；]+$/u,'').trim();
    if(!clean)return;
    if(box.dataset.youtubeVideoId)box.dataset.videoTitle=clean;
    if(box.dataset.tiktokShortUrl)box.dataset.tiktokTitle=clean;
