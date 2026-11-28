@@ -1060,7 +1060,8 @@ header{background:rgba(10,10,9,.94);border-bottom:1px solid rgba(228,208,166,.18
    return firstSegment.replace(/#[\p{L}\p{N}_]+/gu,'').replace(/\s+/g,' ').replace(/[，,、|｜·•\-–—:：;；]+$/u,'').trim();
  }
  function applyVideoTitle(box,title){
-   const clean=cleanVideoTitle(title);
+   // Preserve YouTube titles verbatim (especially music Shorts); clean TikTok titles separately.
+   const clean=box.dataset.youtubeVideoId?String(title||'').replace(/\r/g,' ').replace(/\s+/g,' ').trim():cleanVideoTitle(title);
    if(!clean)return;
    if(box.dataset.youtubeVideoId)box.dataset.videoTitle=clean;
    if(box.dataset.tiktokShortUrl)box.dataset.tiktokTitle=clean;
