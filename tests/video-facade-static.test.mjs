@@ -26,6 +26,16 @@ test('players are created on click and only one is active',()=>{
  assert.match(social,/request!==activeRequest\|\|activeBox!==box/);
  assert.doesNotMatch(social,/visible\.forEach\(mount\)/);
 });
+test('video cards retrieve their real titles from platform metadata',()=>{
+ assert.match(social,/youtube\.com\/oembed\?url=/);
+ assert.match(social,/tiktok\.com\/oembed\?url=/);
+ assert.match(social,/applyVideoTitle\(box,metadata\.title\)/);
+});
+test('TikTok player enables sound and requests unmute when ready',()=>{
+ assert.match(social,/force_muted=0/);
+ assert.match(social,/type:'unMute'/);
+ assert.match(social,/data\.type==='onPlayerReady'/);
+});
 test('four resource anchors are connected to the menu',()=>{
  for(const id of ['resource-government','resource-urban-renewal','resource-disaster','resource-private']){
   assert.equal((html.match(new RegExp('id="'+id+'"','g'))||[]).length,1);
