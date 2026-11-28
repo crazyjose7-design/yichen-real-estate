@@ -12,7 +12,7 @@ async function getYT(id) {
  if(!r.ok) throw Error("YouTube oEmbed "+id+" HTTP "+r.status);
  const d=await r.json(), title=clean(d.title).split("#")[0].trim(), thumbnail=d.thumbnail_url||"https://i.ytimg.com/vi/"+id+"/hqdefault.jpg";
  if(!title||!thumbnail) throw Error("Incomplete YouTube metadata "+id);
- return {title,thumbnail,thumbnailCandidates:candidates,videoId:String(d?.id||"")};
+ return {title,thumbnail};
 }
 async function getTT(url) {
  const body=new URLSearchParams({url,hd:"1",web:"1"});
@@ -20,7 +20,7 @@ async function getTT(url) {
  if(!r.ok) throw Error("TikWM HTTP "+r.status+" "+url);
  const d=(await r.json())?.data, title=clean(d?.title||d?.desc).split("#")[0].trim(), candidates=[d?.cover,d?.origin_cover,d?.ai_dynamic_cover].filter(Boolean).map(v=>v.startsWith("/")?"https://www.tikwm.com"+v:v), thumbnail=candidates[0]||"";
  if(!title||!thumbnail) throw Error("TikWM incomplete metadata "+url);
- return {title,thumbnail};
+ return {title,thumbnail,thumbnailCandidates:candidates,videoId:String(d?.id||"")};
 }
 function apply(card,m,type){
  let x=card, t=esc(m.title);
