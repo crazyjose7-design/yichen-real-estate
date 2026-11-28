@@ -1199,7 +1199,7 @@ async function loadOneVideoMetadata(box){
   if(videoScrollSnapshot&&!document.webkitFullscreenElement)restoreVideoScroll();
  });
  window.addEventListener('blur',()=>{if(videoScrollSnapshot)videoScrollSnapshot.sawBlur=true;});
- window.addEventListener('focus',()=>{if(videoScrollSnapshot)restoreVideoScroll();});
+ window.addEventListener('focus',()=>{if(videoScrollSnapshot&&videoScrollSnapshot.sawBlur)restoreVideoScroll();});
  window.addEventListener('resize',()=>{
   const saved=videoScrollSnapshot;
   if(!saved)return;
