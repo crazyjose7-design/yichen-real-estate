@@ -12,13 +12,13 @@ async function getYT(id) {
  if(!r.ok) throw Error("YouTube oEmbed "+id+" HTTP "+r.status);
  const d=await r.json(), title=clean(d.title).split("#")[0].trim(), thumbnail=d.thumbnail_url||"https://i.ytimg.com/vi/"+id+"/hqdefault.jpg";
  if(!title||!thumbnail) throw Error("Incomplete YouTube metadata "+id);
- return {title,thumbnail};
+ return {title,thumbnail,thumbnailCandidates:candidates,videoId:String(d?.id||"")};
 }
 async function getTT(url) {
  const body=new URLSearchParams({url,hd:"1",web:"1"});
  const r=await fetch("https://www.tikwm.com/api/",{method:"POST",headers:{"content-type":"application/x-www-form-urlencoded; charset=UTF-8","user-agent":"Mozilla/5.0",origin:"https://www.tikwm.com",referer:"https://www.tikwm.com/"},body,signal:AbortSignal.timeout(20000)});
  if(!r.ok) throw Error("TikWM HTTP "+r.status+" "+url);
- const d=(await r.json())?.data, title=clean(d?.title||d?.desc).split("#")[0].trim(), rawThumbnail=d?.cover||d?.origin_cover||d?.ai_dynamic_cover||"", thumbnail=rawThumbnail.startsWith("/")?"https://www.tikwm.com"+rawThumbnail:rawThumbnail;
+ const d=(await r.json())?.data, title=clean(d?.title||d?.desc).split("#")[0].trim(), candidates=[d?.cover,d?.origin_cover,d?.ai_dynamic_cover].filter(Boolean).map(v=>v.startsWith("/")?"https://www.tikwm.com"+v:v), thumbnail=candidates[0]||"";
  if(!title||!thumbnail) throw Error("TikWM incomplete metadata "+url);
  return {title,thumbnail};
 }
@@ -28,7 +28,7 @@ function apply(card,m,type){
  x=x.replace(/(data-(?:video|tiktok)-title=")[^"]*"/,"$1"+t+'"');
  x=x.replace(/aria-label="點擊播放 [^"]*"/,'aria-label="點擊播放 '+t+'"');
  x=x.replace(/(<span class="video-facade-caption">)點擊播放｜[\s\S]*?(<\/span>)/,"$1點擊播放｜"+t+"$2");
- const img='<img src="'+esc(m.thumbnail)+'" alt="'+t+'影片縮圖" loading="eager" decoding="async" width="480" height="'+(type==="youtube"?"360":"640")+'" onerror="this.style.display=\'none\'"/>';
+ const img='<img src="'+esc(m.displayThumbnail||m.thumbnail)+'" alt="'+t+'影片縮圖" loading="eager" decoding="async" width="480" height="'+(type==="youtube"?"360":"640")+'"'+(type==="tiktok"?' referrerpolicy="no-referrer" fetchpriority="high"':'')+'/>';
  if(type==="youtube") x=x.replace(/<img\b[^>]*>/,img);
  else if(/<img\b/.test(x)) x=x.replace(/<img\b[^>]*>/,img);
  else x=x.replace(/(<button class="video-facade-play"[^>]*>)/,"$1"+img);
@@ -39,7 +39,27 @@ for(const {0:card} of cards){
  const y=card.match(/data-youtube-video-id="([^"]+)"/), t=card.match(/data-tiktok-short-url="([^"]+)"/);
  if(!y&&!t) throw Error("Video card has no source");
  const m=y?await getYT(y[1]):await getTT(t[1]);
- data.push({source:y?"youtube":"tiktok",id:y?.[1]||t[1],title:m.title,thumbnail:m.thumbnail});
+ if(t){
+   const videoId=m.videoId||String(t[1].match(/(\d{8,})/)?.[1]||Date.now());
+   const candidates=[...(m.thumbnailCandidates||[]),m.thumbnail].filter((v,i,a)=>v&&a.indexOf(v)===i);
+   let saved=false,lastError=null;
+   for(const candidate of candidates){
+     try{
+       const imageResponse=await fetch(candidate,{headers:{"user-agent":"Mozilla/5.0","referer":"https://www.tikwm.com/"},signal:AbortSignal.timeout(20000)});
+       if(!imageResponse.ok)throw Error("thumbnail HTTP "+imageResponse.status);
+       const type=(imageResponse.headers.get("content-type")||"").split(";")[0].toLowerCase();
+       const ext=type==="image/jpeg"?"jpg":type==="image/png"?"png":type==="image/webp"?"webp":"";
+       if(!ext)throw Error("unsupported thumbnail content-type "+type);
+       const assetPath="assets/video-thumbnails/tiktok-"+videoId+"."+ext;
+       await fs.mkdir("assets/video-thumbnails",{recursive:true});
+       await fs.writeFile(assetPath,Buffer.from(await imageResponse.arrayBuffer()));
+       m.displayThumbnail="/"+assetPath;
+       saved=true;break;
+     }catch(error){lastError=error}
+   }
+   if(!saved)throw Error("Unable to save local TikTok thumbnail for "+t[1]+": "+String(lastError));
+ }
+ data.push({source:y?"youtube":"tiktok",id:y?.[1]||t[1],title:m.title,thumbnail:m.thumbnail,...(t?{thumbnail_asset:m.displayThumbnail}:{})});
  out.push(apply(card,m,y?"youtube":"tiktok"));
 }
 if(data.length!==18||data.some(v=>!v.title||!v.thumbnail)) throw Error("18-record metadata validation failed");
