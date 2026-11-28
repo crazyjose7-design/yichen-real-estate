@@ -60,7 +60,7 @@ test('video titles keep only the first segment and remove hashtags',()=>{
 test('TikTok cards load and restore real thumbnail images',()=>{
  assert.match(html,/metadata\?\.thumbnail_url\)applyVideoThumbnail\(box,metadata\.thumbnail_url\)/);
  assert.match(html,/meta\[property="og:image"\]/);
- assert.match(html,/data\.dataset\.tiktokThumbnailUrl/);
+ assert.match(html,/box\.dataset\.tiktokThumbnailUrl/);
  assert.match(html,/box\.dataset\.tiktokThumbnailUrl/);
  assert.match(html,/has-tiktok-thumbnail/);
 });
