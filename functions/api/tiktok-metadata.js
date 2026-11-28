@@ -2,59 +2,133 @@ export async function onRequestGet({ request }) {
   const requestUrl = new URL(request.url);
   const videoUrl = requestUrl.searchParams.get("url") || "";
   let parsed;
-  try {
-    parsed = new URL(videoUrl);
-  } catch {
-    return json({ ok: false, error: "Invalid TikTok URL" }, 400);
-  }
+  try { parsed = new URL(videoUrl); }
+  catch { return json({ ok: false, error: "Invalid TikTok URL" }, 400); }
+
   const host = parsed.hostname.toLowerCase();
-  const allowed = host === "tiktok.com" || host.endsWith(".tiktok.com");
-  if (!allowed || parsed.protocol !== "https:") {
+  if (!(host === "tiktok.com" || host.endsWith(".tiktok.com")) || parsed.protocol !== "https:") {
     return json({ ok: false, error: "Only HTTPS TikTok URLs are allowed" }, 400);
   }
 
   const cache = caches.default;
-  const cacheKey = new Request(new URL("/api/tiktok-metadata?url=" + encodeURIComponent(videoUrl), request.url).toString(), { method: "GET" });
+  const cacheKey = new Request(new URL("/api/tiktok-metadata?url=" + encodeURIComponent(videoUrl), request.url).toString());
   const cached = await cache.match(cacheKey);
   if (cached) return cached;
 
+  const errors = [];
+  let result = null;
+
+  // Route 1: TikWM public metadata endpoint (the frontend serializes requests).
   try {
     const body = new URLSearchParams({ url: videoUrl, hd: "1", web: "1" });
     const upstream = await fetch("https://www.tikwm.com/api/", {
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
-        "User-Agent": "Mozilla/5.0 (compatible; YichenRealEstate/1.0)"
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124.0 Safari/537.36",
+        "Accept": "application/json, text/plain, */*",
+        "Origin": "https://www.tikwm.com",
+        "Referer": "https://www.tikwm.com/"
       },
       body
     });
     if (!upstream.ok) throw new Error("TikWM HTTP " + upstream.status);
     const payload = await upstream.json();
     const data = payload && payload.data;
-    if (payload.code !== 0 || !data) {
-      return json({ ok: false, error: "TikTok metadata provider did not return video data" }, 502);
+    if (payload.code === 0 && data) {
+      result = normalize({
+        title: data.title || data.desc,
+        thumbnail: data.cover || data.origin_cover || data.ai_dynamic_cover,
+        video_id: data.id
+      });
+    } else {
+      throw new Error("TikWM response code " + String(payload.code));
     }
-
-    const title = String(data.title || data.desc || "").trim();
-    let thumbnail = data.cover || data.origin_cover || data.ai_dynamic_cover || "";
-    if (thumbnail && thumbnail.startsWith("/")) thumbnail = "https://www.tikwm.com" + thumbnail;
-    try {
-      const imageUrl = new URL(thumbnail);
-      if (imageUrl.protocol !== "https:") thumbnail = "";
-    } catch {
-      thumbnail = "";
-    }
-    const response = json({
-      ok: Boolean(title || thumbnail),
-      title,
-      thumbnail_url: thumbnail,
-      video_id: String(data.id || "")
-    }, 200, { "Cache-Control": "public, max-age=1800" });
-    await cache.put(cacheKey, response.clone());
-    return response;
   } catch (error) {
-    return json({ ok: false, error: String(error && error.message || error) }, 502);
+    errors.push("TikWM: " + String(error && error.message || error));
   }
+
+  // Route 2: fetch the public TikTok page and extract Open Graph / embedded state.
+  // This is independent of TikWM and does not depend on TikTok oEmbed fields.
+  if (!result || (!result.title && !result.thumbnail_url)) {
+    try {
+      const pageResponse = await fetch(videoUrl, {
+        redirect: "follow",
+        headers: {
+          "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/124.0 Safari/537.36",
+          "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+          "Accept-Language": "zh-TW,zh;q=0.9,en-US;q=0.8,en;q=0.7"
+        }
+      });
+      if (!pageResponse.ok) throw new Error("TikTok page HTTP " + pageResponse.status);
+      const html = await pageResponse.text();
+      const title = extractMeta(html, ["og:title", "twitter:title"]);
+      const thumbnail = extractMeta(html, ["og:image", "twitter:image"]);
+      const canonical = pageResponse.url || videoUrl;
+      const videoId = (canonical.match(/\\/video\\/(\\d{8,})/) || [])[1] || "";
+      const embeddedTitle = extractEmbeddedValue(html, ["desc", "description", "title"]);
+      const embeddedCover = extractEmbeddedValue(html, ["originCover", "cover", "dynamicCover"]);
+      const pageData = normalize({
+        title: title || embeddedTitle,
+        thumbnail: thumbnail || embeddedCover,
+        video_id: videoId
+      });
+      if (pageData && (pageData.title || pageData.thumbnail_url)) {
+        result = { ...(result || {}), ...pageData };
+      }
+    } catch (error) {
+      errors.push("TikTok page: " + String(error && error.message || error));
+    }
+  }
+
+  if (!result || (!result.title && !result.thumbnail_url)) {
+    return json({ ok: false, error: errors.join(" | ") || "No public metadata found" }, 502);
+  }
+
+  const response = json({ ok: true, ...result }, 200, { "Cache-Control": "public, max-age=1800" });
+  await cache.put(cacheKey, response.clone());
+  return response;
+}
+
+function normalize({ title = "", thumbnail = "", video_id = "" }) {
+  let thumbnailUrl = String(thumbnail || "").replace(/\\\\u002F/g, "/").replace(/\\\\u0026/g, "&").trim();
+  if (thumbnailUrl.startsWith("//")) thumbnailUrl = "https:" + thumbnailUrl;
+  try {
+    const parsed = new URL(thumbnailUrl);
+    if (parsed.protocol !== "https:") thumbnailUrl = "";
+  } catch { thumbnailUrl = ""; }
+  const cleanTitle = String(title || "").replace(/<[^>]*>/g, " ").replace(/\\s+/g, " ").trim();
+  if (!cleanTitle && !thumbnailUrl && !video_id) return null;
+  return { title: cleanTitle, thumbnail_url: thumbnailUrl, video_id: String(video_id || "") };
+}
+
+function extractMeta(html, keys) {
+  for (const key of keys) {
+    const escaped = key.replace(/[.*+?^${}()|[\\]\\\\]/g, "\\\\$&");
+    const patterns = [
+      new RegExp('<meta[^>]+property=["\\']' + escaped + '["\\'][^>]+content=["\\']([^"\\']+)', "i"),
+      new RegExp('<meta[^>]+name=["\\']' + escaped + '["\\'][^>]+content=["\\']([^"\\']+)', "i"),
+      new RegExp('<meta[^>]+content=["\\']([^"\\']+)["\\'][^>]+property=["\\']' + escaped + '["\\']', "i")
+    ];
+    for (const pattern of patterns) {
+      const match = html.match(pattern);
+      if (match) return decodeHtml(match[1]);
+    }
+  }
+  return "";
+}
+
+function extractEmbeddedValue(html, keys) {
+  for (const key of keys) {
+    const pattern = new RegExp('["\\']' + key + '["\\']\\s*:\\s*["\\']((?:\\\\.|[^"\\']){3,500})["\\']', "i");
+    const match = html.match(pattern);
+    if (match) return decodeHtml(match[1].replace(/\\\\(["'\\\\])/g, "$1"));
+  }
+  return "";
+}
+
+function decodeHtml(value) {
+  return String(value || "").replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/\\\\u002F/g, "/").replace(/\\\\u0026/g, "&");
 }
 
 function json(data, status = 200, extraHeaders = {}) {
