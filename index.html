@@ -587,7 +587,7 @@ header{background:rgba(10,10,9,.94);border-bottom:1px solid rgba(228,208,166,.18
 .social-video-label{min-height:48px}
 .social-video-label span{display:block;color:#9a743e;font-size:10px;font-weight:800;letter-spacing:2px}
 .social-video-label h3{margin:4px 0 0;color:#2b261e;font-family:'Noto Serif TC',serif;font-size:17px;letter-spacing:.04em}
-.social-video-frame{width:100%;position:relative;overflow:hidden;background:#111;border:1px solid #332a1d;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center}
+.social-video-frame{width:100%;position:relative;overflow:hidden;background:#111;border:1px solid #332a1d;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center};overflow-anchor:none
 .social-video-frame iframe{display:block;width:100%;height:100%;border:0}
 .social-video-youtube{aspect-ratio:16/9}
 .social-video-tiktok iframe{width:auto;height:100%;max-width:100%;aspect-ratio:9/16;flex:0 1 auto}
@@ -1056,24 +1056,6 @@ header{background:rgba(10,10,9,.94);border-bottom:1px solid rgba(228,208,166,.18
 (()=>{
  const root=document.querySelector('#social-media');if(!root)return;
  let activeBox=null,activeRequest=0;
- let videoPageScrollTop=null,videoRestoreTimer=0;
- function captureVideoPageScroll(){videoPageScrollTop=window.scrollY||window.pageYOffset||0}
- function restoreVideoPageScroll(){
-   if(videoPageScrollTop===null||!root.querySelector('.social-video-frame iframe'))return;
-   const top=videoPageScrollTop;
-   requestAnimationFrame(()=>{window.scrollTo(0,top);requestAnimationFrame(()=>window.scrollTo(0,top))});
- }
- function scheduleVideoPageScrollRestore(){
-   if(videoPageScrollTop===null)return;
-   clearTimeout(videoRestoreTimer);
-   videoRestoreTimer=setTimeout(restoreVideoPageScroll,140);
- }
- window.addEventListener('resize',scheduleVideoPageScrollRestore,{passive:true});
- if(window.visualViewport)window.visualViewport.addEventListener('resize',scheduleVideoPageScrollRestore,{passive:true});
- document.addEventListener('fullscreenchange',scheduleVideoPageScrollRestore);
- document.addEventListener('webkitfullscreenchange',scheduleVideoPageScrollRestore);
- document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')scheduleVideoPageScrollRestore()});
- window.addEventListener('pageshow',scheduleVideoPageScrollRestore);
  const videoIdFrom=u=>{const m=String(u||'').match(/\/video\/(\d{8,})/);return m?m[1]:null};
  const safeTikTokUrl=u=>{try{const x=new URL(u);return /(^|\.)tiktok\.com$/i.test(x.hostname)&&x.protocol==='https:'?x.href:null}catch{return null}};
  
@@ -1184,7 +1166,7 @@ async function loadOneVideoMetadata(box){
  function mountYouTube(box){if(box.dataset.playerLoaded==='1')return;stopOtherPlayers(box);const id=box.dataset.youtubeVideoId,title=box.dataset.videoTitle||'YouTube 影片';const iframe=document.createElement('iframe');iframe.src='https://www.youtube-nocookie.com/embed/'+encodeURIComponent(id)+'?autoplay=1&rel=0&playsinline=1';iframe.title=title;iframe.loading='eager';iframe.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';iframe.allowFullscreen=true;iframe.referrerPolicy='strict-origin-when-cross-origin';box.replaceChildren(iframe);box.dataset.playerLoaded='1'}
  async function mountTikTok(box){if(box.dataset.playerLoaded==='1'||box.dataset.playerLoading==='1')return;stopOtherPlayers(box);const request=activeRequest;box.dataset.playerLoading='1';loading(box,'正在連接 TikTok 播放器…');const short=box.dataset.tiktokShortUrl,title=box.dataset.tiktokTitle||'TikTok 影片';try{const key='yichen_tiktok_player_id_v3:'+short;let id='';try{id=localStorage.getItem(key)||''}catch(e){}if(!/^\d{8,}$/.test(id)){const canonical=await resolveCanonical(short);id=videoIdFrom(canonical)||'';if(!id){const data=JSON.parse(await readText('https://www.tiktok.com/oembed?url='+encodeURIComponent(canonical)));id=data.embed_product_id||videoIdFrom(data.html)||''}if(/^\d{8,}$/.test(id)){try{localStorage.setItem(key,id)}catch(e){}}}if(request!==activeRequest||activeBox!==box)return;if(!/^\d{8,}$/.test(id))throw new Error('TikTok 影片 ID 無效');const iframe=document.createElement('iframe');iframe.src='https://www.tiktok.com/player/v1/'+id+'?autoplay=1&force_muted=0&controls=1&description=1&music_info=1&rel=0';iframe.title=title;iframe.loading='eager';iframe.allow='accelerometer; autoplay; clipboard-write; encrypted-media; fullscreen; gyroscope; picture-in-picture; web-share';iframe.allowFullscreen=true;iframe.referrerPolicy='strict-origin-when-cross-origin';const onTikTokMessage=event=>{if(event.source!==iframe.contentWindow)return;const data=event.data;if(data&&data['x-tiktok-player']===true&&data.type==='onPlayerReady'){iframe.contentWindow.postMessage({type:'unMute','x-tiktok-player':true},'*')}};iframe.__yichenTikTokMessageHandler=onTikTokMessage;window.addEventListener('message',onTikTokMessage);box.replaceChildren(iframe);box.dataset.playerLoaded='1'}catch(err){if(request===activeRequest&&activeBox===box)showError(box,'TikTok 站內播放器暫時無法載入，請稍後重試。影片不會跳轉離開本網站。')}}
  loadVideoTitles();
- root.addEventListener('click',e=>{const btn=e.target.closest('.video-facade-play');if(!btn||!root.contains(btn))return;const box=btn.closest('.social-video-frame');if(!box)return;captureVideoPageScroll();if(box.dataset.youtubeVideoId)mountYouTube(box);else if(box.dataset.tiktokShortUrl)mountTikTok(box)});
+ root.addEventListener('click',e=>{const btn=e.target.closest('.video-facade-play');if(!btn||!root.contains(btn))return;const box=btn.closest('.social-video-frame');if(!box)return;if(box.dataset.youtubeVideoId)mountYouTube(box);else if(box.dataset.tiktokShortUrl)mountTikTok(box)});
  // Initial markup intentionally contains no video iframe; players are created only after a click.
 })();
 </script></section>
