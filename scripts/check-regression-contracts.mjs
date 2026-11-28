@@ -22,10 +22,11 @@ const checks = [
   ["TikTok featured card 02 uses same-origin endpoint before short-link resolver", html.indexOf("readText('/api/tiktok-metadata?url='+encodeURIComponent(shortUrl),18000)") < html.indexOf("canonical=await resolveCanonical(shortUrl)")],
 
   ["HTML response explicitly declares UTF-8", headers.includes("/\n  Content-Type: text/html; charset=utf-8") && headers.includes("/index.html\n  Content-Type: text/html; charset=utf-8")],
-  ["Homepage icon and social preview URLs cache-busted", html.includes("yichen-favicon.svg?rev=20261128-2") && html.includes("yichen-og-cover.svg?rev=20261128-2")],
+  ["Original toolbar emblem and social preview URLs cache-busted", html.includes("yichen-brand-emblem.jpg?rev=20261128-3") && html.includes("yichen-og-cover.svg?rev=20261128-2")],
   ["Custom factor empty selection has a clear blocking message", html.includes("你已選擇「自訂」坪效換算係數，請直接在同一欄位輸入係數；留白不會自動套用1.3或其他預設值。")],
   ["Homepage social preview image configured", html.includes('property="og:image"') && html.includes('name="twitter:image"') && html.includes('name="twitter:card" content="summary_large_image"')],
-  ["Homepage favicon configured", html.includes('rel="icon" type="image/svg+xml" sizes="any" href="/assets/yichen-favicon.svg?rev=20261128-2"')],
+  ["Homepage icon reuses the original toolbar emblem", html.includes('rel="icon" type="image/jpeg" href="/assets/yichen-brand-emblem.jpg?rev=20261128-3"') && html.includes('rel="apple-touch-icon" href="/assets/yichen-brand-emblem.jpg?rev=20261128-3"')],
+  ["Header and culture badges load the shared original emblem eagerly", (html.match(/src="\/assets\/yichen-brand-emblem\.jpg\?rev=20261128-3" loading="eager"/g) || []).length === 2 && !html.includes('data-yichen-inline-image="badge"')],
   ["All 18 videos have verified static titles and thumbnail URLs", metadata.count === 18 && metadata.videos.length === 18 && metadata.videos.every(v => v.title && /^https:\/\//.test(v.thumbnail)) && videoCards.length === 18 && videoCards.every(card => !/YouTube 精選影片|TikTok 精選影片|TikTok 影片 0[1-9]/.test(card))],
   ["All nine TikTok thumbnails load eagerly without referrer blocking", metadata.videos.filter(v => v.source === "tiktok").length === 9 && metadata.videos.filter(v => v.source === "tiktok").every(v => /^https:\/\//.test(v.thumbnail)) && (html.match(/<img\b(?=[^>]*src="https:\/\/www\.tikwm\.com\/video\/cover\/[^"]+")(?=[^>]*loading="eager")(?=[^>]*referrerpolicy="no-referrer")(?=[^>]*fetchpriority="high")[^>]*>/g) || []).length === 9],
   ["All nine TikTok cards retained", count(html, "data-tiktok-short-url=") === 9],
