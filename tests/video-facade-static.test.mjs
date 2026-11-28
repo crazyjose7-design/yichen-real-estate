@@ -76,3 +76,16 @@ test('page title ends immediately after the version number',()=>{
  const match=html.match(/<title>億辰不動產集團｜V[0-9]+(?:\.[0-9]+)*<\/title>/);
  assert.ok(match,'page title contains brand and version only, with no suffix');
 });
+
+test('TikTok metadata requests are serialized to respect provider rate limits and cached',()=>{
+ const p=html.indexOf('async function loadVideoTitles');
+ const q=html.indexOf('async function readText',p);
+ const code=html.slice(p,q);
+ assert.match(code,/for\(const box of cards\)/);
+ assert.match(code,/nextTikTokRequestAt-Date\.now\(\)/);
+ assert.match(code,/setTimeout\(resolve,wait\)/);
+ assert.match(code,/1200/);
+ assert.match(code,/sessionStorage\.getItem\(cacheKey\)/);
+ assert.match(code,/30\*60\*1000/);
+ assert.doesNotMatch(code,/Promise\.all\(cards\.map/);
+});
