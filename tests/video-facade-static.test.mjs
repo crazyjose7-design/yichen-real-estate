@@ -28,7 +28,7 @@ test('players are created on click and only one is active',()=>{
 });
 test('video cards retrieve their real titles from platform metadata',()=>{
  assert.match(social,/youtube\.com\/oembed\?url=/);
- assert.match(social,/tiktok\.com\/oembed\?url=/);
+ assert.match(social,/api\/tiktok-metadata\?url=/);
  assert.match(social,/applyVideoTitle\(box,metadata\.title\)/);
 });
 test('TikTok player enables sound and requests unmute when ready',()=>{
@@ -46,4 +46,55 @@ test('six official social links and publishing disclaimer are below the heading'
  const title=social.indexOf('<h2>社群媒體專區</h2>'),links=social.indexOf('social-links-under-title'),disclaimer=social.indexOf('social-disclaimer-under-title'),videos=social.indexOf('aria-label="億辰精選影片"');
  assert.ok(title>=0&&links>title&&disclaimer>links&&videos>disclaimer);
  for(const label of ['YouTube','Threads','TikTok','抖音','Instagram','Facebook'])assert.equal((social.match(new RegExp('>'+label+'</a>','g'))||[]).length,1,label);
+});
+
+test('video titles keep only the first segment and remove hashtags',()=>{
+ const p=html.indexOf('function applyVideoTitle');
+ const q=html.indexOf('async function loadVideoTitles',p);
+ const code=html.slice(p,q);
+ assert.ok(code.includes("split('\\n')[0]"));
+ assert.ok(code.includes("raw.replace(/^(?:\\s*#[\\p{L}\\p{N}_]+)+\\s*/u,'')"));
+ assert.ok(code.includes('withoutLeadingTags.split(/\\s+#/u)[0]'));
+ assert.ok(code.includes("replace(/#[\\p{L}\\p{N}_]+/gu,'')"));
+});
+test('TikTok cards use server metadata for real titles and thumbnails',()=>{
+ assert.match(html,/api\/tiktok-metadata\?url=/);
+ assert.match(html,/metadata\?\.ok&&metadata\.title\)applyVideoTitle\(box,metadata\.title\)/);
+ assert.match(html,/metadata\?\.ok&&metadata\.thumbnail_url\)applyVideoThumbnail\(box,metadata\.thumbnail_url\)/);
+ assert.match(html,/box\.dataset\.tiktokThumbnailUrl/);
+ assert.match(html,/has-tiktok-thumbnail/);
+});
+test('server-side TikTok metadata endpoint resolves public titles and covers',()=>{
+ const endpoint=readFileSync(resolve(here,'../functions/api/tiktok-metadata.js'),'utf8');
+ assert.match(endpoint,/https:\/\/www\.tikwm\.com\/api\//);
+ assert.match(endpoint,/method: "POST"/);
+ assert.match(endpoint,/data\.title \|\| data\.desc/);
+ assert.match(endpoint,/data\.cover \|\| data\.origin_cover/);
+ assert.match(endpoint,/caches\.default/);
+});
+test('page title ends immediately after the version number',()=>{
+ const match=html.match(/<title>億辰不動產集團｜V[0-9]+(?:\.[0-9]+)*<\/title>/);
+ assert.ok(match,'page title contains brand and version only, with no suffix');
+});
+
+test('TikTok metadata requests are serialized to respect provider rate limits and cached',()=>{
+ const p=html.indexOf('async function loadVideoTitles');
+ const q=html.indexOf('async function readText',p);
+ const code=html.slice(p,q);
+ assert.match(code,/for\(const box of cards\)/);
+ assert.match(code,/nextTikTokRequestAt-Date\.now\(\)/);
+ assert.match(code,/setTimeout\(resolve,wait\)/);
+ assert.match(code,/1200/);
+ assert.match(code,/sessionStorage\.getItem\(cacheKey\)/);
+ assert.match(code,/30\*60\*1000/);
+ assert.doesNotMatch(code,/Promise\.all\(cards\.map/);
+});
+
+test('TikTok metadata endpoint has an independent public-page fallback',()=>{
+ const endpoint=readFileSync(resolve(here,'../functions/api/tiktok-metadata.js'),'utf8');
+ assert.match(endpoint,/fetch\(videoUrl,[\s\S]*redirect: "follow"/);
+ assert.match(endpoint,/extractMeta\(html, \["og:title", "twitter:title"\]\)/);
+ assert.match(endpoint,/extractMeta\(html, \["og:image", "twitter:image"\]\)/);
+ assert.match(endpoint,/extractEmbeddedValue\(html/);
+ assert.match(endpoint,/TikTok page HTTP/);
 });
