@@ -1165,23 +1165,54 @@ async function loadOneVideoMetadata(box){
  function showError(box,message){const el=document.createElement('div');el.className='social-video-loading social-video-error';const text=document.createElement('span');text.textContent=message;const retry=document.createElement('button');retry.type='button';retry.className='video-facade-retry';retry.textContent='重新載入';retry.addEventListener('click',()=>poster(box));el.append(text,retry);box.replaceChildren(el);delete box.dataset.playerLoading;box.dataset.playerError='1'}
  function mountYouTube(box){if(box.dataset.playerLoaded==='1')return;stopOtherPlayers(box);const id=box.dataset.youtubeVideoId,title=box.dataset.videoTitle||'YouTube 影片';const iframe=document.createElement('iframe');iframe.src='https://www.youtube-nocookie.com/embed/'+encodeURIComponent(id)+'?autoplay=1&rel=0&playsinline=1';iframe.title=title;iframe.loading='eager';iframe.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';iframe.allowFullscreen=true;iframe.referrerPolicy='strict-origin-when-cross-origin';box.replaceChildren(iframe);box.dataset.playerLoaded='1'}
  async function mountTikTok(box){if(box.dataset.playerLoaded==='1'||box.dataset.playerLoading==='1')return;stopOtherPlayers(box);const request=activeRequest;box.dataset.playerLoading='1';loading(box,'正在連接 TikTok 播放器…');const short=box.dataset.tiktokShortUrl,title=box.dataset.tiktokTitle||'TikTok 影片';try{const key='yichen_tiktok_player_id_v3:'+short;let id='';try{id=localStorage.getItem(key)||''}catch(e){}if(!/^\d{8,}$/.test(id)){const canonical=await resolveCanonical(short);id=videoIdFrom(canonical)||'';if(!id){const data=JSON.parse(await readText('https://www.tiktok.com/oembed?url='+encodeURIComponent(canonical)));id=data.embed_product_id||videoIdFrom(data.html)||''}if(/^\d{8,}$/.test(id)){try{localStorage.setItem(key,id)}catch(e){}}}if(request!==activeRequest||activeBox!==box)return;if(!/^\d{8,}$/.test(id))throw new Error('TikTok 影片 ID 無效');const iframe=document.createElement('iframe');iframe.src='https://www.tiktok.com/player/v1/'+id+'?autoplay=1&force_muted=0&controls=1&description=1&music_info=1&rel=0';iframe.title=title;iframe.loading='eager';iframe.allow='accelerometer; autoplay; clipboard-write; encrypted-media; fullscreen; gyroscope; picture-in-picture; web-share';iframe.allowFullscreen=true;iframe.referrerPolicy='strict-origin-when-cross-origin';const onTikTokMessage=event=>{if(event.source!==iframe.contentWindow)return;const data=event.data;if(data&&data['x-tiktok-player']===true&&data.type==='onPlayerReady'){iframe.contentWindow.postMessage({type:'unMute','x-tiktok-player':true},'*')}};iframe.__yichenTikTokMessageHandler=onTikTokMessage;window.addEventListener('message',onTikTokMessage);box.replaceChildren(iframe);box.dataset.playerLoaded='1'}catch(err){if(request===activeRequest&&activeBox===box)showError(box,'TikTok 站內播放器暫時無法載入，請稍後重試。影片不會跳轉離開本網站。')}}
- // Preserve the document position only across a real iframe fullscreen exit.
- // Capture on fullscreen entry (not on the poster click), because the player may
- // wait before opening fullscreen and the page can move in the meantime.
- let videoFullscreenScrollY=null;
+ // Track the last real page position while the document is not fullscreen.
+ // The site uses html{scroll-behavior:smooth}; restoration must override that
+ // rule for this single correction or each exit can start an unwanted animation.
+ let videoLastPageScrollY=window.scrollY;
+ let videoWasFullscreen=false;
+ function rememberVideoPageScroll(){
+   if(!document.fullscreenElement&&!document.webkitFullscreenElement){
+     videoLastPageScrollY=window.scrollY;
+   }
+ }
+ window.addEventListener('scroll',rememberVideoPageScroll,{passive:true});
  function handleVideoFullscreenChange(){
    const fullscreenElement=document.fullscreenElement||document.webkitFullscreenElement;
    if(fullscreenElement){
-     videoFullscreenScrollY=window.scrollY;
+     videoWasFullscreen=true;
      return;
    }
-   if(videoFullscreenScrollY===null)return;
-   const savedY=videoFullscreenScrollY;
-   videoFullscreenScrollY=null;
-   // Let Chrome finish restoring the iframe's inline dimensions and viewport first.
-   requestAnimationFrame(()=>requestAnimationFrame(()=>{
-     if(Math.abs(window.scrollY-savedY)>2)window.scrollTo(0,savedY);
-   }));
+   if(!videoWasFullscreen)return;
+   videoWasFullscreen=false;
+   const savedY=videoLastPageScrollY;
+   // Wait for the viewport dimensions to settle after Chrome exits iframe fullscreen.
+   let lastHeight=window.innerHeight;
+   let lastVisualHeight=window.visualViewport?window.visualViewport.height:0;
+   let stableFrames=0;
+   let checkedFrames=0;
+   function restoreAfterViewportSettles(){
+     const visualHeight=window.visualViewport?window.visualViewport.height:0;
+     if(window.innerHeight===lastHeight&&visualHeight===lastVisualHeight){
+       stableFrames++;
+     }else{
+       stableFrames=0;
+       lastHeight=window.innerHeight;
+       lastVisualHeight=visualHeight;
+     }
+     checkedFrames++;
+     if(stableFrames>=3||checkedFrames>=30){
+       if(Math.abs(window.scrollY-savedY)>2){
+         const rootStyle=document.documentElement.style;
+         const previousScrollBehavior=rootStyle.scrollBehavior;
+         rootStyle.scrollBehavior='auto';
+         window.scrollTo(0,savedY);
+         rootStyle.scrollBehavior=previousScrollBehavior;
+       }
+       return;
+     }
+     requestAnimationFrame(restoreAfterViewportSettles);
+   }
+   requestAnimationFrame(restoreAfterViewportSettles);
  }
  document.addEventListener('fullscreenchange',handleVideoFullscreenChange);
  document.addEventListener('webkitfullscreenchange',handleVideoFullscreenChange);
