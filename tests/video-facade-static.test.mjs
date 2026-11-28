@@ -57,6 +57,13 @@ test('video titles keep only the first segment and remove hashtags',()=>{
  assert.ok(code.includes('withoutLeadingTags.split(/\\s+#/u)[0]'));
  assert.ok(code.includes("replace(/#[\\p{L}\\p{N}_]+/gu,'')"));
 });
+test('TikTok cards load and restore real thumbnail images',()=>{
+ assert.match(html,/metadata\?\.thumbnail_url\)applyVideoThumbnail\(box,metadata\.thumbnail_url\)/);
+ assert.match(html,/meta\[property="og:image"\]/);
+ assert.match(html,/data\.dataset\.tiktokThumbnailUrl/);
+ assert.match(html,/box\.dataset\.tiktokThumbnailUrl/);
+ assert.match(html,/has-tiktok-thumbnail/);
+});
 test('page title ends immediately after the version number',()=>{
  const match=html.match(/<title>億辰不動產集團｜V[0-9]+(?:\.[0-9]+)*<\/title>/);
  assert.ok(match,'page title contains brand and version only, with no suffix');
